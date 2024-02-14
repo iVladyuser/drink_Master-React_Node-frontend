@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/drink_Master-React_Node-frontend/static/css/main.7acaea2f.css",
+    "main.js": "/drink_Master-React_Node-frontend/static/js/main.07d3183d.js",
+    "index.html": "/drink_Master-React_Node-frontend/index.html",
+    "main.7acaea2f.css.map": "/drink_Master-React_Node-frontend/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/drink_Master-React_Node-frontend/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
