@@ -11,7 +11,7 @@ export const useFetchGlasses = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetchGlasses('', controller);
+        const response = await fetchGlasses('');
         setDrinkGlasses(response);
       } catch (error) {
         setError(error.message);
