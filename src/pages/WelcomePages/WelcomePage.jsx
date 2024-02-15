@@ -19,8 +19,8 @@ const WelcomePage = () => {
           retrieve your own recipes at any time.
         </WelcomeText>
         <ButtonWrapper>
-          <ButtonLinkActive to="/registration">Sign Up</ButtonLinkActive>
-          <ButtonLink to="/login">Sign In</ButtonLink>
+          <ButtonLinkActive to="/signup">Sign Up</ButtonLinkActive>
+          <ButtonLink to="/sigin">Sign In</ButtonLink>
         </ButtonWrapper>
       </Container>
     </WelcomePageStyle>

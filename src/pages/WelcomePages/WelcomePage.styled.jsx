@@ -10,16 +10,13 @@ import welcomeTab1x from '../../images/welcome/welcomeTab@1x.jpg';
 import welcomeDesk1x from '../../images/welcome/welcomeDesk@1x.jpg';
 // import welcomeDesk2x from '../../images/welcome/welcomeDesk@2x.jpg';
 
-import welcomeElipseRightMob from '../../images/welcome/welcomeElipseRightMob.svg';
-import welcomeElipseLeftMob from '../../images/welcome/welcomeElipseLeftMob.svg';
+import welcomeElipseTopMob from '../../images/welcome/welcomeElipsesTopMob.svg';
 import welcomeElipseBottomMob from '../../images/welcome/welcomeElipseBottomMob.svg';
 
-import welcomeElipseRightTab from '../../images/welcome/welcomeElipseRightTab.svg';
-import welcomeElipseLeftTab from '../../images/welcome/welcomeElipseLeftTab.svg';
+import welcomeElipseTopTab from '../../images/welcome/welcomeElipsesTopTab.svg';
 import welcomeElipseBottomTab from '../../images/welcome/welcomeElipseBottomTab.svg';
 
-import welcomeElipseRightDesk from '../../images/welcome/welcomeElipseRightDesk.svg';
-import welcomeElipseLeftDesk from '../../images/welcome/welcomeElipseLeftDesk.svg';
+import welcomeElipseTopDesk from '../../images/welcome/welcomeElipsesTopDesk.svg';
 import welcomeElipseBottomDesk from '../../images/welcome/welcomeElipseBottomDesk.svg';
 
 export const WelcomePageStyle = styled.section`
@@ -30,28 +27,28 @@ export const WelcomePageStyle = styled.section`
   max-width: 100vw;
   height: 100vh;
 
-  background: url(${welcomeElipseLeftMob}), url(${welcomeElipseRightMob}),
-    url(${welcomeElipseBottomMob}), url(${welcomeMob1x});
+  background: url(${welcomeElipseTopMob}), url(${welcomeElipseBottomMob}),
+    url(${welcomeMob1x});
 
   background-repeat: no-repeat;
-  background-size: 80%, 100%, 40%, auto;
-  background-position: top left, top left, bottom right, center right;
+  background-size: 100%, 40%, auto;
+  background-position: top left, bottom right, center right;
   background-color: #0a090f;
 
   @media (min-width: 768px) {
-    background: url(${welcomeElipseLeftTab}), url(${welcomeElipseRightTab}),
-      url(${welcomeElipseBottomTab}), url(${welcomeTab1x});
+    background: url(${welcomeElipseTopTab}), url(${welcomeElipseBottomTab}),
+      url(${welcomeTab1x});
     background-repeat: no-repeat;
-    background-size: 30%, 70%, 30%, 55%;
-    background-position: top left, top left, bottom right, center right;
+    background-size: 70%, 30%, 60%;
+    background-position: top left, bottom right, center right;
     background-color: #0a090f;
   }
   @media (min-width: 1440px) {
-    background: url(${welcomeElipseLeftDesk}), url(${welcomeElipseRightDesk}),
-      url(${welcomeElipseBottomDesk}), url(${welcomeDesk1x});
+    background: url(${welcomeElipseTopDesk}), url(${welcomeElipseBottomDesk}),
+      url(${welcomeDesk1x});
     background-repeat: no-repeat;
-    background-size: 30%, 50%, 25%, 45%;
-    background-position: top left, top left, bottom right, center right;
+    background-size: 50%, 25%, 60%;
+    background-position: top left, bottom right, center right;
     background-color: #07060b;
   }
 `;
@@ -62,15 +59,37 @@ export const Container = styled.div`
 
   @media (min-width: 375px) {
     width: 375px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1440px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
 `;
 export const Title = styled.h1`
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.02px;
   line-height: 1.14;
   color: #fafafa;
   margin-bottom: 14px;
+
+  @media (min-width: 768px) {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  @media (min-width: 1440px) {
+    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+  }
 `;
 export const WelcomeText = styled.p`
   font-size: 14px;
@@ -79,10 +98,28 @@ export const WelcomeText = styled.p`
   line-height: 1.28;
   color: #fafafa;
   margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    width: 470px;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  @media (min-width: 1440px) {
+    width: 485px;
+  }
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 14px;
+
+  @media (max-width: 767.98px) {
+    justify-content: center;
+  }
+
+  @media (min-width: 1440px) {
+    gap: 15px;
+  }
 `;
 
 export const ButtonLink = styled(Link)`
@@ -104,6 +141,14 @@ export const ButtonLink = styled(Link)`
   &:hover {
     color: #161f37;
     background-color: #f3f3f3;
+  }
+
+  @media (min-width: 768px) {
+    padding: 18px 44px;
+    min-width: 59px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.12;
   }
 `;
 export const ButtonLinkActive = styled(ButtonLink)`
