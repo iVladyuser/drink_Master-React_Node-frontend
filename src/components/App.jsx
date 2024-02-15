@@ -5,16 +5,17 @@ import { Loader } from './Loader/Loader';
 import { useDispatch } from 'react-redux';
 import { refreshThunk } from 'services/fetchAuth';
 import * as ROUTES from 'constants/routes';
+
 import RestrictedRoute from './RestrictedRoute';
 // import PrivateRoute from './PrivateRoute';
 
-const Home = lazy(() => import('pages/HomePage'));
+const Welcome = lazy(() => import('pages/WelcomePages/WelcomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LogInPage'));
 const AddDrinkPage = lazy(() => import('pages/AddDrinkPages/AddDrinkPages'));
 
 const appRoutes = [
-  { path: ROUTES.HOME_ROUTE, element: <Home /> },
+  { path: ROUTES.WELCOME_ROUTE, element: <Welcome /> },
   {
     path: ROUTES.LOGIN_ROUTE,
     element: (
