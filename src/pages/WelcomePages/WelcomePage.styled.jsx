@@ -63,6 +63,13 @@ export const Container = styled.div`
   @media (min-width: 375px) {
     width: 375px;
   }
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1440px;
+  }
 `;
 export const Title = styled.h1`
   font-size: 28px;
@@ -71,6 +78,11 @@ export const Title = styled.h1`
   line-height: 1.14;
   color: #fafafa;
   margin-bottom: 14px;
+
+  @media (min-width: 768px) {
+    font-size: 40px;
+    line-height: 1.1;
+  }
 `;
 export const WelcomeText = styled.p`
   font-size: 14px;
@@ -79,10 +91,28 @@ export const WelcomeText = styled.p`
   line-height: 1.28;
   color: #fafafa;
   margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    width: 470px;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  @media (min-width: 1440px) {
+    width: 485px;
+  }
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 14px;
+
+  @media (max-width: 767.98px) {
+    justify-content: center;
+  }
+
+  @media (min-width: 1440px) {
+    gap: 15px;
+  }
 `;
 
 export const ButtonLink = styled(Link)`
@@ -104,6 +134,14 @@ export const ButtonLink = styled(Link)`
   &:hover {
     color: #161f37;
     background-color: #f3f3f3;
+  }
+
+  @media (min-width: 768px) {
+    padding: 18px 44px;
+    min-width: 59px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.12;
   }
 `;
 export const ButtonLinkActive = styled(ButtonLink)`
