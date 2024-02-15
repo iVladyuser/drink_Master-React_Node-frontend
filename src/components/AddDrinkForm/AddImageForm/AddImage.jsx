@@ -1,5 +1,3 @@
-// import { RxPlus } from 'react-icons/rx';
-
 const AddImage = () => {
   return (
     <div>
@@ -15,12 +13,7 @@ const AddImage = () => {
           {/* <div>
             <img id="uploaded-file" src="file" />
           </div> */}
-          <div>
-            {/* <span>
-              <RxPlus />
-              Add image
-            </span> */}
-          </div>
+          <div></div>
         </label>
       </div>
     </div>
