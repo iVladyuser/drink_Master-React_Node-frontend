@@ -1,6 +1,5 @@
 import React from 'react';
 import StyledSvg from './LogoStyled';
-
 const Logo = () => {
   return (
     <StyledSvg>
@@ -8,5 +7,4 @@ const Logo = () => {
     </StyledSvg>
   );
 };
-
 export default Logo;
