@@ -15,9 +15,16 @@ const Login = lazy(() => import('pages/LogInPage'));
 const AddDrinkPage = lazy(() => import('pages/AddDrinkPages/AddDrinkPages'));
 
 const appRoutes = [
-  { path: ROUTES.WELCOME_ROUTE, element: <Welcome /> },
   {
-    path: ROUTES.LOGIN_ROUTE,
+    path: ROUTES.WELCOME_ROUTE,
+    element: (
+      <RestrictedRoute>
+        <Welcome />
+      </RestrictedRoute>
+    ),
+  },
+  {
+    path: ROUTES.SIGNIN_ROUTE,
     element: (
       <RestrictedRoute>
         <Login />
@@ -25,7 +32,7 @@ const appRoutes = [
     ),
   },
   {
-    path: ROUTES.REGISTER_ROUTE,
+    path: ROUTES.SIGNUP_ROUTE,
     element: (
       <RestrictedRoute>
         <Register />
@@ -50,7 +57,7 @@ const App = () => {
             <Route key={path} path={path} element={element} />
           ))}
 
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/welcome" />} />
         </Routes>
       </Suspense>
     </Layout>
