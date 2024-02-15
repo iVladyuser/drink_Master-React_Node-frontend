@@ -1,4 +1,4 @@
-import AddImage from '../AddImageForm';
+import AddImage from '../AddImage';
 // import CustomSelect from '../CustomSelect';
 
 import {

@@ -6,6 +6,7 @@ import {
   Button,
   Icon,
   InputWrapper,
+  StyledInput,
   ErrorText,
 } from './AddImage.styled';
 import { useState } from 'react';
@@ -29,7 +30,7 @@ const AddImage = ({ setValue, fileRef }) => {
 
   return (
     <InputWrapper>
-      <input
+      <StyledInput
         ref={fileRef}
         type="file"
         name="file"

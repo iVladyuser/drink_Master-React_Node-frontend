@@ -83,7 +83,7 @@ const MainForm = () => {
             />
             {/* <IngredientsBlock />
             <RecipePreparationBlock /> */}
-            <AddButton type="submit">Add</AddButton>
+            <AddButton>Add</AddButton>
           </Form>
         )}
       </Formik>
