@@ -1,4 +1,4 @@
-import { RxPlus } from 'react-icons/rx';
+//import { RxPlus } from 'react-icons/rx';
 
 const AddImage = () => {
   return (
@@ -12,14 +12,14 @@ const AddImage = () => {
       />
       <div>
         <label htmlFor="add-file">
-          <div>
+          {/* <div>
             <img id="uploaded-file" src="file" />
-          </div>
+          </div> */}
           <div>
-            <span>
-              <RxPlus />
+            {/* <span>
+             // <RxPlus />
               Add image
-            </span>
+            </span> */}
           </div>
         </label>
       </div>
