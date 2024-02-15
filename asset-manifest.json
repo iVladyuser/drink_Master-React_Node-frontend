@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css",
-    "main.js": "/drink_Master-React_Node-frontend/static/js/main.2396a829.js",
-    "static/js/478.b766c16a.chunk.js": "/drink_Master-React_Node-frontend/static/js/478.b766c16a.chunk.js",
+    "main.js": "/drink_Master-React_Node-frontend/static/js/main.e38f912c.js",
+    "static/js/880.98aeef95.chunk.js": "/drink_Master-React_Node-frontend/static/js/880.98aeef95.chunk.js",
     "static/js/432.a023556e.chunk.js": "/drink_Master-React_Node-frontend/static/js/432.a023556e.chunk.js",
     "static/js/897.552b39d3.chunk.js": "/drink_Master-React_Node-frontend/static/js/897.552b39d3.chunk.js",
     "static/js/497.166cd5cd.chunk.js": "/drink_Master-React_Node-frontend/static/js/497.166cd5cd.chunk.js",
@@ -10,19 +10,16 @@
     "static/media/welcomeDesk@1x.jpg": "/drink_Master-React_Node-frontend/static/media/welcomeDesk@1x.6fe1831eac94fadf43a6.jpg",
     "static/media/welcomeTab@1x.jpg": "/drink_Master-React_Node-frontend/static/media/welcomeTab@1x.457ce856fff2ba764345.jpg",
     "static/media/welcomeMob@1x.jpg": "/drink_Master-React_Node-frontend/static/media/welcomeMob@1x.67209e8848ef8dfff92c.jpg",
+    "static/media/welcomeElipsesTopTab.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipsesTopTab.69ca6e88dfcbcf37123eb80c0b7218f8.svg",
+    "static/media/welcomeElipsesTopDesk.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipsesTopDesk.df1f64812a6b433216d072dbc4f41e71.svg",
+    "static/media/welcomeElipsesTopMob.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipsesTopMob.d0473904ad54700459d0bd19c6584fca.svg",
     "index.html": "/drink_Master-React_Node-frontend/index.html",
-    "static/media/welcomeElipseRightTab.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseRightTab.db03aebdcf761d2708b696d2f2fe8123.svg",
-    "static/media/welcomeElipseLeftTab.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseLeftTab.6d9b47cc3a264b0e6f06cdc3cc625495.svg",
-    "static/media/welcomeElipseRightMob.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseRightMob.b85853d7a56d08e70a8b8d07e34b145d.svg",
-    "static/media/welcomeElipseRightDesk.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseRightDesk.9e47a4e49035e27fa0f49776ad53b6fb.svg",
     "static/media/welcomeElipseBottomDesk.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseBottomDesk.8c68598296956279395f2a3ba2a9e1f8.svg",
     "static/media/welcomeElipseBottomMob.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseBottomMob.d4681e79e489fd561636074411ae5347.svg",
     "static/media/welcomeElipseBottomTab.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseBottomTab.a45d91603c3d070cfbb1fd74107c1780.svg",
-    "static/media/welcomeElipseLeftDesk.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseLeftDesk.44ecb3a9ad413912ff9fa87f7e8724c5.svg",
-    "static/media/welcomeElipseLeftMob.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseLeftMob.cb0cbf7d2c34a8937c0fdc14432fe2c0.svg",
     "main.cd2e038f.css.map": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css.map",
-    "main.2396a829.js.map": "/drink_Master-React_Node-frontend/static/js/main.2396a829.js.map",
-    "478.b766c16a.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/478.b766c16a.chunk.js.map",
+    "main.e38f912c.js.map": "/drink_Master-React_Node-frontend/static/js/main.e38f912c.js.map",
+    "880.98aeef95.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/880.98aeef95.chunk.js.map",
     "432.a023556e.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/432.a023556e.chunk.js.map",
     "897.552b39d3.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/897.552b39d3.chunk.js.map",
     "497.166cd5cd.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/497.166cd5cd.chunk.js.map",
@@ -30,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.2396a829.js"
+    "static/js/main.e38f912c.js"
   ]
 }
