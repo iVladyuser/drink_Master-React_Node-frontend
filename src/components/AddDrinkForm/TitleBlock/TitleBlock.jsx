@@ -1,51 +1,81 @@
-import { Field } from 'formik';
-
 import AddImage from '../AddImageForm';
-import CustomSelect from '../CustomSelect';
+// import CustomSelect from '../CustomSelect';
 
-const TitleBlock = () => {
+import {
+  FieldStyled,
+  FieldWrapper,
+  LabelStyled,
+  FieldRadio,
+  FieldRadioLabel,
+  RadioButtonsWrapper,
+  Wrapper,
+  ContentWrapper,
+  ErrorText,
+} from './TitleBlock.styled';
+
+const TitleBlock = ({
+  categoriesList,
+  glassesList,
+  setValue,
+  touched,
+  errors,
+  fileRef,
+}) => {
   return (
-    <div>
-      <AddImage />
+    <Wrapper>
+      <AddImage setValue={setValue} fileRef={fileRef} />
 
-      <div>
-        <div>
-          <label htmlFor="title">Enter item title</label>
-          <Field name={'title'} placeholder="Enter item title" />
-        </div>
+      <ContentWrapper>
+        <FieldWrapper>
+          <LabelStyled htmlFor="title">Enter item title</LabelStyled>
+          <FieldStyled name={'title'} placeholder="Enter item title" />
+          {touched.title && errors.title ? (
+            <ErrorText>{errors.title}</ErrorText>
+          ) : null}
+        </FieldWrapper>
 
-        <div>
-          <label htmlFor="recipe">Enter about recipe</label>
-          <Field name={'recipe'} placeholder="Enter about recipe" />
-        </div>
+        <FieldWrapper>
+          <LabelStyled htmlFor="recipe">Enter about recipe</LabelStyled>
+          <FieldStyled name={'recipe'} placeholder="Enter about recipe" />
+          {touched.recipe && errors.recipe ? (
+            <ErrorText>{errors.recipe}</ErrorText>
+          ) : null}
+        </FieldWrapper>
 
-        <CustomSelect />
+        {/* <CustomSelect />
 
-        <CustomSelect />
+        <CustomSelect /> */}
 
-        <div>
+        <RadioButtonsWrapper
+          role="cocktailTypeSelect"
+          aria-labelledby="cocktailTypeSelect-group"
+        >
           <div>
-            <Field
+            <FieldRadio
               type="radio"
               name="alcoholicType"
               id="radioAlcoholic"
               value={'Alcoholic'}
             />
-            <label htmlFor="radioAlco">Alcoholic</label>
+            <FieldRadioLabel htmlFor="radioAlcoholic">
+              Alcoholic
+            </FieldRadioLabel>
           </div>
 
           <div>
-            <Field
+            <FieldRadio
               type="radio"
               name="alcoholicType"
               id="radioNonAlcoholic"
               value={'Non-alcoholic'}
             />
-            <label htmlFor="radioNonAlco">Non-alcoholic</label>
+            <FieldRadioLabel htmlFor="radioNonAlcoholic">
+              Non-alcoholic
+            </FieldRadioLabel>
           </div>
-        </div>
-      </div>
-    </div>
+        </RadioButtonsWrapper>
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 

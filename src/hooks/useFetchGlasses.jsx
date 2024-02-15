@@ -8,15 +8,17 @@ export const useFetchGlasses = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetchGlasses('');
+        const response = await fetchGlasses('', controller);
         setDrinkGlasses(response);
       } catch (error) {
         setError(error.message);
       } finally {
         setIsLoading(false);
+        controller.abort();
       }
     };
     fetchData();
