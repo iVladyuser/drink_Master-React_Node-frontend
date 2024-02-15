@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css",
-    "main.js": "/drink_Master-React_Node-frontend/static/js/main.e38f912c.js",
-    "static/js/880.98aeef95.chunk.js": "/drink_Master-React_Node-frontend/static/js/880.98aeef95.chunk.js",
+    "main.js": "/drink_Master-React_Node-frontend/static/js/main.187a0398.js",
+    "static/js/880.1d1a94dc.chunk.js": "/drink_Master-React_Node-frontend/static/js/880.1d1a94dc.chunk.js",
     "static/js/432.a023556e.chunk.js": "/drink_Master-React_Node-frontend/static/js/432.a023556e.chunk.js",
     "static/js/897.552b39d3.chunk.js": "/drink_Master-React_Node-frontend/static/js/897.552b39d3.chunk.js",
     "static/js/497.166cd5cd.chunk.js": "/drink_Master-React_Node-frontend/static/js/497.166cd5cd.chunk.js",
@@ -18,8 +18,8 @@
     "static/media/welcomeElipseBottomMob.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseBottomMob.d4681e79e489fd561636074411ae5347.svg",
     "static/media/welcomeElipseBottomTab.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseBottomTab.a45d91603c3d070cfbb1fd74107c1780.svg",
     "main.cd2e038f.css.map": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css.map",
-    "main.e38f912c.js.map": "/drink_Master-React_Node-frontend/static/js/main.e38f912c.js.map",
-    "880.98aeef95.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/880.98aeef95.chunk.js.map",
+    "main.187a0398.js.map": "/drink_Master-React_Node-frontend/static/js/main.187a0398.js.map",
+    "880.1d1a94dc.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/880.1d1a94dc.chunk.js.map",
     "432.a023556e.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/432.a023556e.chunk.js.map",
     "897.552b39d3.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/897.552b39d3.chunk.js.map",
     "497.166cd5cd.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/497.166cd5cd.chunk.js.map",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.e38f912c.js"
+    "static/js/main.187a0398.js"
   ]
 }
