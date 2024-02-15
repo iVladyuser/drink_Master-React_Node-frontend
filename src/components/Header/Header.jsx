@@ -6,6 +6,7 @@ export const Header = () => {
     <HeaderContainer>
       <Logo />
       <h1>Welcome to the Home Page</h1>
+
     </HeaderContainer>
   );
 };
