@@ -17,11 +17,7 @@ const AddDrinkPage = lazy(() => import('pages/AddDrinkPages/AddDrinkPages'));
 const appRoutes = [
   {
     path: ROUTES.WELCOME_ROUTE,
-    element: (
-      <RestrictedRoute>
-        <Welcome />
-      </RestrictedRoute>
-    ),
+    element: <Welcome />,
   },
   {
     path: ROUTES.SIGNIN_ROUTE,
