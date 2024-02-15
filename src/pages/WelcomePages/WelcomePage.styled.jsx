@@ -47,8 +47,8 @@ export const WelcomePageStyle = styled.section`
     background: url(${welcomeElipseTopDesk}), url(${welcomeElipseBottomDesk}),
       url(${welcomeDesk1x});
     background-repeat: no-repeat;
-    background-size: 50%, 25%, 50%;
-    background-position: top left, bottom right, right;
+    background-size: 50%, 25%, 60%;
+    background-position: top left, bottom right, center right;
     background-color: #07060b;
   }
 `;
@@ -59,19 +59,24 @@ export const Container = styled.div`
 
   @media (min-width: 375px) {
     width: 375px;
+    margin: 0 auto;
   }
 
   @media (min-width: 768px) {
     width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @media (min-width: 1440px) {
     width: 1440px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
 `;
 export const Title = styled.h1`
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.02px;
   line-height: 1.14;
   color: #fafafa;
@@ -80,6 +85,10 @@ export const Title = styled.h1`
   @media (min-width: 768px) {
     font-size: 40px;
     line-height: 1.1;
+  }
+
+  @media (min-width: 1440px) {
+    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
   }
 `;
 export const WelcomeText = styled.p`
