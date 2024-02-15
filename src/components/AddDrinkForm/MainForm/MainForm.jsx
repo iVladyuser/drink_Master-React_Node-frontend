@@ -7,9 +7,9 @@ import TitleBlock from '../TitleBlock';
 import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
 
-import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
-import { useFetchCategories } from '../../../hooks/useFetchCategories';
-import { useFetchIngredients } from '../../../hooks/useFetchIngredients';
+// import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
+// import { useFetchCategories } from '../../../hooks/useFetchCategories';
+// import { useFetchIngredients } from '../../../hooks/useFetchIngredients';
 
 const validationSchema = yup.object().shape({
   file: yup
@@ -53,9 +53,9 @@ const initialValues = {
 const MainForm = () => {
   const onSubmitForm = () => {};
 
-  const categories = useFetchCategories();
-  const glasses = useFetchGlasses();
-  const ingredients = useFetchIngredients();
+  // const categories = useFetchCategories();
+  // const glasses = useFetchGlasses();
+  // const ingredients = useFetchIngredients();
 
   return (
     <DrinkFormWrapper>

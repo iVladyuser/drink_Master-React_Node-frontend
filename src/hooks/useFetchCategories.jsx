@@ -11,7 +11,7 @@ export const useFetchCategories = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetchCategories('', controller);
+        const response = await fetchCategories('');
         setDrinkCategories(response);
       } catch (error) {
         setError(error.message);
