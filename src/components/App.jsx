@@ -11,8 +11,9 @@ import RestrictedRoute from './RestrictedRoute';
 const Home = lazy(() => import('pages/HomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LogInPage'));
-
+const Drinks = lazy(() => import('pages/DrinksPage/DrinksPages'));
 const appRoutes = [
+  { path: ROUTES.DRINKS_ROUTE, element: <Drinks /> },
   { path: ROUTES.HOME_ROUTE, element: <Home /> },
   {
     path: ROUTES.LOGIN_ROUTE,
