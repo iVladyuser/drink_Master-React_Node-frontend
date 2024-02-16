@@ -1,5 +1,5 @@
 import AddImage from '../AddImage';
-// import CustomSelect from '../CustomSelect';
+import CustomSelect from '../CustomSelect';
 
 import {
   FieldStyled,
@@ -42,9 +42,19 @@ const TitleBlock = ({
           ) : null}
         </FieldWrapper>
 
-        {/* <CustomSelect />
+        <CustomSelect
+          items={categoriesList}
+          title={'Category'}
+          touched={touched.category}
+          error={errors.category}
+        />
 
-        <CustomSelect /> */}
+        <CustomSelect
+          items={glassesList}
+          title={'Glass'}
+          touched={touched.glass}
+          error={errors.glass}
+        />
 
         <RadioButtonsWrapper
           role="cocktailTypeSelect"
