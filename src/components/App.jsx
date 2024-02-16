@@ -13,7 +13,7 @@ const Welcome = lazy(() => import('pages/WelcomePages/WelcomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LogInPage'));
 const AddDrinkPage = lazy(() => import('pages/AddDrinkPages/AddDrinkPages'));
-
+const Drinks = lazy(() => import('pages/DrinksPages/DrinksPages'));
 const appRoutes = [
   {
     path: ROUTES.WELCOME_ROUTE,
@@ -36,6 +36,7 @@ const appRoutes = [
     ),
   },
   { path: ROUTES.ADDDRINK_ROUTE, element: <AddDrinkPage /> },
+  { path: ROUTES.DRINKS_ROUTE, element: <Drinks /> },
 ];
 
 const App = () => {
