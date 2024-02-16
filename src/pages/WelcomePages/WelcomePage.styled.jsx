@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { StandartContainer } from '../../styles/Container.styled';
 
 import welcomeMob1x from '../../images/welcome/welcomeMob@1x.jpg';
 // import welcomeMob2x from '../../images/welcome/welcomeMob@2x.jpg';
@@ -53,25 +54,17 @@ export const WelcomePageStyle = styled.section`
   }
 `;
 
-export const Container = styled.div`
-  padding-left: 20px;
-  padding-right: 20px;
-
+export const Container = styled(StandartContainer)`
   @media (min-width: 375px) {
     width: 375px;
-    margin: 0 auto;
   }
 
   @media (min-width: 768px) {
     width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 
   @media (min-width: 1440px) {
     width: 1440px;
-    padding-left: 100px;
-    padding-right: 100px;
   }
 `;
 export const Title = styled.h1`
@@ -131,8 +124,8 @@ export const ButtonLink = styled(Link)`
   background-color: transparent;
   font-family: inherit;
   font-size: 14px;
-  font-weight: 500;
-  line-height: 1.28;
+  font-weight: 600;
+  line-height: 1.29;
 
   cursor: pointer;
 
@@ -147,7 +140,7 @@ export const ButtonLink = styled(Link)`
     padding: 18px 44px;
     min-width: 59px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.12;
   }
 `;
