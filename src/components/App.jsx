@@ -36,7 +36,7 @@ const appRoutes = [
     ),
   },
   { path: ROUTES.ADDDRINK_ROUTE, element: <AddDrinkPage /> },
-  { path: ROUTES.ADDDRINK_ROUTE, element: <Drinks /> },
+  { path: ROUTES.DRINKS_ROUTE, element: <Drinks /> },
 ];
 
 const App = () => {
