@@ -16,17 +16,17 @@ return (
     <FollowUsTitle>Follow Us</FollowUsTitle>
     <FollowUsSocialsUl>
         <FollowUsSocialLi>
-        <FollowUsSocialLinkF href="https://www.facebook.com/goITclub/">
+        <FollowUsSocialLinkF href="https://www.facebook.com/goITclub/" target="_blank">
             <FaFacebookF />
         </FollowUsSocialLinkF>
         </FollowUsSocialLi>
         <FollowUsSocialLi>
-        <FollowUsSocialLink href="https://www.instagram.com/goitclub/">
+        <FollowUsSocialLink href="https://www.instagram.com/goitclub/" target="_blank">
             <RiInstagramFill size="24px" />
         </FollowUsSocialLink>
         </FollowUsSocialLi>
         <FollowUsSocialLi>
-        <FollowUsSocialLink href="https://www.youtube.com/c/GoIT">
+        <FollowUsSocialLink href="https://www.youtube.com/c/GoIT" target="_blank">
             <FaYoutube size="24px" />
         </FollowUsSocialLink>
         </FollowUsSocialLi>
