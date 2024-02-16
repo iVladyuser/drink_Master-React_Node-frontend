@@ -1,10 +1,10 @@
-import { TfiPlus, TfiReload } from 'react-icons/tfi';
+// import { TfiPlus, TfiReload } from 'react-icons/tfi';
 
 import {
   AddFileButton,
   BackgroundImg,
   Button,
-  Icon,
+  // Icon,
   InputWrapper,
   StyledInput,
   ErrorText,
@@ -46,13 +46,13 @@ const AddImage = ({ setValue, fileRef }) => {
             </BackgroundImg>
           )}
           <Button>
-            <Icon>
+            {/* <Icon>
               {fileUrl && fileRef.current.value ? (
                 <TfiReload size={16} />
               ) : (
                 <TfiPlus size={16} />
               )}
-            </Icon>
+            </Icon> */}
             {fileUrl && fileRef.current.value ? 'Update file' : 'Add image'}
           </Button>
         </label>
