@@ -57,7 +57,7 @@ export const FieldStyled = styled(Field)`
   color: #f3f3f3;
 
   border-style: none;
-  border-bottom: 1px solid #fafafae6;
+  border-bottom: 1px solid #f3f3f380;
   background: transparent;
 
   &:focus {
@@ -76,7 +76,7 @@ export const FieldStyled = styled(Field)`
 
 export const FieldRadioLabel = styled.label`
   margin-left: 4px;
-  color: #fafafae6;
+  color: #f3f3f380;
 
   &:first-of-type {
     margin-right: 14px;
@@ -92,7 +92,7 @@ export const FieldRadio = styled(Field)`
   align-items: center;
   font: inherit;
   color: currentColor;
-  border: 1.5px solid #fafafae6;
+  border: 1.5px solid #f3f3f380;
   border-radius: 50%;
   appearance: none;
   cursor: pointer;
