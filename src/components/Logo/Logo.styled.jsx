@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledSvg = styled.svg`
-  width: 100px;
-  height: 100px;
+  width: 22px;
+  height: 22px;
 `;
 
-export default StyledSvg;
+export default StyledSvg; // Один экспорт по умолчанию в конце файла

@@ -1,10 +1,13 @@
 import React from 'react';
-import StyledSvg from './LogoStyled';
+import { ReactComponent as LogoSVG } from '../../images/logo.svg';
+import StyledSvg from './Logo.styled';
+
 const Logo = () => {
   return (
     <StyledSvg>
-      <use href="../../images/icon.svg#logo" />
+      <LogoSVG />
     </StyledSvg>
   );
 };
+
 export default Logo;
