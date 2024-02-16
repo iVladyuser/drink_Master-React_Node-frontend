@@ -5,18 +5,18 @@ import { Loader } from './Loader/Loader';
 import { useDispatch } from 'react-redux';
 import { refreshThunk } from 'services/fetchAuth';
 import * as ROUTES from 'constants/routes';
+
 import RestrictedRoute from './RestrictedRoute';
 // import PrivateRoute from './PrivateRoute';
 
-const Home = lazy(() => import('pages/HomePage'));
+const Welcome = lazy(() => import('pages/WelcomePages/WelcomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LogInPage'));
-const Drinks = lazy(() => import('pages/DrinksPage/DrinksPages'));
+
 const appRoutes = [
-  { path: ROUTES.DRINKS_ROUTE, element: <Drinks /> },
   { path: ROUTES.HOME_ROUTE, element: <Home /> },
   {
-    path: ROUTES.LOGIN_ROUTE,
+    path: ROUTES.SIGNIN_ROUTE,
     element: (
       <RestrictedRoute>
         <Login />
@@ -24,13 +24,14 @@ const appRoutes = [
     ),
   },
   {
-    path: ROUTES.REGISTER_ROUTE,
+    path: ROUTES.SIGNUP_ROUTE,
     element: (
       <RestrictedRoute>
         <Register />
       </RestrictedRoute>
     ),
   },
+  { path: ROUTES.ADDDRINK_ROUTE, element: <AddDrinkPage /> },
 ];
 
 const App = () => {
@@ -48,7 +49,7 @@ const App = () => {
             <Route key={path} path={path} element={element} />
           ))}
 
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/welcome" />} />
         </Routes>
       </Suspense>
     </Layout>
