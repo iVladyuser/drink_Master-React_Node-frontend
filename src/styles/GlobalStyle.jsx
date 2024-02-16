@@ -13,11 +13,11 @@ html {
   }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Manrope', sans-serif;
   }
 
 button {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Manrope', sans-serif;
   cursor: pointer;
 }
   
