@@ -6,8 +6,15 @@ import { useDispatch } from 'react-redux';
 import { refreshThunk } from 'services/fetchAuth';
 import * as ROUTES from 'constants/routes';
 
+
+const Home = lazy(() => import('pages/HomePage'));
+const Register = lazy(() => import('pages/RegisterPage'));
+const Login = lazy(() => import('pages/LogInPage'));
+const FavoriteDrinksPage = lazy(() => import('pages/FavoritePage/FavoriteDrinksPage'));
+
 // import RestrictedRoute from './RestrictedRoute';
 // import PrivateRoute from './PrivateRoute';
+
 
 const Welcome = lazy(() => import('pages/WelcomePages/WelcomePage'));
 const Register = lazy(() => import('pages/WelcomePages/SignUpPage/SignUpPage'));
@@ -27,8 +34,12 @@ const appRoutes = [
     path: ROUTES.SIGNUP_ROUTE,
     element: <Register />,
   },
+
+  { path: ROUTES.FAVORITES_ROUTE, element: <FavoriteDrinksPage /> },
+
   { path: ROUTES.ADDDRINK_ROUTE, element: <AddDrinkPage /> },
   { path: ROUTES.DRINKS_ROUTE, element: <Drinks /> },
+
 ];
 
 const App = () => {
