@@ -20,7 +20,7 @@ const WelcomePage = () => {
         </WelcomeText>
         <ButtonWrapper>
           <ButtonLinkActive to="/signup">Sign Up</ButtonLinkActive>
-          <ButtonLink to="/sigin">Sign In</ButtonLink>
+          <ButtonLink to="/signin">Sign In</ButtonLink>
         </ButtonWrapper>
       </Container>
     </WelcomePageStyle>
