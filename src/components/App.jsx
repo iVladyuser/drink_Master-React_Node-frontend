@@ -12,9 +12,13 @@ import RestrictedRoute from './RestrictedRoute';
 const Welcome = lazy(() => import('pages/WelcomePages/WelcomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LogInPage'));
-
+const AddDrinkPage = lazy(() => import('pages/AddDrinkPages/AddDrinkPages'));
+const Drinks = lazy(() => import('pages/DrinksPages/DrinksPages'));
 const appRoutes = [
-  { path: ROUTES.HOME_ROUTE, element: <Home /> },
+  {
+    path: ROUTES.WELCOME_ROUTE,
+    element: <Welcome />,
+  },
   {
     path: ROUTES.SIGNIN_ROUTE,
     element: (
@@ -32,6 +36,7 @@ const appRoutes = [
     ),
   },
   { path: ROUTES.ADDDRINK_ROUTE, element: <AddDrinkPage /> },
+  { path: ROUTES.ADDDRINK_ROUTE, element: <Drinks /> },
 ];
 
 const App = () => {

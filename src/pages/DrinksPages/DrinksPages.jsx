@@ -1,9 +1,8 @@
 // import {  } from './DrinksPages.styled';
 import TitlePage from '../../components/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput';
-import SelectCategories from '../../components/SelectCategories';
 import { Container } from '../../styles/GlobalStyle';
-import {DrinksPageStyle} from './DrinksPage.styled'
+import {DrinksPageStyle} from './DrinksPages.styled'
 const DrinksPage = () => {
     return (
       <DrinksPageStyle> 
@@ -11,7 +10,7 @@ const DrinksPage = () => {
        <TitlePage 
        title={"Drinks"}/>
        <SearchDrinksInput/>
-       <SelectCategories/>
+       
       </Container>
       </DrinksPageStyle>
     );
