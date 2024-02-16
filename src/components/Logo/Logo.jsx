@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import StyledSvg from './LogoStyled';
 
 const Logo = () => {
   return (
-    <div>
-        <Logo />
-        {}
-    </div>
-);
+    <StyledSvg>
+      <use href="../../images/icon.svg#logo" />
+    </StyledSvg>
+  );
 };
+
 export default Logo;
