@@ -13,11 +13,10 @@ export const Header = () => {
 
   return (
     <HeaderContainer>
-      <a href="./"><Logo /></a>
-      <a href="./">Drink Master</a>
+      <Logo />
+
       <GiHamburgerMenu onClick={toggleModal} />
       {isModalOpen && <Navigation onClose={toggleModal} />}
     </HeaderContainer>
   );
 };
-
