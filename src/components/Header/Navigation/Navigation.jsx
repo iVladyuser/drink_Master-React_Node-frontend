@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MdClose } from 'react-icons/md';
 import { NavigationContainer, NavigationContent } from './Navigation.styled';
 
-const Navigation = ({ onClose }) => {
+const Navigation = ({ onClose, isVisible }) => {
+    const [animationClass, setAnimationClass] = useState('');
+
+    useEffect(() => {
+        if (isVisible) {
+            setAnimationClass('open');
+        } else {
+            setAnimationClass('');
+        }
+    }, [isVisible]);
+
     return (
-        <NavigationContainer>
+        <NavigationContainer className={animationClass}>
             <NavigationContent>
                 <nav>
                     <ul>
