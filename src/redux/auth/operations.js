@@ -29,10 +29,10 @@ export const signUp = createAsyncThunk(
   }
 );
 
-export const signIn = createAsyncThunk();
+// export const signIn = createAsyncThunk();
 
-export const logOut = createAsyncThunk();
+// export const logOut = createAsyncThunk();
 
-export const refreshUser = createAsyncThunk();
+// export const refreshUser = createAsyncThunk();
 
-export const updateWaterRate = createAsyncThunk();
+// export const updateWaterRate = createAsyncThunk();
