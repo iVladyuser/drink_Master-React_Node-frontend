@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css",
-    "main.js": "/drink_Master-React_Node-frontend/static/js/main.436e08f8.js",
+    "main.js": "/drink_Master-React_Node-frontend/static/js/main.b9abc21d.js",
     "static/js/134.eb5bddc0.chunk.js": "/drink_Master-React_Node-frontend/static/js/134.eb5bddc0.chunk.js",
-    "static/js/219.592308c9.chunk.js": "/drink_Master-React_Node-frontend/static/js/219.592308c9.chunk.js",
-    "static/js/570.10991dc5.chunk.js": "/drink_Master-React_Node-frontend/static/js/570.10991dc5.chunk.js",
+    "static/js/234.d1aa3da0.chunk.js": "/drink_Master-React_Node-frontend/static/js/234.d1aa3da0.chunk.js",
+    "static/js/189.ea0ed3ee.chunk.js": "/drink_Master-React_Node-frontend/static/js/189.ea0ed3ee.chunk.js",
     "static/js/291.1833e90d.chunk.js": "/drink_Master-React_Node-frontend/static/js/291.1833e90d.chunk.js",
     "static/js/280.74f80e93.chunk.js": "/drink_Master-React_Node-frontend/static/js/280.74f80e93.chunk.js",
     "static/js/789.efe32535.chunk.js": "/drink_Master-React_Node-frontend/static/js/789.efe32535.chunk.js",
+    "static/js/306.ed4e9b8b.chunk.js": "/drink_Master-React_Node-frontend/static/js/306.ed4e9b8b.chunk.js",
     "static/js/686.cde3b64f.chunk.js": "/drink_Master-React_Node-frontend/static/js/686.cde3b64f.chunk.js",
-    "static/js/807.455a5ffe.chunk.js": "/drink_Master-React_Node-frontend/static/js/807.455a5ffe.chunk.js",
+    "static/js/508.d5efdea6.chunk.js": "/drink_Master-React_Node-frontend/static/js/508.d5efdea6.chunk.js",
     "static/js/751.d87e90da.chunk.js": "/drink_Master-React_Node-frontend/static/js/751.d87e90da.chunk.js",
     "static/media/welcomeDesk@1x.jpg": "/drink_Master-React_Node-frontend/static/media/welcomeDesk@1x.6fe1831eac94fadf43a6.jpg",
     "static/media/welcomeTab@1x.jpg": "/drink_Master-React_Node-frontend/static/media/welcomeTab@1x.457ce856fff2ba764345.jpg",
@@ -27,19 +28,20 @@
     "static/media/welcomeElipseBottomMob.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseBottomMob.d4681e79e489fd561636074411ae5347.svg",
     "static/media/welcomeElipseBottomTab.svg": "/drink_Master-React_Node-frontend/static/media/welcomeElipseBottomTab.a45d91603c3d070cfbb1fd74107c1780.svg",
     "main.cd2e038f.css.map": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css.map",
-    "main.436e08f8.js.map": "/drink_Master-React_Node-frontend/static/js/main.436e08f8.js.map",
+    "main.b9abc21d.js.map": "/drink_Master-React_Node-frontend/static/js/main.b9abc21d.js.map",
     "134.eb5bddc0.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/134.eb5bddc0.chunk.js.map",
-    "219.592308c9.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/219.592308c9.chunk.js.map",
-    "570.10991dc5.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/570.10991dc5.chunk.js.map",
+    "234.d1aa3da0.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/234.d1aa3da0.chunk.js.map",
+    "189.ea0ed3ee.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/189.ea0ed3ee.chunk.js.map",
     "291.1833e90d.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/291.1833e90d.chunk.js.map",
     "280.74f80e93.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/280.74f80e93.chunk.js.map",
     "789.efe32535.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/789.efe32535.chunk.js.map",
+    "306.ed4e9b8b.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/306.ed4e9b8b.chunk.js.map",
     "686.cde3b64f.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/686.cde3b64f.chunk.js.map",
-    "807.455a5ffe.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/807.455a5ffe.chunk.js.map",
+    "508.d5efdea6.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/508.d5efdea6.chunk.js.map",
     "751.d87e90da.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/751.d87e90da.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.436e08f8.js"
+    "static/js/main.b9abc21d.js"
   ]
 }
