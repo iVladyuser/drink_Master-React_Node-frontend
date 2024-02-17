@@ -5,7 +5,7 @@ import {
   AuthSection,
 } from './AuthForm.styled';
 
-export const AuthForm = ({ title, children }) => {
+export const AuthFormSection = ({ title, children }) => {
   return (
     <AuthSection>
       <Container>
