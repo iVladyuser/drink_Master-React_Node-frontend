@@ -17,7 +17,9 @@ export const Header = () => {
       <Logo />
       <ThemeSwitcher />
       <GiHamburgerMenu onClick={toggleModal} />
-      {isModalOpen && <Navigation onClose={toggleModal} />}
+      <Navigation onClose={toggleModal} isVisible={isModalOpen} />
     </HeaderContainer>
   );
 };
+
+export default Header;
