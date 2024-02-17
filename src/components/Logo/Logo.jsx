@@ -1,12 +1,17 @@
 import React from 'react';
 import { ReactComponent as LogoSVG } from '../../images/logo.svg';
-import StyledSvg from './Logo.styled';
+import { StyledSvg, LogoContainer, StyleLink } from './Logo.styled'; // Импортируем StyledSvg и LogoContainer из файла Logo.styled
 
 const Logo = () => {
   return (
-    <StyledSvg>
-      <LogoSVG />
-    </StyledSvg>
+    <LogoContainer>
+      <StyledSvg>
+        <LogoSVG />
+      </StyledSvg>
+      <StyleLink>
+      <a href="./">Drink Master</a>
+      </StyleLink>
+    </LogoContainer>
   );
 };
 
