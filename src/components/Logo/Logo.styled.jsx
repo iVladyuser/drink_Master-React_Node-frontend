@@ -5,4 +5,4 @@ const StyledSvg = styled.svg`
   height: 22px;
 `;
 
-export default StyledSvg; // Один экспорт по умолчанию в конце файла
+export default StyledSvg;
