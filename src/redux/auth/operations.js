@@ -1,19 +1,33 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
-export const instance = axios.create({
-  baseURL: '',
-});
+axios.defaults.baseURL = 'https://localhost:3030/users';
 
-// const setAuthHeader = token => {
-//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+const setToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+// const clearToken = () => {
+//   axios.defaults.headers.common['Authorization'] = ``;
 // };
 
-// const clearAuthHeader = () => {
-//   instance.defaults.headers.common.Authorization = '';
-// };
-
-export const signUp = createAsyncThunk();
+export const signUp = createAsyncThunk(
+  'auth/signup',
+  async (credentials, thunkApi) => {
+    try {
+      const response = await axios.post('/signup', credentials);
+      setToken(response.data.token);
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 409) {
+        toast.error('User with this email is already registered');
+      } else {
+        return thunkApi.rejectWithValue(error.message);
+      }
+    }
+  }
+);
 
 export const signIn = createAsyncThunk();
 
