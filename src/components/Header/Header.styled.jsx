@@ -1,9 +1,11 @@
 import { styled } from 'styled-components';
 
 export const HeaderContainer = styled.header`
+background-color: tomato;
   margin: 0 auto;
-  padding: 8px 20px 0;
+  padding: 20px 20px 20px;
   width: 320px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,6 +20,7 @@ export const HeaderContainer = styled.header`
     padding: 12px 112px 0;
   }
 `;
+
 
 // export const UserLogoContainer = styled.div`
 //   position: relative;
