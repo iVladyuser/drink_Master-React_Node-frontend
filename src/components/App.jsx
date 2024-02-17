@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 import { refreshThunk } from 'services/fetchAuth';
 import * as ROUTES from 'constants/routes';
 
+// import RestrictedRoute from './RestrictedRoute';
+// import PrivateRoute from './PrivateRoute';
+
 const Welcome = lazy(() => import('pages/WelcomePages/WelcomePage'));
 const Register = lazy(() => import('pages/WelcomePages/SignUpPage/SignUpPage'));
 const Login = lazy(() => import('pages/WelcomePages/SignInPage/SignInPage'));
@@ -14,9 +17,6 @@ const Drinks = lazy(() => import('pages/DrinksPages/DrinksPages'));
 const FavoriteDrinksPage = lazy(() =>
   import('pages/FavoritePage/FavoriteDrinksPage')
 );
-
-// import RestrictedRoute from './RestrictedRoute';
-// import PrivateRoute from './PrivateRoute';
 
 const appRoutes = [
   {
