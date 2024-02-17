@@ -1,27 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MdClose } from 'react-icons/md';
+import { NavigationContainer, NavigationContent } from './Navigation.styled';
 
-const Navigation = () => {
+const Navigation = ({ onClose }) => {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/home">Home</Link>
-                </li>
-                <li>
-                    <Link to="/drinks">Drinks</Link>
-                </li>
-                <li>
-                    <Link to="/add">Add Drink</Link>
-                </li>
-                <li>
-                    <Link to="/my">My Drinks</Link>
-                </li>
-                <li>
-                    <Link to="/favorites">Favorites</Link>
-                </li>
-            </ul>
-        </nav>
+        <NavigationContainer>
+            <NavigationContent>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/home" onClick={onClose}>Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/drinks" onClick={onClose}>Drinks</Link>
+                        </li>
+                        <li>
+                            <Link to="/add" onClick={onClose}>Add Drink</Link>
+                        </li>
+                        <li>
+                            <Link to="/my" onClick={onClose}>My Drinks</Link>
+                        </li>
+                        <li>
+                            <Link to="/favorites" onClick={onClose}>Favorites</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <MdClose onClick={onClose} style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer', fontSize: '24px' }} />
+            </NavigationContent>
+        </NavigationContainer>
     );
 };
 
