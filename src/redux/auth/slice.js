@@ -6,6 +6,7 @@ const initialState = {
   user: {
     name: '',
     email: '',
+    dateBirth: '',
     avatarURL: '',
   },
   token: '',
@@ -14,17 +15,10 @@ const initialState = {
   isLoading: false,
 };
 
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-//   state.isLoading = false;
-// };
-// const handlePending = (state, action) => {
-//   state.isLoading = true;
-// };
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {},
   extraReducers: builder =>
     builder
       .addCase(signUp.pending, state => {

@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { signUp } from '../../../redux/auth/operations';
+import StyledDatePicker from '../../DatePicker/DatePicker';
 
 import {
   AuthForm,
@@ -31,7 +32,7 @@ const initialValues = { name: '', dateBirth: '', email: '', password: '' };
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const onSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values, { resetForm }) => {
     const { name, dateBirth, email, password } = values;
 
     dispatch(signUp({ name, dateBirth, email, password }))
@@ -44,7 +45,7 @@ export const SignUpForm = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validateFormSchema}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     >
       {({ values }) => (
         <AuthForm>
@@ -52,6 +53,15 @@ export const SignUpForm = () => {
             <PasswordInputWrap>
               <Input type="text" name="name" placeholder="Name" />
             </PasswordInputWrap>
+
+            <div>
+              <StyledDatePicker
+                name="dateBirth"
+                type="text"
+                value={values.dateBirth}
+                placeholder="Date of birth"
+              />
+            </div>
 
             <PasswordInputWrap>
               <Input type="email" name="email" placeholder="Email" />
