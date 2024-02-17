@@ -11,6 +11,9 @@ import RestrictedRoute from './RestrictedRoute';
 const Home = lazy(() => import('pages/HomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LogInPage'));
+const FavoriteDrinksPage = lazy(() =>
+  import('pages/FavoritePage/FavoriteDrinksPage')
+);
 
 const appRoutes = [
   { path: ROUTES.HOME_ROUTE, element: <Home /> },
@@ -30,6 +33,7 @@ const appRoutes = [
       </RestrictedRoute>
     ),
   },
+  { path: ROUTES.FAVORITES_ROUTE, element: <FavoriteDrinksPage /> },
 ];
 
 const App = () => {
