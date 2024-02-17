@@ -2,5 +2,5 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["src", "UserLogo"]
+  "include": ["src", "UserLogo", "src/components/SignUpSignInForms/SignInForm/SignInForm.jsx"]
 }

@@ -2,7 +2,8 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { signUp } from '../../../redux/auth/operations';
 
 import {
   AuthForm,
@@ -30,11 +31,15 @@ const initialValues = { name: '', dateBirth: '', email: '', password: '' };
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
+  const onSubmit = (values, { resetForm }) => {
+    const { name, dateBirth, email, password } = values;
 
-  const onSubmit = values => {
-    dispatch();
+    dispatch(signUp({ name, dateBirth, email, password }))
+      .unwrap()
+      .then(() => toast.success('Registration successfully'))
+      .catch(() => toast.error('Something went wrong. Try again'));
+    resetForm();
   };
-
   return (
     <Formik
       initialValues={initialValues}
