@@ -1,4 +1,4 @@
-import { Formik, Field, ErrorMessage, FieldArray } from 'formik';
+import { Formik, ErrorMessage, FieldArray } from 'formik';
 import { AddIngredientWrapper, RemoveInredientBtn, IngredientsInputWrapper } from './IngredientsBlock.styled';
 import { IngredientsSelectInput } from './IngredientsSelect/IngredientsSelect.styled';
 import { RxCross2 } from "react-icons/rx";
