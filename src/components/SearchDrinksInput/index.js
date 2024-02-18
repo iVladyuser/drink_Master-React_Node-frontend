@@ -1,1 +1,1 @@
-export { default } from './SearchDrinkInput';
+export { default } from './SearchDrinksInput';

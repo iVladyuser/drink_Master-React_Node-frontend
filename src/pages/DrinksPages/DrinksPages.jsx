@@ -1,24 +1,98 @@
-// import {  } from './DrinksPages.styled';
 import TitlePage from '../../components/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput';
-import { Container } from '../../styles/GlobalStyle';
-import {DrinksPageStyle} from './DrinksPages.styled';
-import { CustomSelect } from 'components/AddDrinkForm/CustomSelect/CustomSelect.styled';
-const a = ['vlad', 'fox', 'fix']
+import {
+  Container,
+  FormStyled,
+  DrinksPageStyle,
+  WraperForm,
+  ForInputLupaSvg,
+  WraperSvg
+} from './DrinksPages.styled';
+import CustomSelect from 'components/CustomSelectForDrinksPage';
+// import HeaderProject from '../../components/Header'
+import { Formik } from 'formik';
+import SvgGeneratorSvgSelector from '../../components/SvgComponents'
+const categoriesList = [
+  'Ordinary Drink',
+  'Cocktail',
+  'Shake',
+  'Other/Unknown',
+  'Cocoa',
+  'Shot',
+  'Coffee/Tea',
+  'Homemade Liqueur',
+  'Punch/Party Drink',
+  'Beer',
+  'Soft Drink',
+];
+
+const ingredientsList = [
+  'Ordinary Drink',
+  'Cocktail',
+  'Shake',
+  'Other/Unknown',
+  'Cocoa',
+  'Shot',
+  'Coffee/Tea',
+  'Homemade Liqueur',
+  'Punch/Party Drink',
+  'Beer',
+  'Soft Drink',
+  'Ordinary Drink',
+  'Cocktail',
+  'Shake',
+  'Other/Unknown',
+  'Cocoa',
+  'Shot',
+  'Coffee/Tea',
+  'Homemade Liqueur',
+  'Punch/Party Drink',
+  'Beer',
+  'Soft Drink',
+  'Ordinary Drink',
+  'Cocktail',
+  'Shake',
+  'Other/Unknown',
+  'Cocoa',
+  'Shot',
+  'Coffee/Tea',
+  'Homemade Liqueur',
+  'Punch/Party Drink',
+  'Beer',
+  'Soft Drink',
+];
+
+const initialValues = {
+  category: 'All categories',
+  ingredients: 'Ingredients',
+};
+
 const DrinksPage = () => {
-    return (
-      <DrinksPageStyle> 
+  return (
+    
+    <DrinksPageStyle>
+      
       <Container>
-       <TitlePage 
-       title={"Drinks"}/>
-       <SearchDrinksInput/>
-       <CustomSelect 
-        items={a}
-        title={'Category'}
-       />
+        <TitlePage title={'Drinks'} />
+        <WraperForm>
+          <ForInputLupaSvg>
+          <SearchDrinksInput />
+          <WraperSvg>
+          <SvgGeneratorSvgSelector id='svglupa'/>
+          </WraperSvg>
+          </ForInputLupaSvg>
+          <Formik initialValues={initialValues}>
+            {({ setFieldValue }) => (
+              <FormStyled>
+                <CustomSelect items={categoriesList} title={'Category'} />
+                <CustomSelect items={ingredientsList} title={'Ingredients'} />
+              </FormStyled>
+            )}
+          </Formik>
+        </WraperForm>
       </Container>
-      </DrinksPageStyle>
-    );
-  };
-  
-  export default DrinksPage;
+    </DrinksPageStyle>
+  );
+};
+
+export default DrinksPage;
