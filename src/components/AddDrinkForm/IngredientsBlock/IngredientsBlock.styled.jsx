@@ -6,6 +6,17 @@ export const AddIngredientWrapper = styled.div`
   margin-bottom: 40px;
 `;
 
+export const IngredientsInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 50px;
+  height: 56px;
+  width: 150px;
+  border-radius: 200px;
+  border: 1px solid #0A0A1180;
+`;
+
 export const RemoveInredientBtn = styled.button`  
     display: flex;
     align-items: center;

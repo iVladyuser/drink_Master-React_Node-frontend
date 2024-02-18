@@ -1,5 +1,6 @@
 import { Formik, Field, ErrorMessage, FieldArray } from 'formik';
-import { AddIngredientWrapper, RemoveInredientBtn } from './IngredientsBlock.styled';
+import { AddIngredientWrapper, RemoveInredientBtn, IngredientsInputWrapper } from './IngredientsBlock.styled';
+import { IngredientsSelectInput } from './IngredientsSelect/IngredientsSelect.styled';
 import { RxCross2 } from "react-icons/rx";
 import IngredientsSelect from './IngredientsSelect/IngredientsSelect';
 import {useState} from "react";
@@ -59,11 +60,13 @@ const AddIngredients = () => {
                       </div>
                       <div className="col">
                         <label htmlFor={`ingredients.${index}.quantity`}></label>
-                        <Field
+                        <IngredientsInputWrapper>
+                        <IngredientsSelectInput
                           name={`ingredients.${index}.quantity`}
                           placeholder="1 cl"
                           type="text"
                         />
+                        </IngredientsInputWrapper>
                         <ErrorMessage
                           name={`ingredients.${index}.name`}
                           component="div"
