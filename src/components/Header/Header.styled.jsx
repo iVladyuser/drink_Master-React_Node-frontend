@@ -1,7 +1,6 @@
 import { styled } from 'styled-components';
 
 export const HeaderContainer = styled.header`
-background-color: tomato;
   margin: 0 auto;
   padding: 20px 20px 20px;
   width: 320px;
