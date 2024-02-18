@@ -2,10 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://localhost:3030/users';
+export const instance = axios.create({ baseURL: 'https://localhost:3030/api' });
 
 const setToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 // const clearToken = () => {
@@ -14,13 +14,14 @@ const setToken = token => {
 
 export const signUp = createAsyncThunk(
   'auth/signup',
-  async (credentials, thunkApi) => {
+  async (formData, thunkApi) => {
     try {
-      const response = await axios.post('/signup', credentials);
-      setToken(response.data.token);
-      return response.data;
+      const { data } = await axios.post('/users/signup', formData);
+      console.log('data:', data);
+      setToken(data.token);
+      return data;
     } catch (error) {
-      if (error.response.status === 409) {
+      if (error.status === 409) {
         toast.error('User with this email is already registered');
       } else {
         return thunkApi.rejectWithValue(error.message);

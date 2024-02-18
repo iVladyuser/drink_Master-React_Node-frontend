@@ -3,16 +3,11 @@ import { signUp } from './operations';
 // import { logOut, refreshUser, signIn, signUp } from './operations';
 
 const initialState = {
-  user: {
-    name: '',
-    email: '',
-    dateBirth: '',
-    avatarURL: '',
-  },
+  userData: null,
   token: '',
   isLoggedIn: false,
-  isRefreshing: false,
   isLoading: false,
+  error: null,
 };
 
 const authSlice = createSlice({

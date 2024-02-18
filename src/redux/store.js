@@ -14,7 +14,7 @@ import {
 import { authReducer } from './auth/slice';
 import { drinkReducer } from './drink/slice';
 
-const persistConfig = {
+const authConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
@@ -22,7 +22,7 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(persistConfig, authReducer),
+    auth: persistReducer(authConfig, authReducer),
     favorites: favoritesReducer,
     drink: drinkReducer,
   },
