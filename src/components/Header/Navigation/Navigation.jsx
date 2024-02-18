@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MdClose } from 'react-icons/md';
-import { NavigationContainer, NavigationContent } from './Navigation.styled';
+import  Logo  from '../../Logo/Logo';
+import ThemeSwitcher from '../Switch/ThemeSwitcher';
+import { NavigationContainer, NavigationContent, LogoSwitcherStyled, CloseButton, ThemeSwitcherCloseBtn} from './Navigation.styled';
 
-const Navigation = ({ onClose }) => {
+const Navigation = ({ onClose, isVisible }) => {
+    const [animationClass, setAnimationClass] = useState('');
+
+    useEffect(() => {
+        if (isVisible) {
+            setAnimationClass('open');
+        } else {
+            setAnimationClass('');
+        }
+    }, [isVisible]);
+
     return (
-        <NavigationContainer>
+        <NavigationContainer className={animationClass}>
+
+<LogoSwitcherStyled>
+          <Logo />
+          <ThemeSwitcherCloseBtn>
+          <ThemeSwitcher />
+          <CloseButton onClick={onClose} />
+          </ThemeSwitcherCloseBtn>
+          </LogoSwitcherStyled>
             <NavigationContent>
+
                 <nav>
                     <ul>
                         <li>
@@ -26,7 +46,7 @@ const Navigation = ({ onClose }) => {
                         </li>
                     </ul>
                 </nav>
-                <MdClose onClick={onClose} style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer', fontSize: '24px' }} />
+
             </NavigationContent>
         </NavigationContainer>
     );

@@ -2,11 +2,13 @@ import { styled } from 'styled-components';
 
 export const HeaderContainer = styled.header`
   margin: 0 auto;
-  padding: 8px 20px 0;
+  padding: 20px 20px 20px;
   width: 320px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
 
   @media (min-width: 768px) {
     width: 768px;
@@ -18,6 +20,7 @@ export const HeaderContainer = styled.header`
     padding: 12px 112px 0;
   }
 `;
+
 
 // export const UserLogoContainer = styled.div`
 //   position: relative;
