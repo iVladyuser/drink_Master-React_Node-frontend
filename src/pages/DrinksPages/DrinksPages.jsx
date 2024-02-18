@@ -1,5 +1,5 @@
-import TitlePage from '../../components/TitlePage';
-import SearchDrinksInput from '../../components/SearchDrinksInput';
+import TitlePage from '../../components/TitlePage/TitlePage';
+import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
 import {
   Container,
   FormStyled,
@@ -8,6 +8,7 @@ import {
   ForInputLupaSvg,
   WraperSvg,
   ContainerForPage
+  
 } from './DrinksPages.styled';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
  import {Header} from '../../components/Header/Header'
