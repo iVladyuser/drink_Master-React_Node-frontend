@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const CustomSelect = styled.button`
-  width: 199px;
-  height: 56px;
+  width: 335px;
+  height: 54px;
   
   padding-left: 0;
 
@@ -33,12 +33,15 @@ export const CustomSelect = styled.button`
   }
 
   span {
+
     display: block;
   }
 
-  // @media (min-width: 768px) {
-  //   height: 41px;
-  // }
+   @media (min-width: 768px) {
+      width: 199px;
+      height: 56px;
+   }
+   
 `;
 
 export const PlaceholderWrap = styled.div`
@@ -54,13 +57,19 @@ export const PlaceholderWrap = styled.div`
 export const Span = styled.span`
   margin-left: 24px;
  
-  //color: rgba(243, 243, 243, 1);
-  font-size: 17px;
-  line-height: 26.52px; 
+  color: #f3f3f3;
+  font-size: 14px;
+  line-height: 1.29px; 
   color: ${({ selected }) => (!selected ? '#f3f3f380' : '#F3F3F3')};
   font-family: "Manrope", sans-serif;  
   font-weight: 400; 
-  
+  @media (min-width: 768px) {
+    font-size: 17px;
+    line-height: 1.5;
+ }
+ @media (min-width: 1440px) {
+  line-height: 1.56;
+}
 `;
 
 export const DropMenu = styled.div`
@@ -116,9 +125,9 @@ export const SelectWrapper = styled.div`
   position: relative;
   width: 199px;
   
-  &:not(:last-of-type) {
-    margin-bottom: 31px;
-  }
+  //&:not(:last-of-type) {
+    //margin-bottom: 31px;
+  //}
 `;
 
 export const SelectItem = styled.div`

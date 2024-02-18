@@ -6,10 +6,11 @@ import {
   DrinksPageStyle,
   WraperForm,
   ForInputLupaSvg,
-  WraperSvg
+  WraperSvg,
+  ContainerForPage
 } from './DrinksPages.styled';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
-// import HeaderProject from '../../components/Header'
+ import {Header} from '../../components/Header/Header'
 import { Formik } from 'formik';
 import SvgGeneratorSvgSelector from '../../components/SvgComponents'
 const categoriesList = [
@@ -71,7 +72,8 @@ const DrinksPage = () => {
   return (
     
     <DrinksPageStyle>
-      
+      <ContainerForPage>
+      <Header/>
       <Container>
         <TitlePage title={'Drinks'} />
         <WraperForm>
@@ -91,6 +93,7 @@ const DrinksPage = () => {
           </Formik>
         </WraperForm>
       </Container>
+      </ContainerForPage>
     </DrinksPageStyle>
   );
 };
