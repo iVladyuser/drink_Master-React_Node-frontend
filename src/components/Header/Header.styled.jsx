@@ -7,26 +7,27 @@ export const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
   &:hover {
     color: gray;
   }
+  @media (min-width: 1440px) {
+    display: none;
+  }
 `;
 
 export const HeaderContainer = styled.header`
   margin: 0 auto;
   padding: 20px 20px 25px;
-  width: 320px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(243, 243, 243, 0.2);
 
   @media (min-width: 768px) {
-    width: 768px;
+    min-width: 768px;
     padding: 32px 28px 28px;
   }
 
   @media (min-width: 1440px) {
-    width: 1440px;
-    padding: 100px 28px 28px;
+    min-width: 1440px;
+    padding: 28px 100px 28px 100px;
   }
 `;
 
