@@ -14,6 +14,7 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
+      
       <StyledGiHamburgerMenu onClick={toggleModal} />
       <Navigation onClose={toggleModal} isVisible={isModalOpen} />
     </HeaderContainer>
