@@ -19,6 +19,7 @@ const Drinks = lazy(() => import('pages/DrinksPages/DrinksPages'));
 const FavoriteDrinksPage = lazy(() =>
   import('pages/FavoritePage/FavoriteDrinksPage')
 );
+const DrinkPage = lazy(() => import('pages/DrinkPage/DrinkPage'));
 
 const appRoutes = [
   {
@@ -39,6 +40,7 @@ const appRoutes = [
 
   { path: ROUTES.ADDDRINK_ROUTE, element: <AddDrinkPage /> },
   { path: ROUTES.DRINKS_ROUTE, element: <Drinks /> },
+  { path: ROUTES.DRINKPAGE_ROUTE, element: <DrinkPage /> },
 ];
 
 const App = () => {
