@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { HeaderContainer } from './Header.styled';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Logo from '../Logo/Logo';
+import ThemeSwitcher from './Switch/ThemeSwitcher';
 import Navigation from './Navigation/Navigation';
 
 export const Header = () => {
@@ -14,9 +15,11 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
-
+      <ThemeSwitcher />
       <GiHamburgerMenu onClick={toggleModal} />
-      {isModalOpen && <Navigation onClose={toggleModal} />}
+      <Navigation onClose={toggleModal} isVisible={isModalOpen} />
     </HeaderContainer>
   );
 };
+
+export default Header;

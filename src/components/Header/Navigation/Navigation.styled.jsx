@@ -2,14 +2,19 @@ import styled from 'styled-components';
 
 export const NavigationContainer = styled.div`
   position: fixed;
-  top: 0;
+  top: -100%;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #161f37;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: top 0.5s ease;
+
+  &.open {
+    top: 0;
+  }
 `;
 
 export const NavigationContent = styled.div`
