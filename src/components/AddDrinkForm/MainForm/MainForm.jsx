@@ -6,7 +6,7 @@ import { AddButton, DrinkFormWrapper } from './MainForm.styled';
 
 import TitleBlock from '../TitleBlock';
 import IngredientsBlock from '../IngredientsBlock/';
-// import RecipePreparationBlock from '../RecipePreparationBlock/';
+import RecipePreparationBlock from '../RecipePreparationBlock/';
 
 // import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
 // import { useFetchCategories } from '../../../hooks/useFetchCategories';
@@ -130,7 +130,7 @@ const MainForm = () => {
               fileRef={fileRef}
             />
             <IngredientsBlock />
-            {/* <RecipePreparationBlock /> */}
+            <RecipePreparationBlock />
             <AddButton>Add</AddButton>
           </Form>
         )}

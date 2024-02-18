@@ -27,7 +27,7 @@ const ingredients = [
 ]
 
 const AddIngredients = () => {
-    const [value, setValue] = useState("");
+  const [value, setValue] = useState("");
   return (
   <div>
     <h2>Ingredients</h2>
@@ -39,15 +39,15 @@ const AddIngredients = () => {
       }}
     >
       {({ values }) => (
-          <FieldArray name="ingredients">
+          <FieldArray name="ingredients" render="">
             {({ insert, remove, push }) => (
               <div>
                 {values.ingredients.length > 0 &&
-                  values.ingredients.map((friend, index) => (
+                  values.ingredients.map((ingredient, index) => (
                     <AddIngredientWrapper className="row" key={index}>
-                      <div className="col">
                         <label htmlFor={`ingredients.${index}.name`}></label>
                         <IngredientsSelect
+                        key={index}
                         value={value}
                         onChange={e => setValue(e)}
                         options={ingredients}
@@ -57,8 +57,6 @@ const AddIngredients = () => {
                           component="div"
                           className="field-error"
                         />
-                      </div>
-                      <div className="col">
                         <label htmlFor={`ingredients.${index}.quantity`}></label>
                         <IngredientsInputWrapper>
                         <IngredientsSelectInput
@@ -72,12 +70,11 @@ const AddIngredients = () => {
                           component="div"
                           className="field-error"
                         />
-                      </div>
                     <RemoveInredientBtn
                         type="button"
                         onClick={() => remove(index)}
                     >
-                        <RxCross2 />
+                        <RxCross2 size="20px"/>
                     </RemoveInredientBtn>
                     </AddIngredientWrapper>
                   ))}

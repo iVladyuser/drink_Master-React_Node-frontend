@@ -2,13 +2,14 @@ import { styled } from 'styled-components';
 
 export const AddIngredientWrapper = styled.div`
   display: flex;
-  gap: 8px;
-  margin-bottom: 40px;
+  align-items: center;
+  margin-bottom: 24px;
 `;
 
 export const IngredientsInputWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 14px;
   padding: 0 24px;
   gap: 50px;
   height: 56px;
@@ -18,6 +19,7 @@ export const IngredientsInputWrapper = styled.div`
 `;
 
 export const RemoveInredientBtn = styled.button`  
+    margin-left: 188px;
     display: flex;
     align-items: center;
     justify-content: center; 
