@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <LogoContainer>
       <StyledSvg>
-        <LogoSVG />
+      <a href="./"><LogoSVG /></a>
       </StyledSvg>
       <StyleLink>
       <a href="./">Drink Master</a>
