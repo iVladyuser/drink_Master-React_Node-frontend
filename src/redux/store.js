@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { authReducer } from './auth/slice';
+import { drinkReducer } from './drink/slice';
 
 const persistConfig = {
   key: 'auth',
@@ -23,6 +24,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
     favorites: favoritesReducer,
+    drink: drinkReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
