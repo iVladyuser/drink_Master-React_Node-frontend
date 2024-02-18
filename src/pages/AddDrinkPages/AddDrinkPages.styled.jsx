@@ -92,7 +92,7 @@ export const Container = styled.div`
       font-size: 40px;
       font-weight: 600;
       line-height: 1.1;
-
+    }
     h4 {
       font-size: 32px;
       font-weight: 500;
