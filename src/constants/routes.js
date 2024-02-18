@@ -1,12 +1,9 @@
 export const WELCOME_ROUTE = '/welcome';
 export const SIGNUP_ROUTE = '/signup';
 export const SIGNIN_ROUTE = '/signin';
-export const ADDDRINK_ROUTE = '/adddrink';
-export const HOME_ROUTE = '/';
 
-export const LOGIN_ROUTE = '/login';
-export const REGISTER_ROUTE = '/register';
+export const HOME_ROUTE = '/home';
+export const ADDDRINK_ROUTE = '/add';
 export const FAVORITES_ROUTE = '/favorites';
-
 export const DRINKS_ROUTE = '/drinks';
-
+export const DRINKPAGE_ROUTE = '/drink/:drinkId';

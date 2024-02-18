@@ -1,24 +1,39 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
-export const instance = axios.create({
-  baseURL: '',
-});
+export const instance = axios.create({ baseURL: 'https://localhost:3030/api' });
 
-// const setAuthHeader = token => {
-//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+const setToken = token => {
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+// const clearToken = () => {
+//   axios.defaults.headers.common['Authorization'] = ``;
 // };
 
-// const clearAuthHeader = () => {
-//   instance.defaults.headers.common.Authorization = '';
-// };
+export const signUp = createAsyncThunk(
+  'auth/signup',
+  async (formData, thunkApi) => {
+    try {
+      const { data } = await axios.post('/users/signup', formData);
+      console.log('data:', data);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      if (error.status === 409) {
+        toast.error('User with this email is already registered');
+      } else {
+        return thunkApi.rejectWithValue(error.message);
+      }
+    }
+  }
+);
 
-export const signUp = createAsyncThunk();
+// export const signIn = createAsyncThunk();
 
-export const signIn = createAsyncThunk();
+// export const logOut = createAsyncThunk();
 
-export const logOut = createAsyncThunk();
+// export const refreshUser = createAsyncThunk();
 
-export const refreshUser = createAsyncThunk();
-
-export const updateWaterRate = createAsyncThunk();
+// export const updateWaterRate = createAsyncThunk();

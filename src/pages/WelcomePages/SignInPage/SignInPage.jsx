@@ -1,7 +1,12 @@
-import { AuthForm } from '../../../components/SignUpSignInForms/AuthForm';
+import { SignInForm } from 'components/SignUpSignInForms/SignInForm/SignInForm';
+import { AuthFormSection } from '../../../components/SignUpSignInForms/AuthForm';
 
 const SignUpPage = () => {
-  return <AuthForm title={'Sign In'}></AuthForm>;
+  return (
+    <AuthFormSection title={'Sign In'}>
+      <SignInForm></SignInForm>
+    </AuthFormSection>
+  );
 };
 
 export default SignUpPage;

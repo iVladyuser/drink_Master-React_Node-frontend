@@ -28,9 +28,9 @@ export const WelcomePageStyle = styled.section`
   max-width: 100vw;
   height: 100vh;
 
-  background: url(${welcomeElipseTopMob}), url(${welcomeElipseBottomMob}),
+  , url(${welcomeElipseBottomMob}),
     url(${welcomeMob1x});
-
+background: url(${welcomeElipseTopMob})
   background-repeat: no-repeat;
   background-size: 100%, 40%, auto;
   background-position: top left, bottom right, center right;
