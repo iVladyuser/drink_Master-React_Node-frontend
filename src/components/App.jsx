@@ -8,8 +8,6 @@ import * as ROUTES from 'constants/routes';
 
 
 const Home = lazy(() => import('pages/HomePage'));
-const Register = lazy(() => import('pages/RegisterPage'));
-const Login = lazy(() => import('pages/LogInPage'));
 const FavoriteDrinksPage = lazy(() => import('pages/FavoritePage/FavoriteDrinksPage'));
 
 // import RestrictedRoute from './RestrictedRoute';
