@@ -9,7 +9,7 @@ import RightLightDesctop from '../../images/drinksPageImage/RightLightDesctop.sv
 
 export const ContainerForPage = styled.div`
 background: rgba(10, 10, 17, 1);
-border: 1px solid red;
+
 
 background: url(${LeftLightPhone});
   background-position: top left;
