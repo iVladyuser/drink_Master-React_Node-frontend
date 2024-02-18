@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import  Logo  from '../../Logo/Logo';
 import ThemeSwitcher from '../Switch/ThemeSwitcher';
-import { NavigationContainer, NavigationContent, LogoSwitcherStyled, CloseButton, ThemeSwitcherCloseBtn} from './Navigation.styled';
+import { NavigationContainer, NavigationContent, LogoSwitcherStyled, CloseButton, ThemeSwitcherCloseBtn, ButtonLink} from './Navigation.styled';
 
 const Navigation = ({ onClose, isVisible }) => {
     const [animationClass, setAnimationClass] = useState('');
@@ -27,25 +27,13 @@ const Navigation = ({ onClose, isVisible }) => {
           </LogoSwitcherStyled>
             <NavigationContent>
 
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/home" onClick={onClose}>Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/drinks" onClick={onClose}>Drinks</Link>
-                        </li>
-                        <li>
-                            <Link to="/add" onClick={onClose}>Add Drink</Link>
-                        </li>
-                        <li>
-                            <Link to="/my" onClick={onClose}>My Drinks</Link>
-                        </li>
-                        <li>
-                            <Link to="/favorites" onClick={onClose}>Favorites</Link>
-                        </li>
-                    </ul>
-                </nav>
+            <ButtonLink to="/home">Home</ButtonLink>
+            <ButtonLink to="/drinks">Drinks</ButtonLink>
+            <ButtonLink to="/add">Add Drink</ButtonLink>
+            <ButtonLink to="/my">My Drinks</ButtonLink>
+            <ButtonLink to="/favorites">Favorites</ButtonLink>
+
+
 
             </NavigationContent>
         </NavigationContainer>
