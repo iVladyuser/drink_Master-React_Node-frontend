@@ -57,9 +57,9 @@ const authSlice = createSlice({
       // })
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.authenticated = true;
+        state.user = payload.user;
         state.token = payload.token;
-        state.userData = payload.user;
+        state.isLoggedIn = true;
       })
       // .addCase(authThunk.logOutThunk.fulfilled, () => {
       //   return initialState;
@@ -82,7 +82,7 @@ const authSlice = createSlice({
         ),
         state => {
           state.isLoading = true;
-          state.error = null;
+          // state.error = null;
         }
       )
       .addMatcher(
@@ -93,9 +93,9 @@ const authSlice = createSlice({
           // authThunk.logOutThunk.rejected,
           // authThunk.updateAvatarThunk.rejected
         ),
-        (state, { payload }) => {
+        state => {
           state.isLoading = false;
-          state.error = payload;
+          // state.error = payload;
         }
       ),
 });
