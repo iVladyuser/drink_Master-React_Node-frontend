@@ -1,5 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getDrinkById, getIngredients } from './operations';
+import {
+  getDrinkById,
+  getIngredients,
+} from '../../services/fetchDrinkById&Ingredients';
 
 const initialDrinkState = {
   drink: {},
