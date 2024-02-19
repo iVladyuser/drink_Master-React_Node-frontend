@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://localhost:3030/users';
+axios.defaults.baseURL = 'https://drink-master-project-backend.onrender.com';
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
