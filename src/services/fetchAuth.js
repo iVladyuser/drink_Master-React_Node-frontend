@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 export const instance = axios.create({
-  baseURL: 'https://drink-master-project-zi2s.onrender.com',
+  baseURL: 'https://drink-master-project-backend.onrender.com',
 });
 
 export const setToken = token => {
