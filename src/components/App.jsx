@@ -7,8 +7,8 @@ import { refreshThunk } from 'services/fetchAuth';
 import * as ROUTES from 'constants/routes';
 import { AppWrapper } from './App.styled';
 
-import RestrictedRoute from './RestrictedRoute';
-import PrivateRoute from './PrivateRoute';
+// import RestrictedRoute from './RestrictedRoute';
+// import PrivateRoute from './PrivateRoute';
 
 const Welcome = lazy(() => import('pages/WelcomePages/WelcomePage'));
 const Register = lazy(() => import('pages/WelcomePages/SignUpPage/SignUpPage'));
@@ -25,67 +25,67 @@ const appRoutes = [
   {
     path: ROUTES.WELCOME_ROUTE,
     element: (
-      <RestrictedRoute>
-        <Welcome />
-      </RestrictedRoute>
+      // <RestrictedRoute>
+      <Welcome />
+      // </RestrictedRoute>
     ),
   },
   {
     path: ROUTES.SIGNIN_ROUTE,
     element: (
-      <RestrictedRoute>
-        <Login />
-      </RestrictedRoute>
+      // <RestrictedRoute>
+      <Login />
+      // </RestrictedRoute>
     ),
   },
   {
     path: ROUTES.SIGNUP_ROUTE,
     element: (
-      <RestrictedRoute>
-        <Register />
-      </RestrictedRoute>
+      // <RestrictedRoute>
+      <Register />
+      // </RestrictedRoute>
     ),
   },
 
   {
     path: ROUTES.HOME_ROUTE,
     element: (
-      <PrivateRoute>
-        <Home />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <Home />
+      // </PrivateRoute>
     ),
   },
   {
     path: ROUTES.FAVORITES_ROUTE,
     element: (
-      <PrivateRoute>
-        <FavoriteDrinksPage />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <FavoriteDrinksPage />
+      // </PrivateRoute>
     ),
   },
 
   {
     path: ROUTES.ADDDRINK_ROUTE,
     element: (
-      <PrivateRoute>
-        <AddDrinkPage />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <AddDrinkPage />
+      // </PrivateRoute>
     ),
   },
   {
     path: ROUTES.DRINKS_ROUTE,
     element: (
-      <PrivateRoute>
-        <Drinks />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <Drinks />
+      // </PrivateRoute>
     ),
   },
   {
     path: ROUTES.DRINKPAGE_ROUTE,
     element: (
-      <PrivateRoute>
-        <DrinkPage />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <DrinkPage />
+      // </PrivateRoute>
     ),
   },
 ];
