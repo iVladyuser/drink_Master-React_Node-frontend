@@ -31,3 +31,18 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+
+// export const registerThunk = createAsyncThunk(
+//   'auth/register',
+//   async (formData, thunkApi) => {
+//     try {
+//       const { data } = await instance.post('/users/signup', formData);
+
+//       setToken(data.token);
+//       console.log(data);
+//       return data;
+//     } catch (err) {
+//       return thunkApi.rejectWithValue(err.message);
+//     }
+//   }
+// );

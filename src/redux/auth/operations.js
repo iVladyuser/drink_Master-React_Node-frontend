@@ -10,15 +10,11 @@ const setToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// const clearToken = () => {
-//   axios.defaults.headers.common['Authorization'] = ``;
-// };
-
 export const signUp = createAsyncThunk(
   'auth/signup',
   async (formData, thunkApi) => {
     try {
-      const { data } = await axios.post('/users/signup', formData);
+      const { data } = await instance.post('/users/signup', formData);
       console.log('data:', data);
       setToken(data.token);
       return data;
