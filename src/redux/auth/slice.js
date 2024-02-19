@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { signUpThunk } from '../../services/fetchAuth';
+import { signUpThunk, signInThunk } from '../../services/fetchAuth';
 
 const initialState = {
   userData: null,
@@ -22,10 +22,16 @@ const authSlice = createSlice({
         state.token = payload.token;
         state.isLoggedIn = true;
       })
+      .addCase(signInThunk.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.userData = payload.user;
+        state.token = payload.token;
+        state.isLoggedIn = true;
+      })
 
       .addMatcher(
         isAnyOf(
-          // authThunk.loginThunk.pending,
+          signInThunk.pending,
           signUpThunk.pending
           //   authThunk.refreshThunk.pending,
           //   authThunk.logOutThunk.pending,
@@ -38,7 +44,7 @@ const authSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          // authThunk.loginThunk.rejected,
+          signInThunk.rejected,
           signUpThunk.rejected
           // authThunk.refreshThunk.rejected,
           // authThunk.logOutThunk.rejected,
