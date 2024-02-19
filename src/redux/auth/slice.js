@@ -36,11 +36,11 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { signUp } from './operations.js';
 
 const initialState = {
+  userData: null,
+  token: '',
+  isLoggedIn: false,
   isLoading: false,
   error: null,
-  authenticated: false,
-  token: null,
-  userData: null,
 };
 
 const authSlice = createSlice({
@@ -82,7 +82,7 @@ const authSlice = createSlice({
         ),
         state => {
           state.isLoading = true;
-          // state.error = null;
+          state.error = null;
         }
       )
       .addMatcher(
@@ -93,11 +93,10 @@ const authSlice = createSlice({
           // authThunk.logOutThunk.rejected,
           // authThunk.updateAvatarThunk.rejected
         ),
-        state => {
+        (state, { payload }) => {
           state.isLoading = false;
-          // state.error = payload;
+          state.error = payload;
         }
       ),
 });
-
 export const authReducer = authSlice.reducer;
