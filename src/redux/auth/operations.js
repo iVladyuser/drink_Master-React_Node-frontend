@@ -1,30 +1,44 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://localhost:3030/users';
+export const instance = axios.create({
+  baseURL: 'https://drink-master-project-backend.onrender.com',
+});
 
 const setToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// const clearToken = () => {
-//   axios.defaults.headers.common['Authorization'] = ``;
-// };
+// export const signUp = createAsyncThunk(
+//   'auth/signup',
+//   async (formData, thunkApi) => {
+//     try {
+//       const { data } = await instance.post('/users/signup', formData);
+//       console.log('data:', data);
+//       setToken(data.token);
+//       return data;
+//     } catch (error) {
+//       if (error.status === 409) {
+//         toast.error('User with this email is already registered');
+//       } else {
+//         return thunkApi.rejectWithValue(error.message);
+//       }
+//     }
+//   }
+// );
 
 export const signUp = createAsyncThunk(
-  'auth/signup',
-  async (credentials, thunkApi) => {
+  'auth/register',
+  async (formData, thunkApi) => {
     try {
-      const response = await axios.post('/signup', credentials);
-      setToken(response.data.token);
-      return response.data;
-    } catch (error) {
-      if (error.response.status === 409) {
-        toast.error('User with this email is already registered');
-      } else {
-        return thunkApi.rejectWithValue(error.message);
-      }
+      const { data } = await instance.post('/users/signup', formData);
+
+      setToken(data.token);
+      console.log(data);
+      return data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err.message);
     }
   }
 );

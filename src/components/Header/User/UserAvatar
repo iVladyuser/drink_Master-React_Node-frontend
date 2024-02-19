@@ -1,0 +1,48 @@
+import React, { useState, useEffect } from 'react';
+
+const UserAvatar = () => {
+  const [avatarUrl, setAvatarUrl] = useState('');
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const getDataFromLocalStorage = () => {
+      const token = localStorage.getItem('token');
+      const name = localStorage.getItem('username');
+      if (token && name) {
+        setUsername(name);
+        fetchAvatar(token);
+      } else {
+        console.error('Данные пользователя отсутствуют.');
+      }
+    };
+
+    getDataFromLocalStorage();
+  }, []);
+
+  const fetchAvatar = async (token) => {
+    try {
+      const response = await fetch('https://api/avatar', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Не удалось получить данные аватара');
+      }
+      const data = await response.json();
+      setAvatarUrl(data.avatarUrl);
+    } catch (error) {
+      console.error('Ошибка получения данных аватара:', error);
+    }
+  };
+
+  return (
+    <div>
+      <img src={avatarUrl} alt="Аватар" />
+      <h1>{username}</h1>
+    </div>
+  );
+};
+
+export default UserAvatar;
+
