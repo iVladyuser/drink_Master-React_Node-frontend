@@ -10,6 +10,7 @@ import {
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
 import icon from './not-found-img/trash.svg';
+import { Header } from '../../components/Header/Header';
 
 import {
   Container,
@@ -54,31 +55,36 @@ export const FavoriteDrinksPage = () => {
   }
 
   return (
-    <Container>
-      <FavoritePageTitle>Favorites</FavoritePageTitle>
-      <FavoriteDrinksList>
-        {items.map(drink => (
-          <FavoriteDrinksItemContainer key={drink.id}>
-            <FavoriteDrinkImage src={drink.image} alt={drink.name} />
-            <FavoriteTitleWrap>
-              <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
-              <FavoriteDrinkInfo>
-                {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
-              </FavoriteDrinkInfo>
-              <FavoriteDrinkDescription>
-                {drink.description}
-              </FavoriteDrinkDescription>
-            </FavoriteTitleWrap>
-            <ButtonsContainer>
-              <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
-              <FavoriteRemoveButton onClick={() => handleRemoveClick(drink.id)}>
-                <img src={icon} alt="trash" style={{ maxWidth: '24px' }} />
-              </FavoriteRemoveButton>
-            </ButtonsContainer>
-          </FavoriteDrinksItemContainer>
-        ))}
-      </FavoriteDrinksList>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <FavoritePageTitle>Favorites</FavoritePageTitle>
+        <FavoriteDrinksList>
+          {items.map(drink => (
+            <FavoriteDrinksItemContainer key={drink.id}>
+              <FavoriteDrinkImage src={drink.image} alt={drink.name} />
+              <FavoriteTitleWrap>
+                <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
+                <FavoriteDrinkInfo>
+                  {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
+                </FavoriteDrinkInfo>
+                <FavoriteDrinkDescription>
+                  {drink.description}
+                </FavoriteDrinkDescription>
+              </FavoriteTitleWrap>
+              <ButtonsContainer>
+                <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
+                <FavoriteRemoveButton
+                  onClick={() => handleRemoveClick(drink.id)}
+                >
+                  <img src={icon} alt="trash" style={{ maxWidth: '24px' }} />
+                </FavoriteRemoveButton>
+              </ButtonsContainer>
+            </FavoriteDrinksItemContainer>
+          ))}
+        </FavoriteDrinksList>
+      </Container>
+    </>
   );
 };
 
