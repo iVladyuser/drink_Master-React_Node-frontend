@@ -1,18 +1,24 @@
 import { Container } from './AddDrinkPages.styled';
 
+import { Header } from 'components/Header/Header';
 import MainForm from '../../components/AddDrinkForm/MainForm';
+import Footer from 'components/Footer/Footer';
 // import PopularDrinks from '../../components/PopularDrinks';
-// import FollowUs from '../../components/FollowUs';
+import FollowUs from '../../components/FollowUs';
 
 const AddDrinkPage = () => {
   return (
-    <Container>
-      <MainForm />
-      {/* <AdditionalBlock>
+    <>
+      <Header />
+      <Container>
+        <MainForm />
+        {/* <AdditionalBlock>
         <FollowUs />
         <PopularDrinks />
       </AdditionalBlock> */}
-    </Container>
+      </Container>
+      <Footer />
+    </>
   );
 };
 

@@ -10,7 +10,7 @@ import { FaFacebookF } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 
-export const FollowUs = () => {
+const FollowUs = () => {
 return (
     <FollowUsWrapper>
     <FollowUsTitle>Follow Us</FollowUsTitle>
@@ -34,4 +34,5 @@ return (
     </FollowUsWrapper>
 );
 };
-  
+      
+    export default FollowUs;
