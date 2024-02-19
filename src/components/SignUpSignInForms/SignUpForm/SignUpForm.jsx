@@ -1,6 +1,6 @@
 import { React } from 'react';
 
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 // import { toast } from 'react-toastify';
 import { signUpThunk } from '../../../services/fetchAuth';
@@ -8,19 +8,19 @@ import { signUpThunk } from '../../../services/fetchAuth';
 
 import { AuthForm, Input, Button, SignInLink } from './SignUp.styled';
 
-// const validateFormSchema = Yup.object().shape({
-//   name: Yup.string()
-//     .min(2, 'The name is short.')
-//     .required('Field is required.'),
-//   dateBirth: Yup.string().required('Field is required.'),
-//   email: Yup.string()
-//     .email('Please enter a valid email')
-//     .required('Field is required.'),
-//   password: Yup.string()
-//     .min(8, 'Password must contain 8 characters.')
-//     .max(20, 'Password is too Long!')
-//     .required('Field is required.'),
-// });
+const validateFormSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'The name is short.')
+    .required('Field is required.'),
+  dateBirth: Yup.string().required('Field is required.'),
+  email: Yup.string()
+    .email('Please enter a valid email')
+    .required('Field is required.'),
+  password: Yup.string()
+    .min(8, 'Password must contain 8 characters.')
+    .max(20, 'Password is too Long!')
+    .required('Field is required.'),
+});
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export const SignUpForm = () => {
     dispatch(signUpThunk({ name, email, password }));
   };
   return (
-    <AuthForm onSubmit={handleSubmit}>
+    <AuthForm onSubmit={handleSubmit} validation={validateFormSchema}>
       <>
         <Input type="text" name="userName" placeholder="Name" required />
 
