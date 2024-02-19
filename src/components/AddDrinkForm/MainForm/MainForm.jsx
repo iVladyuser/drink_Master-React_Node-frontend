@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { AddButton, DrinkFormWrapper } from './MainForm.styled';
 
 import TitleBlock from '../TitleBlock';
-import IngredientsBlock from '../IngredientsBlock/';
+// import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
 
 // import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
@@ -129,7 +129,7 @@ const MainForm = () => {
               touched={touched}
               fileRef={fileRef}
             />
-            <IngredientsBlock />
+            {/* <IngredientsBlock /> */}
             <RecipePreparationBlock />
             <AddButton>Add</AddButton>
           </Form>
