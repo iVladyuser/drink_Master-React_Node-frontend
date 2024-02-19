@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export const instance = axios.create({ baseURL: 'https://localhost:3030/api' });
+export const instance = axios.create({
+  baseURL: 'https://drink-master-project-backend.onrender.com',
+});
 
 const setToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
