@@ -2,15 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   max-width: 375px;
-  padding-top: 152px;
+  padding-top: 80px;
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 80px;
+  margin: 0;
 
   h2 {
-    margin-bottom: 40px;
-
     font-size: 32px;
     font-weight: 600;
     line-height: 1.2;
@@ -44,7 +42,7 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     max-width: 768px;
-    padding-top: 224px;
+    padding-top: 140px;
     padding-bottom: 140px;
     padding-left: 32px;
     padding-right: 32px;
@@ -70,7 +68,7 @@ export const Container = styled.div`
 
   @media (min-width: 1440px) {
     max-width: 1440px;
-    padding-top: 244px;
+    padding-top: 160px;
     padding-bottom: 140px;
     padding-left: 100px;
     padding-right: 100px;

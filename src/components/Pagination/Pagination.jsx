@@ -1,4 +1,4 @@
-import { Pagination } from './Paginator.styled';
+import { Pagination } from './Pagination.styled';
 import { RxChevronLeft, RxChevronRight } from 'react-icons/rx';
 
 export const Paginator = ({

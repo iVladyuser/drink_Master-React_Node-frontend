@@ -19,26 +19,75 @@ const Drinks = lazy(() => import('pages/DrinksPages/DrinksPages'));
 const FavoriteDrinksPage = lazy(() =>
   import('pages/FavoritePage/FavoriteDrinksPage')
 );
+const DrinkPage = lazy(() => import('pages/DrinkPage/DrinkPage'));
 
 const appRoutes = [
   {
     path: ROUTES.WELCOME_ROUTE,
-    element: <Welcome />,
+    element: (
+      // <RestrictedRoute>
+      <Welcome />
+      // </RestrictedRoute>
+    ),
   },
   {
     path: ROUTES.SIGNIN_ROUTE,
-    element: <Login />,
+    element: (
+      // <RestrictedRoute>
+      <Login />
+      // </RestrictedRoute>
+    ),
   },
   {
     path: ROUTES.SIGNUP_ROUTE,
-    element: <Register />,
+    element: (
+      // <RestrictedRoute>
+      <Register />
+      // </RestrictedRoute>
+    ),
   },
-  
-  { path: ROUTES.HOME_ROUTE, element: <Home /> },
-  { path: ROUTES.FAVORITES_ROUTE, element: <FavoriteDrinksPage /> },
 
-  { path: ROUTES.ADDDRINK_ROUTE, element: <AddDrinkPage /> },
-  { path: ROUTES.DRINKS_ROUTE, element: <Drinks /> },
+  {
+    path: ROUTES.HOME_ROUTE,
+    element: (
+      // <PrivateRoute>
+      <Home />
+      // </PrivateRoute>
+    ),
+  },
+  {
+    path: ROUTES.FAVORITES_ROUTE,
+    element: (
+      // <PrivateRoute>
+      <FavoriteDrinksPage />
+      // </PrivateRoute>
+    ),
+  },
+
+  {
+    path: ROUTES.ADDDRINK_ROUTE,
+    element: (
+      // <PrivateRoute>
+      <AddDrinkPage />
+      // </PrivateRoute>
+    ),
+  },
+  {
+    path: ROUTES.DRINKS_ROUTE,
+    element: (
+      // <PrivateRoute>
+      <Drinks />
+      // </PrivateRoute>
+    ),
+  },
+  {
+    path: ROUTES.DRINKPAGE_ROUTE,
+    element: (
+      // <PrivateRoute>
+      <DrinkPage />
+      // </PrivateRoute>
+    ),
+  },
 ];
 
 const App = () => {
@@ -50,17 +99,17 @@ const App = () => {
 
   return (
     <AppWrapper>
-    <Layout>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          {appRoutes.map(({ path, element }) => (
-            <Route key={path} path={path} element={element} />
-          ))}
+      <Layout>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            {appRoutes.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
 
-          <Route path="*" element={<Navigate to="/welcome" />} />
-        </Routes>
-      </Suspense>
-    </Layout>
+            <Route path="*" element={<Navigate to="/welcome" />} />
+          </Routes>
+        </Suspense>
+      </Layout>
     </AppWrapper>
   );
 };

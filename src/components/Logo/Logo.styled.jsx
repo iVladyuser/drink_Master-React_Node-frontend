@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledSvg = styled.svg`
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 `;
 
 export const LogoContainer = styled.div`

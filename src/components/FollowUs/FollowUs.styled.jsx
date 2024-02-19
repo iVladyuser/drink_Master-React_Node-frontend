@@ -32,6 +32,7 @@ export const FollowUsSocialLinkF = styled.a`
     height: 20px;
     color: #161F37;
     font-size: 20px;
+    cursor: pointer;
 
     &:hover {
         color: #161F37;
@@ -43,6 +44,7 @@ export const FollowUsSocialLink = styled.a`
     height: 24px;
     color: #161F37;
     font-size: 24px;
+    cursor: pointer;
 
     &:hover {
         color: #161F37;
@@ -58,4 +60,3 @@ export const FollowUsTitle = styled.h2`
     font-weight: 500; 
     color: #0A0A11;
 `
-

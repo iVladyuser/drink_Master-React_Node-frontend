@@ -1,14 +1,13 @@
 // import { useState } from 'react';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import { signInThunk } from '../../../services/fetchAuth';
 // import { toast } from 'react-toastify';
 
 import {
   AuthForm,
   Input,
   Button,
-  PasswordInputWrap,
   SignInLink,
 } from '../SignUpForm/SignUp.styled';
 
@@ -22,41 +21,28 @@ const validateFormSchema = Yup.object().shape({
     .required('Field is required.'),
 });
 
-const initialValues = { email: '', password: '' };
-
 export const SignInForm = () => {
   const dispatch = useDispatch();
+  const handleSubmit = e => {
+    e.preventDefault();
 
-  const onSubmit = values => {
-    dispatch();
+    const email = e.currentTarget.elements.userEmail.value;
+    const password = e.currentTarget.elements.userPassword.value;
+
+    console.log('email:', email);
+    console.log('password:', password);
+    dispatch(signInThunk({ email, password }));
   };
-
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validateFormSchema}
-      onSubmit={onSubmit}
-    >
-      {({ values }) => (
-        <AuthForm>
-          <>
-            <PasswordInputWrap>
-              <Input type="email" name="email" placeholder="Email" />
-            </PasswordInputWrap>
+    <AuthForm validationSchema={validateFormSchema} onSubmit={handleSubmit}>
+      <>
+        <Input type="email" name="userEmail" placeholder="Email" required />
 
-            <PasswordInputWrap>
-              <Input
-                value={values.password}
-                name="password"
-                placeholder="Password"
-              />
-            </PasswordInputWrap>
-          </>
+        <Input name="userPassword" placeholder="Password" required />
+      </>
 
-          <Button type="submit">Sign In</Button>
-          <SignInLink to="/signup">Sign Up</SignInLink>
-        </AuthForm>
-      )}
-    </Formik>
+      <Button type="submit">Sign In</Button>
+      <SignInLink to="/signup">Sign Up</SignInLink>
+    </AuthForm>
   );
 };

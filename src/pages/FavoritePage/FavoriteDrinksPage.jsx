@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchFavorites,
@@ -10,6 +10,9 @@ import {
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
 import icon from './not-found-img/trash.svg';
+import { Header } from '../../components/Header/Header';
+import { Footer } from '../../components/Footer/Footer';
+import { Paginator } from '../../components/Pagination/Pagination';
 
 import {
   Container,
@@ -31,6 +34,8 @@ export const FavoriteDrinksPage = () => {
   const items = useSelector(selectAllFavorites);
   const status = useSelector(selectFavoritesStatus);
   const error = useSelector(selectFavoritesError);
+  const [currentPage, setCurrentPage] = useState(0);
+  const limit = 10;
 
   useEffect(() => {
     dispatch(fetchFavorites());
@@ -39,6 +44,12 @@ export const FavoriteDrinksPage = () => {
   const handleRemoveClick = drinkId => {
     dispatch(deleteFavorite(drinkId));
   };
+
+  const handlePageChange = selectedPage => {
+    setCurrentPage(selectedPage);
+  };
+
+  const totalCount = items.length;
 
   if (status === 'loading') return <div>Loading...</div>;
 
@@ -54,31 +65,44 @@ export const FavoriteDrinksPage = () => {
   }
 
   return (
-    <Container>
-      <FavoritePageTitle>Favorites</FavoritePageTitle>
-      <FavoriteDrinksList>
-        {items.map(drink => (
-          <FavoriteDrinksItemContainer key={drink.id}>
-            <FavoriteDrinkImage src={drink.image} alt={drink.name} />
-            <FavoriteTitleWrap>
-              <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
-              <FavoriteDrinkInfo>
-                {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
-              </FavoriteDrinkInfo>
-              <FavoriteDrinkDescription>
-                {drink.description}
-              </FavoriteDrinkDescription>
-            </FavoriteTitleWrap>
-            <ButtonsContainer>
-              <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
-              <FavoriteRemoveButton onClick={() => handleRemoveClick(drink.id)}>
-                <img src={icon} alt="trash" style={{ maxWidth: '24px' }} />
-              </FavoriteRemoveButton>
-            </ButtonsContainer>
-          </FavoriteDrinksItemContainer>
-        ))}
-      </FavoriteDrinksList>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <FavoritePageTitle>Favorites</FavoritePageTitle>
+        <FavoriteDrinksList>
+          {items.map(drink => (
+            <FavoriteDrinksItemContainer key={drink.id}>
+              <FavoriteDrinkImage src={drink.image} alt={drink.name} />
+              <FavoriteTitleWrap>
+                <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
+                <FavoriteDrinkInfo>
+                  {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
+                </FavoriteDrinkInfo>
+                <FavoriteDrinkDescription>
+                  {drink.description}
+                </FavoriteDrinkDescription>
+              </FavoriteTitleWrap>
+              <ButtonsContainer>
+                <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
+                <FavoriteRemoveButton
+                  onClick={() => handleRemoveClick(drink.id)}
+                >
+                  <img src={icon} alt="trash" style={{ maxWidth: '24px' }} />
+                </FavoriteRemoveButton>
+              </ButtonsContainer>
+            </FavoriteDrinksItemContainer>
+          ))}
+        </FavoriteDrinksList>
+      </Container>
+      <Paginator
+        limit={limit}
+        currentPage={currentPage}
+        items={totalCount}
+        handlePageChange={handlePageChange}
+        pageRangeDisplayed={9}
+      />
+      <Footer />
+    </>
   );
 };
 
