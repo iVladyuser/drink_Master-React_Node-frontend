@@ -7,13 +7,14 @@ import {
   WraperForm,
   ForInputLupaSvg,
   WraperSvg,
-  ContainerForPage
-  
+  ContainerForPage,
+  ListCocktail,
 } from './DrinksPages.styled';
+import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
- import {Header} from '../../components/Header/Header'
+import { Header } from '../../components/Header/Header';
 import { Formik } from 'formik';
-import SvgGeneratorSvgSelector from '../../components/SvgComponents'
+import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 const categoriesList = [
   'Ordinary Drink',
   'Cocktail',
@@ -71,29 +72,58 @@ const initialValues = {
 
 const DrinksPage = () => {
   return (
-    
     <DrinksPageStyle>
       <ContainerForPage>
-      <Header/>
-      <Container>
-        <TitlePage title={'Drinks'} />
-        <WraperForm>
-          <ForInputLupaSvg>
-          <SearchDrinksInput />
-          <WraperSvg>
-          <SvgGeneratorSvgSelector id='svglupa'/>
-          </WraperSvg>
-          </ForInputLupaSvg>
-          <Formik initialValues={initialValues}>
-            {({ setFieldValue }) => (
-              <FormStyled>
-                <CustomSelect items={categoriesList} title={'Category'} />
-                <CustomSelect items={ingredientsList} title={'Ingredients'} />
-              </FormStyled>
-            )}
-          </Formik>
-        </WraperForm>
-      </Container>
+        <Header />
+        <Container>
+          <TitlePage title={'Drinks'} />
+          <WraperForm>
+            <ForInputLupaSvg>
+              <SearchDrinksInput />
+              <WraperSvg>
+                <SvgGeneratorSvgSelector id="svglupa" />
+              </WraperSvg>
+            </ForInputLupaSvg>
+            <Formik initialValues={initialValues}>
+              {({ setFieldValue }) => (
+                <FormStyled>
+                  <CustomSelect items={categoriesList} title={'Category'} />
+                  <CustomSelect items={ingredientsList} title={'Ingredients'} />
+                </FormStyled>
+              )}
+            </Formik>
+          </WraperForm>
+          <ListCocktail>
+            <ItemCocktail
+              _id={'12345678'}
+              drinkThumb={
+                'https://ftp.goit.study/img/drinkify/recipes/Quentin.jpg'
+              }
+              drink={'Juse'}
+            />
+            <ItemCocktail
+              _id={'12345678'}
+              drinkThumb={
+                'https://ftp.goit.study/img/drinkify/recipes/Quentin.jpg'
+              }
+              drink={'Juse'}
+            />
+            <ItemCocktail
+              _id={'12345678'}
+              drinkThumb={
+                'https://ftp.goit.study/img/drinkify/recipes/Quentin.jpg'
+              }
+              drink={'Juse'}
+            />
+            <ItemCocktail
+              _id={'12345678'}
+              drinkThumb={
+                'https://ftp.goit.study/img/drinkify/recipes/Quentin.jpg'
+              }
+              drink={'Juse'}
+            />
+          </ListCocktail>
+        </Container>
       </ContainerForPage>
     </DrinksPageStyle>
   );

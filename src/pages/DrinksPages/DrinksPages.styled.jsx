@@ -63,10 +63,12 @@ export const WraperForm = styled.div`
  display: flex;
  flex-direction: column;
  gap: 14px;
+
 @media screen and (min-width: 768px) {
   display: flex;
   flex-direction: row;
   gap: 8px;
+  margin-bottom:50px;
 }
   
 `;
@@ -75,7 +77,6 @@ export const DrinksPageStyle = styled.div`
   justify-content: center;
   align-content: center;
   max-width: 100vw;
-  height: 100vh;
   background: rgba(10, 10, 17, 1);
 `;
 export const WraperSvg = styled.div`
@@ -89,4 +90,19 @@ export const WraperSvg = styled.div`
   `;
 export const ForInputLupaSvg = styled.div`
   position: relative;
+`;
+
+export const ListCocktail = styled.div`
+  display: flex;
+  row-gap: 28px;
+  flex-wrap: wrap;
+  @media screen and (min-width: 768px) {
+    row-gap: 40px;
+  column-gap: 20px;
+  }
+  @media screen and (min-width: 1440px) {
+    
+    row-gap: 80px;
+  column-gap: 20px;
+  }
 `;
