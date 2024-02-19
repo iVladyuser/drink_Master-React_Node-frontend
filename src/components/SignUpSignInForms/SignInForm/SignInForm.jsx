@@ -34,7 +34,7 @@ export const SignInForm = () => {
     dispatch(signInThunk({ email, password }));
   };
   return (
-    <AuthForm validationSchema={validateFormSchema} onSubmit={handleSubmit}>
+    <AuthForm validation={validateFormSchema} onSubmit={handleSubmit}>
       <>
         <Input type="email" name="userEmail" placeholder="Email" required />
 
