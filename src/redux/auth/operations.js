@@ -1,14 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-// import { toast } from 'react-toastify';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+// import axios from 'axios';
+// // import { toast } from 'react-toastify';
 
-export const instance = axios.create({
-  baseURL: 'https://drink-master-project-backend.onrender.com',
-});
+// export const instance = axios.create({
+//   baseURL: 'https://drink-master-project-backend.onrender.com',
+// });
 
-const setToken = token => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// const setToken = token => {
+//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 // export const signUp = createAsyncThunk(
 //   'auth/signup',
@@ -28,20 +28,20 @@ const setToken = token => {
 //   }
 // );
 
-export const signUp = createAsyncThunk(
-  'auth/register',
-  async (formData, thunkApi) => {
-    try {
-      const { data } = await instance.post('/users/signup', formData);
+// export const signUp = createAsyncThunk(
+//   'auth/register',
+//   async (formData, thunkApi) => {
+//     try {
+//       const { data } = await instance.post('/users/signup', formData);
 
-      setToken(data.token);
-      console.log(data);
-      return data;
-    } catch (err) {
-      return thunkApi.rejectWithValue(err.message);
-    }
-  }
-);
+//       setToken(data.token);
+//       console.log(data);
+//       return data;
+//     } catch (err) {
+//       return thunkApi.rejectWithValue(err.message);
+//     }
+//   }
+// );
 
 // export const signIn = createAsyncThunk();
 
