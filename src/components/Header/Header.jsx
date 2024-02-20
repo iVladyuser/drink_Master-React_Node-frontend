@@ -4,6 +4,7 @@ import Logo from '../Logo/Logo';
 import NavigationLink from './Navigation/ButtonLink/ButtonLink';
 import Navigation from './Navigation/Navigation';
 import ThemeSwitcher from './Switch/ThemeSwitcher'
+import LogoutButton from './LogoutButton/LogoutButton'
 import { StyledGiHamburgerMenu } from './Header.styled';
 import useDeviceType from '../../hooks/useDeviceType';
 
@@ -20,6 +21,7 @@ export const Header = () => {
       <Logo />
       {isDesktop && <NavigationLink />}
       {isDesktop && <ThemeSwitcher />}
+      <LogoutButton />
       <StyledGiHamburgerMenu onClick={toggleModal} />
       <Navigation onClose={toggleModal} isVisible={isModalOpen} />
     </HeaderContainer>
