@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getHomePageCocktails } from 'services/fetchDrinks';
+import { getMainPageAllDrinks } from 'services/fetchDrinks';
 
 const drinksSlice = createSlice({
   name: 'drinks',
@@ -10,7 +10,7 @@ const drinksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getHomePageCocktails.fulfilled, (state, action) => {
+      .addCase(getMainPageAllDrinks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.drinks = action.payload;
