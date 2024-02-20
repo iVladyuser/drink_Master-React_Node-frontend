@@ -1,30 +1,24 @@
 import React from 'react';
-import axios from 'axios';
-import { StyledButtonOut } from './LogoutButton.styled';
 
-const api = axios.create({
-    baseURL: 'https://drink-master-project-zi2s.onrender.com'
-});
+import { StyledButtonOut } from './LogoutButton.styled';
+import { logOutThunk } from 'services/fetchAuth';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const LogoutButton = () => {
-    const handleLogout = async () => {
-        try {
-            
-            await api.post('/user/logout');
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logOutThunk())
+      .unwrap()
+      .then(() => {
+        toast.success('LogOut successful');
+      })
+      .catch(() => {
+        toast.error('Something went wrong... Try again...');
+      });
+  };
 
-            localStorage.removeItem('token');
-            
-            window.location.href = '/welcome';
-        } catch (error) {
-            console.error('Ошибка выхода пользователя:', error);
-        }
-    };
-
-    return (
-        <StyledButtonOut onClick={handleLogout}>
-            Logout
-        </StyledButtonOut>
-    );
+  return <StyledButtonOut onClick={handleLogout}>Logout</StyledButtonOut>;
 };
 
 export default LogoutButton;
