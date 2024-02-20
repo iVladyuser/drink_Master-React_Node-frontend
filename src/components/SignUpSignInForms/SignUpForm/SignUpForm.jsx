@@ -13,7 +13,7 @@ const validateFormSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'The name is short.')
     .required('Field is required.'),
-  dateBirth: Yup.string().required('Field is required.'),
+  // dateBirth: Yup.string().required('Field is required.'),
   email: Yup.string()
     .email('Please enter a valid email')
     .required('Field is required.'),
