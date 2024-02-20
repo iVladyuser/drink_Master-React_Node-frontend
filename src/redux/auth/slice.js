@@ -62,8 +62,8 @@ const authSlice = createSlice({
         isAnyOf(
           signInThunk.rejected,
           signUpThunk.rejected,
-          refreshThunk.rejected
-          // authThunk.logOutThunk.rejected,
+          refreshThunk.rejected,
+          logOutThunk.rejected
           // authThunk.updateAvatarThunk.rejected
         ),
         (state, { payload }) => {
