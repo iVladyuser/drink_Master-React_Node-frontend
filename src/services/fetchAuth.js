@@ -65,7 +65,7 @@ export const logOutThunk = createAsyncThunk(
   'auth/signout',
   async (_, thunkApi) => {
     try {
-      const { data } = await instance.post('/users/signout');
+      const { data } = await instance.post('/auth/signout');
 
       return data;
     } catch (err) {
