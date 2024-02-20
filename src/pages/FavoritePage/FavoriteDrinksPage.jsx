@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchFavorites,
@@ -11,6 +11,8 @@ import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
 import icon from './not-found-img/trash.svg';
 import { Header } from '../../components/Header/Header';
+import { Footer } from '../../components/Footer/Footer';
+import { Paginator } from '../../components/Pagination/Pagination';
 
 import {
   Container,
@@ -32,6 +34,8 @@ export const FavoriteDrinksPage = () => {
   const items = useSelector(selectAllFavorites);
   const status = useSelector(selectFavoritesStatus);
   const error = useSelector(selectFavoritesError);
+  const [currentPage, setCurrentPage] = useState(0);
+  const limit = 10;
 
   useEffect(() => {
     dispatch(fetchFavorites());
@@ -40,6 +44,12 @@ export const FavoriteDrinksPage = () => {
   const handleRemoveClick = drinkId => {
     dispatch(deleteFavorite(drinkId));
   };
+
+  const handlePageChange = selectedPage => {
+    setCurrentPage(selectedPage);
+  };
+
+  const totalCount = items.length;
 
   if (status === 'loading') return <div>Loading...</div>;
 
@@ -84,6 +94,14 @@ export const FavoriteDrinksPage = () => {
           ))}
         </FavoriteDrinksList>
       </Container>
+      <Paginator
+        limit={limit}
+        currentPage={currentPage}
+        items={totalCount}
+        handlePageChange={handlePageChange}
+        pageRangeDisplayed={9}
+      />
+      <Footer />
     </>
   );
 };
