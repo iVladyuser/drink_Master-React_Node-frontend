@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getIngredients } from '../../../services/fetchDrinkById&Ingredients';
-import { selectIngredients } from '../../../redux/drink/drink.selectors';
+// import React, { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getIngredients } from '../../../services/fetchDrinkById&Ingredients';
+// import { selectIngredients } from '../../../redux/drink/drink.selectors';
 import {
   IngredientsWraper,
   IngredientsSectTitle,
@@ -16,67 +16,69 @@ import {
 } from './DrinkIngredientsList.styled';
 import IngredientPlaceholder from '../../../images/drinkPage/IngredientPlaceholder.jpg';
 
-const DrinkIngredientsList = ({ ingredientInfo }) => {
-  const dispatch = useDispatch();
+const DrinkIngredientsList = ({ fullRecipe }) => {
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getIngredients());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getIngredients());
+  // }, [dispatch]);
 
-  const ingredients = useSelector(selectIngredients);
-  console.log('ingredients: ', ingredients);
+  // const ingredients = useSelector(selectIngredients);
+  console.log('fullRecipe: ', fullRecipe);
 
-  let fullRecipe = [];
+  // let fullRecipe = [];
 
-  if (ingredientInfo.length !== 0) {
-    ingredientInfo.map(ingredientInfoitem => {
-      //   console.log(
-      //     'ingredientInfoitem.ingredientId: ',
-      //     ingredientInfoitem.ingredientId
-      //   );
+  // if (ingredients.length !== 0) {
+  //   ingredients.map(ingredientInfoitem => {
+  //     //   console.log(
+  //     //     'ingredientInfoitem.ingredientId: ',
+  //     //     ingredientInfoitem.ingredientId
+  //     //   );
 
-      // ingredients.map(item => console.log('item._id: ', item._id));
+  //     // ingredients.map(item => console.log('item._id: ', item._id));
 
-      const ingr = ingredients.find(
-        ingredient =>
-          JSON.stringify(ingredient._id) ===
-          JSON.stringify(ingredientInfoitem.ingredientId)
-      );
+  //     const ingr = ingredients.find(
+  //       ingredient =>
+  //         JSON.stringify(ingredient._id) ===
+  //         JSON.stringify(ingredientInfoitem.ingredientId)
+  //     );
 
-      // console.log('ingr: ', ingr);
-      fullRecipe.push({
-        ...ingr,
-        measure: ingredientInfoitem.measure || '',
-      });
-      // console.log('fullRecipe: ', fullRecipe);
+  //     // console.log('ingr: ', ingr);
+  //     fullRecipe.push({
+  //       ...ingr,
+  //       measure: ingredientInfoitem.measure || '',
+  //     });
+  //     // console.log('fullRecipe: ', fullRecipe);
 
-      return fullRecipe;
-    });
-  }
+  //     return fullRecipe;
+  //   });
+  // }
 
   return (
     <IngredientsWraper>
       <IngredientsSectTitle>Ingredients</IngredientsSectTitle>
       {fullRecipe.length !== 0 ? (
         <IngredientsList>
-          {fullRecipe.map(({ title, measure, _id, ingredientThumb }) => (
-            <IngredientsItem key={JSON.stringify(_id)}>
-              <IngredientsImgWrp>
-                <IngredientsItemImg
-                  src={
-                    ingredientThumb ? ingredientThumb : IngredientPlaceholder
-                  }
-                  alt={title}
-                />
-              </IngredientsImgWrp>
-              <IngredientsItemTxtWrp>
-                <IngredientsItemName>{title}</IngredientsItemName>
-                <IngredientsItemDose>
-                  {measure ? measure : ''}
-                </IngredientsItemDose>
-              </IngredientsItemTxtWrp>
-            </IngredientsItem>
-          ))}
+          {fullRecipe.map(
+            ({ title, measure, _id, ingredientThumb: { ingredientThumb } }) => (
+              <IngredientsItem key={JSON.stringify(_id)}>
+                <IngredientsImgWrp>
+                  <IngredientsItemImg
+                    src={
+                      ingredientThumb ? ingredientThumb : IngredientPlaceholder
+                    }
+                    alt={title}
+                  />
+                </IngredientsImgWrp>
+                <IngredientsItemTxtWrp>
+                  <IngredientsItemName>{title}</IngredientsItemName>
+                  <IngredientsItemDose>
+                    {measure ? measure : ''}
+                  </IngredientsItemDose>
+                </IngredientsItemTxtWrp>
+              </IngredientsItem>
+            )
+          )}
         </IngredientsList>
       ) : (
         <ErrorMsg>Sorry, no information about ingredients</ErrorMsg>
