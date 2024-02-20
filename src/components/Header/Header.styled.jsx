@@ -28,6 +28,7 @@ export const HeaderContainer = styled.header`
   @media (min-width: 1440px) {
     min-width: 1440px;
     padding: 28px 100px 28px 100px;
+    justify-content: flex-start;
   }
 `;
 
