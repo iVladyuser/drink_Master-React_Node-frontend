@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css",
-    "main.js": "/drink_Master-React_Node-frontend/static/js/main.fe8af1e5.js",
-    "static/js/70.84f56ca2.chunk.js": "/drink_Master-React_Node-frontend/static/js/70.84f56ca2.chunk.js",
+    "main.js": "/drink_Master-React_Node-frontend/static/js/main.4920d6b7.js",
+    "static/js/874.ca732b90.chunk.js": "/drink_Master-React_Node-frontend/static/js/874.ca732b90.chunk.js",
     "static/js/626.03006dbf.chunk.js": "/drink_Master-React_Node-frontend/static/js/626.03006dbf.chunk.js",
     "static/js/586.0f49943b.chunk.js": "/drink_Master-React_Node-frontend/static/js/586.0f49943b.chunk.js",
     "static/js/487.36e1d62c.chunk.js": "/drink_Master-React_Node-frontend/static/js/487.36e1d62c.chunk.js",
@@ -43,8 +43,8 @@
     "static/media/RightLightDesctop.svg": "/drink_Master-React_Node-frontend/static/media/RightLightDesctop.a7caa646af4531e0ff478ee02049d6ae.svg",
     "static/media/logo.svg": "/drink_Master-React_Node-frontend/static/media/logo.6a84051857c6f75daf9e44b64acdeae9.svg",
     "main.cd2e038f.css.map": "/drink_Master-React_Node-frontend/static/css/main.cd2e038f.css.map",
-    "main.fe8af1e5.js.map": "/drink_Master-React_Node-frontend/static/js/main.fe8af1e5.js.map",
-    "70.84f56ca2.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/70.84f56ca2.chunk.js.map",
+    "main.4920d6b7.js.map": "/drink_Master-React_Node-frontend/static/js/main.4920d6b7.js.map",
+    "874.ca732b90.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/874.ca732b90.chunk.js.map",
     "626.03006dbf.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/626.03006dbf.chunk.js.map",
     "586.0f49943b.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/586.0f49943b.chunk.js.map",
     "487.36e1d62c.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/487.36e1d62c.chunk.js.map",
@@ -56,6 +56,6 @@
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.fe8af1e5.js"
+    "static/js/main.4920d6b7.js"
   ]
 }
