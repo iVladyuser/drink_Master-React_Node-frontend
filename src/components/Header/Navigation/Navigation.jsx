@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 import  Logo  from '../../Logo/Logo';
 import ThemeSwitcher from '../Switch/ThemeSwitcher';
-import { NavigationContainer, NavigationContent, LogoSwitcherStyled, CloseButton, ThemeSwitcherCloseBtn, ButtonLink} from './Navigation.styled';
+import NavigationLink from '../Navigation/ButtonLink/ButtonLink'
+import { NavigationContainer, LogoSwitcherStyled, CloseButton, ThemeSwitcherCloseBtn,} from './Navigation.styled';
 
 const Navigation = ({ onClose, isVisible }) => {
     const [animationClass, setAnimationClass] = useState('');
@@ -25,17 +26,7 @@ const Navigation = ({ onClose, isVisible }) => {
           <CloseButton onClick={onClose} />
           </ThemeSwitcherCloseBtn>
           </LogoSwitcherStyled>
-            <NavigationContent>
-
-            <ButtonLink to="/home">Home</ButtonLink>
-            <ButtonLink to="/drinks">Drinks</ButtonLink>
-            <ButtonLink to="/add">Add Drink</ButtonLink>
-            <ButtonLink to="/my">My Drinks</ButtonLink>
-            <ButtonLink to="/favorites">Favorites</ButtonLink>
-
-
-
-            </NavigationContent>
+            <NavigationLink />
         </NavigationContainer>
     );
 };
