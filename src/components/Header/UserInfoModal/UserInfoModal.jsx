@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 
-const UserInfoModal = () => {
-    // окна с формой
-};
+// const UserInfoModal = () => {
+//     // окна с формой
+// };
 
-export default UserInfoModal;
+// export default UserInfoModal;
