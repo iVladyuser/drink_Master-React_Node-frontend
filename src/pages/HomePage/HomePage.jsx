@@ -1,12 +1,10 @@
-import { Header } from "components/Header/Header";
-import AddDrink from "components/HomePage/AddDrink/AddDrink";
+import AddDrink from 'components/HomePage/AddDrink/AddDrink';
 
 const HomePage = () => {
-    return (
-      <>
-          <Header />
-          <AddDrink />
-      </>
-    );
-  };
-  export default HomePage;
+  return (
+    <>
+      <AddDrink />
+    </>
+  );
+};
+export default HomePage;
