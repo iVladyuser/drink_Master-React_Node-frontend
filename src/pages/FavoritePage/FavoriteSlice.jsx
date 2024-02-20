@@ -1,36 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import drink1 from './not-found-img/Rectangle 40559.jpeg';
-import drink2 from './not-found-img/Rectangle 40559 (1).jpeg';
-
-// export const fetchFavorites = createAsyncThunk(
-//   'favorites/fetchFavorites',
-//   async () => {
-//     const response = await axios.get('/drinks/favorite');
-//     return response.data;
-//   }
-// );
 
 export const fetchFavorites = createAsyncThunk(
   'favorites/fetchFavorites',
-  async (_, { fulfillWithValue }) => {
-    const mockData = [
-      {
-        id: '1',
-        name: 'Mock Cocktail 1',
-        image: drink1,
-        isAlcoholic: true,
-        description: 'Description for Mock Cocktail 1',
-      },
-      {
-        id: '2',
-        name: 'Mock Cocktail 2',
-        image: drink2,
-        isAlcoholic: false,
-        description: 'Description for Mock Cocktail 2',
-      },
-    ];
-    return fulfillWithValue(mockData);
+  async () => {
+    const response = await axios.get('/drinks/favorite');
+    return response.data;
   }
 );
 
