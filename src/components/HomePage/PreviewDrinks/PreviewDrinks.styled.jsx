@@ -19,10 +19,9 @@ export const MainWrapper = styled.div`
   }
 `;
 
-export const CategoryDrinksDiv = styled.div``;
-
 export const DrinkCategoryTitle = styled.h2`
   font-weight: 600;
+  color: #F3F3F3;
   font-size: 28px;
   line-height: 1.14;
   margin-bottom: 24px;
@@ -72,7 +71,6 @@ export const CategoryDrinksTEXTDIV = styled.div`
 
 export const CategoryDrinksP = styled.p`
   font-family: Manrope;
-  color: #f3f3f3;
   color: #F3F3F3;
   font-size: 16px;
   font-weight: 500;
@@ -121,9 +119,7 @@ export const CategoryDrinkToDrink = styled(NavLink)`
 
   &:hover,
   &:focus {
-    color: #161F37;
-    background: 161F37;
-    border-color: #161F37;
+    color: F3F3F3;
   }
 
   @media screen and (min-width: 768px) {

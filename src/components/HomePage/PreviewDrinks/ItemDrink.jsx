@@ -1,4 +1,4 @@
-import DrinkPlaceholder from "images/heroImage/DrinkPlaceholder.jpg";
+import DrinkPlaceholder from 'images/heroImage/DrinkPlaceholder.jpg';
 
 import {
   CategoryDrinksItem,
@@ -8,19 +8,16 @@ import {
   CategoryDrinksLink,
 } from './PreviewDrinks.styled';
 
-export const ItemDrink = ({ item }) => {
-  const { _id: id, drink, drinkThumb } = item;
-
+export const ItemDrink = ({ drink }) => {
+  const imageSrc = drink.drinkThumb || DrinkPlaceholder;
   return (
-    <CategoryDrinksItem key={id}>
-      <CategoryDrinksIMG
-        src={drinkThumb || DrinkPlaceholder}
-        alt={drink}
-        placeholder={!drinkThumb ? 'true' : 'false'}
-      />
+    <CategoryDrinksItem key={drink._id}>
+      <CategoryDrinksIMG src={imageSrc} alt={drink.drink} />
       <CategoryDrinksTEXTDIV>
-        <CategoryDrinksP>{drink}</CategoryDrinksP>
-        <CategoryDrinksLink to={`/drinks/${id}`}>See more</CategoryDrinksLink>
+        <CategoryDrinksP>{drink.drink}</CategoryDrinksP>
+        <CategoryDrinksLink to={`../drink/${drink._id}`}>
+          See more
+        </CategoryDrinksLink>
       </CategoryDrinksTEXTDIV>
     </CategoryDrinksItem>
   );

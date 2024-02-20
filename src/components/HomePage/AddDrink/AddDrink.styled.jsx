@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom';
 
 export const SectionContainer = styled.section`
   padding-top: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 112px;
 
   @media screen and (min-width: 768px) {
     padding-top: 120px;
     padding-bottom: 124px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @media screen and (min-width: 1440px) {
     padding-top: 128px;
+    padding-left: 100px;
+    padding-right: 100px;
     padding-bottom: 160px;
   }
 `;
@@ -112,19 +118,3 @@ export const ImageWrap = styled.div`
   z-index: 2;
 `;
 
-export const ImageBgYellow = styled.div`
-  display: none;
-
-  @media screen and (min-width: 1440px) {
-    display: block;
-    position: absolute;
-    z-index: -1;
-    top: 110px;
-    left: -145px;
-    width: 387px;
-    height: 381px;
-    border-radius: 387px;
-    background: rgba(188, 230, 210, 0.3);
-    filter: blur(104.8543701171875px);
-  }
-`;
