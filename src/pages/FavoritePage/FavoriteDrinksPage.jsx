@@ -23,7 +23,7 @@ export const FavoriteDrinksPage = () => {
   const status = useSelector(selectFavoritesStatus);
   const error = useSelector(selectFavoritesError);
   const [currentPage, setCurrentPage] = useState(0);
-  const limit = 10;
+  const limit = 11;
 
   useEffect(() => {
     dispatch(fetchFavorites());
