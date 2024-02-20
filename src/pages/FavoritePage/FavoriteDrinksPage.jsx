@@ -13,9 +13,9 @@ import icon from './not-found-img/trash.svg';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import { Paginator } from '../../components/Pagination/Pagination';
+import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
 
 import {
-  Container,
   FavoritePageTitle,
   FavoriteDrinksList,
   FavoriteDrinksItemContainer,
@@ -51,56 +51,56 @@ export const FavoriteDrinksPage = () => {
 
   const totalCount = items.length;
 
-  if (status === 'loading') return <div>Loading...</div>;
-
-  if (error) return <ErrorPage />;
-
-  if (!items || items.length === 0) {
-    return (
-      <Container>
-        <FavoritePageTitle>Favorites</FavoritePageTitle>
-        <NoImg text="You haven't added any favorite cocktails yet." />
-      </Container>
-    );
-  }
-
   return (
     <>
       <Header />
-      <Container>
+      <UniversalContainer>
         <FavoritePageTitle>Favorites</FavoritePageTitle>
-        <FavoriteDrinksList>
-          {items.map(drink => (
-            <FavoriteDrinksItemContainer key={drink.id}>
-              <FavoriteDrinkImage src={drink.image} alt={drink.name} />
-              <FavoriteTitleWrap>
-                <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
-                <FavoriteDrinkInfo>
-                  {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
-                </FavoriteDrinkInfo>
-                <FavoriteDrinkDescription>
-                  {drink.description}
-                </FavoriteDrinkDescription>
-              </FavoriteTitleWrap>
-              <ButtonsContainer>
-                <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
-                <FavoriteRemoveButton
-                  onClick={() => handleRemoveClick(drink.id)}
-                >
-                  <img src={icon} alt="trash" style={{ maxWidth: '24px' }} />
-                </FavoriteRemoveButton>
-              </ButtonsContainer>
-            </FavoriteDrinksItemContainer>
-          ))}
-        </FavoriteDrinksList>
-      </Container>
-      <Paginator
-        limit={limit}
-        currentPage={currentPage}
-        items={totalCount}
-        handlePageChange={handlePageChange}
-        pageRangeDisplayed={9}
-      />
+        {status === 'loading' && <div>Loading...</div>}
+        {error && <ErrorPage />}
+        {items && items.length > 0 && (
+          <>
+            <FavoriteDrinksList>
+              {items.map(drink => (
+                <FavoriteDrinksItemContainer key={drink.id}>
+                  <FavoriteDrinkImage src={drink.image} alt={drink.name} />
+                  <FavoriteTitleWrap>
+                    <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
+                    <FavoriteDrinkInfo>
+                      {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
+                    </FavoriteDrinkInfo>
+                    <FavoriteDrinkDescription>
+                      {drink.description}
+                    </FavoriteDrinkDescription>
+                  </FavoriteTitleWrap>
+                  <ButtonsContainer>
+                    <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
+                    <FavoriteRemoveButton
+                      onClick={() => handleRemoveClick(drink.id)}
+                    >
+                      <img
+                        src={icon}
+                        alt="trash"
+                        style={{ maxWidth: '24px' }}
+                      />
+                    </FavoriteRemoveButton>
+                  </ButtonsContainer>
+                </FavoriteDrinksItemContainer>
+              ))}
+            </FavoriteDrinksList>
+            <Paginator
+              limit={limit}
+              currentPage={currentPage}
+              items={totalCount}
+              handlePageChange={handlePageChange}
+              pageRangeDisplayed={9}
+            />
+          </>
+        )}
+        {(!items || items.length === 0) && !error && (
+          <NoImg text="You haven't added any favorite cocktails yet." />
+        )}
+      </UniversalContainer>
       <Footer />
     </>
   );

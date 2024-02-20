@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 export const instance = axios.create({
   baseURL: 'https://drink-master-project-zi2s.onrender.com',
@@ -32,11 +31,7 @@ export const signUpThunk = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (error) {
-      if (error.status === 409) {
-        toast.error('User with this email is already registered');
-      } else {
-        return thunkApi.rejectWithValue(error.message);
-      }
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

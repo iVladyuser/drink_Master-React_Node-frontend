@@ -1,12 +1,5 @@
 import { styled } from 'styled-components';
-import footerMob1x from '../../images/footer/mobile/footer.jpg';
-import footerMob2x from '../../images/footer/mobile/footer@2x.jpg';
 
-import footerTab1x from '../../images/footer/tablet/footer.jpg';
-import footerTab2x from '../../images/footer/tablet/footer@2x.jpg';
-
-import footerDesk1x from '../../images/footer/computer/footer.jpg';
-import footerDesk2x from '../../images/footer/computer/footer@2x.jpg';
 
 export const FooterContainer = styled.footer`
   margin: 0 auto;
@@ -26,42 +19,9 @@ export const FooterContainer = styled.footer`
 `;
 export const FooterSection = styled.section`
  
+background:#0A0A11;
 
 
-
-  background-image:  url(${footerMob1x});
-background-repeat: no-repeat;
-margin: 0 auto;
-background-size: cover;
-
-
-
-@media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
-screen and (min-resolution: 192dpi) and (min-width: 320px),
-screen and (min-resolution: 2dppx) and (min-width: 320px) {
-        background-image:  url(${footerMob2x});
-        
-}
-
-@media screen and (min-width:768px) {
-        background-image:url(${footerTab1x});
-        height: 428px;
-}
-
-@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
-screen and (min-resolution: 192dpi) and (min-width: 768px),
-screen and (min-resolution: 2dppx) and (min-width: 768px) {
-        background-image: url(${footerTab2x});
-}
-@media screen and (min-width:1440px) {
-    background-image: url(${footerDesk1x});
-}
-
-@media screen and (min-device-pixel-ratio: 2) and (min-width: 1440px),
-screen and (min-resolution: 192dpi) and (min-width: 1440px),
-screen and (min-resolution: 2dppx) and (min-width: 1440px) {
-    background-image:url(${footerDesk2x});
-}
 
 `;
 export const FooterDiv = styled.div`
