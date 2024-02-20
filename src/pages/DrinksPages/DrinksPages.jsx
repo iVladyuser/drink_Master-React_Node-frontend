@@ -21,9 +21,11 @@ import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
 // import { Header } from '../../components/Header/Header';
 import { Formik } from 'formik';
+import { getMainPageAllDrinks } from 'services/fetchDrinks';
 //import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 //import { Paginator } from '../../components/Pagination/Pagination';
-import {getMainPageAllDrinks, selectAllDrinks, selectIsLoading, selectDrinksError} from '../../services/fetchDrinks'
+import {drinksSelector,selectIsLoading, selectError} from '../../redux/drink/drink.selectors';
+
 const initialValues = {
   category: 'All categories',
   ingredients: 'Ingredients',
@@ -31,10 +33,10 @@ const initialValues = {
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
-  const items = useSelector(selectAllDrinks);
+  const items = useSelector(drinksSelector);
   console.log(items);
   const status = useSelector(selectIsLoading);
-  const error = useSelector(selectDrinksError);
+  const error = useSelector(selectError);
   // const [currentPage, setCurrentPage] = useState(0);
   // const limit = 10;
 
