@@ -22,6 +22,9 @@ const RecipePreparation = ({ recipe }) => {
             <InstructionsTxt>{recipe.description}</InstructionsTxt>
             <InstructionsTxt>{recipe.instructions}</InstructionsTxt>
             <InstructionsTxt>
+              {recipe.instructionsDE ? recipe.instructionsDE : ''}
+            </InstructionsTxt>
+            <InstructionsTxt>
               {recipe.instructionsUK ? recipe.instructionsUK : ''}
             </InstructionsTxt>
           </InstructionsWrp>

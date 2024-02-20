@@ -1,5 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance } from './fetchAuth';
+import axios from 'axios';
+// import { instance } from './fetchAuth';
+
+const instance = axios.create({
+  baseURL: 'https://drink-master-project-zi2s.onrender.com',
+});
 
 export const getDrinkById = createAsyncThunk(
   'drinks/drinkId',
