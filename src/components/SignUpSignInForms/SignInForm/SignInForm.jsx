@@ -43,7 +43,7 @@ export const SignInForm = () => {
         email: '',
         password: '',
       }}
-      validation={validateFormSchema}
+      validationSchema={validateFormSchema}
       onSubmit={handleSubmit}
     >
       {({ values, errors }) => (
