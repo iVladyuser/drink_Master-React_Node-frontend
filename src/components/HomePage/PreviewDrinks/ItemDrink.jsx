@@ -12,7 +12,9 @@ export const ItemDrink = ({ drink }) => {
   const imageSrc = drink.drinkThumb || DrinkPlaceholder;
   return (
     <CategoryDrinksItem key={drink._id}>
-      <CategoryDrinksIMG src={imageSrc} alt={drink.drink} />
+      <CategoryDrinksIMG src={imageSrc} 
+      alt={drink.drink} 
+       />
       <CategoryDrinksTEXTDIV>
         <CategoryDrinksP>{drink.drink}</CategoryDrinksP>
         <CategoryDrinksLink to={`../drink/${drink._id}`}>

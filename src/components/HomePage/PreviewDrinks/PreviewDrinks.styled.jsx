@@ -44,12 +44,13 @@ export const CategoryDrinksLIST = styled.ul`
   }
 `;
 
-
+// Item 
 export const CategoryDrinksItem = styled.li`
   width: 100%;
 `;
 
 export const CategoryDrinksIMG = styled.img`
+
   width: 100%;
   height: 360px;
   border-radius: 8px;
