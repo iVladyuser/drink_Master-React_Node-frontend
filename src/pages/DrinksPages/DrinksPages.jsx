@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
+
 
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
@@ -90,10 +90,8 @@ const DrinksPage = () => {
           <ListCocktail>
           {items.map(drink => (
             <ItemCocktail
-            key={uuidv4()}
-              
-              drinkThumb={drink.ingredientThumb}
-              title={drink.title}
+            key={drink._id} 
+            drink={drink}
             />
           
           
