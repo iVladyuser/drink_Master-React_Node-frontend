@@ -27,6 +27,7 @@
     "react-icons": "^5.0.1",
     "react-paginate": "^8.2.0",
     "react-redux": "^9.0.4",
+    "react-responsive": "^9.0.2",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
