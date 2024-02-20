@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'https://drink-master-project-backend.onrender.com',
+  baseURL: 'https://drink-master-project-zi2s.onrender.com',
 });
 
 export const setToken = token => {
