@@ -1,13 +1,27 @@
 import React from 'react';
-import UserAvatar from './UserAvatar';
-import { UserProfileContainer } from './UserProfile.styled';
+import { useSelector } from 'react-redux';
 
-const UserProfile = ({ user }) => {
+const UserProfile = ({ openModal }) => {
+  const userData = useSelector(state => state.auth.userData);
+
   return (
-    <UserProfileContainer>
-      <h1>User Profile</h1>
-      <UserAvatar name={user.name} avatarUrl={user.avatarUrl} />
-    </UserProfileContainer>
+    <div
+      role="button"
+      tabIndex="0"
+      onClick={openModal}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          openModal();
+        }
+      }}
+    >
+      {userData && (
+        <div>
+          <h2 style={{ color: 'white' }}>{userData.name}</h2>
+          {/* <p>Email: {userData.email}</p> */}
+        </div>
+      )}
+    </div>
   );
 };
 

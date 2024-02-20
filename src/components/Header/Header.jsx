@@ -5,15 +5,24 @@ import NavigationLink from './Navigation/ButtonLink/ButtonLink';
 import Navigation from './Navigation/Navigation';
 import ThemeSwitcher from './Switch/ThemeSwitcher'
 import LogoutButton from './LogoutButton/LogoutButton'
+import UserProfile from './User/UserProfile'
+import UserProfileModal from './UserInfoModal/UserInfoModal'
 import { StyledGiHamburgerMenu } from './Header.styled';
 import useDeviceType from '../../hooks/useDeviceType';
 
 export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
   const { isDesktop } = useDeviceType();
 
-  const toggleModal = () => {
+  const toggleModal = (type) => {
     setIsModalOpen(!isModalOpen);
+    setModalType(type);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalType(null);
   };
 
   return (
@@ -21,9 +30,18 @@ export const Header = () => {
       <Logo />
       {isDesktop && <NavigationLink />}
       {isDesktop && <ThemeSwitcher />}
+      {isDesktop && (
+        <UserProfile openModal={() => toggleModal('UserProfileModal')} />
+      )}
+      {isModalOpen && modalType === 'UserProfileModal' && (
+        <UserProfileModal closeModal={closeModal} />
+      )}
       <LogoutButton />
-      <StyledGiHamburgerMenu onClick={toggleModal} />
-      <Navigation onClose={toggleModal} isVisible={isModalOpen} />
+      <StyledGiHamburgerMenu onClick={() => toggleModal('Navigation')} />
+      <Navigation
+        onClose={closeModal}
+        isVisible={isModalOpen && modalType === 'Navigation'}
+      />
     </HeaderContainer>
   );
 };

@@ -90,3 +90,20 @@ export const logOutThunk = createAsyncThunk(
 //     }
 //   }
 // );
+export const updateAvatarThunk = createAsyncThunk(
+  'users/avatar',
+  async ({ file, name }, thunkApi) => {
+    try {
+      const formData = new FormData();
+      formData.append('avatar', file);
+      formData.append('name', name);
+      const { data } = await instance.patch('/users/avatar', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      return data.avatar;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err.message);
+    }
+  }
+);
