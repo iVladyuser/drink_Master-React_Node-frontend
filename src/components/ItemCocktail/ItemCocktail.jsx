@@ -6,13 +6,13 @@ import {
   WraperForNameAndLink,
 } from './ItemCocktail.styled';
 
-function ItemCocktail({ id, drinkThumb, title }) {
+function ItemCocktail({ key, drinkThumb, title }) {
   return (
-    <LiForItem key={id}>
+    <LiForItem key={key}>
       <DrinkPicture src={drinkThumb} alt={title} />
       <WraperForNameAndLink>
         <DrinkName>{title}</DrinkName>
-        <DetailDrinkLink to={`/drink/${id}`}>See more</DetailDrinkLink>
+        <DetailDrinkLink to={`/drink/${key}`}>See more</DetailDrinkLink>
       </WraperForNameAndLink>
     </LiForItem>
   );

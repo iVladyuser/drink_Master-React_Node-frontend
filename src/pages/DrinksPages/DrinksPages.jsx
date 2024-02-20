@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { v4 as uuidv4 } from 'uuid';
 
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
@@ -21,7 +21,7 @@ import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
 // import { Header } from '../../components/Header/Header';
 import { Formik } from 'formik';
-import { getMainPageAllDrinks } from 'services/fetchDrinks';
+import { getMainPageAllDrinks } from 'services/fetchAllDrinks';
 //import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 //import { Paginator } from '../../components/Pagination/Pagination';
 import {drinksSelector,selectIsLoading, selectError} from '../../redux/drink/drink.selectors';
@@ -34,7 +34,7 @@ const initialValues = {
 const DrinksPage = () => {
   const dispatch = useDispatch();
   const items = useSelector(drinksSelector);
-  console.log(items);
+  console.log(items[0]);
   const status = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   // const [currentPage, setCurrentPage] = useState(0);
@@ -90,11 +90,13 @@ const DrinksPage = () => {
           <ListCocktail>
           {items.map(drink => (
             <ItemCocktail
-            id={drink._id}
+            key={uuidv4()}
               
               drinkThumb={drink.ingredientThumb}
               title={drink.title}
             />
+          
+          
             ))}
           </ListCocktail>
           {/* <Paginator
