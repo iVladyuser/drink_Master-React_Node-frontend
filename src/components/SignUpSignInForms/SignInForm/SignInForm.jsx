@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { signInThunk } from '../../../services/fetchAuth';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { Form, FormField, Button, SignInLink } from '../SignUpForm/Sign.styled';
 import { Formik } from 'formik';
@@ -19,7 +19,7 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = ({ email, password }) => {
+  const handleSubmit = values => {
     // e.preventDefault();
 
     // const email = e.currentTarget.elements.userEmail.value;
@@ -27,7 +27,17 @@ export const SignInForm = () => {
 
     // console.log('email:', email);
     // console.log('password:', password);
-    dispatch(signInThunk({ email, password }));
+    dispatch(signInThunk(values))
+      .unwrap()
+      .then(res => {
+        if (res && res.status === 201) {
+          toast.success('Registration successful');
+        }
+      })
+      .catch(errorStatus => {
+        if (errorStatus === 409) toast.error('User already exists...');
+        else toast.error('Something went wrong... Try again...');
+      });
   };
   return (
     <Formik
@@ -43,16 +53,12 @@ export const SignInForm = () => {
           <>
             <FormField
               type="email"
-              name="userEmail"
+              name="email"
               placeholder="Email"
               errors={errors}
             />
 
-            <FormField
-              name="userPassword"
-              placeholder="Password"
-              errors={errors}
-            />
+            <FormField name="password" placeholder="Password" errors={errors} />
           </>
 
           <Button type="submit">Sign In</Button>
