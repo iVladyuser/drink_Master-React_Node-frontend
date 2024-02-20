@@ -10,8 +10,7 @@ import {
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
 import icon from './not-found-img/trash.svg';
-import { Header } from '../../components/Header/Header';
-import { Footer } from '../../components/Footer/Footer';
+
 import { Paginator } from '../../components/Pagination/Pagination';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
 
@@ -53,7 +52,6 @@ export const FavoriteDrinksPage = () => {
 
   return (
     <>
-      <Header />
       <UniversalContainer>
         <FavoritePageTitle>Favorites</FavoritePageTitle>
         {status === 'loading' && <div>Loading...</div>}
@@ -101,7 +99,6 @@ export const FavoriteDrinksPage = () => {
           <NoImg text="You haven't added any favorite cocktails yet." />
         )}
       </UniversalContainer>
-      <Footer />
     </>
   );
 };

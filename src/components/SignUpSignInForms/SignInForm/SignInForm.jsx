@@ -2,14 +2,10 @@
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { signInThunk } from '../../../services/fetchAuth';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
-import {
-  AuthForm,
-  Input,
-  Button,
-  SignInLink,
-} from '../SignUpForm/SignUp.styled';
+import { Form, FormField, Button, SignInLink } from '../SignUpForm/Sign.styled';
+import { Formik } from 'formik';
 
 const validateFormSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,26 +19,50 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = values => {
+    // e.preventDefault();
 
-    const email = e.currentTarget.elements.userEmail.value;
-    const password = e.currentTarget.elements.userPassword.value;
+    // const email = e.currentTarget.elements.userEmail.value;
+    // const password = e.currentTarget.elements.userPassword.value;
 
-    console.log('email:', email);
-    console.log('password:', password);
-    dispatch(signInThunk({ email, password }));
+    // console.log('email:', email);
+    // console.log('password:', password);
+    const { email, password } = values;
+    dispatch(signInThunk({ email, password }))
+      .unwrap()
+      .then(() => {
+        toast.success('Registration successful');
+      })
+      .catch(() => {
+        toast.error('Something went wrong... Try again...');
+      });
   };
   return (
-    <AuthForm validation={validateFormSchema} onSubmit={handleSubmit}>
-      <>
-        <Input type="email" name="userEmail" placeholder="Email" required />
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+      validation={validateFormSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ values, errors }) => (
+        <Form>
+          <>
+            <FormField
+              type="email"
+              name="email"
+              placeholder="Email"
+              errors={errors}
+            />
 
-        <Input name="userPassword" placeholder="Password" required />
-      </>
+            <FormField name="password" placeholder="Password" errors={errors} />
+          </>
 
-      <Button type="submit">Sign In</Button>
-      <SignInLink to="/signup">Sign Up</SignInLink>
-    </AuthForm>
+          <Button type="submit">Sign In</Button>
+          <SignInLink to="/signup">Sign Up</SignInLink>
+        </Form>
+      )}
+    </Formik>
   );
 };
