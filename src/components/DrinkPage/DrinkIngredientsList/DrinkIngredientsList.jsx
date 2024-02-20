@@ -1,7 +1,9 @@
-// import React, { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 // import { getIngredients } from '../../../services/fetchDrinkById&Ingredients';
-// import { selectIngredients } from '../../../redux/drink/drink.selectors';
+import { getDrinkById } from '../../../services/fetchDrinkById&Ingredients';
+import { selectDrinkById } from '../../../redux/drink/drink.selectors';
 import {
   IngredientsWraper,
   IngredientsSectTitle,
@@ -16,15 +18,20 @@ import {
 } from './DrinkIngredientsList.styled';
 import IngredientPlaceholder from '../../../images/drinkPage/IngredientPlaceholder.jpg';
 
-const DrinkIngredientsList = ({ fullRecipe }) => {
-  // const dispatch = useDispatch();
+const DrinkIngredientsList = () => {
+  const drink = useSelector(selectDrinkById);
+  const dispatch = useDispatch();
+  const { drinkId } = useParams();
 
-  // useEffect(() => {
-  //   dispatch(getIngredients());
-  // }, [dispatch]);
+  console.log('drinkId: ', drinkId);
 
+  useEffect(() => {
+    dispatch(getDrinkById(drinkId));
+  }, [dispatch, drinkId]);
+
+  console.log('drink: ', drink);
   // const ingredients = useSelector(selectIngredients);
-  console.log('fullRecipe: ', fullRecipe);
+  // console.log('fullRecipe: ', fullRecipe);
 
   // let fullRecipe = [];
 
@@ -57,11 +64,11 @@ const DrinkIngredientsList = ({ fullRecipe }) => {
   return (
     <IngredientsWraper>
       <IngredientsSectTitle>Ingredients</IngredientsSectTitle>
-      {fullRecipe.length !== 0 ? (
+      {drink.ingredients.length !== 0 ? (
         <IngredientsList>
-          {fullRecipe.map(
+          {drink.ingredients.map(
             ({ title, measure, _id, ingredientThumb: { ingredientThumb } }) => (
-              <IngredientsItem key={JSON.stringify(_id)}>
+              <IngredientsItem key={_id}>
                 <IngredientsImgWrp>
                   <IngredientsItemImg
                     src={
