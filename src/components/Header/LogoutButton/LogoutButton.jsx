@@ -1,14 +1,29 @@
 import React from 'react';
+import axios from 'axios';
+import { StyledButtonOut } from './LogoutButton.styled';
+
+const api = axios.create({
+    baseURL: 'https://drink-master-project-zi2s.onrender.com'
+});
 
 const LogoutButton = () => {
-    const handleLogout = () => {
-        // выход пользователя из аккаунта
+    const handleLogout = async () => {
+        try {
+            
+            await api.post('/user/logout');
+
+            localStorage.removeItem('token');
+            
+            window.location.href = '/welcome';
+        } catch (error) {
+            console.error('Ошибка выхода пользователя:', error);
+        }
     };
 
     return (
-        <button onClick={handleLogout}>
+        <StyledButtonOut onClick={handleLogout}>
             Logout
-        </button>
+        </StyledButtonOut>
     );
 };
 

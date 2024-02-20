@@ -2,11 +2,12 @@ import { React } from 'react';
 
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { signUpThunk } from '../../../services/fetchAuth';
 // import StyledDatePicker from '../../DatePicker/DatePicker';
 
-import { AuthForm, Input, Button, SignInLink } from './SignUp.styled';
+import { Form, FormField, Button, SignInLink } from './Sign.styled';
+import { Formik } from 'formik';
 
 const validateFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,26 +25,49 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = values => {
+    // e.preventDefault();
 
-    const name = e.currentTarget.elements.userName.value;
-    // const dateBirth = e.currentTarget.elements.dateofBirth.value;
-    const email = e.currentTarget.elements.userEmail.value;
-    const password = e.currentTarget.elements.userPassword.value;
-    console.log('name:', name);
-    // console.log('date:', dateBirth);
-    console.log('email:', email);
-    console.log('password:', password);
-
-    dispatch(signUpThunk({ name, email, password }));
+    // const name = e.currentTarget.elements.userName.value;
+    // // const dateBirth = e.currentTarget.elements.dateofBirth.value;
+    // const email = e.currentTarget.elements.userEmail.value;
+    // const password = e.currentTarget.elements.userPassword.value;
+    // console.log('name:', name);
+    // // console.log('date:', dateBirth);
+    // console.log('email:', email);
+    // console.log('password:', password);
+    const { name, email, password } = values;
+    dispatch(signUpThunk({ name, email, password }))
+      .unwrap()
+      .then(() => {
+        toast.success('Registration successful');
+      })
+      .catch(() => {
+        toast.error('Something went wrong... Try again...');
+      });
   };
   return (
-    <AuthForm onSubmit={handleSubmit} validation={validateFormSchema}>
-      <>
-        <Input type="text" name="userName" placeholder="Name" required />
+    <Formik
+      initialValues={{
+        name: '',
+        email: '',
+        password: '',
+      }}
+      validation={validateFormSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ values, errors }) => (
+        <Form>
+          <>
+            <FormField
+              type="text"
+              name="name"
+              placeholder="Name"
+              autoComplete="off"
+              errors={errors}
+            />
 
-        {/* <div>
+            {/* <div>
               <StyledDatePicker
                 name="dateofBirth"
                 type="text"
@@ -52,17 +76,27 @@ export const SignUpForm = () => {
               />
             </div> */}
 
-        <Input type="email" name="userEmail" placeholder="Email" required />
+            <FormField
+              type="email"
+              name="email"
+              placeholder="Email"
+              autoComplete="off"
+              errors={errors}
+            />
 
-        <Input
-          type="password"
-          name="userPassword"
-          placeholder="Password"
-          required
-        />
-      </>
-      <Button type="submit">Sign Up</Button>
-      <SignInLink to="/signin">Sign In</SignInLink>
-    </AuthForm>
+            <FormField
+              type="password"
+              name="password"
+              value={values.password}
+              placeholder="Password"
+              autoComplete="off"
+              errors={errors}
+            />
+          </>
+          <Button type="submit">Sign Up</Button>
+          <SignInLink to="/signin">Sign In</SignInLink>
+        </Form>
+      )}
+    </Formik>
   );
 };

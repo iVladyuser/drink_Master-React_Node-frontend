@@ -9,8 +9,9 @@ import {
 } from './FavoriteSlice';
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
-import { Header } from '../../components/Header/Header';
-import { Footer } from '../../components/Footer/Footer';
+
+import icon from './not-found-img/trash.svg';
+
 import { Paginator } from '../../components/Pagination/Pagination';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
 import { PageTitle } from '../../pages/FavoritePage/PageTitle/PageTitle';
@@ -40,7 +41,6 @@ export const FavoriteDrinksPage = () => {
 
   return (
     <>
-      <Header />
       <UniversalContainer>
         <PageTitle title="Favorites" />
         {status === 'loading' && <div>Loading...</div>}
@@ -58,7 +58,6 @@ export const FavoriteDrinksPage = () => {
           pageRangeDisplayed={5}
         />
       </UniversalContainer>
-      <Footer />
     </>
   );
 };

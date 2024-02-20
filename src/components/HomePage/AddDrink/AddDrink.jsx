@@ -1,4 +1,4 @@
-import { Container } from 'styles/GlobalStyle';
+
 import {
   Title,
   ImageWrap,
@@ -19,7 +19,7 @@ import heroImgdescL from 'images/heroImage/hero-img-desc-2x.png';
 export default function AddDrink() {
   return (
     <SectionContainer>
-      <Container>
+    
         <SectionWrap>
           <MainWrap>
             <Title>Craft Your Perfect Drink with Drink Master</Title>
@@ -50,7 +50,7 @@ export default function AddDrink() {
             </picture>
           </ImageWrap>
         </SectionWrap>
-      </Container>
+
     </SectionContainer>
   );
 }
