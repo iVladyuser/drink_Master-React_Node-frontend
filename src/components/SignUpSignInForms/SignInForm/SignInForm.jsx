@@ -27,16 +27,14 @@ export const SignInForm = () => {
 
     // console.log('email:', email);
     // console.log('password:', password);
-    dispatch(signInThunk(values))
+    const { email, password } = values;
+    dispatch(signInThunk({ email, password }))
       .unwrap()
-      .then(res => {
-        if (res && res.status === 201) {
-          toast.success('Registration successful');
-        }
+      .then(() => {
+        toast.success('Registration successful');
       })
-      .catch(errorStatus => {
-        if (errorStatus === 409) toast.error('User already exists...');
-        else toast.error('Something went wrong... Try again...');
+      .catch(() => {
+        toast.error('Something went wrong... Try again...');
       });
   };
   return (
@@ -48,7 +46,7 @@ export const SignInForm = () => {
       validation={validateFormSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors }) => (
+      {({ values, errors }) => (
         <Form>
           <>
             <FormField

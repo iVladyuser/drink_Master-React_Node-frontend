@@ -25,7 +25,7 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = ({ name, email, password }) => {
+  const handleSubmit = values => {
     // e.preventDefault();
 
     // const name = e.currentTarget.elements.userName.value;
@@ -36,17 +36,14 @@ export const SignUpForm = () => {
     // // console.log('date:', dateBirth);
     // console.log('email:', email);
     // console.log('password:', password);
-
+    const { name, email, password } = values;
     dispatch(signUpThunk({ name, email, password }))
       .unwrap()
-      .then(res => {
-        if (res && res.status === 201) {
-          toast.success('Registration successful');
-        }
+      .then(() => {
+        toast.success('Registration successful');
       })
-      .catch(errorStatus => {
-        if (errorStatus === 409) toast.error('User already exists...');
-        else toast.error('Something went wrong... Try again...');
+      .catch(() => {
+        toast.error('Something went wrong... Try again...');
       });
   };
   return (
@@ -59,7 +56,7 @@ export const SignUpForm = () => {
       validation={validateFormSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors }) => (
+      {({ values, errors }) => (
         <Form>
           <>
             <FormField
@@ -90,6 +87,7 @@ export const SignUpForm = () => {
             <FormField
               type="password"
               name="password"
+              value={values.password}
               placeholder="Password"
               autoComplete="off"
               errors={errors}
