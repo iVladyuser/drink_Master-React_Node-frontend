@@ -88,12 +88,10 @@ const DrinksPage = () => {
           <ListCocktail>
           {items.map(drink => (
             <ItemCocktail
-            key={drink._id}
+            id={drink._id}
               
-              drinkThumb={
-                drink.drinkThumb
-              }
-              drink={drink.title}
+              drinkThumb={drink.ingredientThumb}
+              title={drink.title}
             />
             ))}
           </ListCocktail>
