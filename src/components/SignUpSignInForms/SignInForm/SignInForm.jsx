@@ -4,12 +4,8 @@ import * as Yup from 'yup';
 import { signInThunk } from '../../../services/fetchAuth';
 // import { toast } from 'react-toastify';
 
-import {
-  AuthForm,
-  Input,
-  Button,
-  SignInLink,
-} from '../SignUpForm/SignUp.styled';
+import { Form, FormField, Button, SignInLink } from '../SignUpForm/Sign.styled';
+import { Formik } from 'formik';
 
 const validateFormSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,26 +19,46 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = ({ email, password }) => {
+    // e.preventDefault();
 
-    const email = e.currentTarget.elements.userEmail.value;
-    const password = e.currentTarget.elements.userPassword.value;
+    // const email = e.currentTarget.elements.userEmail.value;
+    // const password = e.currentTarget.elements.userPassword.value;
 
-    console.log('email:', email);
-    console.log('password:', password);
+    // console.log('email:', email);
+    // console.log('password:', password);
     dispatch(signInThunk({ email, password }));
   };
   return (
-    <AuthForm validation={validateFormSchema} onSubmit={handleSubmit}>
-      <>
-        <Input type="email" name="userEmail" placeholder="Email" required />
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+      validation={validateFormSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ errors }) => (
+        <Form>
+          <>
+            <FormField
+              type="email"
+              name="userEmail"
+              placeholder="Email"
+              errors={errors}
+            />
 
-        <Input name="userPassword" placeholder="Password" required />
-      </>
+            <FormField
+              name="userPassword"
+              placeholder="Password"
+              errors={errors}
+            />
+          </>
 
-      <Button type="submit">Sign In</Button>
-      <SignInLink to="/signup">Sign Up</SignInLink>
-    </AuthForm>
+          <Button type="submit">Sign In</Button>
+          <SignInLink to="/signup">Sign Up</SignInLink>
+        </Form>
+      )}
+    </Formik>
   );
 };

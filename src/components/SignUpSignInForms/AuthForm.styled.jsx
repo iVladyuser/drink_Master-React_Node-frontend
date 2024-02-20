@@ -48,7 +48,7 @@ export const AuthSection = styled.section`
     background: url(${welcomeElipseTopDesk}), url(${welcomeElipseBottomDesk}),
       url(${welcomeDesk1x});
     background-repeat: no-repeat;
-    background-size: 50%, 25%, 60%;
+    background-size: 50%, 25%, contain;
     background-position: top left, bottom right, center right;
     background-color: #07060b;
   }
