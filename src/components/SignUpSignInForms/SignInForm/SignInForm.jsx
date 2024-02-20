@@ -1,7 +1,7 @@
 // import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-
+import { signInThunk } from '../../../services/fetchAuth';
 // import { toast } from 'react-toastify';
 
 import {
@@ -22,6 +22,7 @@ const validateFormSchema = Yup.object().shape({
 });
 
 export const SignInForm = () => {
+  const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -30,9 +31,10 @@ export const SignInForm = () => {
 
     console.log('email:', email);
     console.log('password:', password);
+    dispatch(signInThunk({ email, password }));
   };
   return (
-    <AuthForm validationSchema={validateFormSchema} onSubmit={handleSubmit}>
+    <AuthForm validation={validateFormSchema} onSubmit={handleSubmit}>
       <>
         <Input type="email" name="userEmail" placeholder="Email" required />
 

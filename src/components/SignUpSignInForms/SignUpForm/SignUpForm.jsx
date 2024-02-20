@@ -2,8 +2,8 @@ import { React } from 'react';
 
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { signUp } from '../../../redux/auth/operations';
+// import { toast } from 'react-toastify';
+import { signUpThunk } from '../../../services/fetchAuth';
 // import StyledDatePicker from '../../DatePicker/DatePicker';
 
 import { AuthForm, Input, Button, SignInLink } from './SignUp.styled';
@@ -36,13 +36,10 @@ export const SignUpForm = () => {
     console.log('email:', email);
     console.log('password:', password);
 
-    dispatch(signUp({ name, email, password }))
-      .unwrap()
-      .then(() => toast.success('Registration successfully'))
-      .catch(() => toast.error('Something went wrong. Try again'));
+    dispatch(signUpThunk({ name, email, password }));
   };
   return (
-    <AuthForm validationSchema={validateFormSchema} onSubmit={handleSubmit}>
+    <AuthForm onSubmit={handleSubmit} validation={validateFormSchema}>
       <>
         <Input type="text" name="userName" placeholder="Name" required />
 

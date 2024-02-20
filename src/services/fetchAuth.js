@@ -9,11 +9,11 @@ export const setToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const loginThunk = createAsyncThunk(
-  'auth/login',
+export const signInThunk = createAsyncThunk(
+  'auth/signin',
   async (formData, thunkApi) => {
     try {
-      const { data } = await instance.post('/users/login', formData);
+      const { data } = await instance.post('/auth/signin', formData);
       setToken(data.token);
       return data;
     } catch (err) {
@@ -22,17 +22,16 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
-export const registerThunk = createAsyncThunk(
-  'auth/register',
+export const signUpThunk = createAsyncThunk(
+  'auth/signup',
   async (formData, thunkApi) => {
     try {
-      const { data } = await instance.post('/users/signup', formData);
-
+      const { data } = await instance.post('/auth/signup', formData);
+      console.log('data:', data);
       setToken(data.token);
-      console.log(data);
       return data;
-    } catch (err) {
-      return thunkApi.rejectWithValue(err.message);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -61,32 +60,32 @@ export const refreshThunk = createAsyncThunk(
   }
 );
 
-export const logOutThunk = createAsyncThunk(
-  'auth/logOut',
-  async (_, thunkApi) => {
-    try {
-      const { data } = await instance.post('/users/logout');
+// export const logOutThunk = createAsyncThunk(
+//   'auth/logOut',
+//   async (_, thunkApi) => {
+//     try {
+//       const { data } = await instance.post('/users/logout');
 
-      return data;
-    } catch (err) {
-      return thunkApi.rejectWithValue(err.message);
-    }
-  }
-);
+//       return data;
+//     } catch (err) {
+//       return thunkApi.rejectWithValue(err.message);
+//     }
+//   }
+// );
 
-export const updateAvatarThunk = createAsyncThunk(
-  'auth/updateAvatarThunk',
-  async (file, thunkApi) => {
-    try {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      const { data } = await instance.post('/users/avatar', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+// export const updateAvatarThunk = createAsyncThunk(
+//   'auth/updateAvatarThunk',
+//   async (file, thunkApi) => {
+//     try {
+//       const formData = new FormData();
+//       formData.append('avatar', file);
+//       const { data } = await instance.post('/users/avatar', formData, {
+//         headers: { 'Content-Type': 'multipart/form-data' },
+//       });
 
-      return data.avatar;
-    } catch (err) {
-      return thunkApi.rejectWithValue(err.message);
-    }
-  }
-);
+//       return data.avatar;
+//     } catch (err) {
+//       return thunkApi.rejectWithValue(err.message);
+//     }
+//   }
+// );
