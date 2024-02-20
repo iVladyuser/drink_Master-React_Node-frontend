@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import favoritesReducer from '../pages/FavoritePage/FavoriteSlice';
+import myDrinksReducer from '../pages/MyDrinksPage/MyDrinksSlice';
+
 import {
   persistStore,
   persistReducer,
@@ -25,7 +27,11 @@ export const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     favorites: favoritesReducer,
     drink: drinkReducer,
+
+    myDrinks: myDrinksReducer,
+
     alldrinks: allDrinksReduser,
+
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
