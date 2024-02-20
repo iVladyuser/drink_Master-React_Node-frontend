@@ -64,7 +64,7 @@ export const SignUpForm = () => {
           <>
             <FormField
               type="text"
-              name="userName"
+              name="name"
               placeholder="Name"
               autoComplete="off"
               errors={errors}
@@ -81,7 +81,7 @@ export const SignUpForm = () => {
 
             <FormField
               type="email"
-              name="userEmail"
+              name="email"
               placeholder="Email"
               autoComplete="off"
               errors={errors}
@@ -89,7 +89,7 @@ export const SignUpForm = () => {
 
             <FormField
               type="password"
-              name="userPassword"
+              name="password"
               placeholder="Password"
               autoComplete="off"
               errors={errors}
