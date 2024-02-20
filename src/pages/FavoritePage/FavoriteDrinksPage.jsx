@@ -10,8 +10,6 @@ import {
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
 
-import icon from './not-found-img/trash.svg';
-
 import { Paginator } from '../../components/Pagination/Pagination';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
 import { PageTitle } from '../../pages/FavoritePage/PageTitle/PageTitle';
