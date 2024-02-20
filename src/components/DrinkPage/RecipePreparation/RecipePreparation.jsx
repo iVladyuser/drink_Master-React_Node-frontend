@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+// import { getIngredients } from '../../../services/fetchDrinkById&Ingredients';
+import { getDrinkById } from '../../../services/fetchDrinkById&Ingredients';
+import { selectDrinkById } from '../../../redux/drink/drink.selectors';
 import {
   RecipeSectWraper,
   RecipeSectTitle,
@@ -9,7 +14,19 @@ import {
 } from './RecipePreparation.styled';
 import InstructionImg from '../InstructionsImg';
 
-const RecipePreparation = ({ recipe }) => {
+const RecipePreparation = () => {
+  const drink = useSelector(selectDrinkById);
+  const dispatch = useDispatch();
+  const { drinkId } = useParams();
+
+  console.log('drinkId: ', drinkId);
+
+  useEffect(() => {
+    dispatch(getDrinkById(drinkId));
+  }, [dispatch, drinkId]);
+
+  console.log('drink: ', drink);
+
   return (
     <RecipeSectWraper>
       <RecipeSectTitle>Recipe Preparation</RecipeSectTitle>
@@ -17,15 +34,15 @@ const RecipePreparation = ({ recipe }) => {
         <InstructionImgWrp>
           <InstructionImg />
         </InstructionImgWrp>
-        {recipe ? (
+        {drink ? (
           <InstructionsWrp>
-            <InstructionsTxt>{recipe.description}</InstructionsTxt>
-            <InstructionsTxt>{recipe.instructions}</InstructionsTxt>
+            <InstructionsTxt>{drink.description}</InstructionsTxt>
+            <InstructionsTxt>{drink.instructions}</InstructionsTxt>
             <InstructionsTxt>
-              {recipe.instructionsDE ? recipe.instructionsDE : ''}
+              {drink.instructionsDE ? drink.instructionsDE : ''}
             </InstructionsTxt>
             <InstructionsTxt>
-              {recipe.instructionsUK ? recipe.instructionsUK : ''}
+              {drink.instructionsUK ? drink.instructionsUK : ''}
             </InstructionsTxt>
           </InstructionsWrp>
         ) : (
