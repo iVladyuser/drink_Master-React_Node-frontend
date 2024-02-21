@@ -8,8 +8,6 @@ import {
 } from '../MyDrinksPage/MyDrinksSlice';
 import { NoImg } from '../../pages/FavoritePage/NoImg';
 import ErrorPage from '../../pages/FavoritePage/ErrorPage';
-import { Header } from '../../components/Header/Header';
-import { Footer } from '../../components/Footer/Footer';
 import { Paginator } from '../../components/Pagination/Pagination';
 import { PageTitle } from '../../pages/FavoritePage/PageTitle/PageTitle';
 import { DrinksList } from '../../pages/FavoritePage/DrinksList/DrinksList';
@@ -35,7 +33,6 @@ export const MyDrinksPage = () => {
 
   return (
     <>
-      <Header />
       <UniversalContainer>
         <PageTitle title="My Drinks" />
         {status === 'loading' && <div>Loading...</div>}
@@ -53,7 +50,6 @@ export const MyDrinksPage = () => {
           pageRangeDisplayed={5}
         />
       </UniversalContainer>
-      <Footer />
     </>
   );
 };
