@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TitlePage from '../../components/TitlePage/TitlePage';
@@ -15,13 +15,12 @@ import {
   ContainerForPage,
   ListCocktail,
 } from './DrinksPages.styled';
-//import {ItemDrink} from '../../components/HomePage/PreviewDrinks/ItemDrink'
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
 import { Formik } from 'formik';
 import { getMainPageAllDrinks } from 'services/fetchAllDrinks';
 import SvgGeneratorSvgSelector from '../../components/SvgComponents';
-//import { Paginator } from '../../components/Pagination/Pagination';
+import { Paginator } from '../../components/Pagination/Pagination';
 import {
   selectAllDrinks,
   selectIsLoading,
@@ -39,18 +38,18 @@ const DrinksPage = () => {
   console.log('Vladuser', items);
   const status = useSelector(selectIsLoading);
   const error = useSelector(selectDrinksError);
-  // const [currentPage, setCurrentPage] = useState(0);
-  // const limit = 10;
+  const [currentPage, setCurrentPage] = useState(0);
+  const limit = 11;
 
   useEffect(() => {
     dispatch(getMainPageAllDrinks());
   }, [dispatch]);
 
-  // const handlePageChange = selectedPage => {
-  //   setCurrentPage(selectedPage);
-  // }
+  const handlePageChange = selectedPage => {
+    setCurrentPage(selectedPage);
+  }
 
-  // const totalCount = items.length;
+  const totalCount = items.length;
 
   if (status === 'loading') return <div>Loading...</div>;
 
@@ -93,13 +92,13 @@ const DrinksPage = () => {
               <ItemCocktail drink={drink} />
             ))}
           </ListCocktail>
-          {/* <Paginator
+           <Paginator
         limit={limit}
         currentPage={currentPage}
         items={totalCount}
         handlePageChange={handlePageChange}
-        pageRangeDisplayed={9}
-      /> */}
+        pageRangeDisplayed={5}
+      /> 
         </Container>
       </ContainerForPage>
     </DrinksPageStyle>
