@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axiosInstance from './axiosConfig';
 
 export const fetchFavorites = createAsyncThunk(
   'favorites/fetchFavorites',
   async () => {
-    const response = await axios.get('/drinks/favorite');
+    const response = await axiosInstance.get('/drinks/favorite');
     return response.data;
   }
 );
@@ -13,7 +13,9 @@ export const addFavorite = createAsyncThunk(
   'favorites/addFavorite',
   async (drinkId, thunkAPI) => {
     try {
-      const response = await axios.post(`/drinks/favorite/add/${drinkId}`);
+      const response = await axiosInstance.post(
+        `/drinks/favorite/add/${drinkId}`
+      );
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
@@ -25,7 +27,9 @@ export const deleteFavorite = createAsyncThunk(
   'favorites/deleteFavorite',
   async (drinkId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/drinks/favorite/remove/${drinkId}`);
+      const response = await axiosInstance.delete(
+        `/drinks/favorite/remove/${drinkId}`
+      );
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
