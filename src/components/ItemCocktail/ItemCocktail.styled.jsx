@@ -17,9 +17,14 @@ export const DrinkPicture = styled.img`
   width: 335px;
   height: 360px;
 
+  @media screen and (max-width: 320px) {
+  width: 280px;
+  height: 310px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 342px;
-    height: 398px;
+    height: 360px;
   }
   @media screen and (min-width: 1440px) {
     
@@ -41,8 +46,7 @@ export const DrinkName = styled.h3`
 `;
 export const LiForItem = styled.li`
   list-style-type: none;
-  width: 335px;
-  margin-top: 40px;
+  
   @media screen and (min-width: 768px) {
     width: 342px;
     margin-top: 0;
