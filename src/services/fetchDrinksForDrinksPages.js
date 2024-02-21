@@ -4,14 +4,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getMainPageAllDrinks = createAsyncThunk(
   'drinks/getAll',
-  async ({ page, limit }, { rejectWithValue }) => {
+  async ({ page, limit }, thunkAPI) => {
     try {
-      const response = await instance.get('/drinks/mainpage', {
-        params: { page, limit },
-      });
+      const response = await instance.get(
+        `/drinks/mainpage?page=${page}&limit=${limit}`
+      );
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
