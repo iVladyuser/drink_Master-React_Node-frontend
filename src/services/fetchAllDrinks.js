@@ -1,36 +1,18 @@
 import { createSlice, isAnyOf, createAsyncThunk, isRejectedWithValue } from '@reduxjs/toolkit';
+import { instance } from './fetchAuth';
 
-import axios from 'axios';
-
-
-
-//axios.defaults.baseURL = 'https://drink-master-project-zi2s.onrender.com';
-export const getMainPageAllDrinks = createAsyncThunk(
+ export const getMainPageAllDrinks = createAsyncThunk(
     'drinks/getAll',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get('https://drink-master-project-zi2s.onrender.com/drinks/mainpage');
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-// import { instance } from './fetchAuth';
-
-//  export const getMainPageAllDrinks = createAsyncThunk(
-//     'drinks/getAll',
-//     async (_, thunkAPI) => {
-//       try {
-//         const response = await instance.get('/drinks/main-page');
-//         console.log(response.data);
-//         return response.data;
-//       } catch (error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//       }
-//     },
-//   );
+    async (_, thunkAPI) => {
+      try {
+        const response = await instance.get('/drinks/main-page');
+        console.log("Vlad", response.data);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    },
+  );
 
 
   const drinksInitialState = {
@@ -68,12 +50,6 @@ export const getMainPageAllDrinks = createAsyncThunk(
       .addCase(getMainPageAllDrinks.fulfilled, (state, action) => {
         state.items = action.payload;
       })
-      // .addCase(addContact.fulfilled, (state, action) => {
-      //   state.items.push(action.payload);
-      // })
-      // .addCase(deleteContact.fulfilled, (state, action) => {
-      //   state.items = state.items.filter(item => item.id !== action.payload.id);
-      // })
       .addMatcher(getActions('pending'), handlePending)
       .addMatcher(getActions('fulfilled'), fulfilledReducer)
       .addMatcher(getActions('rejected'), handleRejected),
@@ -85,22 +61,3 @@ export const getMainPageAllDrinks = createAsyncThunk(
   
   export const allDrinksReduser = drinksSlice.reducer;
   
-
-//   import { useEffect, useState } from 'react';
-// import axios from 'axios'
-// const src =  'https://drink-master-project-zi2s.onrender.com/drinks/mainpage'
-// const DrinksPage = () => {
-// const[ittems, setittems] = useState([])
-// useEffect(() => {
-//   axios
-//   .get(src)
-//   .then(data=>{
-//     console.log(data.data);
-//   })
-// },[]);
-// return (
-//   <div></div>
-// )
-
-// };
-// export default DrinksPage;

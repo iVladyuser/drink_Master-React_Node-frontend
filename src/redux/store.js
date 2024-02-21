@@ -16,7 +16,7 @@ import {
 import { authReducer } from './auth/slice';
 import { drinkReducer } from './drink/slice';
 import { drinksReducer } from './drink/home_slice';
-
+import { allDrinksReduser } from '../services/fetchAllDrinks'
 const authConfig = {
   key: 'auth',
   storage,
@@ -28,7 +28,7 @@ export const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     favorites: favoritesReducer,
     drink: drinkReducer,
-
+    alldrinks: allDrinksReduser,
     myDrinks: myDrinksReducer,
 
     drinks: drinksReducer,

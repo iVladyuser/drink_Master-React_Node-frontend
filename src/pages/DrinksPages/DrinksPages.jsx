@@ -19,12 +19,11 @@ import {
 //import {ItemDrink} from '../../components/HomePage/PreviewDrinks/ItemDrink'
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
-// import { Header } from '../../components/Header/Header';
 import { Formik } from 'formik';
 import { getMainPageAllDrinks } from 'services/fetchAllDrinks';
-//import SvgGeneratorSvgSelector from '../../components/SvgComponents';
+ import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 //import { Paginator } from '../../components/Pagination/Pagination';
-import {drinksSelector,selectIsLoading, selectError} from '../../redux/drink/drink.selectors';
+import {selectAllDrinks,selectIsLoading, selectDrinksError} from 'services/fetchAllDrinks';
 
 const initialValues = {
   category: 'All categories',
@@ -33,15 +32,16 @@ const initialValues = {
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
-  const items = useSelector(drinksSelector);
-  console.log(items[0]);
+  const items = useSelector(selectAllDrinks);
+  console.log('Vladuser',items );
   const status = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const error = useSelector(selectDrinksError);
   // const [currentPage, setCurrentPage] = useState(0);
   // const limit = 10;
 
   useEffect(() => {
     dispatch(getMainPageAllDrinks());
+   
   }, [dispatch]);
   
   // const handlePageChange = selectedPage => {
@@ -68,14 +68,13 @@ const DrinksPage = () => {
   return (
     <DrinksPageStyle>
       <ContainerForPage>
-        {/* <Header /> */}
         <Container>
           <TitlePage title={'Drinks'} />
           <WraperForm>
             <ForInputLupaSvg>
               <SearchDrinksInput />
               <WraperSvg>
-                {/* <SvgGeneratorSvgSelector id="svglupa" /> */}
+                <SvgGeneratorSvgSelector id="svglupa" />
               </WraperSvg>
             </ForInputLupaSvg>
             <Formik initialValues={initialValues}>
@@ -90,11 +89,8 @@ const DrinksPage = () => {
           <ListCocktail>
           {items.map(drink => (
             <ItemCocktail
-            key={drink._id} 
             drink={drink}
             />
-          
-          
             ))}
           </ListCocktail>
           {/* <Paginator
@@ -108,6 +104,7 @@ const DrinksPage = () => {
       </ContainerForPage>
     </DrinksPageStyle>
   );
+  
 };
 
 export default DrinksPage;
