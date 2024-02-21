@@ -31,6 +31,15 @@ export const HeaderContainer = styled.header`
     justify-content: flex-start;
   }
 `;
+export const UserBurgerStyle = styled.div`
+display: flex;
+ align-items: center;
+ gap: 14px;
+
+  @media (min-width: 1440px){
+  gap: 24px;  
+  }
+`
 
 // export const UserLogoContainer = styled.div`
 //   position: relative;
