@@ -97,12 +97,12 @@ export const ListCocktail = styled.ul`
   row-gap: 28px;
   flex-wrap: wrap;
   @media screen and (min-width: 768px) {
-    row-gap: 40px;
+  row-gap: 40px;
   column-gap: 20px;
   }
   @media screen and (min-width: 1440px) {
     
-    row-gap: 80px;
+  row-gap: 80px;
   column-gap: 20px;
   }
 `;

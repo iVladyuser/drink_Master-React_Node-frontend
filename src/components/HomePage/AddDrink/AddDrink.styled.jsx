@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+
 export const SectionContainer = styled.section`
-  padding-top: 80px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 112px;
+width: 100%;
+height: 100%;
+margin: 0 auto;
+max-width: 375px;
+padding: 80px 20px 0 20px;
 
-  @media screen and (min-width: 768px) {
-    padding-top: 120px;
-    padding-bottom: 124px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
+@media screen and (min-width: 768px) {
+  max-width: 768px;
+  padding: 120px 32px 0 32px;
+}
 
-  @media screen and (min-width: 1440px) {
-    padding-top: 128px;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 160px;
-  }
+@media screen and (min-width: 1440px) {
+  max-width: 1440px;
+  padding: 185px 100px 0 100px;
+}
 `;
+
 
 export const SectionWrap = styled.div`
   display: flex;
