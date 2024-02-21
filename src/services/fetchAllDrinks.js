@@ -5,7 +5,7 @@ import { instance } from './fetchAuth';
     'drinks/getAll',
     async (_, thunkAPI) => {
       try {
-        const response = await instance.get('/drinks/main-page');
+        const response = await instance.get('/drinks/mainpage');
         console.log("Vlad", response.data);
         return response.data;
       } catch (error) {
