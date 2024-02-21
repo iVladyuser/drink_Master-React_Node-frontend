@@ -32,8 +32,9 @@ background: url(${LeftLightPhone});
 
 `;
 export const Container = styled.section`
-  width: 100%;
-  height: 100%;
+
+   width: 100%;
+   height: 100%;
   margin-left: auto;
   margin-right: auto;
   max-width: 375px;
@@ -63,7 +64,7 @@ export const WraperForm = styled.div`
  display: flex;
  flex-direction: column;
  gap: 14px;
-
+ margin-bottom:40px;
 @media screen and (min-width: 768px) {
   display: flex;
   flex-direction: row;
@@ -97,12 +98,12 @@ export const ListCocktail = styled.ul`
   row-gap: 28px;
   flex-wrap: wrap;
   @media screen and (min-width: 768px) {
-    row-gap: 40px;
+  row-gap: 40px;
   column-gap: 20px;
   }
   @media screen and (min-width: 1440px) {
     
-    row-gap: 80px;
+  row-gap: 80px;
   column-gap: 20px;
   }
 `;
