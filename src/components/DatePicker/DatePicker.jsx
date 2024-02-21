@@ -3,7 +3,6 @@ import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
 
 import 'react-datepicker/dist/react-datepicker.css';
-// import MaskedInput from 'react-text-mask';
 import { CalendarGlobalStyles } from './DatePicker.styled';
 import { FormField } from 'components/SignUpSignInForms/SignUpForm/Sign.styled';
 
@@ -12,8 +11,8 @@ const StyledDatePicker = ({ getDateOfBirth }) => {
 
   const handleDateChange = date => {
     setStartDate(date);
-    const formattedDate = format(date, 'dd/MM/yyyy');
-    getDateOfBirth(formattedDate);
+    const formatedDate = format(date, 'dd/MM/yyyy');
+    getDateOfBirth(formatedDate);
   };
 
   return (
