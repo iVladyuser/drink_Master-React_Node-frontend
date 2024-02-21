@@ -32,7 +32,7 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = values => {
+  const handleSubmit = (values, { resetForm }) => {
     // e.preventDefault();
 
     // const name = e.currentTarget.elements.userName.value;
@@ -47,12 +47,9 @@ export const SignUpForm = () => {
     const birthDate = format(new Date(dateBirth), "yyyy-MM-dd'T'HH:mm:ssXXX");
     dispatch(signUpThunk({ name, birthDate, email, password }))
       .unwrap()
-      .then(() => {
-        toast.success('Registration successful');
-      })
-      .catch(() => {
-        toast.error('Something went wrong... Try again...');
-      });
+      .then(() => toast.success('Registration successful'))
+      .catch(() => toast.error('Something went wrong... Try again...'));
+    resetForm();
   };
   return (
     <Formik
@@ -65,7 +62,7 @@ export const SignUpForm = () => {
       validationSchema={validateFormSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, touched, errors }) => (
+      {({ values, setFieldValue, errors, touched }) => (
         <Form>
           <>
             <div>
@@ -86,9 +83,10 @@ export const SignUpForm = () => {
             </div>
             <div>
               <StyledDatePicker
-                name="dateofBirth"
+                name="dateBirth"
                 type="text"
                 value={values.dateBirth}
+                setFieldValue={setFieldValue}
                 error={errors.dateBirth && touched.dateBirth ? 'true' : 'false'}
                 success={
                   values.dateBirth && !errors.dateBirth ? 'true' : 'false'
