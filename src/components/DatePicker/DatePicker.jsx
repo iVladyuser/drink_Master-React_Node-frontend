@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { DatePickerGlobalStyles } from './DatePicker.styled';
 import { FormField } from 'components/SignUpSignInForms/SignUpForm/Sign.styled';
 
-const StyledDatePicker = ({ getDateOfBirth }) => {
+const StyledDatePicker = () => {
   const [startDate, setStartDate] = useState(null);
 
   const handleDateChange = date => {
     setStartDate(date);
-    const formatedDate = format(date, 'dd/MM/yyyy');
-    getDateOfBirth(formatedDate);
   };
 
   return (
