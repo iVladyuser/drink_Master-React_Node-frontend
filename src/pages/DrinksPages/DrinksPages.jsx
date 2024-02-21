@@ -1,11 +1,10 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
-import {categoriesList} from '../../components/ForSelectValue/CategoriesList';
-import {ingredientsList} from '../../components/ForSelectValue/IngredientsList'
+import { categoriesList } from '../../components/ForSelectValue/CategoriesList';
+import { ingredientsList } from '../../components/ForSelectValue/IngredientsList';
 import {
   Container,
   FormStyled,
@@ -21,9 +20,13 @@ import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
 import { Formik } from 'formik';
 import { getMainPageAllDrinks } from 'services/fetchAllDrinks';
- import SvgGeneratorSvgSelector from '../../components/SvgComponents';
+import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 //import { Paginator } from '../../components/Pagination/Pagination';
-import {selectAllDrinks,selectIsLoading, selectDrinksError} from 'services/fetchAllDrinks';
+import {
+  selectAllDrinks,
+  selectIsLoading,
+  selectDrinksError,
+} from 'services/fetchAllDrinks';
 
 const initialValues = {
   category: 'All categories',
@@ -33,7 +36,7 @@ const initialValues = {
 const DrinksPage = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectAllDrinks);
-  console.log('Vladuser',items );
+  console.log('Vladuser', items);
   const status = useSelector(selectIsLoading);
   const error = useSelector(selectDrinksError);
   // const [currentPage, setCurrentPage] = useState(0);
@@ -41,9 +44,8 @@ const DrinksPage = () => {
 
   useEffect(() => {
     dispatch(getMainPageAllDrinks());
-   
   }, [dispatch]);
-  
+
   // const handlePageChange = selectedPage => {
   //   setCurrentPage(selectedPage);
   // }
@@ -51,7 +53,7 @@ const DrinksPage = () => {
   // const totalCount = items.length;
 
   if (status === 'loading') return <div>Loading...</div>;
-  
+
   if (error) return <div>error</div>;
 
   //  if (error) return <ErrorPage />;
@@ -87,10 +89,8 @@ const DrinksPage = () => {
             </Formik>
           </WraperForm>
           <ListCocktail>
-          {items.map(drink => (
-            <ItemCocktail
-            drink={drink}
-            />
+            {items.map(drink => (
+              <ItemCocktail drink={drink} />
             ))}
           </ListCocktail>
           {/* <Paginator
@@ -104,7 +104,6 @@ const DrinksPage = () => {
       </ContainerForPage>
     </DrinksPageStyle>
   );
-  
 };
 
 export default DrinksPage;
