@@ -36,9 +36,11 @@ export const addOwnDrinkThunk = createAsyncThunk(
       const { data } = await instance.post('/drinks/own/add', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
+      console.log('Done');
 
       return data;
     } catch (err) {
+      console.error("Error")
       return thunkApi.rejectWithValue(err.message);
     }
   }

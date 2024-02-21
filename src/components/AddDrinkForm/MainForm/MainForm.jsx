@@ -64,8 +64,7 @@ const MainForm = () => {
   //   // fileRef.current.value = null;
   // };
 
-  const handleSubmit = async (e, data) => {
-    e.preventDefault();
+  const handleSubmit = async data => {
     const formData = new FormData();
     // if (avatar) {
     //   formData.append('avatar', avatar);
@@ -82,7 +81,7 @@ const MainForm = () => {
 
     try {
       await dispatch(addOwnDrinkThunk(formData));
-      console.error('Done:');
+      console.log('Done:');
       navigate('/my');
     } catch (error) {
       console.error('Error updating user profile:', error);
