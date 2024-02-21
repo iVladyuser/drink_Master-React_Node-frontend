@@ -1,3 +1,5 @@
+import DrinkPlaceholder from 'images/heroImage/DrinkPlaceholder.jpg';
+
 import {
   DetailDrinkLink,
   DrinkPicture,
@@ -7,10 +9,10 @@ import {
 } from './ItemCocktail.styled';
 
 function ItemCocktail({ drink}) {
-  //const imageSrc = drink.drinkThumb || DrinkPlaceholder;
+  const imageSrc = drink.drinkThumb || DrinkPlaceholder;
   return (
     <LiForItem key={drink._id}>
-      <DrinkPicture src={drink.drinkThumb} alt={drink.drink} />
+      <DrinkPicture src={imageSrc} alt={drink.drink} />
       <WraperForNameAndLink>
         <DrinkName>{drink.drink}</DrinkName>
         <DetailDrinkLink to={`/drink/${drink._id}`}>See more</DetailDrinkLink>
