@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/drink_Master-React_Node-frontend/static/css/main.5db80105.css",
-    "main.js": "/drink_Master-React_Node-frontend/static/js/main.946f9659.js",
+    "main.js": "/drink_Master-React_Node-frontend/static/js/main.8190531b.js",
     "static/js/524.f96c37c7.chunk.js": "/drink_Master-React_Node-frontend/static/js/524.f96c37c7.chunk.js",
     "static/js/497.81715365.chunk.js": "/drink_Master-React_Node-frontend/static/js/497.81715365.chunk.js",
-    "static/js/998.6a8ec46b.chunk.js": "/drink_Master-React_Node-frontend/static/js/998.6a8ec46b.chunk.js",
-    "static/js/487.36e1d62c.chunk.js": "/drink_Master-React_Node-frontend/static/js/487.36e1d62c.chunk.js",
+    "static/js/998.9d6f07bf.chunk.js": "/drink_Master-React_Node-frontend/static/js/998.9d6f07bf.chunk.js",
+    "static/js/487.1f93d6d2.chunk.js": "/drink_Master-React_Node-frontend/static/js/487.1f93d6d2.chunk.js",
     "static/js/943.b5883889.chunk.js": "/drink_Master-React_Node-frontend/static/js/943.b5883889.chunk.js",
-    "static/js/498.91cac19e.chunk.js": "/drink_Master-React_Node-frontend/static/js/498.91cac19e.chunk.js",
+    "static/js/498.5d3553ca.chunk.js": "/drink_Master-React_Node-frontend/static/js/498.5d3553ca.chunk.js",
     "static/js/561.8b03b1e8.chunk.js": "/drink_Master-React_Node-frontend/static/js/561.8b03b1e8.chunk.js",
     "static/js/48.1537f73f.chunk.js": "/drink_Master-React_Node-frontend/static/js/48.1537f73f.chunk.js",
     "static/js/13.04d68cda.chunk.js": "/drink_Master-React_Node-frontend/static/js/13.04d68cda.chunk.js",
@@ -43,19 +43,19 @@
     "static/media/RightLightDesctop.svg": "/drink_Master-React_Node-frontend/static/media/RightLightDesctop.a7caa646af4531e0ff478ee02049d6ae.svg",
     "static/media/logo.svg": "/drink_Master-React_Node-frontend/static/media/logo.6a84051857c6f75daf9e44b64acdeae9.svg",
     "main.5db80105.css.map": "/drink_Master-React_Node-frontend/static/css/main.5db80105.css.map",
-    "main.946f9659.js.map": "/drink_Master-React_Node-frontend/static/js/main.946f9659.js.map",
+    "main.8190531b.js.map": "/drink_Master-React_Node-frontend/static/js/main.8190531b.js.map",
     "524.f96c37c7.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/524.f96c37c7.chunk.js.map",
     "497.81715365.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/497.81715365.chunk.js.map",
-    "998.6a8ec46b.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/998.6a8ec46b.chunk.js.map",
-    "487.36e1d62c.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/487.36e1d62c.chunk.js.map",
+    "998.9d6f07bf.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/998.9d6f07bf.chunk.js.map",
+    "487.1f93d6d2.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/487.1f93d6d2.chunk.js.map",
     "943.b5883889.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/943.b5883889.chunk.js.map",
-    "498.91cac19e.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/498.91cac19e.chunk.js.map",
+    "498.5d3553ca.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/498.5d3553ca.chunk.js.map",
     "561.8b03b1e8.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/561.8b03b1e8.chunk.js.map",
     "48.1537f73f.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/48.1537f73f.chunk.js.map",
     "13.04d68cda.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/13.04d68cda.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5db80105.css",
-    "static/js/main.946f9659.js"
+    "static/js/main.8190531b.js"
   ]
 }
