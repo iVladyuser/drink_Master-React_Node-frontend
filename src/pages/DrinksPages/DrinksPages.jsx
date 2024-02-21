@@ -1,11 +1,10 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
-import {categoriesList} from '../../components/ForSelectValue/CategoriesList';
-import {ingredientsList} from '../../components/ForSelectValue/IngredientsList'
+import { categoriesList } from '../../components/ForSelectValue/CategoriesList';
+import { ingredientsList } from '../../components/ForSelectValue/IngredientsList';
 import {
   Container,
   FormStyled,
@@ -19,12 +18,15 @@ import {
 //import {ItemDrink} from '../../components/HomePage/PreviewDrinks/ItemDrink'
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
-// import { Header } from '../../components/Header/Header';
 import { Formik } from 'formik';
-import { getMainPageAllDrinks } from 'services/fetchDrinks';
-//import SvgGeneratorSvgSelector from '../../components/SvgComponents';
+import { getMainPageAllDrinks } from 'services/fetchAllDrinks';
+import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 //import { Paginator } from '../../components/Pagination/Pagination';
-import {drinksSelector,selectIsLoading, selectError} from '../../redux/drink/drink.selectors';
+import {
+  selectAllDrinks,
+  selectIsLoading,
+  selectDrinksError,
+} from 'services/fetchAllDrinks';
 
 const initialValues = {
   category: 'All categories',
@@ -33,17 +35,17 @@ const initialValues = {
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
-  const items = useSelector(drinksSelector);
-  console.log(items);
+  const items = useSelector(selectAllDrinks);
+  console.log('Vladuser', items);
   const status = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const error = useSelector(selectDrinksError);
   // const [currentPage, setCurrentPage] = useState(0);
   // const limit = 10;
 
   useEffect(() => {
     dispatch(getMainPageAllDrinks());
   }, [dispatch]);
-  
+
   // const handlePageChange = selectedPage => {
   //   setCurrentPage(selectedPage);
   // }
@@ -51,7 +53,7 @@ const DrinksPage = () => {
   // const totalCount = items.length;
 
   if (status === 'loading') return <div>Loading...</div>;
-  
+
   if (error) return <div>error</div>;
 
   //  if (error) return <ErrorPage />;
@@ -68,14 +70,13 @@ const DrinksPage = () => {
   return (
     <DrinksPageStyle>
       <ContainerForPage>
-        {/* <Header /> */}
         <Container>
           <TitlePage title={'Drinks'} />
           <WraperForm>
             <ForInputLupaSvg>
               <SearchDrinksInput />
               <WraperSvg>
-                {/* <SvgGeneratorSvgSelector id="svglupa" /> */}
+                <SvgGeneratorSvgSelector id="svglupa" />
               </WraperSvg>
             </ForInputLupaSvg>
             <Formik initialValues={initialValues}>
@@ -88,13 +89,8 @@ const DrinksPage = () => {
             </Formik>
           </WraperForm>
           <ListCocktail>
-          {items.map(drink => (
-            <ItemCocktail
-            id={drink._id}
-              
-              drinkThumb={drink.ingredientThumb}
-              title={drink.title}
-            />
+            {items.map(drink => (
+              <ItemCocktail drink={drink} />
             ))}
           </ListCocktail>
           {/* <Paginator

@@ -92,7 +92,7 @@ export const ForInputLupaSvg = styled.div`
   position: relative;
 `;
 
-export const ListCocktail = styled.div`
+export const ListCocktail = styled.ul`
   display: flex;
   row-gap: 28px;
   flex-wrap: wrap;

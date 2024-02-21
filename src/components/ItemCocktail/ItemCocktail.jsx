@@ -6,16 +6,17 @@ import {
   WraperForNameAndLink,
 } from './ItemCocktail.styled';
 
-function ItemCocktail({ id, drinkThumb, title }) {
+function ItemCocktail({ drink}) {
+  //const imageSrc = drink.drinkThumb || DrinkPlaceholder;
   return (
-    <LiForItem key={id}>
-      <DrinkPicture src={drinkThumb} alt={title} />
+    <LiForItem key={drink._id}>
+      <DrinkPicture src={drink.drinkThumb} alt={drink.drink} />
       <WraperForNameAndLink>
-        <DrinkName>{title}</DrinkName>
-        <DetailDrinkLink to={`/drink/${id}`}>See more</DetailDrinkLink>
+        <DrinkName>{drink.drink}</DrinkName>
+        <DetailDrinkLink to={`/drink/${drink._id}`}>See more</DetailDrinkLink>
       </WraperForNameAndLink>
     </LiForItem>
   );
 }
+export default ItemCocktail
 
-export default ItemCocktail;
