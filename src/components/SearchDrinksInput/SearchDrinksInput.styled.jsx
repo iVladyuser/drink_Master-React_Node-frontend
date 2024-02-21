@@ -17,7 +17,9 @@ padding: 10px 15px;
  &:hover {
     background-color: #f4f8fa;
   }
-
+  @media (min-width: 375px) {
+    max-width: 335px;
+  }
   @media (min-width: 768px) {
     width: 264px;
     height: 56px;
