@@ -2,19 +2,19 @@
 import { instance } from './fetchAuth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getMainPageAllDrinks = createAsyncThunk(
-  'drinks/getAll',
-  async ({ page, limit }, { rejectWithValue }) => {
-    try {
-      const response = await instance.get('/drinks/mainpage', {
-        params: { page, limit },
-      });
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
+// export const getMainPageAllDrinks = createAsyncThunk(
+//   'drinks/getAll',
+//   async ({ page, limit }, { rejectWithValue }) => {
+//     try {
+//       const response = await instance.get('/drinks/mainpage', {
+//         params: { page, limit },
+//       });
+//       return response.data;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const fetchCategories = createAsyncThunk(
   'drinks/categories',
