@@ -33,8 +33,15 @@ background: url(${LeftLightPhone});
 `;
 export const Container = styled.section`
 
-   width: 100%;
-   height: 100%;
+  
+@media screen and (max-width: 320px) {
+  width:  100%;
+  padding: 80px 20px 80px;
+ }
+
+  width: 100%;
+  height: 100%;
+
   margin-left: auto;
   margin-right: auto;
   max-width: 375px;
@@ -74,9 +81,6 @@ export const WraperForm = styled.div`
   
 `;
 export const DrinksPageStyle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
   max-width: 100vw;
   background: rgba(10, 10, 17, 1);
 `;
