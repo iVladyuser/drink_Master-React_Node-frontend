@@ -6,27 +6,24 @@ export const RecipePreparationWrapper = styled.div`
 `;
 
 export const RecipeTextarea = styled.textarea`
+  margin-top: 40px;
   width: 480px;
   height: 184px;
   padding: 14px 24px;
   box-sizing: border-box;
-  border: 1px solid rgba(10, 10, 17, 0.5);
+  outline: 1px solid rgba(10, 10, 17, 0.5);
   border-radius: 20px;
+  background-color: transparent;
   font-size: 16px;
   resize: none;
 
   font-family: 'Manrope', sans-serif;
   font-size: 17px;
   line-height: 26.52px;
-  color: rgba(10, 10, 17, 1);
-
-  &:hover,
-  &:focus {
-    outline: none;
-  }
+  color: rgba(243, 243, 243, 1);
 
   ::placeholder {
-    color: rgba(10, 10, 17, 0.5);
+    color: rgba(243, 243, 243, 0.5);
   }
 `;
 
