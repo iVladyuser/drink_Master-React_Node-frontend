@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-import  Logo  from '../../Logo/Logo';
+import Logo from '../../Logo/Logo';
 import ThemeSwitcher from '../Switch/ThemeSwitcher';
-import NavigationLink from '../Navigation/ButtonLink/ButtonLink'
-import { NavigationContainer, LogoSwitcherStyled, CloseButton, ThemeSwitcherCloseBtn,} from './Navigation.styled';
+import NavigationLink from '../Navigation/ButtonLink/ButtonLink';
+import { NavigationContainer, LogoSwitcherStyled, CloseButton, ThemeSwitcherCloseBtn } from './Navigation.styled';
 
 const Navigation = ({ onClose, isVisible }) => {
     const [animationClass, setAnimationClass] = useState('');
@@ -16,16 +15,19 @@ const Navigation = ({ onClose, isVisible }) => {
         }
     }, [isVisible]);
 
+    const handleCloseModal = () => {
+        onClose();
+    };
+
     return (
         <NavigationContainer className={animationClass}>
-
-<LogoSwitcherStyled>
-          <Logo />
-          <ThemeSwitcherCloseBtn>
-          <ThemeSwitcher />
-          <CloseButton onClick={onClose} />
-          </ThemeSwitcherCloseBtn>
-          </LogoSwitcherStyled>
+            <LogoSwitcherStyled>
+                <Logo />
+                <ThemeSwitcherCloseBtn>
+                    <ThemeSwitcher />
+                    <CloseButton onClick={handleCloseModal}>Close</CloseButton>
+                </ThemeSwitcherCloseBtn>
+            </LogoSwitcherStyled>
             <NavigationLink />
         </NavigationContainer>
     );
