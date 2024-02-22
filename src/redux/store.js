@@ -17,6 +17,7 @@ import { authReducer } from './auth/slice';
 import { drinksReducer } from './drink/home_slice';
 import { allDrinksReduser } from './drink/sliceForDrinksPages';
 import { filtersReducer } from './drink/sliceFilterForDrinksPages';
+import { drinkByIdReducer } from './drink/sliceDrinkById';
 
 const authConfig = {
   key: 'auth',
@@ -32,6 +33,7 @@ export const store = configureStore({
     myDrinks: myDrinksReducer,
     filters: filtersReducer,
     drinks: drinksReducer,
+    drinkById: drinkByIdReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

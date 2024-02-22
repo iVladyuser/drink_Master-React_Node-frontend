@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import { addFavorite, deleteFavorite } from '../../../services/FavoriteSlice';
 
 const DrinkPageHero = ({ cocktailInfo }) => {
-  console.log('cocktailInfo: ', cocktailInfo);
   const dispatch = useDispatch();
 
   const {
@@ -23,7 +22,6 @@ const DrinkPageHero = ({ cocktailInfo }) => {
     description,
     drinkThumb,
   } = cocktailInfo;
-  console.log('drinkId: ', drinkId);
 
   let isFavorite = false;
   const handleFavAction = () => {
@@ -44,9 +42,7 @@ const DrinkPageHero = ({ cocktailInfo }) => {
         </GlassTypeAndServ>
         <DrinkDescr>{description}</DrinkDescr>
         <AddToFavBtn
-          btnName={
-            isFavorite ? 'Remove from favorites' : 'Add to favorite drinks'
-          }
+          btnName={isFavorite ? 'Added to favorites' : 'Add to favorite drinks'}
           onClick={handleFavAction}
         ></AddToFavBtn>
       </HeroTextWraper>
