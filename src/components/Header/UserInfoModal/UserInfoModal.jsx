@@ -4,12 +4,17 @@ import {
   updateNameThunk,
   updateAvatarThunk,
 } from '../../../services/fetchUpdate';
-import { ModalOverlay, ModalContent, ModalTitle, CloseButton } from './UserInfoModal.styled';
+import {
+  ModalOverlay,
+  ModalContent,
+  ModalTitle,
+  CloseButton,
+} from './UserInfoModal.styled';
 import { FaTimes } from 'react-icons/fa';
 
 const UserProfileModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const [newName, setNewName] = useState('');
+  const [name, setNewName] = useState('');
   const [avatar, setAvatar] = useState(null);
 
   const handleNameChange = e => {
@@ -23,8 +28,9 @@ const UserProfileModal = ({ closeModal }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await dispatch(updateNameThunk({ newName }));
-
+      if (name) {
+        await dispatch(updateNameThunk({ name }));
+      }
       if (avatar) {
         await dispatch(updateAvatarThunk(avatar));
       }
@@ -38,14 +44,16 @@ const UserProfileModal = ({ closeModal }) => {
   return (
     <ModalOverlay>
       <ModalContent>
-        <CloseButton onClick={closeModal}><FaTimes /></CloseButton>
+        <CloseButton onClick={closeModal}>
+          <FaTimes />
+        </CloseButton>
         <ModalTitle>Update Profile</ModalTitle>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="newName">New Name:</label>
+          <label htmlFor="name">New Name:</label>
           <input
             type="text"
-            id="newName"
-            value={newName}
+            id="name"
+            value={name}
             onChange={handleNameChange}
           />
 
