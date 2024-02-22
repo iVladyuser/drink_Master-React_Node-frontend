@@ -1,4 +1,4 @@
-// import AddImage from '../AddImage';
+import AddImage from '../AddImage';
 import CustomSelect from '../CustomSelect';
 
 import {
@@ -23,7 +23,7 @@ const TitleBlock = ({
 }) => {
   return (
     <Wrapper>
-      {/* <AddImage setValue={setValue} fileRef={fileRef} /> */}
+      <AddImage setValue={setValue} fileRef={fileRef} />
 
       <ContentWrapper>
         <FieldWrapper>
