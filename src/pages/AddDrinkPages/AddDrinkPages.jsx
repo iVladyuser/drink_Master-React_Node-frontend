@@ -1,6 +1,6 @@
 import { Container } from './AddDrinkPages.styled';
 
-import MainForm from '../../components/AddDrinkForm/MainForm';
+import MainForm from 'components/AddDrinkForm/MainForm/MainForm';
 
 // import PopularDrinks from '../../components/PopularDrinks';
 import FollowUs from '../../components/FollowUs';

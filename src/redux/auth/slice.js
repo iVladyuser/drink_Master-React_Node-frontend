@@ -3,6 +3,7 @@ import {
   signUpThunk,
   signInThunk,
   refreshThunk,
+  logOutThunk,
 } from '../../services/fetchAuth';
 
 const initialState = {
@@ -37,13 +38,19 @@ const authSlice = createSlice({
         state.userData = payload;
         state.isLoggedIn = true;
       })
+      .addCase(logOutThunk.fulfilled, state => {
+        state.isLoading = false;
+        state.isLoggedIn = false;
+        state.token = null;
+        state.userData = null;
+      })
 
       .addMatcher(
         isAnyOf(
           signInThunk.pending,
           signUpThunk.pending,
-          refreshThunk.pending
-          //   authThunk.logOutThunk.pending,
+          refreshThunk.pending,
+          logOutThunk.pending
           //   authThunk.updateAvatarThunk.pending
         ),
         state => {
@@ -55,8 +62,8 @@ const authSlice = createSlice({
         isAnyOf(
           signInThunk.rejected,
           signUpThunk.rejected,
-          refreshThunk.rejected
-          // authThunk.logOutThunk.rejected,
+          refreshThunk.rejected,
+          logOutThunk.rejected
           // authThunk.updateAvatarThunk.rejected
         ),
         (state, { payload }) => {

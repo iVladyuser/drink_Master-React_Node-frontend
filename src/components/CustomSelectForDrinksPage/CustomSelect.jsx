@@ -8,13 +8,12 @@ import {
   SearchInput,
   SelectItem,
   SelectWrapper,
-  Span
+  Span,
 } from './CustomSelect.styled';
-
 
 import { SelectArrow } from './SelectArrow/SelectArrow';
 
-const CustomSelectMenu = ({ items, title }) => {
+const CustomSelectMenu = ({ items, title, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -37,6 +36,7 @@ const CustomSelectMenu = ({ items, title }) => {
     toggleMenu();
     setValue(item);
     setSearchQuery('');
+    onSelect(item);
   };
 
   useEffect(() => {

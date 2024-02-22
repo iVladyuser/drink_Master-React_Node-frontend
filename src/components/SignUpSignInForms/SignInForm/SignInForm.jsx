@@ -25,8 +25,6 @@ export const SignInForm = () => {
     // const email = e.currentTarget.elements.userEmail.value;
     // const password = e.currentTarget.elements.userPassword.value;
 
-    // console.log('email:', email);
-    // console.log('password:', password);
     const { email, password } = values;
     dispatch(signInThunk({ email, password }))
       .unwrap()
@@ -43,7 +41,7 @@ export const SignInForm = () => {
         email: '',
         password: '',
       }}
-      validation={validateFormSchema}
+      validationSchema={validateFormSchema}
       onSubmit={handleSubmit}
     >
       {({ values, errors }) => (

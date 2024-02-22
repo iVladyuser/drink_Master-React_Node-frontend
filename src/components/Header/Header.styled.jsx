@@ -28,9 +28,24 @@ export const HeaderContainer = styled.header`
   @media (min-width: 1440px) {
     min-width: 1440px;
     padding: 28px 100px 28px 100px;
-    justify-content: flex-start;
   }
 `;
+export const UserBurgerStyle = styled.div`
+display: flex;
+ align-items: center;
+ gap: 14px;
+
+  @media (min-width: 1440px){
+  gap: 24px;
+  }
+`
+export const UserSwitchStyled= styled.div`
+display: flex;
+ align-items: center;
+ gap: 24px;
+ padding-left: 191px
+
+`
 
 // export const UserLogoContainer = styled.div`
 //   position: relative;

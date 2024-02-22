@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   RecipeSectWraper,
   RecipeSectTitle,
@@ -9,7 +8,9 @@ import {
 } from './RecipePreparation.styled';
 import InstructionImg from '../InstructionsImg';
 
-const RecipePreparation = ({ recipe }) => {
+const RecipePreparation = ({ coctailInfo }) => {
+  // console.log('instructions: ', coctailInfo);
+
   return (
     <RecipeSectWraper>
       <RecipeSectTitle>Recipe Preparation</RecipeSectTitle>
@@ -17,16 +18,19 @@ const RecipePreparation = ({ recipe }) => {
         <InstructionImgWrp>
           <InstructionImg />
         </InstructionImgWrp>
-        {recipe ? (
+        {coctailInfo ? (
           <InstructionsWrp>
-            <InstructionsTxt>{recipe.description}</InstructionsTxt>
-            <InstructionsTxt>{recipe.instructions}</InstructionsTxt>
+            <InstructionsTxt>{coctailInfo.description}</InstructionsTxt>
+            <InstructionsTxt>{coctailInfo.instructions}</InstructionsTxt>
             <InstructionsTxt>
-              {recipe.instructionsUK ? recipe.instructionsUK : ''}
+              {coctailInfo.instructionsDE ? coctailInfo.instructionsDE : ''}
+            </InstructionsTxt>
+            <InstructionsTxt>
+              {coctailInfo.instructionsUK ? coctailInfo.instructionsUK : ''}
             </InstructionsTxt>
           </InstructionsWrp>
         ) : (
-          'Sorry, no information about the recipe of this cocktail'
+          `Sorry, currently we don't have any information about the recipe for this cocktail...`
         )}
       </RecipeDescrWrp>
     </RecipeSectWraper>

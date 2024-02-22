@@ -61,18 +61,18 @@ export const refreshThunk = createAsyncThunk(
   }
 );
 
-// export const logOutThunk = createAsyncThunk(
-//   'auth/logOut',
-//   async (_, thunkApi) => {
-//     try {
-//       const { data } = await instance.post('/users/logout');
+export const logOutThunk = createAsyncThunk(
+  'auth/signout',
+  async (_, thunkApi) => {
+    try {
+      const { data } = await instance.post('/auth/signout');
 
-//       return data;
-//     } catch (err) {
-//       return thunkApi.rejectWithValue(err.message);
-//     }
-//   }
-// );
+      return data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err.message);
+    }
+  }
+);
 
 // export const updateAvatarThunk = createAsyncThunk(
 //   'auth/updateAvatarThunk',
@@ -90,3 +90,20 @@ export const refreshThunk = createAsyncThunk(
 //     }
 //   }
 // );
+export const updateAvatarThunk = createAsyncThunk(
+  'users/avatar',
+  async ({ file, name }, thunkApi) => {
+    try {
+      const formData = new FormData();
+      formData.append('avatar', file);
+      formData.append('name', name);
+      const { data } = await instance.patch('/users/avatar', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      return data.avatar;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err.message);
+    }
+  }
+);

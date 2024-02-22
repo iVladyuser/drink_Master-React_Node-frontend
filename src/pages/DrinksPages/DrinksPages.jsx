@@ -1,5 +1,10 @@
+import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
+import { categoriesList } from '../../components/ForSelectValue/CategoriesList';
+import { ingredientsList } from '../../components/ForSelectValue/IngredientsList';
 import {
   Container,
   FormStyled,
@@ -8,59 +13,19 @@ import {
   ForInputLupaSvg,
   WraperSvg,
   ContainerForPage,
+  ListCocktail,
 } from './DrinksPages.styled';
+import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
 import { Formik } from 'formik';
+import { getMainPageAllDrinks } from 'services/fetchDrinksForDrinksPages';
 import SvgGeneratorSvgSelector from '../../components/SvgComponents';
-const categoriesList = [
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-];
-
-const ingredientsList = [
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-];
+import { Paginator } from '../../components/Pagination/Pagination';
+import {
+  selectAllDrinks,
+  selectIsLoading,
+  selectDrinksError,
+} from '../../redux/drink/selectorsForDrinksPages';
 
 const initialValues = {
   category: 'All categories',
@@ -68,6 +33,49 @@ const initialValues = {
 };
 
 const DrinksPage = () => {
+  const dispatch = useDispatch();
+  const items = useSelector(selectAllDrinks);
+  console.log('Vladuser', items);
+  const status = useSelector(selectIsLoading);
+  const error = useSelector(selectDrinksError);
+  const visibleDrinks = useSelector(selectVisibleDrinks);
+  console.log('Vladik', visibleDrinks);
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 11;
+
+  useEffect(() => {
+    dispatch(getMainPageAllDrinks({ page: currentPage, limit }));
+  }, [dispatch, currentPage, limit]);
+
+  const handlePageChange = selectedPage => {
+    setCurrentPage(selectedPage + 1);
+  };
+
+  const totalCount = items.length;
+
+  if (status === 'loading') return <div>Loading...</div>;
+
+  if (error) return <div>error</div>;
+
+  //  if (error) return <ErrorPage />;
+
+  // if (!items || items.length === 0) {
+  //   return (
+  //     <Container>
+  //       <FavoritePageTitle>Favorites</FavoritePageTitle>
+  //       <NoImg text="You haven't added any favorite cocktails yet." />
+  //     </Container>
+  //   );
+  // }
+
+  const handleCategorySelect = category => {
+    console.log('Selected category:', category);
+  };
+
+  const handleIngredientSelect = ingredient => {
+    console.log('Selected ingredient:', ingredient);
+  };
+
   return (
     <DrinksPageStyle>
       <ContainerForPage>
@@ -83,12 +91,32 @@ const DrinksPage = () => {
             <Formik initialValues={initialValues}>
               {({ setFieldValue }) => (
                 <FormStyled>
-                  <CustomSelect items={categoriesList} title={'Category'} />
-                  <CustomSelect items={ingredientsList} title={'Ingredients'} />
+                  <CustomSelect
+                    items={categoriesList}
+                    title={'Category'}
+                    onSelect={handleCategorySelect}
+                  />
+                  <CustomSelect
+                    items={ingredientsList}
+                    title={'Ingredients'}
+                    onSelect={handleIngredientSelect}
+                  />
                 </FormStyled>
               )}
             </Formik>
           </WraperForm>
+          <ListCocktail>
+            {visibleDrinks.map(drink => (
+              <ItemCocktail drink={drink} />
+            ))}
+          </ListCocktail>
+          <Paginator
+            limit={limit}
+            currentPage={currentPage}
+            items={totalCount}
+            handlePageChange={handlePageChange}
+            pageRangeDisplayed={5}
+          />
         </Container>
       </ContainerForPage>
     </DrinksPageStyle>

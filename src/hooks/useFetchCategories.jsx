@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchCategories } from '../services/fetchCategories&Glasses';
+import { fetchCategories } from '../services/fetchOwnDrinks';
 
 export const useFetchCategories = () => {
   const [drinkCategories, setDrinkCategories] = useState(null);

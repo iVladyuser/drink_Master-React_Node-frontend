@@ -6,27 +6,14 @@ import {
   selectAllFavorites,
   selectFavoritesStatus,
   selectFavoritesError,
-} from './FavoriteSlice';
+} from '../../services/FavoriteSlice';
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
-import icon from './not-found-img/trash.svg';
 
 import { Paginator } from '../../components/Pagination/Pagination';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
-
-import {
-  FavoritePageTitle,
-  FavoriteDrinksList,
-  FavoriteDrinksItemContainer,
-  FavoriteDrinkImage,
-  FavoriteTitleWrap,
-  FavoriteDrinkTitle,
-  FavoriteDrinkInfo,
-  FavoriteDrinkDescription,
-  FavoriteSeeMoreButton,
-  FavoriteRemoveButton,
-  ButtonsContainer,
-} from './FavoriteDrinksPage.style';
+import { PageTitle } from '../../pages/FavoritePage/PageTitle/PageTitle';
+import { DrinksList } from '../../pages/FavoritePage/DrinksList/DrinksList';
 
 export const FavoriteDrinksPage = () => {
   const dispatch = useDispatch();
@@ -34,7 +21,7 @@ export const FavoriteDrinksPage = () => {
   const status = useSelector(selectFavoritesStatus);
   const error = useSelector(selectFavoritesError);
   const [currentPage, setCurrentPage] = useState(0);
-  const limit = 10;
+  const limit = 11;
 
   useEffect(() => {
     dispatch(fetchFavorites());
@@ -50,53 +37,29 @@ export const FavoriteDrinksPage = () => {
 
   const totalCount = items.length;
 
+  const showContent = status !== 'loading' && !error;
+
   return (
     <>
       <UniversalContainer>
-        <FavoritePageTitle>Favorites</FavoritePageTitle>
+        <PageTitle title="Favorites" />
         {status === 'loading' && <div>Loading...</div>}
         {error && <ErrorPage />}
-        {items && items.length > 0 && (
+        {showContent && (
           <>
-            <FavoriteDrinksList>
-              {items.map(drink => (
-                <FavoriteDrinksItemContainer key={drink.id}>
-                  <FavoriteDrinkImage src={drink.image} alt={drink.name} />
-                  <FavoriteTitleWrap>
-                    <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
-                    <FavoriteDrinkInfo>
-                      {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
-                    </FavoriteDrinkInfo>
-                    <FavoriteDrinkDescription>
-                      {drink.description}
-                    </FavoriteDrinkDescription>
-                  </FavoriteTitleWrap>
-                  <ButtonsContainer>
-                    <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
-                    <FavoriteRemoveButton
-                      onClick={() => handleRemoveClick(drink.id)}
-                    >
-                      <img
-                        src={icon}
-                        alt="trash"
-                        style={{ maxWidth: '24px' }}
-                      />
-                    </FavoriteRemoveButton>
-                  </ButtonsContainer>
-                </FavoriteDrinksItemContainer>
-              ))}
-            </FavoriteDrinksList>
+            {items.length > 0 ? (
+              <DrinksList drinks={items} onRemoveClick={handleRemoveClick} />
+            ) : (
+              <NoImg text="You haven't added any favorite cocktails yet." />
+            )}
             <Paginator
               limit={limit}
               currentPage={currentPage}
               items={totalCount}
               handlePageChange={handlePageChange}
-              pageRangeDisplayed={9}
+              pageRangeDisplayed={5}
             />
           </>
-        )}
-        {(!items || items.length === 0) && !error && (
-          <NoImg text="You haven't added any favorite cocktails yet." />
         )}
       </UniversalContainer>
     </>
