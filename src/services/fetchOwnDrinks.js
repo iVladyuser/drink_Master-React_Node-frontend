@@ -46,7 +46,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
 
       return data;
     } catch (err) {
-      console.error('Error:', err.message);
+      console.error('Error:', err.data);
       return thunkApi.rejectWithValue(err.message);
     }
   },
