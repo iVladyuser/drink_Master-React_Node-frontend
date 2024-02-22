@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { setToken } from './fetchAuth';
 
 export const instance = axios.create({
   baseURL: 'https://drink-master-project-zi2s.onrender.com',
@@ -24,24 +25,38 @@ export const fetchGlasses = async () => {
 };
 
 export const addOwnDrinkThunk = createAsyncThunk(
-  'users/avatar',
-  async ({ drink, description, category, glass, alcoholic }, thunkApi) => {
+  '/drinks/own/add',
+  async (formData, thunkApi) => {
     try {
-      const formData = new FormData();
-      formData.append('drink', drink);
-      formData.append('description', description);
-      formData.append('category', category);
-      formData.append('glass', glass);
-      formData.append('alcoholic', alcoholic);
-      const { data } = await instance.post('/drinks/own/add', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-      console.log('Done');
+      const state = thunkApi.getState();
+      const token = state.auth.token;
+      setToken(token);
+
+      console.log('token', token);
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const { data } = await instance.post('/drinks/own/add', formData, config);
+      console.log('Done,:', data);
 
       return data;
     } catch (err) {
-      console.error("Error")
+      console.error('Error:', err.message);
       return thunkApi.rejectWithValue(err.message);
     }
+  },
+  {
+    condition: (_, thunkApi) => {
+      const state = thunkApi.getState();
+      const token = state.auth.token;
+      if (!token) return false;
+
+      return true;
+    },
   }
 );
