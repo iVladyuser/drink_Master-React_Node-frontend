@@ -1,6 +1,8 @@
 import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
 import React, { useEffect, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
 import { categoriesList } from '../../components/ForSelectValue/CategoriesList';
@@ -40,18 +42,23 @@ const DrinksPage = () => {
   const error = useSelector(selectDrinksError);
   const visibleDrinks = useSelector(selectVisibleDrinks);
   console.log('Vladik', visibleDrinks);
+  const [CategorySelect , setCategorySelect] = useState('');
+  //const [IngredientSelect , setIngredientSelect] = useState('');
+  if(CategorySelect ){
+    visibleDrinks.filter(item => item.CategorySelect);
+  }
+  //c
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 11;
 
-  useEffect(() => {
-    dispatch(getMainPageAllDrinks({ page: currentPage, limit }));
-  }, [dispatch, currentPage, limit]);
+   useEffect(() => {
+     dispatch(getMainPageAllDrinks({ page: currentPage, limit }));
+   }, [dispatch, currentPage, limit]);
 
-  const handlePageChange = selectedPage => {
-    setCurrentPage(selectedPage + 1);
+   const handlePageChange = selectedPage => {
+     setCurrentPage(selectedPage + 1);
   };
-
-  const totalCount = items.length;
+   const totalCount = items.length;
 
   if (status === 'loading') return <div>Loading...</div>;
 
@@ -69,11 +76,13 @@ const DrinksPage = () => {
   // }
 
   const handleCategorySelect = category => {
-    console.log('Selected category:', category);
+    //console.log('Selected category:', category);
+    setCategorySelect(category)
   };
 
   const handleIngredientSelect = ingredient => {
-    console.log('Selected ingredient:', ingredient);
+    //console.log('Selected ingredient:', ingredient);
+   // setIngredientSelect(ingredient)
   };
 
   return (
