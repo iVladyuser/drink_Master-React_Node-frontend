@@ -8,20 +8,13 @@ import {
 } from './DrinkPageHero.styled';
 import AddToFavBtn from '../AddToFavBtn/AddToFavBtn';
 import DrinkPageHeroImg from '../DrinkPageHeroImg/DrinkPageHeroImg';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  addFavorite,
-  deleteFavorite,
-  fetchFavorites,
-  selectAllFavorites,
-} from '../../../services/FavoriteSlice';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addFavorite, deleteFavorite } from '../../../services/FavoriteSlice';
 
 const DrinkPageHero = ({ cocktailInfo }) => {
   console.log('cocktailInfo: ', cocktailInfo);
   const dispatch = useDispatch();
-  const allFavorites = useSelector(selectAllFavorites);
+
   const {
     _id: drinkId,
     drink,
@@ -32,17 +25,6 @@ const DrinkPageHero = ({ cocktailInfo }) => {
   } = cocktailInfo;
   console.log('drinkId: ', drinkId);
 
-  // useEffect(() => {
-  //   dispatch(fetchFavorites());
-  // }, [dispatch]);
-
-  // const isFavorite = drinkId => {
-  //   if (allFavorites) {
-  //     return allFavorites.find(drink => drink._id === drinkId);
-  //   }
-  // };
-
-  // console.log('allFavorites: ', allFavorites);
   let isFavorite = false;
   const handleFavAction = () => {
     if (!isFavorite) {
