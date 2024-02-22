@@ -1,6 +1,21 @@
 import { styled } from 'styled-components';
 
+export const LinkLogo = styled.button`
 
+border: medium none;
+	background-image: none; 
+	background: transparent;
+	float: left;
+	background-color: transparent;
+
+@media (min-width: 768px) {
+ 
+}
+
+@media (min-width: 1440px) {
+  
+}
+`;
 export const FooterLog = styled.div`
 
 display: flex;

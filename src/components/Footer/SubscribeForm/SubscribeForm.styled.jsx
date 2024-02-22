@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
-export const FormContainer = styled.form`
+
+export const FormContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -16,14 +17,82 @@ export const FormContainer = styled.form`
   }
 `;
 
-export const InputForm = styled.label`
+export const ErrorDiv = styled.div`
+
+
+  @media screen and (min-width: 768px) {
   
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+export const Error = styled.p`
+font-family: "Manrope", sans-serif;
+font-weight: 400;
+font-size: 12px;
+
+
+line-height: 1.16667;
+color: #da1414;
+
+  @media screen and (min-width: 768px) {
+  
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
-export const InputNameEmail = styled.input`
-padding-left: 24px;
+export const Relative = styled.div`
+position: relative;
 
-border: 1px solid rgba(243, 243, 243, 0.2);
+`;
+
+export const Correct = styled.p`
+font-family: "Manrope", sans-serif;
+font-weight: 400;
+font-size: 12px;
+
+
+line-height: 1.16667;
+color: #3cbc81;
+
+  @media screen and (min-width: 768px) {
+  
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const InputForm = styled.form`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 335px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 309px;
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+export const InputLabel = styled.label`
+
+`;
+
+export const InputNameEmail = styled.input `
+
+border: ${props => props.border || '1px solid rgba(243, 243, 243, 0.2)'};
+
+padding-left: 24px;
+padding-right: 55px;
+
+
 border-radius: 200px;
 width: 280px;
 height: 54px;
@@ -37,12 +106,13 @@ line-height: 1.28571;
 text-align: start;
 color: #f3f3f3;
 
+&:focus,
 &:hover {
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  outline: none;
+  border: ${(props) => props.border || '1px solid rgba(243, 243, 243, 0.2)'};
+  background-color: transparent;
 }
-&:focus {
-  border: 1px solid rgba(243, 243, 243, 0.5);
-}
+
 
 
 @media screen and (min-width: 375px) {
@@ -91,6 +161,7 @@ export const ButtonSubmit = styled.button`
   line-height: 1.125;
   text-align: center;
   color: #f3f3f3;
+ 
 
   &:hover {
     background-color: #f3f3f3;
@@ -100,7 +171,10 @@ export const ButtonSubmit = styled.button`
     background-color: #f3f3f3;
     color: #161f37;
   }
-
+  &:disabled{
+    background-color: transparent;
+    color: #f3f3f3;
+}
   @media screen and (min-width: 375px) {
     width: 335px;
   }
