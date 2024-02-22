@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 
 export const CustomSelect = styled.button`
+  @media screen and (max-width: 320px) {
+    width: 100%;
+  }
+
   width: 335px;
   height: 54px;
   position: relative;
@@ -45,7 +49,7 @@ export const CustomSelect = styled.button`
 export const PlaceholderWrap = styled.div`
   display: flex;
   align-items: center;
-  
+
   color: ${({ selected }) => (!selected ? '#f3f3f380' : '#F3F3F3')};
 
   span {
@@ -128,7 +132,11 @@ export const DropMenu = styled.div`
 `;
 
 export const SelectWrapper = styled.div`
-  position: relative;
+  @media screen and (max-width: 320px) {
+    width: 100%;
+    position: relative;
+  }
+
   width: 335px;
 
   @media (min-width: 768px) {
