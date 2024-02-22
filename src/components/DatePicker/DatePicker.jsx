@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 // import { format } from 'date-fns';
 
@@ -6,17 +5,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { DatePickerGlobalStyles } from './DatePicker.styled';
 import { FormField } from 'components/SignUpSignInForms/SignUpForm/Sign.styled';
 
-const StyledDatePicker = () => {
-  const [startDate, setStartDate] = useState(null);
-
-  const handleDateChange = date => {
-    setStartDate(date);
-  };
-
+const StyledDatePicker = ({ field, form }) => {
   return (
     <>
       <DatePicker
-        selected={startDate}
+        selected={field.value}
+        onChange={date => form.setFieldValue(field.name, date)}
         placeholderText="dd/mm/yyyy"
         showIcon
         toggleCalendarOnIconClick
@@ -61,7 +55,6 @@ const StyledDatePicker = () => {
           </svg>
         }
         customInput={<FormField />}
-        onChange={handleDateChange}
         dateFormat={'dd/MM/yyyy'}
         calendarStartDay={1}
       />
