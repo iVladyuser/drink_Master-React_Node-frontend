@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-
 export const instance = axios.create({
   baseURL: 'https://drink-master-project-zi2s.onrender.com',
 });
@@ -9,6 +8,7 @@ export const instance = axios.create({
 export const setToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
+
 export const updateAvatarThunk = createAsyncThunk(
   'users/avatar',
   async (avatarFile, thunkApi) => {
@@ -25,11 +25,11 @@ export const updateAvatarThunk = createAsyncThunk(
   }
 );
 
-
 export const updateNameThunk = createAsyncThunk(
   'users/update',
-  async (newName, thunkApi) => {
+  async ({ newName, token }, thunkApi) => {
     try {
+      setToken(token);
       const response = await instance.patch('/users/update', { name: newName });
       return response.data.name;
     } catch (error) {
