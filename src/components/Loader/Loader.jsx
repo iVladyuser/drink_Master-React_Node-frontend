@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react';
-import CocktailLoading from './animation/CocktailLoading.json'
+import CocktailLoading from '../../images/loaderAnimation/CocktailLoading.json'
 import { LoaderContainer } from './Loader.styled';
 
 export const Loader = () => {

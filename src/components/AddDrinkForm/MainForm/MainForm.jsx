@@ -9,7 +9,7 @@ import { AddButton, DrinkFormWrapper } from './MainForm.styled';
 import TitleBlock from '../TitleBlock';
 import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
 import { nanoid } from '@reduxjs/toolkit';
-import IngredientsBlock from '../IngredientsBlock/';
+// import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
 
 // import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
@@ -145,7 +145,7 @@ const MainForm = () => {
               touched={touched}
               fileRef={fileRef}
             />
-            <IngredientsBlock />
+            {/* <IngredientsBlock /> */}
             <RecipePreparationBlock
               error={errors.instructions}
               touched={touched.instructions}
