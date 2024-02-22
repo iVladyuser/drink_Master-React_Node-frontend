@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const FavBtn = styled.button`
   border-radius: 42px;
-  padding: 14px 40px;
+  /* padding: 14px 40px; */
+  padding-top: 14px;
+  padding-bottom: 14px;
   width: 222px;
   height: 46px;
-  color: #161f37;
   background-color: #f3f3f3;
+  color: #161f37;
   font-weight: 600;
   font-size: 14px;
   line-height: 1.29;
@@ -18,7 +20,9 @@ export const FavBtn = styled.button`
   }
 
   @media (min-width: 768px) {
-    padding: 18px 44px;
+    /* padding: 18px 44px; */
+    padding-top: 18px;
+    padding-bottom: 18px;
     width: 250px;
     height: 54px;
 
