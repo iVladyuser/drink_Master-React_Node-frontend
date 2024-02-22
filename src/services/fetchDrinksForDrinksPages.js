@@ -18,6 +18,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // );
 
 
+export const getMainPageAllDrinks = createAsyncThunk(
+  'drinks/getAll',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await instance.get('/drinks/mainpage');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+
 export const fetchCategories = createAsyncThunk(
   'drinks/categories',
   async (_, thunkAPI) => {
