@@ -44,10 +44,10 @@ export const SubscribeForm = () => {
         <Relative>
         
           <InputLabel>
-          {/*  */}
+  
             <InputNameEmail
           
-            border={errors?.email && '1px solid #DA1414' || isValid && '1px solid #3CBC81'}
+            border={(errors?.email && "1px solid #DA1414") || (isValid && "1px solid #3CBC81")}
             
           
             
