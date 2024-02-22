@@ -6,7 +6,7 @@ import {
   selectAllFavorites,
   selectFavoritesStatus,
   selectFavoritesError,
-} from './FavoriteSlice';
+} from '../../services/FavoriteSlice';
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
 
