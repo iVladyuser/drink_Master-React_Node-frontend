@@ -68,6 +68,14 @@ const DrinksPage = () => {
   //   );
   // }
 
+  const handleCategorySelect = category => {
+    console.log('Selected category:', category);
+  };
+
+  const handleIngredientSelect = ingredient => {
+    console.log('Selected ingredient:', ingredient);
+  };
+
   return (
     <DrinksPageStyle>
       <ContainerForPage>
@@ -83,8 +91,16 @@ const DrinksPage = () => {
             <Formik initialValues={initialValues}>
               {({ setFieldValue }) => (
                 <FormStyled>
-                  <CustomSelect items={categoriesList} title={'Category'} />
-                  <CustomSelect items={ingredientsList} title={'Ingredients'} />
+                  <CustomSelect
+                    items={categoriesList}
+                    title={'Category'}
+                    onSelect={handleCategorySelect}
+                  />
+                  <CustomSelect
+                    items={ingredientsList}
+                    title={'Ingredients'}
+                    onSelect={handleIngredientSelect}
+                  />
                 </FormStyled>
               )}
             </Formik>
