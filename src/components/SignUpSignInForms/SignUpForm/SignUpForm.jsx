@@ -1,5 +1,5 @@
-import { React } from 'react';
-import { format } from 'date-fns';
+import { React, useState } from 'react';
+
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -14,13 +14,15 @@ import {
   ErrorIcon,
   SuccessIcon,
 } from './Sign.styled';
+import { differenceInYears } from 'date-fns';
+
 import { Formik } from 'formik';
 
 const validateFormSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'The name is short.')
     .required('Field is required.'),
-  dateBirth: Yup.string().required('Field is required.'),
+  dateBirth: Yup.date().required(),
   email: Yup.string()
     .email('Please enter a valid email')
     .required('Field is required.'),
@@ -32,20 +34,18 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = (values, { resetForm }) => {
-    // e.preventDefault();
+  const [Age, setAge] = useState(null);
 
-    // const name = e.currentTarget.elements.userName.value;
-    // // const dateBirth = e.currentTarget.elements.dateofBirth.value;
-    // const email = e.currentTarget.elements.userEmail.value;
-    // const password = e.currentTarget.elements.userPassword.value;
-    // console.log('name:', name);
-    // // console.log('date:', dateBirth);
-    // console.log('email:', email);
-    // console.log('password:', password);
+  const handleSubmit = (values, { resetForm }) => {
     const { name, dateBirth, email, password } = values;
-    const birthDate = format(new Date(dateBirth), "yyyy-MM-dd'T'HH:mm:ssXXX");
-    dispatch(signUpThunk({ name, birthDate, email, password }))
+    const currentDate = new Date();
+    const age = differenceInYears(currentDate, dateBirth);
+    setAge(Age);
+    console.log('name:', name);
+    console.log('age:', age);
+    console.log('email:', email);
+    console.log('password', password);
+    dispatch(signUpThunk({ name, age, email, password }))
       .unwrap()
       .then(() => toast.success('Registration successful'))
       .catch(() => toast.error('Something went wrong... Try again...'));
@@ -62,7 +62,7 @@ export const SignUpForm = () => {
       validationSchema={validateFormSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, setFieldValue, errors, touched }) => (
+      {({ values, errors, touched }) => (
         <Form>
           <>
             <div>
@@ -82,16 +82,18 @@ export const SignUpForm = () => {
               ) : null}
             </div>
             <div>
-              <StyledDatePicker
-                name="dateBirth"
+              <FormField name="dateBirth" component={StyledDatePicker} />
+              {/* <StyledDatePicker
+                name="selectedDate"
                 type="text"
                 value={values.dateBirth}
-                setFieldValue={setFieldValue}
+                selectedDate={selectedDate}
+                onDateChange={handleDateChange}
                 error={errors.dateBirth && touched.dateBirth ? 'true' : 'false'}
                 success={
                   values.dateBirth && !errors.dateBirth ? 'true' : 'false'
                 }
-              />
+              /> */}
               <FormError name="dateBirth" />
             </div>
             <div>
