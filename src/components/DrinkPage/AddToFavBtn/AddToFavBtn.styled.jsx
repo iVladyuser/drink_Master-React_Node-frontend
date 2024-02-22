@@ -13,10 +13,22 @@ export const FavBtn = styled.button`
   font-size: 14px;
   line-height: 1.29;
   color: #161f37;
+  transition: all 300ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
 
-  transition: all 0.3s;
-  &:hover {
+  &:active {
     border: 2px solid rgba(64, 112, 205, 0.5);
+  }
+
+  &:hover,
+  &:focus {
+    color: #f3f3f3;
+    background: #161f37;
+    border-color: #161f37;
+  }
+
+  &:disabled {
+    color: rgba(243, 243, 243, 0.2);
+    background: #434d67;
   }
 
   @media (min-width: 768px) {
