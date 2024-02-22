@@ -18,10 +18,6 @@ import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
 const validationSchema = yup.object().shape({
   // file: yup
   //   .mixed()
-  //   // .test('file', 'Please select a valid image file', value => {
-  //   //   if (!value) return true;
-  //   //   return value && value.type.startsWith('image/*');
-  //   // })
   //   .required('Please add the drink recipe image'),
   drink: yup.string().trim().required('Please enter a drink title'),
   description: yup.string().trim().required('Please enter about  recipe'),
@@ -59,20 +55,8 @@ const MainForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const onSubmitForm = (data, action) => {
-  //   action.resetForm();
-  //   // fileRef.current.value = null;
-  // };
-
-  const handleSubmit = async data => {
+  const handleSubmit = async (data, action) => {
     const formData = new FormData();
-    // if (avatar) {
-    //   formData.append('avatar', avatar);
-    // }
-    // if (name) {
-    //   formData.append('name', name);
-    // }
-
     formData.append('drink', data.drink);
     formData.append('description', data.description);
     formData.append('category', data.category);
@@ -80,52 +64,13 @@ const MainForm = () => {
     formData.append('alcoholic', data.alcoholic);
 
     try {
-      await dispatch(addOwnDrinkThunk(formData));
-      console.log('Done:');
+      dispatch(addOwnDrinkThunk(formData));
+      action.resetForm();
+      // fileRef.current.value = null;
       navigate('/my');
     } catch (error) {
-      console.error('Error updating user profile:', error);
     }
   };
-
-  // const handleSubmit = data => {
-  //   const dataToSend = new FormData();
-
-  //   dataToSend.append('category', data.category);
-  //   dataToSend.append('glass', data.glass);
-  //   dataToSend.append('description', data.description);
-  //   dataToSend.append('alcoholic', data.alcoholic);
-  //   dataToSend.append('drink', data.drink);
-
-  //   dispatch(addOwnDrinkThunk(dataToSend))
-  //     .unwrap()
-  //     .then(() => {
-  //       navigate('/my');
-  //     })
-  //     .catch(error => console.log(error));
-
-  // const formData = new FormData();
-  // formData.append('drink', values.drink);
-  // formData.append('description', values.description);
-  // formData.append('category', values.category);
-  // formData.append('glass', values.glass);
-  // formData.append('alcoholic', values.alcoholic);
-
-  // // try {
-  //   setToken(getState().auth.token);
-  //   const response = await axios.post(`${baseUrl}/drinks/own/add`, formData, {
-  //     headers: {
-  //       'Content-Type': 'multipart/form-data',
-  //     },
-  //   });
-
-  //   console.log('Drink with data:', values);
-  //   console.log('Drink added successfully:', response.data);
-  // } catch (error) {
-  //   console.log('Drink with data:', values);
-  //   console.error('Error adding drink:', error.response.data);
-  // }
-  // };
 
   // const categories = useFetchCategories();
   // const glasses = useFetchGlasses();
@@ -199,7 +144,7 @@ const MainForm = () => {
             />
             {/* <IngredientsBlock /> */}
             {/* <RecipePreparationBlock /> */}
-            <AddButton>Add</AddButton>
+            <AddButton type="submit">Add</AddButton>
           </Form>
         )}
       </Formik>
