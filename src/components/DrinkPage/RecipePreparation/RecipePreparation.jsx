@@ -30,7 +30,7 @@ const RecipePreparation = ({ coctailInfo }) => {
             </InstructionsTxt>
           </InstructionsWrp>
         ) : (
-          'Sorry, no information about the recipe of this cocktail'
+          `Sorry, currently we don't have any information about the recipe for this cocktail...`
         )}
       </RecipeDescrWrp>
     </RecipeSectWraper>

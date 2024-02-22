@@ -10,6 +10,7 @@ import { Container } from './DrinkPage.styled';
 import { useState } from 'react';
 import { getDrinkById } from 'services/fetchDrinkById';
 import { Loader } from 'components/Loader/Loader';
+// import ErrorPage from 'pages/FavoritePage/ErrorPage';
 // import { toast } from 'react-toastify';
 
 const DrinkPage = () => {
@@ -45,12 +46,13 @@ const DrinkPage = () => {
     <div>
       <Container>
         {error !== null && <p style={{ color: '#adadad' }}>{error}</p>}
+        {/* {error && <ErrorPage />} */}
         {isLoading && <Loader>Loading...</Loader>}
         {drinkData !== null && (
           <>
-            <DrinkPageHero coctailInfo={drinkData} />
+            <DrinkPageHero cocktailInfo={drinkData} />
             <DrinkIngredientsList ingredients={drinkData.ingredients} />
-            <RecipePreparation coctailInfo={drinkData} />
+            <RecipePreparation cocktailInfo={drinkData} />
           </>
         )}
 
