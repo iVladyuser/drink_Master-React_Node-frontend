@@ -1,9 +1,17 @@
-import axios from 'axios';
+import { instance } from './fetchAuth';
 
-axios.defaults.baseURL = 'https://drink-master-project-zi2s.onrender.com';
+// export const getDrinkById = async drinkId => {
+//   const url = `/drinks/${drinkId}`;
+//   const response = await instance.get(url);
+//   return response.data;
+// };
 
 export const getDrinkById = async drinkId => {
-  const url = `/drinks/${drinkId}`;
-  const response = await axios.get(url);
-  return response.data;
+  try {
+    const url = `/drinks/${drinkId}`;
+    const { data } = await instance.get(url);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
 };

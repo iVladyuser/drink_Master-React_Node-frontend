@@ -32,6 +32,7 @@ background: url(${LeftLightPhone});
 
 `;
 export const Container = styled.section`
+
   
 @media screen and (max-width: 320px) {
   width:  100%;
@@ -40,6 +41,7 @@ export const Container = styled.section`
 
   width: 100%;
   height: 100%;
+
   margin-left: auto;
   margin-right: auto;
   max-width: 375px;
@@ -69,7 +71,7 @@ export const WraperForm = styled.div`
  display: flex;
  flex-direction: column;
  gap: 14px;
-
+ margin-bottom:40px;
 @media screen and (min-width: 768px) {
   display: flex;
   flex-direction: row;

@@ -27,7 +27,7 @@ export const RecipeDescrWrp = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
   @media screen and (min-width: 1440px) {
@@ -53,6 +53,7 @@ export const InstructionImgWrp = styled.div`
   margin-right: auto;
   margin-left: auto;
   flex-shrink: 0;
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  border-radius: 10px;
   overflow: hidden;
 `;

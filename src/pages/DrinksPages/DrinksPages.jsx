@@ -1,6 +1,6 @@
+import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
 import { categoriesList } from '../../components/ForSelectValue/CategoriesList';
@@ -18,14 +18,14 @@ import {
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import CustomSelect from 'components/CustomSelectForDrinksPage';
 import { Formik } from 'formik';
-import { getMainPageAllDrinks } from 'services/fetchAllDrinks';
+import { getMainPageAllDrinks } from 'services/fetchDrinksForDrinksPages';
 import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 import { Paginator } from '../../components/Pagination/Pagination';
 import {
   selectAllDrinks,
   selectIsLoading,
   selectDrinksError,
-} from 'services/fetchAllDrinks';
+} from '../../redux/drink/selectorsForDrinksPages';
 
 const initialValues = {
   category: 'All categories',
@@ -38,16 +38,18 @@ const DrinksPage = () => {
   console.log('Vladuser', items);
   const status = useSelector(selectIsLoading);
   const error = useSelector(selectDrinksError);
-  const [currentPage, setCurrentPage] = useState(0);
+  const visibleDrinks = useSelector(selectVisibleDrinks);
+  console.log('Vladik', visibleDrinks);
+  const [currentPage, setCurrentPage] = useState(1);
   const limit = 11;
 
   useEffect(() => {
-    dispatch(getMainPageAllDrinks());
-  }, [dispatch]);
+    dispatch(getMainPageAllDrinks({ page: currentPage, limit }));
+  }, [dispatch, currentPage, limit]);
 
   const handlePageChange = selectedPage => {
-    setCurrentPage(selectedPage);
-  }
+    setCurrentPage(selectedPage + 1);
+  };
 
   const totalCount = items.length;
 
@@ -88,17 +90,17 @@ const DrinksPage = () => {
             </Formik>
           </WraperForm>
           <ListCocktail>
-            {items.map(drink => (
+            {visibleDrinks.map(drink => (
               <ItemCocktail drink={drink} />
             ))}
           </ListCocktail>
-           <Paginator
-        limit={limit}
-        currentPage={currentPage}
-        items={totalCount}
-        handlePageChange={handlePageChange}
-        pageRangeDisplayed={5}
-      /> 
+          <Paginator
+            limit={limit}
+            currentPage={currentPage}
+            items={totalCount}
+            handlePageChange={handlePageChange}
+            pageRangeDisplayed={5}
+          />
         </Container>
       </ContainerForPage>
     </DrinksPageStyle>

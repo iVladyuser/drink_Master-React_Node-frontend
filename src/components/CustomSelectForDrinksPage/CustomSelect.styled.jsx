@@ -39,7 +39,7 @@ export const CustomSelect = styled.button`
   span {
     display: block;
   }
-
+  
   @media (min-width: 768px) {
     width: 199px;
     height: 56px;
