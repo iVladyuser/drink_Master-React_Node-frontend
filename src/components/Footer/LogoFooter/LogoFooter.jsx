@@ -1,18 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {FooterLog, FooterLogText} from './LogoFooter.styled.jsx';
+import {useNavigate} from 'react-router-dom';
+import {FooterLog, FooterLogText, LinkLogo} from './LogoFooter.styled.jsx';
 import { Logo } from 'images/footer/svg/Logo.jsx';
 
 export const LogoFooter = () => {
+    const navigate = useNavigate();
+    const footerLogo= ()=>{
+        navigate("/home");
+    }
     return (
-        <Link to="/home">
+        <LinkLogo onClick={footerLogo}>
         < FooterLog>
         <Logo />
         <FooterLogText>
         Drink Master
         </FooterLogText>
         </FooterLog>
-    </Link>
+    </LinkLogo>
     );
 };
 

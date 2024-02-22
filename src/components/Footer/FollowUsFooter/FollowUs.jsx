@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {SocialNovUl, SocialNovLi} from './SocialNov.styled';
+import {SocialNovUl, SocialNovLi} from './FollowUs.styled';
 import { Instagram } from 'images/footer/svg/Instagram';
 import { Facebook } from 'images/footer/svg/Facebook';
 import { YouTube } from 'images/footer/svg/YouTube';
 
-export const SocialNov = () => {
+export const FollowUs = () => {
     return (
         <div >
           <SocialNovUl>
@@ -42,4 +42,4 @@ export const SocialNov = () => {
     );
 };
 
-export default SocialNov;
+export default FollowUs;
