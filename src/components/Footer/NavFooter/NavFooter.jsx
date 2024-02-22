@@ -1,22 +1,36 @@
 import React from 'react';
-import { Link} from 'react-router-dom';
-import {FooterNav, FooterUl } from './NavFooter.styled';
+
+import {useNavigate} from 'react-router-dom';
+import {FooterNav, FooterUl, ButtonLink } from './NavFooter.styled';
 
 export const NavFooter = () => {
+    const navigate = useNavigate();
+    const footerDrinks= ()=>{
+        navigate("/drinks");
+    }
+    const footerAdd= ()=>{
+        navigate("/add");
+    }
+    const footerMy= ()=>{
+        navigate("/my");
+    }
+    const footerFavorites= ()=>{
+        navigate("/favorites");
+    }
     return (
         <nav>
             <FooterUl>
                 <FooterNav>
-                    <Link to="/drinks">Drinks</Link>
+                    <ButtonLink onClick={footerDrinks}>Drinks</ButtonLink>
                 </FooterNav>
                 <FooterNav>
-                    <Link to="/add">Add Drink</Link>
+                    <ButtonLink  onClick={footerAdd}>Add Drink</ButtonLink>
                 </FooterNav>
                 <FooterNav>
-                    <Link to="/my">My Drinks</Link>
+                    <ButtonLink onClick={footerMy} >My Drinks</ButtonLink>
                 </FooterNav>
                 <FooterNav>
-                    <Link to="/favorites">Favorites drinks</Link>
+                    <ButtonLink onClick={footerFavorites} >Favorites drinks</ButtonLink>
                 </FooterNav>
             </FooterUl>
         </nav>

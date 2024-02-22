@@ -1,3 +1,4 @@
+import Footer from 'components/Footer/Footer';
 import {
   WelcomePageStyle,
   Container,
@@ -23,6 +24,7 @@ const WelcomePage = () => {
           <ButtonLink to="/signin">Sign In</ButtonLink>
         </ButtonWrapper>
       </Container>
+      <Footer/>
     </WelcomePageStyle>
   );
 };
