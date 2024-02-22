@@ -5,7 +5,7 @@ import {
   selectMyDrinksItems,
   selectMyDrinksStatus,
   selectMyDrinksError,
-} from '../MyDrinksPage/MyDrinksSlice';
+} from '../../services/MyDrinksSlice';
 import { NoImg } from '../../pages/FavoritePage/NoImg';
 import ErrorPage from '../../pages/FavoritePage/ErrorPage';
 import { Paginator } from '../../components/Pagination/Pagination';

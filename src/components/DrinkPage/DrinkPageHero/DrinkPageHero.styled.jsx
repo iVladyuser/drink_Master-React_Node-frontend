@@ -15,6 +15,7 @@ export const HeroWraper = styled.section`
   @media (min-width: 1440px) {
     margin-bottom: 100px;
     flex-direction: row;
+    align-items: flex-start;
     gap: 249px;
   }
 `;

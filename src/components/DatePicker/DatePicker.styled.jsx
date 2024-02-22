@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const CalendarGlobalStyles = createGlobalStyle`
+export const DatePickerGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
     position: relative;
   }

@@ -6,7 +6,7 @@ import Navigation from './Navigation/Navigation';
 import ThemeSwitcher from './Switch/ThemeSwitcher'
 import UserProfile from './User/UserProfile'
 import UserProfileModal from './UserInfoModal/UserInfoModal'
-import { StyledGiHamburgerMenu, UserBurgerStyle } from './Header.styled';
+import { StyledGiHamburgerMenu, UserBurgerStyle, UserSwitchStyled } from './Header.styled';
 import useDeviceType from '../../hooks/useDeviceType';
 
 export const Header = () => {
@@ -28,21 +28,23 @@ export const Header = () => {
     <HeaderContainer>
       <Logo />
       {isDesktop && <NavigationLink />}
+      < UserSwitchStyled>
       {isDesktop && <ThemeSwitcher />}
       <UserBurgerStyle>
-      
+
         <UserProfile openModal={() => toggleModal('UserProfileModal')} />
-    
+
       {isModalOpen && modalType === 'UserProfileModal' && (
         <UserProfileModal closeModal={closeModal} />
       )}
-      {/* <LogoutButton /> */}
+
       <StyledGiHamburgerMenu onClick={() => toggleModal('Navigation')} />
       <Navigation
         onClose={closeModal}
         isVisible={isModalOpen && modalType === 'Navigation'}
       />
       </UserBurgerStyle>
+      </UserSwitchStyled>
     </HeaderContainer>
   );
 };
