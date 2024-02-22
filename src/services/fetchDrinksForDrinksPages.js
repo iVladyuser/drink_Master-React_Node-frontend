@@ -2,6 +2,7 @@
 import { instance } from './fetchAuth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+
 // export const getMainPageAllDrinks = createAsyncThunk(
 //   'drinks/getAll',
 //   async ({ page, limit }, { rejectWithValue }) => {
@@ -15,6 +16,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //     }
 //   }
 // );
+
 
 export const fetchCategories = createAsyncThunk(
   'drinks/categories',

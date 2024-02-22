@@ -14,6 +14,7 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContent = styled.div`
+  position: relative;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -22,4 +23,15 @@ export const ModalContent = styled.div`
 
 export const ModalTitle = styled.h2`
   margin-top: 0;
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #aaa;
 `;
