@@ -1,64 +1,71 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateAvatarThunk } from '../../../services/fetchAuth';
-import { ModalOverlay, ModalContent, ModalTitle } from './UserInfoModal.styled';
+import {
+  updateNameThunk,
+  updateAvatarThunk,
+} from '../../../services/fetchUpdate';
+import {
+  ModalOverlay,
+  ModalContent,
+  ModalTitle,
+  CloseButton,
+} from './UserInfoModal.styled';
+import { FaTimes } from 'react-icons/fa';
 
 const UserProfileModal = ({ closeModal }) => {
   const dispatch = useDispatch();
+  const [name, setNewName] = useState('');
   const [avatar, setAvatar] = useState(null);
-  const [name, setName] = useState('');
+
+  const handleNameChange = e => {
+    setNewName(e.target.value);
+  };
 
   const handleAvatarChange = e => {
     setAvatar(e.target.files[0]);
   };
 
-  const handleNameChange = e => {
-    setName(e.target.value);
-  };
-
   const handleSubmit = async e => {
     e.preventDefault();
-    const formData = new FormData();
-    if (avatar) {
-      formData.append('avatar', avatar);
-    }
-    if (name) {
-      formData.append('name', name);
-    }
     try {
-      await dispatch(updateAvatarThunk(formData));
+      if (name) {
+        await dispatch(updateNameThunk({ name }));
+      }
+      if (avatar) {
+        await dispatch(updateAvatarThunk(avatar));
+      }
+
       closeModal();
     } catch (error) {
-      console.error('Error updating user profile:', error);
-    }
-  };
-
-  const handleModalClick = e => {
-    if (e.target === e.currentTarget) {
-      closeModal()
-    }
-  };
-
-  const handleKeyPress = e => {
-    if (e.key === 'Escape') {
-      closeModal();
+      console.error('Error updating user:', error);
     }
   };
 
   return (
-    <ModalOverlay onClick={handleModalClick} onKeyDown={handleKeyPress}>
+    <ModalOverlay>
       <ModalContent>
-        <ModalTitle>Edit User Profile</ModalTitle>
+        <CloseButton onClick={closeModal}>
+          <FaTimes />
+        </CloseButton>
+        <ModalTitle>Update Profile</ModalTitle>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="avatar">Avatar:</label>
-            <input type="file" id="avatar" onChange={handleAvatarChange} accept="image/*" />
-          </div>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" value={name} onChange={handleNameChange} />
-          </div>
-          <button type="submit">Submit</button>
+          <label htmlFor="name">New Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={handleNameChange}
+          />
+
+          <label htmlFor="avatar">New Avatar:</label>
+          <input
+            type="file"
+            id="avatar"
+            onChange={handleAvatarChange}
+            accept="image/*"
+          />
+
+          <button type="submit">Update Profile</button>
         </form>
       </ModalContent>
     </ModalOverlay>

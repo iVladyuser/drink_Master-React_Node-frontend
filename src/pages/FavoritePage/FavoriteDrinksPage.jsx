@@ -6,7 +6,7 @@ import {
   selectAllFavorites,
   selectFavoritesStatus,
   selectFavoritesError,
-} from './FavoriteSlice';
+} from '../../services/FavoriteSlice';
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
 
@@ -37,24 +37,30 @@ export const FavoriteDrinksPage = () => {
 
   const totalCount = items.length;
 
+  const showContent = status !== 'loading' && !error;
+
   return (
     <>
       <UniversalContainer>
         <PageTitle title="Favorites" />
         {status === 'loading' && <div>Loading...</div>}
         {error && <ErrorPage />}
-        {!error && items.length > 0 ? (
-          <DrinksList drinks={items} onRemoveClick={handleRemoveClick} />
-        ) : (
-          <NoImg text="You haven't added any favorite cocktails yet." />
+        {showContent && (
+          <>
+            {items.length > 0 ? (
+              <DrinksList drinks={items} onRemoveClick={handleRemoveClick} />
+            ) : (
+              <NoImg text="You haven't added any favorite cocktails yet." />
+            )}
+            <Paginator
+              limit={limit}
+              currentPage={currentPage}
+              items={totalCount}
+              handlePageChange={handlePageChange}
+              pageRangeDisplayed={5}
+            />
+          </>
         )}
-        <Paginator
-          limit={limit}
-          currentPage={currentPage}
-          items={totalCount}
-          handlePageChange={handlePageChange}
-          pageRangeDisplayed={5}
-        />
       </UniversalContainer>
     </>
   );

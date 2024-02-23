@@ -1,4 +1,4 @@
-import {selectVisibleDrinks} from '../../redux/drink/selectorsForDrinksPages'
+import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TitlePage from '../../components/TitlePage/TitlePage';
@@ -44,11 +44,11 @@ const DrinksPage = () => {
   const limit = 11;
 
   useEffect(() => {
-    dispatch(getMainPageAllDrinks());
-  }, [dispatch]);
+    dispatch(getMainPageAllDrinks({ page: currentPage, limit }));
+  }, [dispatch, currentPage, limit]);
 
   const handlePageChange = selectedPage => {
-    setCurrentPage(selectedPage);
+    setCurrentPage(selectedPage + 1);
   };
 
   const totalCount = items.length;
@@ -84,8 +84,16 @@ const DrinksPage = () => {
             <Formik initialValues={initialValues} >
              
                 <FormStyled>
-                  <CustomSelect items={categoriesList} title={'Category'} />
-                  <CustomSelect items={ingredientsList} title={'Ingredients'} />
+                  <CustomSelect
+                    items={categoriesList}
+                    title={'Category'}
+                    onSelect={handleCategorySelect}
+                  />
+                  <CustomSelect
+                    items={ingredientsList}
+                    title={'Ingredients'}
+                    onSelect={handleIngredientSelect}
+                  />
                 </FormStyled>
               
             </Formik>

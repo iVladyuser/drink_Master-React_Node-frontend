@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 
-export const SearchInput = styled.input
-`font-family: 'Manrope', sans-serif;
-padding: 10px 15px;
+export const SearchInput = styled.input`
+@media screen and (max-width: 320px) {
+  width:  100%;
+ }
+
+ font-family: 'Manrope', sans-serif;
+ padding: 10px 15px;
  border-radius: 200px;
  border: 1px solid rgba(243, 243, 243, 0.2);
  background: transparent;
@@ -17,9 +21,11 @@ padding: 10px 15px;
  &:hover {
     background-color: #f4f8fa;
   }
+
   @media (min-width: 375px) {
     max-width: 335px;
   }
+
   @media (min-width: 768px) {
     width: 264px;
     height: 56px;

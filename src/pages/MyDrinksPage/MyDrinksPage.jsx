@@ -5,7 +5,7 @@ import {
   selectMyDrinksItems,
   selectMyDrinksStatus,
   selectMyDrinksError,
-} from '../MyDrinksPage/MyDrinksSlice';
+} from '../../services/MyDrinksSlice';
 import { NoImg } from '../../pages/FavoritePage/NoImg';
 import ErrorPage from '../../pages/FavoritePage/ErrorPage';
 import { Paginator } from '../../components/Pagination/Pagination';
@@ -31,24 +31,30 @@ export const MyDrinksPage = () => {
 
   const totalCount = drinks.length;
 
+  const showContent = status !== 'loading' && !error;
+
   return (
     <>
       <UniversalContainer>
         <PageTitle title="My Drinks" />
         {status === 'loading' && <div>Loading...</div>}
         {error && <ErrorPage />}
-        {!error && drinks.length > 0 ? (
-          <DrinksList drinks={drinks} />
-        ) : (
-          <NoImg text="You haven't added any drinks yet." />
+        {showContent && (
+          <>
+            {drinks.length > 0 ? (
+              <DrinksList drinks={drinks} />
+            ) : (
+              <NoImg text="You haven't added any drinks yet." />
+            )}
+            <Paginator
+              limit={limit}
+              currentPage={currentPage}
+              items={totalCount}
+              handlePageChange={handlePageChange}
+              pageRangeDisplayed={5}
+            />
+          </>
         )}
-        <Paginator
-          limit={limit}
-          currentPage={currentPage}
-          items={totalCount}
-          handlePageChange={handlePageChange}
-          pageRangeDisplayed={5}
-        />
       </UniversalContainer>
     </>
   );

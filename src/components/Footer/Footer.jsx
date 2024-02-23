@@ -8,11 +8,11 @@ import {
   FooterDivMob,
   FooterDiv
 } from './Footer.styled';
-import FormFooter from './FormFooter/FormFooter';
+import SubscribeForm from './SubscribeForm/SubscribeForm';
 import Info from './Info/Info';
 import LogoFooter from './LogoFooter/LogoFooter';
 import NavFooter from './NavFooter/NavFooter';
-import SocialNov from './SocialNav/SocialNov';
+import FollowUs from './FollowUsFooter/FollowUs';
 
 export const Footer = () => {
   return (
@@ -23,15 +23,15 @@ export const Footer = () => {
             <FooterDivTwo>
               <FooterDivOne>
                 <LogoFooter />
-                <SocialNov />
+                <FollowUs />
               </FooterDivOne>
               <NavFooter />
               <FooterDivDesk>
-                <FormFooter />
+                <SubscribeForm />
               </FooterDivDesk>
             </FooterDivTwo>
             <FooterDivTab>
-              <FormFooter />
+              <SubscribeForm />
             </FooterDivTab>
           </FooterDivMob>
           <Info />

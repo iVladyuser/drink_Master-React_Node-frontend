@@ -27,18 +27,18 @@ const TitleBlock = ({
 
       <ContentWrapper>
         <FieldWrapper>
-          <LabelStyled htmlFor="title">Enter item title</LabelStyled>
-          <FieldStyled name={'title'} placeholder="Enter item title" />
-          {touched.title && errors.title ? (
-            <ErrorText>{errors.title}</ErrorText>
+          <LabelStyled htmlFor="drink">Enter item title</LabelStyled>
+          <FieldStyled name={'drink'} placeholder="Enter item drink" />
+          {touched.drink && errors.drink ? (
+            <ErrorText>{errors.drink}</ErrorText>
           ) : null}
         </FieldWrapper>
 
         <FieldWrapper>
-          <LabelStyled htmlFor="recipe">Enter about recipe</LabelStyled>
-          <FieldStyled name={'recipe'} placeholder="Enter about recipe" />
-          {touched.recipe && errors.recipe ? (
-            <ErrorText>{errors.recipe}</ErrorText>
+          <LabelStyled htmlFor="description">Enter about recipe</LabelStyled>
+          <FieldStyled name={'description'} placeholder="Enter about recipe" />
+          {touched.description && errors.description ? (
+            <ErrorText>{errors.description}</ErrorText>
           ) : null}
         </FieldWrapper>
 
@@ -63,7 +63,7 @@ const TitleBlock = ({
           <div>
             <FieldRadio
               type="radio"
-              name="alcoholicType"
+              name="alcoholic"
               id="radioAlcoholic"
               value={'Alcoholic'}
             />
@@ -75,7 +75,7 @@ const TitleBlock = ({
           <div>
             <FieldRadio
               type="radio"
-              name="alcoholicType"
+              name="alcoholic"
               id="radioNonAlcoholic"
               value={'Non-alcoholic'}
             />

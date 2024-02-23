@@ -1,10 +1,14 @@
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { AddButton, DrinkFormWrapper } from './MainForm.styled';
 
 import TitleBlock from '../TitleBlock';
+import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
+import { nanoid } from '@reduxjs/toolkit';
 // import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
 
@@ -13,50 +17,62 @@ import RecipePreparationBlock from '../RecipePreparationBlock/';
 // import { useFetchIngredients } from '../../../hooks/useFetchIngredients';
 
 const validationSchema = yup.object().shape({
-  file: yup
-    .mixed()
-    // .test('file', 'Please select a valid image file', value => {
-    //   if (!value) return true;
-    //   return value && value.type.startsWith('image/*');
-    // })
-    .required('Please add the drink recipe image'),
-  title: yup.string().trim().required('Please enter a drink title'),
-  recipe: yup.string().trim().required('Please enter about  recipe'),
+  file: yup.mixed().required('Please add the drink recipe image'),
+  drink: yup.string().trim().required('Please enter a drink title'),
+  description: yup.string().trim().required('Please enter about  recipe'),
   category: yup.string().required('Please select a category'),
   glass: yup.string().required('Please select a glass'),
-  ingredients: yup
-    .array()
-    .of(
-      yup.object().shape({
-        title: yup.string().required('Please select a title'),
-        measure: yup.string().required('Please enter a measure'),
-      })
-    )
-    .required()
-    .min(1, 'Select more than 1 item'),
-  recipePreparation: yup
-    .string()
-    .trim()
-    .required('Please enter about a recipe'),
+  // ingredients: yup
+  //   .array()
+  //   .of(
+  //     yup.object().shape({
+  //       title: yup.string().required('Please select a title'),
+  //       measure: yup.string().required('Please enter a measure'),
+  //     })
+  //   )
+  //   .required()
+  // //   .min(1, 'Select more than 1 item'),
+  instructions: yup.string().trim().required('Please enter about a recipe'),
 });
 
 const initialValues = {
   file: null,
-  title: '',
-  recipe: '',
+  drink: '',
+  description: '',
   category: '',
   glass: '',
-  alcoholicType: 'Alcoholic',
-  ingredients: [],
-  recipePreparation: '',
+  alcoholic: 'Alcoholic',
+  // ingredients: [],
+  instructions: '',
 };
 
 const MainForm = () => {
   const fileRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const onSubmitForm = (data, action) => {
-    action.resetForm();
-    fileRef.current.value = null;
+  const handleSubmit = async (data, action) => {
+    data.id = nanoid();
+    const id = data.id;
+    const image = `${id}_${data.file.name}`;
+
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('drink', data.drink);
+    formData.append('description', data.description);
+    formData.append('category', data.category);
+    formData.append('glass', data.glass);
+    formData.append('alcoholic', data.alcoholic);
+    formData.append('instructions', data.instructions);
+
+    try {
+      dispatch(addOwnDrinkThunk(formData));
+      action.resetForm();
+      fileRef.current.value = null;
+      navigate('/my');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // const categories = useFetchCategories();
@@ -117,7 +133,7 @@ const MainForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={onSubmitForm}
+        onSubmit={handleSubmit}
       >
         {({ setFieldValue, touched, errors }) => (
           <Form>
@@ -130,8 +146,11 @@ const MainForm = () => {
               fileRef={fileRef}
             />
             {/* <IngredientsBlock /> */}
-            <RecipePreparationBlock />
-            <AddButton>Add</AddButton>
+            <RecipePreparationBlock
+              error={errors.instructions}
+              touched={touched.instructions}
+            />
+            <AddButton type="submit">Add</AddButton>
           </Form>
         )}
       </Formik>

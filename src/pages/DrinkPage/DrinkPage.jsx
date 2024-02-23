@@ -1,75 +1,46 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-import DrinkPageHero from '../../components/DrinkPage/DrinkPageHero';
-import DrinkIngredientsList from '../../components/DrinkPage/DrinkIngredientsList';
-import RecipePreparation from '../../components/DrinkPage/RecipePreparation';
-import { Container } from './DrinkPage.styled';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useState } from 'react';
 import { getDrinkById } from 'services/fetchDrinkById';
+import {
+  selectDrinkById,
+  selectErrorDrinkById,
+  selectIsLoadingDrinkById,
+} from '../../redux/drink/sliceDrinkById';
+import { Container } from './DrinkPage.styled';
 import { Loader } from 'components/Loader/Loader';
-// import { toast } from 'react-toastify';
+import DrinkPageHero from 'components/DrinkPage/DrinkPageHero';
+import DrinkIngredientsList from 'components/DrinkPage/DrinkIngredientsList';
+import RecipePreparation from 'components/DrinkPage/RecipePreparation';
+import ErrorPage from 'pages/FavoritePage/ErrorPage';
 
 const DrinkPage = () => {
+  const dispatch = useDispatch();
   const { drinkId } = useParams();
-  const [drinkData, setDrinkData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const isLoading = useSelector(selectIsLoadingDrinkById);
+  const error = useSelector(selectErrorDrinkById);
+  const drinkData = useSelector(selectDrinkById);
 
   useEffect(() => {
-    if (!drinkId) {
-      return;
-    }
+    dispatch(getDrinkById(drinkId));
+  }, [dispatch, drinkId]);
 
-    const fetchDrinkDetails = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        const data = await getDrinkById(drinkId);
-
-        setDrinkData(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchDrinkDetails();
-  }, [drinkId]);
-
-  // console.log('drinkData: ', drinkData);
+  console.log('page drinkData: ', drinkData);
 
   return (
     <div>
       <Container>
-        {error !== null && <p style={{ color: '#adadad' }}>{error}</p>}
-        {isLoading && <Loader>Loading...</Loader>}
+        {/* {error !== null && <p style={{ color: '#adadad' }}>`Oops, some error occured... Please try reloading the page`</p>} */}
+        {error && <ErrorPage />}
+        {isLoading && <Loader />}
         {drinkData !== null && (
           <>
-            <DrinkPageHero coctailInfo={drinkData} />
+            <DrinkPageHero cocktailInfo={drinkData} />
             <DrinkIngredientsList ingredients={drinkData.ingredients} />
-            <RecipePreparation coctailInfo={drinkData} />
+            <RecipePreparation cocktailInfo={drinkData} />
           </>
         )}
-
-        {/* {error &&
-          toast.error(
-            `Oops, some error occured... Please try reloading the page`
-          )} */}
-        {/* <ToastContainer
-          position="top-left"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        /> */}
       </Container>
     </div>
   );

@@ -15,6 +15,7 @@ export const IngredientsWraper = styled.section`
 export const IngredientsSectTitle = styled.h2`
   margin-bottom: 42px;
   font-size: 16px;
+  font-weight: 500;
   line-height: 1.25;
   color: rgba(243, 243, 243, 0.5);
 

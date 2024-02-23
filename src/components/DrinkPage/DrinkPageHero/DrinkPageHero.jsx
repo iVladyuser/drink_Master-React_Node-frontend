@@ -8,26 +8,46 @@ import {
 } from './DrinkPageHero.styled';
 import AddToFavBtn from '../AddToFavBtn/AddToFavBtn';
 import DrinkPageHeroImg from '../DrinkPageHeroImg/DrinkPageHeroImg';
+import { useDispatch } from 'react-redux';
+import { addFavorite, deleteFavorite } from '../../../services/FavoriteSlice';
 
-const DrinkPageHero = ({ coctailInfo }) => {
+const DrinkPageHero = ({ cocktailInfo }) => {
+  const dispatch = useDispatch();
+
+  const {
+    _id: drinkId,
+    drink,
+    glass,
+    alcoholic,
+    description,
+    drinkThumb,
+  } = cocktailInfo;
+
+  let isFavorite = false;
+  const handleFavAction = () => {
+    if (!isFavorite) {
+      dispatch(addFavorite(drinkId));
+      console.log('added_id: ', drinkId);
+    } else {
+      dispatch(deleteFavorite(drinkId));
+    }
+  };
+
   return (
     <HeroWraper>
       <HeroTextWraper>
-        <PageTitle title={coctailInfo.drink} />
+        <PageTitle title={drink} />
         <GlassTypeAndServ>
-          {coctailInfo.glass} / {coctailInfo.alcoholic}
+          {glass} / {alcoholic}
         </GlassTypeAndServ>
-        <DrinkDescr>{coctailInfo.description}</DrinkDescr>
-        <AddToFavBtn>
-          {/* btnName={favDrink ? 'Remove from favorites' : 'Add to favorite drinks'}
-      onClick={handleFavAction} */}
-        </AddToFavBtn>
+        <DrinkDescr>{description}</DrinkDescr>
+        <AddToFavBtn
+          btnName={isFavorite ? 'Added to favorites' : 'Add to favorite drinks'}
+          onClick={handleFavAction}
+        ></AddToFavBtn>
       </HeroTextWraper>
       <HeroImgWraper>
-        <DrinkPageHeroImg
-          img={coctailInfo.drinkThumb}
-          alt={coctailInfo.drink}
-        />
+        <DrinkPageHeroImg img={drinkThumb} alt={drink} />
       </HeroImgWraper>
     </HeroWraper>
   );
