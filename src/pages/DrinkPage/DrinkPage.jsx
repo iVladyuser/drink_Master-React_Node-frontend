@@ -26,8 +26,6 @@ const DrinkPage = () => {
     dispatch(getDrinkById(drinkId));
   }, [dispatch, drinkId]);
 
-  console.log('page drinkData: ', drinkData);
-
   return (
     <div>
       <Container>
