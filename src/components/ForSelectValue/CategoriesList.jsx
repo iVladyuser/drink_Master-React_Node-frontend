@@ -5,7 +5,7 @@ export const categoriesList = [
     'Other/Unknown',
     'Cocoa',
     'Shot',
-    'Coffee/Tea',
+    'Coffee / Tea',
     'Homemade Liqueur',
     'Punch/Party Drink',
     'Beer',

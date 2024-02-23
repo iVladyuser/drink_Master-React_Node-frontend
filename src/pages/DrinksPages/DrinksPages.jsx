@@ -150,7 +150,8 @@ import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import { getMainPageAllDrinks } from 'services/fetchDrinksForDrinksPages';
 import { selectAllDrinks, selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
 import { setCategoryFilter, setIngredientFilter } from '../../redux/drink/sliceFilterForDrinksPages';
-import { categoriesList } from '../../components/ForSelectValue/CategoriesList'; import { ingredientsList } from '../../components/ForSelectValue/IngredientsList';
+import { categoriesList } from '../../components/ForSelectValue/CategoriesList'; 
+import { ingredientsList } from '../../components/ForSelectValue/IngredientsList';
 const initialValues = {
   category: 'All categories',
   ingredients: 'Ingredients',
@@ -165,7 +166,10 @@ const DrinksPage = () => {
   const filters = useSelector(state => state.filters);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 11;
-
+ 
+   console.log('item', items[0].ingredients[0].title);
+  // console.log('Ingredient Filter:', filters.selectedIngredient);
+  
   useEffect(() => {
     dispatch(getMainPageAllDrinks({ page: currentPage, limit, filters }));
   }, [dispatch, currentPage, limit, filters]);

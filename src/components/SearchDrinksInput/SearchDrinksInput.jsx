@@ -4,7 +4,7 @@ import {  SearchInput } from './SearchDrinksInput.styled';
  import { selectDrinksFilter } from '../../redux/drink/selectorsForDrinksPages';
  import {setSearchQuery} from '../../redux/drink/sliceFilterForDrinksPages'
 const SearchDrinksInput = () => {
-  const drinksQueryFilter = useSelector(selectDrinksFilter);
+  const drinksQueryFilter = useSelector(selectDrinksFilter).searchQuery;
   const dispatch = useDispatch();
   const handleFilterChange = e => {
     const userQuery = e.target.value;

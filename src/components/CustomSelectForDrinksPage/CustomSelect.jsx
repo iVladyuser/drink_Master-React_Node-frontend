@@ -36,6 +36,7 @@ const CustomSelectMenu = ({ items, title, onSelect }) => {
     toggleMenu();
     setValue(item);
     setSearchQuery('');
+    
     onSelect(item);
   };
 
