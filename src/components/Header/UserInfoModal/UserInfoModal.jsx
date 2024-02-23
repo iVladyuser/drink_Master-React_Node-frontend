@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  updateNameThunk,
-  updateAvatarThunk,
-} from '../../../services/fetchUpdate';
-import {
-  ModalOverlay,
-  ModalContent,
-  ModalTitle,
-  CloseButton,
-} from './UserInfoModal.styled';
+import { updateNameThunk, updateAvatarThunk } from '../../../services/fetchUpdate';
+import { ModalOverlay, ModalContent, ModalTitle, CloseButton } from './UserInfoModal.styled';
 import { FaTimes } from 'react-icons/fa';
 
-const UserProfileModal = ({ closeModal }) => {
+const UserProfileModal = ({ closeModal, handleNameUpdate }) => {
   const dispatch = useDispatch();
   const [name, setNewName] = useState('');
   const [avatar, setAvatar] = useState(null);
@@ -30,6 +22,7 @@ const UserProfileModal = ({ closeModal }) => {
     try {
       if (name) {
         await dispatch(updateNameThunk({ name }));
+        handleNameUpdate(name);
       }
       if (avatar) {
         await dispatch(updateAvatarThunk(avatar));

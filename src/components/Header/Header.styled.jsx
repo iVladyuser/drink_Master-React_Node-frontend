@@ -43,7 +43,6 @@ export const UserSwitchStyled= styled.div`
 display: flex;
  align-items: center;
  gap: 24px;
- padding-left: 191px
 
 `
 
