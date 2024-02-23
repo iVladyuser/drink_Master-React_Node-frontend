@@ -13,28 +13,28 @@ import {  createAsyncThunk } from '@reduxjs/toolkit';
       }
     },
   );
-  export const fetchCategories= createAsyncThunk(
-    'drinks/categories',
-    async (_, thunkAPI) => {
-      try {
-        const response = await instance.get('/filters/categories');
-        return response.data;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    },
-  );
-  export const fetchIngredients= createAsyncThunk(
-    'drinks/ingredients',
-    async (_, thunkAPI) => {
-      try {
-        const response = await instance.get('/filters/ingredients');
-        return response.data;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    },
-  );
+  // export const fetchCategories= createAsyncThunk(
+  //   'drinks/categories',
+  //   async (_, thunkAPI) => {
+  //     try {
+  //       const response = await instance.get('/filters/categories');
+  //       return response.data;
+  //     } catch (error) {
+  //       return thunkAPI.rejectWithValue(error.message);
+  //     }
+  //   },
+  // );
+  // export const fetchIngredients= createAsyncThunk(
+  //   'drinks/ingredients',
+  //   async (_, thunkAPI) => {
+  //     try {
+  //       const response = await instance.get('/filters/ingredients');
+  //       return response.data;
+  //     } catch (error) {
+  //       return thunkAPI.rejectWithValue(error.message);
+  //     }
+  //   },
+  // );
 
 
 

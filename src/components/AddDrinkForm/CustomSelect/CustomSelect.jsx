@@ -28,7 +28,7 @@ const CustomSelectMenu = ({ items, title, touched, error }) => {
     items.filter(item => item.toLowerCase().includes(value.toLowerCase()));
 
   const [, meta, { setValue }] = useField({ name: titleValue });
-
+  
   const toggleMenu = () => {
     setIsOpen(prevState => !prevState);
   };

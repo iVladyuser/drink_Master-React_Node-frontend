@@ -35,11 +35,11 @@ const initialValues = {
 const DrinksPage = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectAllDrinks);
-  console.log('Vladuser', items);
+ 
   const status = useSelector(selectIsLoading);
   const error = useSelector(selectDrinksError);
   const visibleDrinks = useSelector(selectVisibleDrinks);
- console.log('Vladik', visibleDrinks);
+ 
   const [currentPage, setCurrentPage] = useState(0);
   const limit = 11;
 
@@ -68,6 +68,7 @@ const DrinksPage = () => {
   //   );
   // }
 
+  
   return (
     <DrinksPageStyle>
       <ContainerForPage>
@@ -80,13 +81,13 @@ const DrinksPage = () => {
                 <SvgGeneratorSvgSelector id="svglupa" />
               </WraperSvg>
             </ForInputLupaSvg>
-            <Formik initialValues={initialValues}>
-              {({ setFieldValue }) => (
+            <Formik initialValues={initialValues} >
+             
                 <FormStyled>
                   <CustomSelect items={categoriesList} title={'Category'} />
                   <CustomSelect items={ingredientsList} title={'Ingredients'} />
                 </FormStyled>
-              )}
+              
             </Formik>
           </WraperForm>
           <ListCocktail>
