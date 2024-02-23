@@ -16,12 +16,12 @@ export const DrinksList = ({ drinks, onRemoveClick }) => {
   return (
     <>
       {drinks.map(drink => (
-        <FavoriteDrinksItemContainer key={drink.id}>
-          <FavoriteDrinkImage src={drink.image} alt={drink.name} />
+        <FavoriteDrinksItemContainer key={drink._id}>
+          <FavoriteDrinkImage src={drink.drinkThumb} alt={drink.drink} />
           <FavoriteTitleWrap>
-            <FavoriteDrinkTitle>{drink.name}</FavoriteDrinkTitle>
+            <FavoriteDrinkTitle>{drink.drink}</FavoriteDrinkTitle>
             <FavoriteDrinkInfo>
-              {drink.isAlcoholic ? 'Alcoholic' : 'Non-alcoholic'}
+              {drink.alcoholic === 'Alcoholic' ? 'Alcoholic' : 'Non-alcoholic'}
             </FavoriteDrinkInfo>
             <FavoriteDrinkDescription>
               {drink.description}
@@ -29,7 +29,7 @@ export const DrinksList = ({ drinks, onRemoveClick }) => {
           </FavoriteTitleWrap>
           <ButtonsContainer>
             <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
-            <FavoriteRemoveButton onClick={() => onRemoveClick(drink.id)}>
+            <FavoriteRemoveButton onClick={() => onRemoveClick(drink._id)}>
               <img src={icon} alt="trash" style={{ maxWidth: '24px' }} />
             </FavoriteRemoveButton>
           </ButtonsContainer>

@@ -23,7 +23,7 @@ export const FavoritePageTitle = styled.h1`
   height: 38px;
   left: 20px;
   top: 80px;
-  color: rgb(10, 10, 17);
+  color: rgb(243, 243, 243);
   font-size: 32px;
   font-weight: 600;
   line-height: 38px;
@@ -57,8 +57,9 @@ export const FavoriteDrinksList = styled.ul`
 export const FavoriteDrinksItemContainer = styled.li`
   display: block;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   margin-bottom: 40px;
+  width: 100%;
 
   @media (min-width: 375px) {
     width: 335px;
@@ -104,6 +105,7 @@ export const FavoriteDrinkTitle = styled.h5`
   font-size: 18px;
   line-height: 1.33;
   margin-bottom: 4px;
+  color: rgb(243, 243, 243);
 `;
 
 export const FavoriteDrinkInfo = styled.p`
@@ -117,6 +119,7 @@ export const FavoriteDrinkDescription = styled.p`
   font-size: 14px;
   line-height: 1.28;
   margin-bottom: 18px;
+  color: rgb(243, 243, 243);
 `;
 
 export const FavoriteSeeMoreButton = styled.button`
