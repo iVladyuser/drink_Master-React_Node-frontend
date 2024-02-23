@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {  SearchInput } from './SearchDrinksInput.styled';
  import { selectDrinksFilter } from '../../redux/drink/selectorsForDrinksPages';
- import {setDrinksFilter} from '../../redux/drink/sliceFilterForDrinksPages'
+ import {setSearchQuery} from '../../redux/drink/sliceFilterForDrinksPages'
 const SearchDrinksInput = () => {
   const drinksQueryFilter = useSelector(selectDrinksFilter);
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const SearchDrinksInput = () => {
     
     
     const normalizedValue = userQuery.toLowerCase().trim();
-    dispatch(setDrinksFilter(normalizedValue));
+    dispatch(setSearchQuery(normalizedValue));
   };
 
   return (
