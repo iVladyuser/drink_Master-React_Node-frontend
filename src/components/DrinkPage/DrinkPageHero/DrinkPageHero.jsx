@@ -39,12 +39,10 @@ const DrinkPageHero = ({ cocktailInfo }) => {
 
   const handleAddToFavorite = () => {
     dispatch(addFavorite(drinkId));
-    console.log('added_id: ', drinkId);
   };
 
   const handleRemoveFromFavorite = () => {
     dispatch(deleteFavorite(drinkId));
-    console.log('deleted_id: ', drinkId);
   };
 
   return (
@@ -58,15 +56,15 @@ const DrinkPageHero = ({ cocktailInfo }) => {
         {isFavorite ? (
           <AddToFavBtn
             btnText={<SVGwithText />}
-            bg="darkblue"
-            color="white"
+            bg="#161f37"
+            color="#f3f3f3"
             onClick={handleRemoveFromFavorite}
           ></AddToFavBtn>
         ) : (
           <AddToFavBtn
             btnText="Add to favorite drinks"
-            bg="white"
-            color="darkblue"
+            bg="#f3f3f3"
+            color="#161f37"
             onClick={handleAddToFavorite}
           ></AddToFavBtn>
         )}

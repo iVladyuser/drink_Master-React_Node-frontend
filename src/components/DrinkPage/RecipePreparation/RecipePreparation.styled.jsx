@@ -53,7 +53,6 @@ export const InstructionImgWrp = styled.div`
   margin-right: auto;
   margin-left: auto;
   flex-shrink: 0;
-  /* border-radius: 8px; */
   border-radius: 10px;
   overflow: hidden;
 `;
