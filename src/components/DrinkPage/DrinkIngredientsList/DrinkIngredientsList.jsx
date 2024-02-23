@@ -13,11 +13,10 @@ import {
 import IngredientPlaceholder from '../../../images/drinkPage/IngredientPlaceholder.jpg';
 
 const DrinkIngredientsList = ({ ingredients }) => {
-  // console.log('ingredients: ', ingredients);
-
   return (
     <IngredientsWraper>
       <IngredientsSectTitle>Ingredients</IngredientsSectTitle>
+
       {ingredients.length !== 0 ? (
         <IngredientsList>
           {ingredients.map(

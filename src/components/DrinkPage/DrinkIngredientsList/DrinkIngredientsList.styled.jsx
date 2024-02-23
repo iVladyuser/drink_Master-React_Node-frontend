@@ -32,13 +32,16 @@ export const IngredientsList = styled.ul`
   align-items: center;
   justify-content: center;
 
+  @media (min-width: 375px) {
+    justify-content: left;
+  }
+
   @media (min-width: 768px) {
     gap: 22px;
   }
 
   @media (min-width: 1440px) {
     gap: 35px;
-    justify-content: left;
   }
 `;
 

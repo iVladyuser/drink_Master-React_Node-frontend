@@ -8,9 +8,7 @@ import {
 } from './RecipePreparation.styled';
 import InstructionImg from '../InstructionsImg';
 
-const RecipePreparation = ({ coctailInfo }) => {
-  // console.log('instructions: ', coctailInfo);
-
+const RecipePreparation = ({ cocktailInfo }) => {
   return (
     <RecipeSectWraper>
       <RecipeSectTitle>Recipe Preparation</RecipeSectTitle>
@@ -18,15 +16,15 @@ const RecipePreparation = ({ coctailInfo }) => {
         <InstructionImgWrp>
           <InstructionImg />
         </InstructionImgWrp>
-        {coctailInfo ? (
+        {cocktailInfo ? (
           <InstructionsWrp>
-            <InstructionsTxt>{coctailInfo.description}</InstructionsTxt>
-            <InstructionsTxt>{coctailInfo.instructions}</InstructionsTxt>
+            <InstructionsTxt>{cocktailInfo.description}</InstructionsTxt>
+            <InstructionsTxt>{cocktailInfo.instructions}</InstructionsTxt>
             <InstructionsTxt>
-              {coctailInfo.instructionsDE ? coctailInfo.instructionsDE : ''}
+              {cocktailInfo.instructionsDE ? cocktailInfo.instructionsDE : ''}
             </InstructionsTxt>
             <InstructionsTxt>
-              {coctailInfo.instructionsUK ? coctailInfo.instructionsUK : ''}
+              {cocktailInfo.instructionsUK ? cocktailInfo.instructionsUK : ''}
             </InstructionsTxt>
           </InstructionsWrp>
         ) : (
