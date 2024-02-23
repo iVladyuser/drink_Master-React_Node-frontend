@@ -22,10 +22,8 @@ export const getDrinkById = createAsyncThunk(
       };
 
       const { data } = await instance.get(`/drinks/${drinkId}`, config);
-      console.log('Data:', data);
       return data;
     } catch (error) {
-      console.error('Error:', error.data);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
