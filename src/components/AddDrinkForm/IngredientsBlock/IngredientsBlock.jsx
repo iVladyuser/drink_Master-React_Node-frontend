@@ -11,7 +11,6 @@ import {
 } from './IngredientsBlock.styled';
 import { RxCross2 } from 'react-icons/rx';
 import IngredientsSelect from './IngredientsSelect/IngredientsSelect';
-import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
 import { FaMinus } from 'react-icons/fa6';
 
@@ -37,8 +36,6 @@ const ingredients = [
 ];
 
 const AddIngredients = () => {
-  const [value, setValue] = useState('');
-
   return (
     <div>
       <Formik
@@ -70,13 +67,12 @@ const AddIngredients = () => {
                     <IngredientsSelect
                       value={ingredient.name}
                       onChange={selected => {
-                        setValue(selected);
                         values.ingredients[index].name = selected;
                       }}
                       options={ingredients}
                     />
                     <ErrorMessage
-                      name={`ingredients.${index}.name`}
+                      name={`ingredients.${index}.title`}
                       component="div"
                       className="field-error"
                     />
