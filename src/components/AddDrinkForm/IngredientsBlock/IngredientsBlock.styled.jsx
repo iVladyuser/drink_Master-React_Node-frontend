@@ -1,54 +1,112 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
+import { Field } from 'formik';
 
-// export const AddIngredientWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 24px;
-// `;
 
-// export const IngredientsInputWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-left: 14px;
-//   padding: 0 24px;
-//   gap: 50px;
-//   height: 56px;
-//   width: 150px;
-//   border-radius: 200px;
-//   border: 1px solid rgba(243, 243, 243, 0.5);
-// `;
+export const AddIngredientWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+`;
 
-// export const RemoveInredientBtn = styled.button`  
-//     margin-left: 188px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center; 
-//     width: 18px;
-//     height: 18px;
-//     padding: 0;
-//     border: none;
-//     font: inherit;
-//     color: inherit;
-//     background-color: transparent;
-//     cursor: pointer;
-// `;
+export const IngredientsInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 14px;
+  padding: 0 24px;
+  gap: 50px;
+  height: 56px;
+  width: 150px;
+  border-radius: 200px;
+  border: 1px solid rgba(243, 243, 243, 0.5);
+  outline: transparent;
+  background-color: transparent;
+`;
 
-// export const IngredientsInput = styled.input`
-// border: transparent;
-// background-color: transparent;
+export const RemoveInredientBtn = styled.button`  
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+`;
 
-// &:hover,
-// &:focus {
-//   outline: transparent;
-// }
+export const IngredientsInput = styled(Field)`
+outline: transparent;
+background-color: transparent;
 
-// padding: 4px;
-// width: 100px;
-// font-family: "Manrope", sans-serif;
-// font-size: 17px;
-// line-height: 26.52px;
-// color: rgba(243, 243, 243, 1);
+border: 1px solid rgba(243, 243, 243, 0.5);
+border-radius: 200px;
+width: 101px;
+height: 50px;
+padding: 16px 18px;
+margin-left: 8px;
 
-// ::placeholder {
-//   color: rgba(243, 243, 243, 0.5);
-// `;
+&:hover,
+&:focus {
+  outline: transparent;
+}
+
+font-family: "Manrope", sans-serif;
+font-size: 17px;
+line-height: 26.52px;
+color: rgba(243, 243, 243, 1);
+
+::placeholder {
+  color: rgba(243, 243, 243, 0.5);
+`;
+
+export const MinusBtn = styled.button`  
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+`;
+
+export const PlusBtn = styled.button`  
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+`;
+
+export const IngredientsTitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+`
+
+export const PlusMinusBar = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 77px;
+  border: 1px solid rgba(243, 243, 243, 0.5);
+  border-radius: 200px;
+  width: 104px;
+  height: 38px;
+  padding: 11px 16px;
+`
+
+export const NumberIngredients = styled.span`
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(243, 243, 243, 1);
+
+`

@@ -10,7 +10,7 @@ const RecipePreparation = ({ error, touched }) => {
 
   return (
     <RecipePreparationWrapper>
-      <h2>Recipe preparation</h2>
+      <h3>Recipe preparation</h3>
       <label text="recipe preparation">
         <RecipeTextarea
           placeholder="Enter the recipe"

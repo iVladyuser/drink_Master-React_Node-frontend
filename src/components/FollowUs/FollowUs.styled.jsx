@@ -55,7 +55,7 @@ export const FollowUsSocialLink = styled.a`
     }
 `;
 
-export const FollowUsTitle = styled.h2`
+export const FollowUsTitle = styled.h3`
     margin: 0 0 20px 0;
     font-family: "Manrope", sans-serif;  
     font-size: 18px; 
