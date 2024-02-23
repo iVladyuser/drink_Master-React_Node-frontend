@@ -6,12 +6,12 @@ import {
   IngredientsSelectInput
 } from './IngredientsSelect.styled';
 import { useState, useMemo, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { nanoid } from 'nanoid'
 
 const IngredientsSelect = ({ options, value, onChange }) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const [id] = useState(uuidv4());
+  const id = nanoid();
 
   useEffect(() => {
     function handleOutsideClick(e){

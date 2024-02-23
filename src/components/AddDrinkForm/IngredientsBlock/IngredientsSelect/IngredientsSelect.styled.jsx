@@ -21,7 +21,7 @@ export const IngredientsSearchWrapper = styled.div`
 `
 
 export const IngredientsSelectInput = styled.input`
-  border: transparent;
+  border: none;
   background-color: transparent;
 
   &:hover,
