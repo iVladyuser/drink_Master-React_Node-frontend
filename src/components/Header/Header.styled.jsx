@@ -13,6 +13,8 @@ export const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
 `;
 
 export const HeaderContainer = styled.header`
+  position: relative;
+  z-index: 10;
   margin: 0 auto;
   padding: 20px 20px 25px;
   display: flex;
@@ -31,20 +33,19 @@ export const HeaderContainer = styled.header`
   }
 `;
 export const UserBurgerStyle = styled.div`
-display: flex;
- align-items: center;
- gap: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 
-  @media (min-width: 1440px){
-  gap: 24px;
+  @media (min-width: 1440px) {
+    gap: 24px;
   }
-`
-export const UserSwitchStyled= styled.div`
-display: flex;
- align-items: center;
- gap: 24px;
-
-`
+`;
+export const UserSwitchStyled = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+`;
 
 // export const UserLogoContainer = styled.div`
 //   position: relative;
