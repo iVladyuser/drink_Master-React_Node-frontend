@@ -7,7 +7,6 @@ import {
   FooterDivTab,
   FooterDivMob,
   FooterDiv,
-  
 } from './Footer.styled';
 import SubscribeForm from './SubscribeForm/SubscribeForm';
 import Info from './Info/Info';
@@ -20,9 +19,8 @@ import PageEllipseMob from './Ellipse223/EllipseMob';
 
 export const Footer = () => {
   return (
-    
-      <FooterContainer>
-        <FooterSection>
+    <FooterContainer>
+      <FooterSection>
         <FooterDiv>
           <FooterDivMob>
             <FooterDivTwo>
@@ -41,11 +39,11 @@ export const Footer = () => {
           </FooterDivMob>
           <Info />
         </FooterDiv>
-        <PageEllipse223/>
-        <PageEllipseMob/>
-        </FooterSection>
-      </FooterContainer>
-    
+
+        <PageEllipse223 />
+        <PageEllipseMob />
+      </FooterSection>
+    </FooterContainer>
   );
 };
 export default Footer;
