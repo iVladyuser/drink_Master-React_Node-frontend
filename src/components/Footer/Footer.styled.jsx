@@ -2,7 +2,15 @@ import { styled } from 'styled-components';
 
 
 export const FooterContainer = styled.footer`
-  margin: 0 auto;
+background:#0A0A11;
+
+`;
+
+
+export const FooterSection = styled.section`
+
+position: relative;
+margin: 0 auto;
   padding: 40px 20px 18px 20px;
   min-width: 320px;
   
@@ -16,16 +24,12 @@ export const FooterContainer = styled.footer`
     min-width: 1440px;
     padding: 80px 100px 24px 100px;
   }
-`;
-export const FooterSection = styled.section`
- 
-background:#0A0A11;
 
 
 
 `;
 export const FooterDiv = styled.div`
- 
+z-index: 10;
 display: flex;
 
 justify-content: flex-start;
