@@ -4,19 +4,16 @@ export const OutletDiv = styled.div`
   z-index: 10;
 
   @media (min-width: 375px) {
-    
   }
   @media (min-width: 768px) {
-    
   }
 `;
 export const PngDiv = styled.div`
-position: relative;
+  position: relative;
+  z-index: 1;
 
   @media (min-width: 375px) {
-    
   }
   @media (min-width: 768px) {
-    
   }
 `;
