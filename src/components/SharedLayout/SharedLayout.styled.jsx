@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const OutletDiv = styled.div`
+export const PngDiv = styled.div`
+  position: relative;
   z-index: 1;
 
   @media (min-width: 375px) {
@@ -8,7 +9,8 @@ export const OutletDiv = styled.div`
   @media (min-width: 768px) {
   }
 `;
-export const PngDiv = styled.div`
+
+export const OutletDiv = styled.div`
   position: relative;
   z-index: 10;
 
