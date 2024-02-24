@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const CustomSelect = styled.button`
+export const CustomSelectIngr = styled.button`
   width: 200px;
   height: 50px;
   padding: 16px 18px;
@@ -10,7 +10,6 @@ export const CustomSelect = styled.button`
 
   color: #f3f3f3;
 
-  border-style: none;
   border: 1px solid #f3f3f380;
   border-radius: 200px;
   background: transparent;
@@ -26,32 +25,22 @@ export const CustomSelect = styled.button`
     color: #f3f3f3;
   }
 
-  span {
-    display: block;
-  }
-
-  @media (min-width: 768px) {
-    height: 41px;
-  }
 `;
 
 export const PlaceholderWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   color: ${({ selected }) => (!selected ? '#f3f3f380' : '#F3F3F3')};
-
-  span {
-    display: block;
-  }
 `;
 
 export const Label = styled.span`
   color: #f3f3f380;
 `;
 
-export const IngredientsSpan = styled.span``
+export const IngredientsSpan = styled.span`
+  margin-right: 20px;
+`
 
 export const DropMenu = styled.div`
   max-height: 300px;

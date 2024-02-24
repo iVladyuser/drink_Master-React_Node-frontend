@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import {
   SelectWrapper,
-  CustomSelect,
+  CustomSelectIngr,
   DropMenu,
   PlaceholderWrap,
   SearchInput,
@@ -72,7 +72,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
 
   return (
     <SelectWrapper>
-      <CustomSelect type="button" ref={selectRef} menuOpen={isOpen}>
+      <CustomSelectIngr type="button" ref={selectRef} menuOpen={isOpen}>
         {items && (
           <PlaceholderWrap selected={meta.value}>
             <IngredientsSpan>{meta.value ? meta.value : 'Lem'}</IngredientsSpan>
@@ -80,7 +80,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
             <SelectArrow isOpen={isOpen} color='#f3f3f380'/>
           </PlaceholderWrap>
         )}
-      </CustomSelect>
+      </CustomSelectIngr>
       {isOpen && items && (
         <>
           <DropMenu ref={dropdownRef}>
