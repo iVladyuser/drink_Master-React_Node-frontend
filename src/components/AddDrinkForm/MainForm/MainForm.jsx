@@ -22,7 +22,7 @@ const validationSchema = yup.object().shape({
   description: yup.string().trim().required('Please enter about  recipe'),
   category: yup.string().required('Please select a category'),
   glass: yup.string().required('Please select a glass'),
-  // ingredients: 
+  // ingredients:
   //     yup.object().shape({
   //       title: yup.string().required('Please select a title'),
   //       measure: yup.string().required('Please enter a measure'),
@@ -53,6 +53,10 @@ const MainForm = () => {
     const id = data.id;
     const image = `${id}_${data.file.name}`;
 
+    const newIngredients = JSON.stringify(data.ingredients);
+
+    console.log('ing:', data.ingredients);
+    console.log('newing:', newIngredients);
     const formData = new FormData();
     formData.append('file', image);
     formData.append('drink', data.drink);
@@ -61,6 +65,7 @@ const MainForm = () => {
     formData.append('glass', data.glass);
     formData.append('alcoholic', data.alcoholic);
     formData.append('instructions', data.instructions);
+    formData.append('ingredients', newIngredients);
 
     try {
       dispatch(addOwnDrinkThunk(formData));
@@ -132,7 +137,7 @@ const MainForm = () => {
     'Coconut milk',
     'Milk',
     'Orange',
-    'Water'
+    'Water',
   ];
 
   return (
@@ -153,10 +158,7 @@ const MainForm = () => {
               touched={touched}
               fileRef={fileRef}
             />
-            <IngredientsBlock 
-              items={ingredients}
-              title={`${ingredients}`}
-            />
+            <IngredientsBlock items={ingredients} title={`${ingredients}`} />
             <RecipePreparationBlock
               error={errors.instructions}
               touched={touched.instructions}
