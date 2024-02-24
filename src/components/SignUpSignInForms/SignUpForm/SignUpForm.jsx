@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -13,6 +13,10 @@ import {
   SignInLink,
   ErrorIcon,
   SuccessIcon,
+  TogglePasswordButton,
+  StyledDontShowPasswordIcon,
+  StyledShowPasswordIcon,
+  PasswordInputWrap,
 } from './Sign.styled';
 import { differenceInYears } from 'date-fns';
 
@@ -22,7 +26,7 @@ const validateFormSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'The name is short.')
     .required('Field is required.'),
-  dateBirth: Yup.date().required(),
+  dateBirth: Yup.date().required('Field is required.'),
   email: Yup.string()
     .email('Please enter a valid email')
     .required('Field is required.'),
@@ -34,23 +38,34 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const [Age, setAge] = useState(null);
+  const [age, setAge] = useState(null);
+  const inputRef = useRef();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (values, { resetForm }) => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+
     const { name, dateBirth, email, password } = values;
     const currentDate = new Date();
-    const age = differenceInYears(currentDate, dateBirth);
-    setAge(Age);
+    const userAge = differenceInYears(currentDate, dateBirth);
+    setAge(userAge);
     console.log('name:', name);
     console.log('age:', age);
     console.log('email:', email);
     console.log('password', password);
-    dispatch(signUpThunk({ name, age, email, password }))
+    dispatch(signUpThunk({ name, age: userAge, email, password }))
       .unwrap()
       .then(() => toast.success('Registration successful'))
       .catch(() => toast.error('Something went wrong... Try again...'));
     resetForm();
   };
+
   return (
     <Formik
       initialValues={{
@@ -82,18 +97,16 @@ export const SignUpForm = () => {
               ) : null}
             </div>
             <div>
-              <FormField name="dateBirth" component={StyledDatePicker} />
-              {/* <StyledDatePicker
-                name="selectedDate"
-                type="text"
-                value={values.dateBirth}
-                selectedDate={selectedDate}
-                onDateChange={handleDateChange}
+              <FormField
+                ref={inputRef}
+                name="dateBirth"
+                component={StyledDatePicker}
                 error={errors.dateBirth && touched.dateBirth ? 'true' : 'false'}
                 success={
                   values.dateBirth && !errors.dateBirth ? 'true' : 'false'
                 }
-              /> */}
+              />
+
               <FormError name="dateBirth" />
             </div>
             <div>
@@ -112,9 +125,9 @@ export const SignUpForm = () => {
                 <SuccessIcon />
               ) : null}
             </div>
-            <div>
+            <PasswordInputWrap>
               <FormField
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 value={values.password}
                 placeholder="Password"
@@ -123,7 +136,17 @@ export const SignUpForm = () => {
                 success={values.password && !errors.password ? 'true' : 'false'}
               />
               <FormError name="password" />
-            </div>
+              <TogglePasswordButton
+                type="button"
+                onClick={handleTogglePassword}
+              >
+                {showPassword ? (
+                  <StyledDontShowPasswordIcon />
+                ) : (
+                  <StyledShowPasswordIcon />
+                )}
+              </TogglePasswordButton>
+            </PasswordInputWrap>
           </>
           <Button type="submit">Sign Up</Button>
           <SignInLink to="/signin">Sign In</SignInLink>

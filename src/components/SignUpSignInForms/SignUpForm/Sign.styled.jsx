@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Form as FormikForm, Field as FormikField } from 'formik';
+import { AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
@@ -123,6 +125,48 @@ export const SuccessIcon = styled(AiOutlineCheckCircle)`
   position: absolute;
   top: 18px;
   right: 24px;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const TogglePasswordButton = styled.button`
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  padding: 0;
+`;
+export const PasswordInputWrap = styled.div`
+  position: relative;
+`;
+export const StyledDontShowPasswordIcon = styled(AiOutlineEye)`
+  fill: #f3f3f3;
+  width: 18px;
+  height: 18px;
+  /* position: absolute;
+  top: 20px;
+  left: 239px; */
+  @media screen and (min-width: 375px) {
+    left: 290px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+export const StyledShowPasswordIcon = styled(AiOutlineEyeInvisible)`
+  fill: #f3f3f3;
+  width: 18px;
+  height: 18px;
+
+  @media screen and (min-width: 375px) {
+    left: 290px;
+  }
 
   @media screen and (min-width: 768px) {
     width: 20px;
