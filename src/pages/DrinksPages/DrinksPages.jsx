@@ -1,10 +1,20 @@
-import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
+import {
+  fetchCategories,
+  fetchIngredients,
+} from '../../services/fetchDrinksForDrinksPages'; // Импортируйте новые thunk-функции
+import {
+  selectListsCategories,
+  selectListsIngredients,
+} from '../../redux/drink/selectorsForDrinksPages'; // Импортируйте новые селекторы
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Formik } from 'formik';
 import TitlePage from '../../components/TitlePage/TitlePage';
 import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksInput';
-import { categoriesList } from '../../components/ForSelectValue/CategoriesList';
-import { ingredientsList } from '../../components/ForSelectValue/IngredientsList';
+import CustomSelect from 'components/CustomSelectForDrinksPage';
+import SvgGeneratorSvgSelector from '../../components/SvgComponents';
+import { Paginator } from '../../components/Pagination/Pagination';
 import {
   Container,
   FormStyled,
@@ -16,65 +26,67 @@ import {
   ListCocktail,
 } from './DrinksPages.styled';
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
-import CustomSelect from 'components/CustomSelectForDrinksPage';
-import { Formik } from 'formik';
-import { getMainPageAllDrinks } from 'services/fetchDrinksForDrinksPages';
-import SvgGeneratorSvgSelector from '../../components/SvgComponents';
-import { Paginator } from '../../components/Pagination/Pagination';
 import {
-  selectAllDrinks,
-  selectIsLoading,
-  selectDrinksError,
-} from '../../redux/drink/selectorsForDrinksPages';
+  getMainPageAllDrinks,
+  searchDrinks,
+} from 'services/fetchDrinksForDrinksPages';
+import { selectAllDrinks } from '../../redux/drink/selectorsForDrinksPages';
+import {
+  setCategoryFilter,
+  setIngredientFilter,
+} from '../../redux/drink/sliceFilterForDrinksPages';
 
 const initialValues = {
   category: 'All categories',
   ingredients: 'Ingredients',
+  keyWord: '',
 };
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectAllDrinks);
-  console.log('Vladuser', items);
-  const status = useSelector(selectIsLoading);
-  const error = useSelector(selectDrinksError);
-  const visibleDrinks = useSelector(selectVisibleDrinks);
-  console.log('Vladik', visibleDrinks);
+
+  const filters = useSelector(state => state.filters);
+  const categories = useSelector(selectListsCategories); // Используйте новый селектор
+  const ingredients = useSelector(selectListsIngredients); // Используйте новый селектор
+
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 11;
 
   useEffect(() => {
-    dispatch(getMainPageAllDrinks({ page: currentPage, limit }));
-  }, [dispatch, currentPage, limit]);
+    const fetchSharedLists = async () => {
+      try {
+        await dispatch(fetchCategories());
+        await dispatch(fetchIngredients());
+      } catch (error) {
+        console.error('Error fetching shared lists:', error);
+      }
+    };
+
+    fetchSharedLists();
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getMainPageAllDrinks());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(searchDrinks(filters));
+  }, [dispatch, filters]);
 
   const handlePageChange = selectedPage => {
     setCurrentPage(selectedPage + 1);
   };
 
-  const totalCount = items.length;
-
-  if (status === 'loading') return <div>Loading...</div>;
-
-  if (error) return <div>error</div>;
-
-  //  if (error) return <ErrorPage />;
-
-  // if (!items || items.length === 0) {
-  //   return (
-  //     <Container>
-  //       <FavoritePageTitle>Favorites</FavoritePageTitle>
-  //       <NoImg text="You haven't added any favorite cocktails yet." />
-  //     </Container>
-  //   );
-  // }
-
   const handleCategorySelect = category => {
-    console.log('Selected category:', category);
-  };
+    dispatch(setCategoryFilter(category));
+    dispatch(searchDrinks(filters)); // Вызываем поиск с учетом текущих фильтров
+  }
 
-  const handleIngredientSelect = ingredient => {
-    console.log('Selected ingredient:', ingredient);
-  };
+const handleIngredientSelect = ingredient => {
+  dispatch(setIngredientFilter(ingredient));
+  dispatch(searchDrinks(filters)); // Вызываем поиск с учетом текущих фильтров
+};
 
   return (
     <DrinksPageStyle>
@@ -92,12 +104,12 @@ const DrinksPage = () => {
               {({ setFieldValue }) => (
                 <FormStyled>
                   <CustomSelect
-                    items={categoriesList}
+                    items={categories.map(category => category.name)}
                     title={'Category'}
                     onSelect={handleCategorySelect}
                   />
                   <CustomSelect
-                    items={ingredientsList}
+                    items={ingredients.map(ingredient => ingredient.title)}
                     title={'Ingredients'}
                     onSelect={handleIngredientSelect}
                   />
@@ -106,14 +118,14 @@ const DrinksPage = () => {
             </Formik>
           </WraperForm>
           <ListCocktail>
-            {visibleDrinks.map(drink => (
-              <ItemCocktail drink={drink} />
+            {items.map(drink => (
+              <ItemCocktail key={drink._id} drink={drink} />
             ))}
           </ListCocktail>
           <Paginator
             limit={limit}
             currentPage={currentPage}
-            items={totalCount}
+            items={items.length}
             handlePageChange={handlePageChange}
             pageRangeDisplayed={5}
           />

@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import favoritesReducer from '../services/FavoriteSlice';
 import myDrinksReducer from '../services/MyDrinksSlice';
-
+import { fetchCategories, fetchIngredients } from '../services/fetchDrinksForDrinksPages';
 import {
   persistStore,
   persistReducer,
@@ -18,7 +18,7 @@ import { drinksReducer } from './drink/home_slice';
 import { allDrinksReduser } from './drink/sliceForDrinksPages';
 import { filtersReducer } from './drink/sliceFilterForDrinksPages';
 import { drinkByIdReducer } from './drink/sliceDrinkById';
-
+import { listsReducer } from './drink/listSlice';
 const authConfig = {
   key: 'auth',
   storage,
@@ -34,6 +34,7 @@ export const store = configureStore({
     filters: filtersReducer,
     drinks: drinksReducer,
     drinkById: drinkByIdReducer,
+    lists: listsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -44,3 +45,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+store.dispatch(fetchCategories());
+store.dispatch(fetchIngredients());

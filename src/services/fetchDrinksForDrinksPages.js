@@ -2,7 +2,6 @@
 import { instance } from './fetchAuth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
 // export const getMainPageAllDrinks = createAsyncThunk(
 //   'drinks/getAll',
 //   async ({ page, limit }, { rejectWithValue }) => {
@@ -17,7 +16,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //   }
 // );
 
-
 export const getMainPageAllDrinks = createAsyncThunk(
   'drinks/getAll',
   async (_, thunkAPI) => {
@@ -29,7 +27,6 @@ export const getMainPageAllDrinks = createAsyncThunk(
     }
   }
 );
-
 
 export const fetchCategories = createAsyncThunk(
   'drinks/categories',
@@ -47,6 +44,24 @@ export const fetchIngredients = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await instance.get('/filters/ingredients');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const searchDrinks = createAsyncThunk(
+  'drinks/search',
+  async ({ category, ingredient, keyWord }, thunkAPI) => {
+    try {
+      const response = await instance.get('/drinks/search', {
+        params: {
+          category,
+          ingredient,
+          keyWord,
+        },
+      });
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
