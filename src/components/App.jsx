@@ -2,7 +2,7 @@ import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { useDispatch } from 'react-redux';
-import { currentUserThunk } from 'services/fetchAuth';
+import { refreshThunk } from '../services/fetchAuth';
 import * as ROUTES from 'constants/routes';
 import { AppWrapper } from './App.styled';
 
@@ -54,7 +54,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(currentUserThunk());
+    dispatch(refreshThunk());
   }, [dispatch]);
 
   return (
