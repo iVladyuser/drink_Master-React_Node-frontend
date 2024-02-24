@@ -54,15 +54,6 @@ export const currentUserThunk = createAsyncThunk(
     } catch (err) {
       return thunkApi.rejectWithValue(err.message);
     }
-  },
-
-  {
-    condition: (_, thunkApi) => {
-      const state = thunkApi.getState();
-      const token = state.auth.token;
-      if (!token) return false;
-      return true;
-    },
   }
 );
 
