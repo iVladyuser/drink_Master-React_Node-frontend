@@ -38,11 +38,15 @@ export const signUpThunk = createAsyncThunk(
 );
 
 export const refreshThunk = createAsyncThunk(
-  'auth/refresh',
+  'auth/currentUser',
   async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.auth.token;
+    if (token === null) {
+      return thunkApi.rejectWithValue('Unable to fetch User');
+    }
+
     try {
-      const state = thunkApi.getState();
-      const token = state.auth.token;
       setToken(token);
       const { data } = await instance.get('/users/current');
 
@@ -50,14 +54,6 @@ export const refreshThunk = createAsyncThunk(
     } catch (err) {
       return thunkApi.rejectWithValue(err.message);
     }
-  },
-  {
-    condition: (_, thunkApi) => {
-      const state = thunkApi.getState();
-      const token = state.auth.token;
-      if (!token) return false;
-      return true;
-    },
   }
 );
 
@@ -68,40 +64,6 @@ export const logOutThunk = createAsyncThunk(
       const { data } = await instance.post('/auth/signout');
 
       return data;
-    } catch (err) {
-      return thunkApi.rejectWithValue(err.message);
-    }
-  }
-);
-
-// export const updateAvatarThunk = createAsyncThunk(
-//   'auth/updateAvatarThunk',
-//   async (file, thunkApi) => {
-//     try {
-//       const formData = new FormData();
-//       formData.append('avatar', file);
-//       const { data } = await instance.post('/users/avatar', formData, {
-//         headers: { 'Content-Type': 'multipart/form-data' },
-//       });
-
-//       return data.avatar;
-//     } catch (err) {
-//       return thunkApi.rejectWithValue(err.message);
-//     }
-//   }
-// );
-export const updateAvatarThunk = createAsyncThunk(
-  'users/avatar',
-  async ({ file, name }, thunkApi) => {
-    try {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      formData.append('name', name);
-      const { data } = await instance.patch('/users/avatar', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
-      return data.avatar;
     } catch (err) {
       return thunkApi.rejectWithValue(err.message);
     }
