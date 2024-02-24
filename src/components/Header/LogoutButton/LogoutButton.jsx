@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyledButtonOut, ModalOverlay, ModalContent, ModalButton, ModalCancelButton, ModalWrapper } from './LogoutButton.styled';
+import { StyledButtonOut, ModalOverlay, ModalContent, ModalButton, ModalCancelButton, ModalWrapper, ButtonOutWrapper,TextStyled } from './LogoutButton.styled';
 import { logOutThunk } from 'services/fetchAuth';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -30,9 +30,11 @@ const LogoutButton = () => {
         <ModalOverlay>
           <ModalWrapper>
             <ModalContent>
-              <p>Are you sure you want to log out?</p>
+              <TextStyled><p>Are you sure you want to log out?</p></TextStyled>
+              <ButtonOutWrapper>
               <ModalButton onClick={handleLogout}>Log out</ModalButton>
               <ModalCancelButton onClick={toggleModal}>Cancel</ModalCancelButton>
+              </ButtonOutWrapper>
             </ModalContent>
           </ModalWrapper>
         </ModalOverlay>

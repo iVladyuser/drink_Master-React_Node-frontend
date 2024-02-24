@@ -1,14 +1,15 @@
 import React from 'react';
 import EditProfile from './EditProfile'; // компонент EditProfile
 import LogoutButton from '../LogoutButton/LogoutButton';
+import { PopapDiv } from './UserLogoPopup.styled';
 
 const UserLogoPopup = () => {
-    return (
-        <div>
-            <EditProfile />
-            <LogoutButton />
-        </div>
-    );
+  return (
+    <PopapDiv>
+      <EditProfile />
+      <LogoutButton />
+    </PopapDiv>
+  );
 };
 
 export default UserLogoPopup;
