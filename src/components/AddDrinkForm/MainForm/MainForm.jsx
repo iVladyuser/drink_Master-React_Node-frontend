@@ -22,16 +22,13 @@ const validationSchema = yup.object().shape({
   description: yup.string().trim().required('Please enter about  recipe'),
   category: yup.string().required('Please select a category'),
   glass: yup.string().required('Please select a glass'),
-  // ingredients: yup
-  //   .array()
-  //   .of(
+  // ingredients: 
   //     yup.object().shape({
   //       title: yup.string().required('Please select a title'),
   //       measure: yup.string().required('Please enter a measure'),
   //     })
-  //   )
   //   .required()
-  // //   .min(1, 'Select more than 1 item'),
+  //   .min(1, 'Select more than 1 item'),
   instructions: yup.string().trim().required('Please enter about a recipe'),
 });
 
@@ -126,6 +123,17 @@ const MainForm = () => {
     'Balloon Glass',
     'Coupe Glass',
   ];
+  const ingredients = [
+    'Apple juice',
+    'Lemon',
+    'Vine',
+    'Prossecco',
+    'Passoa',
+    'Coconut milk',
+    'Milk',
+    'Orange',
+    'Water'
+  ];
 
   return (
     <DrinkFormWrapper>
@@ -145,7 +153,10 @@ const MainForm = () => {
               touched={touched}
               fileRef={fileRef}
             />
-            <IngredientsBlock />
+            <IngredientsBlock 
+              items={ingredients}
+              title={`${ingredients}`}
+            />
             <RecipePreparationBlock
               error={errors.instructions}
               touched={touched.instructions}

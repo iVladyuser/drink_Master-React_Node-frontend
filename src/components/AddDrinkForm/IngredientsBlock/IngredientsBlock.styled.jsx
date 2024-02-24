@@ -22,7 +22,7 @@ export const IngredientsInputWrapper = styled.div`
   background-color: transparent;
 `;
 
-export const RemoveInredientBtn = styled.button`  
+export const RemoveIngredientBtn = styled.button`  
     margin-left: 8px;
     display: flex;
     align-items: center;
@@ -110,3 +110,4 @@ export const NumberIngredients = styled.span`
   color: rgba(243, 243, 243, 1);
 
 `
+

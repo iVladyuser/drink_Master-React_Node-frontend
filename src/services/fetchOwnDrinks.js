@@ -24,6 +24,15 @@ export const fetchGlasses = async () => {
   }
 };
 
+export const fetchIngredients = async () => {
+  try {
+    const response = await axios.get('/filters/ingredients');
+    return response.data.ingredients;
+  } catch (error) {
+    console.error('Error when receving data - ingredients: ', error);
+  }
+};
+
 export const addOwnDrinkThunk = createAsyncThunk(
   '/drinks/own/add',
   async (formData, thunkApi) => {
