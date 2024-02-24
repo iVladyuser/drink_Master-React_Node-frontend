@@ -14,6 +14,7 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContent = styled.div`
+  z-index: 10;
   position: relative;
   background-color: white;
   padding: 20px;
