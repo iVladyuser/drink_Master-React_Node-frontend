@@ -12,7 +12,7 @@ export const PngDiv = styled.div`
 
 export const OutletDiv = styled.div`
   position: relative;
-  z-index: 10;
+  z-index: 9;
 
   @media (min-width: 375px) {
   }
