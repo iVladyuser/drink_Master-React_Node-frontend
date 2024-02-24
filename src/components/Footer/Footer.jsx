@@ -39,10 +39,11 @@ export const Footer = () => {
           </FooterDivMob>
           <Info />
         </FooterDiv>
-        {/* 
-        <PageEllipse223 />
-        <PageEllipseMob /> */}
       </FooterSection>
+      {/* <FooterElipseDiv>
+        <PageEllipse223 />
+        <PageEllipseMob />
+      </FooterElipseDiv> */}
     </FooterContainer>
   );
 };

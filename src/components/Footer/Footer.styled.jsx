@@ -28,6 +28,11 @@ export const FooterDiv = styled.div`
   flex-direction: column;
 `;
 
+export const FooterElipseDiv = styled.div`
+  position: relative;
+  z-index: 21;
+`;
+
 export const FooterDivTwo = styled.div`
   display: flex;
   align-items: flex-start;
