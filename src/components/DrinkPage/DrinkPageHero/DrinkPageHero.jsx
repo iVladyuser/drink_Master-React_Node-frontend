@@ -6,13 +6,20 @@ import {
   DrinkDescr,
   HeroImgWraper,
 } from './DrinkPageHero.styled';
-import AddToFavBtn from '../AddToFavBtn/AddToFavBtn';
+import AddToFavBtn, { SVGwithText } from '../AddToFavBtn/AddToFavBtn';
 import DrinkPageHeroImg from '../DrinkPageHeroImg/DrinkPageHeroImg';
-import { useDispatch } from 'react-redux';
-import { addFavorite, deleteFavorite } from '../../../services/FavoriteSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addFavorite,
+  deleteFavorite,
+  fetchFavorites,
+  selectAllFavorites,
+} from '../../../services/FavoriteSlice';
+import { useEffect } from 'react';
 
 const DrinkPageHero = ({ cocktailInfo }) => {
   const dispatch = useDispatch();
+  const allFavorites = useSelector(selectAllFavorites);
 
   const {
     _id: drinkId,
@@ -23,14 +30,21 @@ const DrinkPageHero = ({ cocktailInfo }) => {
     drinkThumb,
   } = cocktailInfo;
 
-  let isFavorite = false;
-  const handleFavAction = () => {
-    if (!isFavorite) {
-      dispatch(addFavorite(drinkId));
-      console.log('added_id: ', drinkId);
-    } else {
-      dispatch(deleteFavorite(drinkId));
-    }
+  useEffect(() => {
+    dispatch(fetchFavorites());
+  }, [dispatch]);
+
+  const isFavorite =
+    allFavorites && allFavorites.some(drink => drink._id === drinkId);
+
+  const handleAddToFavorite = () => {
+    dispatch(addFavorite(drinkId));
+    console.log('added_id: ', drinkId);
+  };
+
+  const handleRemoveFromFavorite = () => {
+    dispatch(deleteFavorite(drinkId));
+    console.log('deleted_id: ', drinkId);
   };
 
   return (
@@ -41,10 +55,21 @@ const DrinkPageHero = ({ cocktailInfo }) => {
           {glass} / {alcoholic}
         </GlassTypeAndServ>
         <DrinkDescr>{description}</DrinkDescr>
-        <AddToFavBtn
-          btnName={isFavorite ? 'Added to favorites' : 'Add to favorite drinks'}
-          onClick={handleFavAction}
-        ></AddToFavBtn>
+        {isFavorite ? (
+          <AddToFavBtn
+            btnText={<SVGwithText />}
+            bg="darkblue"
+            color="white"
+            onClick={handleRemoveFromFavorite}
+          ></AddToFavBtn>
+        ) : (
+          <AddToFavBtn
+            btnText="Add to favorite drinks"
+            bg="white"
+            color="darkblue"
+            onClick={handleAddToFavorite}
+          ></AddToFavBtn>
+        )}
       </HeroTextWraper>
       <HeroImgWraper>
         <DrinkPageHeroImg img={drinkThumb} alt={drink} />
