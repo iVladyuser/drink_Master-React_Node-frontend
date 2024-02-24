@@ -149,6 +149,8 @@ export const DatePickerGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__input-container .react-datepicker__calendar-icon {
     padding: 0;
+   
+    
   }
   .react-datepicker__day--keyboard-selected{
      color: #161f37;
