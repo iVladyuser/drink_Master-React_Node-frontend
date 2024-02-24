@@ -1,19 +1,3 @@
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const filterInitialState = '';
-
-// const filtersSlice = createSlice({
-//   name: 'filters',
-//   initialState: filterInitialState,
-//   reducers: {
-//     setDrinksFilter(state, action) {
-//       return (state = action.payload);
-//     },
-//   },
-// });
-
-// export const { setSearchQuery } = filtersSlice.actions;
-// export const filtersReducer = filtersSlice.reducer;
 
 import { createSlice } from '@reduxjs/toolkit';
 
