@@ -1,37 +1,85 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../pages/FavoritePage/axiosConfig';
-import { instance } from './fetchAuth';
+import axios from 'axios';
 
 export const fetchFavorites = createAsyncThunk(
   'favorites/fetchFavorites',
-  async () => {
-    const response = await axiosInstance.get('/drinks/favorite');
+  async (_, { getState }) => {
+    const {
+      auth: { token },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await axios.get(
+      'https://drink-master-project-zi2s.onrender.com/drinks/favorite',
+      config
+    );
     return response.data;
   }
 );
 
 export const addFavorite = createAsyncThunk(
   'favorites/addFavorite',
-  async (drinkId, thunkAPI) => {
+  async (drinkId, { getState, rejectWithValue }) => {
     try {
-      const response = await instance.post(`/drinks/favorite/add/${drinkId}`);
+      const {
+        auth: { token },
+      } = getState();
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(
+        `https://drink-master-project-zi2s.onrender.com/drinks/favorite/add/${drinkId}`,
+        {},
+        config
+      );
       return response.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.message);
+      console.error('Error:', err.response ? err.response.data : err);
+      return rejectWithValue(err.message);
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const {
+        auth: { token },
+      } = getState();
+      if (!token) {
+        console.log('No token found, aborting!');
+        return false;
+      }
+      return true;
+    },
   }
 );
 
 export const deleteFavorite = createAsyncThunk(
   'favorites/deleteFavorite',
-  async (drinkId, thunkAPI) => {
+  async (drinkId, { getState, rejectWithValue }) => {
     try {
+      const {
+        auth: { token },
+      } = getState();
+      if (!token) {
+        throw new Error('No token found');
+      }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
       const response = await axiosInstance.delete(
-        `/drinks/favorite/remove/${drinkId}`
+        `/drinks/favorite/remove/${drinkId}`,
+        config
       );
       return response.data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue(err.message);
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
     }
   }
 );

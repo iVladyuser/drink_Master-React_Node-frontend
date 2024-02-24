@@ -1,36 +1,69 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axiosInstance from '../pages/FavoritePage/axiosConfig';
+import axios from 'axios';
 
 export const fetchMyDrinks = createAsyncThunk(
   'myDrinks/fetchMyDrinks',
-  async () => {
-    const response = await axiosInstance.get('/drinks/own');
+  async (_, { getState }) => {
+    const {
+      auth: { token },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await axios.get(
+      'https://drink-master-project-zi2s.onrender.com/drinks/own',
+      config
+    );
     return response.data;
   }
 );
 
 export const addMyDrink = createAsyncThunk(
   'myDrinks/addMyDrink',
-  async (drinkData, thunkAPI) => {
+  async (drinkData, { getState, rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post('/drinks/own/add', drinkData);
+      const {
+        auth: { token },
+      } = getState();
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(
+        'https://drink-master-project-zi2s.onrender.com/drinks/own/add',
+        drinkData,
+        config
+      );
       return response.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );
 
 export const deleteMyDrink = createAsyncThunk(
   'myDrinks/deleteMyDrink',
-  async (drinkId, thunkAPI) => {
+  async (drinkId, { getState, rejectWithValue }) => {
     try {
-      const response = await axiosInstance.delete(
-        `/drinks/own/remove/${drinkId}`
+      const {
+        auth: { token },
+      } = getState();
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.delete(
+        `https://drink-master-project-zi2s.onrender.com/drinks/own/remove/${drinkId}`,
+        config
       );
       return response.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.message);
+      return rejectWithValue(err.response.data);
     }
   }
 );

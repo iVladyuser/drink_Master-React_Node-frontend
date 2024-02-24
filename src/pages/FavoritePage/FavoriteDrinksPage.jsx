@@ -14,6 +14,8 @@ import { Paginator } from '../../components/Pagination/Pagination';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
 import { PageTitle } from '../../pages/FavoritePage/PageTitle/PageTitle';
 import { DrinksList } from '../../pages/FavoritePage/DrinksList/DrinksList';
+import { FavoriteDrinksList } from './FavoriteDrinksPage.style';
+import { Loader } from 'components/Loader/Loader';
 
 export const FavoriteDrinksPage = () => {
   const dispatch = useDispatch();
@@ -37,32 +39,32 @@ export const FavoriteDrinksPage = () => {
 
   const totalCount = items.length;
 
-  const showContent = status !== 'loading' && !error;
-
   return (
-    <>
-      <UniversalContainer>
-        <PageTitle title="Favorites" />
-        {status === 'loading' && <div>Loading...</div>}
-        {error && <ErrorPage />}
-        {showContent && (
-          <>
-            {items.length > 0 ? (
+    <UniversalContainer>
+      <PageTitle title="Favorites" />
+      {status === 'loading' ? (
+        <Loader />
+      ) : error ? (
+        <ErrorPage />
+      ) : (
+        <>
+          {items.length > 0 ? (
+            <FavoriteDrinksList>
               <DrinksList drinks={items} onRemoveClick={handleRemoveClick} />
-            ) : (
-              <NoImg text="You haven't added any favorite cocktails yet." />
-            )}
-            <Paginator
-              limit={limit}
-              currentPage={currentPage}
-              items={totalCount}
-              handlePageChange={handlePageChange}
-              pageRangeDisplayed={5}
-            />
-          </>
-        )}
-      </UniversalContainer>
-    </>
+            </FavoriteDrinksList>
+          ) : (
+            <NoImg text="You haven't added any favorite cocktails yet." />
+          )}
+          <Paginator
+            limit={limit}
+            currentPage={currentPage}
+            items={totalCount}
+            handlePageChange={handlePageChange}
+            pageRangeDisplayed={5}
+          />
+        </>
+      )}
+    </UniversalContainer>
   );
 };
 

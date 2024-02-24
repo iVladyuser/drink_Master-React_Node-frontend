@@ -12,6 +12,8 @@ import { Paginator } from '../../components/Pagination/Pagination';
 import { PageTitle } from '../../pages/FavoritePage/PageTitle/PageTitle';
 import { DrinksList } from '../../pages/FavoritePage/DrinksList/DrinksList';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
+import { FavoriteDrinksList } from 'pages/FavoritePage/FavoriteDrinksPage.style';
+import { Loader } from 'components/Loader/Loader';
 
 export const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -31,32 +33,32 @@ export const MyDrinksPage = () => {
 
   const totalCount = drinks.length;
 
-  const showContent = status !== 'loading' && !error;
-
   return (
-    <>
-      <UniversalContainer>
-        <PageTitle title="My Drinks" />
-        {status === 'loading' && <div>Loading...</div>}
-        {error && <ErrorPage />}
-        {showContent && (
-          <>
-            {drinks.length > 0 ? (
+    <UniversalContainer>
+      <PageTitle title="My Drinks" />
+      {status === 'loading' ? (
+        <Loader />
+      ) : error ? (
+        <ErrorPage />
+      ) : (
+        <>
+          {drinks.length > 0 ? (
+            <FavoriteDrinksList>
               <DrinksList drinks={drinks} />
-            ) : (
-              <NoImg text="You haven't added any drinks yet." />
-            )}
-            <Paginator
-              limit={limit}
-              currentPage={currentPage}
-              items={totalCount}
-              handlePageChange={handlePageChange}
-              pageRangeDisplayed={5}
-            />
-          </>
-        )}
-      </UniversalContainer>
-    </>
+            </FavoriteDrinksList>
+          ) : (
+            <NoImg text="You haven't added any drinks yet." />
+          )}
+          <Paginator
+            limit={limit}
+            currentPage={currentPage}
+            items={totalCount}
+            handlePageChange={handlePageChange}
+            pageRangeDisplayed={5}
+          />
+        </>
+      )}
+    </UniversalContainer>
   );
 };
 
