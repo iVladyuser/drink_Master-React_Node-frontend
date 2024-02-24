@@ -37,7 +37,7 @@ export const signUpThunk = createAsyncThunk(
   }
 );
 
-export const currentUserThunk = createAsyncThunk(
+export const refreshThunk = createAsyncThunk(
   'auth/currentUser',
   async (_, thunkApi) => {
     const state = thunkApi.getState();
