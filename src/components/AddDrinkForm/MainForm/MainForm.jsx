@@ -9,7 +9,7 @@ import { AddButton, DrinkFormWrapper } from './MainForm.styled';
 import TitleBlock from '../TitleBlock';
 import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
 import { nanoid } from '@reduxjs/toolkit';
-import IngredientsBlock from '../IngredientsBlock/';
+// import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
 
 // import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
@@ -22,16 +22,13 @@ const validationSchema = yup.object().shape({
   description: yup.string().trim().required('Please enter about  recipe'),
   category: yup.string().required('Please select a category'),
   glass: yup.string().required('Please select a glass'),
-  // ingredients: yup
-  //   .array()
-  //   .of(
+  // ingredients: 
   //     yup.object().shape({
   //       title: yup.string().required('Please select a title'),
   //       measure: yup.string().required('Please enter a measure'),
   //     })
-  //   )
   //   .required()
-  // //   .min(1, 'Select more than 1 item'),
+  //   .min(1, 'Select more than 1 item'),
   instructions: yup.string().trim().required('Please enter about a recipe'),
 });
 
@@ -145,7 +142,7 @@ const MainForm = () => {
               touched={touched}
               fileRef={fileRef}
             />
-            <IngredientsBlock />
+            {/* <IngredientsBlock /> */}
             <RecipePreparationBlock
               error={errors.instructions}
               touched={touched.instructions}

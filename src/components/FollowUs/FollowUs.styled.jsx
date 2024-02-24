@@ -21,6 +21,7 @@ export const FollowUsSocialLi = styled.li`
     justify-content: center;
     border-radius: 10px;
     border: 1px solid rgba(243, 243, 243, 0.2);
+    cursor: pointer;
 
     &:focus,
     &:hover {
@@ -33,7 +34,6 @@ export const FollowUsSocialLinkF = styled.a`
     height: 20px;
     color: rgba(243, 243, 243, 1);
     font-size: 20px;
-    cursor: pointer;
 
     &:focus,
     &:hover {
@@ -46,7 +46,6 @@ export const FollowUsSocialLink = styled.a`
     height: 24px;
     color: rgba(243, 243, 243, 1);
     font-size: 24px;
-    cursor: pointer;
 
     &:focus,
     &:hover {

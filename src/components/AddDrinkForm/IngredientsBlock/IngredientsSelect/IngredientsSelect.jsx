@@ -27,13 +27,8 @@ const IngredientsSelect = ({ options, value, onChange }) => {
   }, [id]);
 
   const opt = useMemo(() => {
-    const OPTIONS = options.filter(
-      o =>
-        o.toString().toLowerCase().indexOf(search.toString().toLowerCase()) !==
-        -1
-    );
-    return OPTIONS.length > 0
-      ? OPTIONS.map((o, i) => (
+    return options.length > 0
+      ? options.map((o, i) => (
           <div
             key={i}
             onClick={() => {
@@ -55,7 +50,7 @@ const IngredientsSelect = ({ options, value, onChange }) => {
             No matches found
           </div>,
         ];
-  }, [options, search, onChange]);
+  }, [options, onChange]);
 
   useMemo(() => setSearch(value), [value]);
 
