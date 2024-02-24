@@ -4,8 +4,19 @@ import axios from 'axios';
 
 export const fetchFavorites = createAsyncThunk(
   'favorites/fetchFavorites',
-  async () => {
-    const response = await axiosInstance.get('/drinks/favorite');
+  async (_, { getState }) => {
+    const {
+      auth: { token },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await axios.get(
+      'https://drink-master-project-zi2s.onrender.com/drinks/favorite',
+      config
+    );
     return response.data;
   }
 );
@@ -51,8 +62,20 @@ export const deleteFavorite = createAsyncThunk(
   'favorites/deleteFavorite',
   async (drinkId, { getState, rejectWithValue }) => {
     try {
+      const {
+        auth: { token },
+      } = getState();
+      if (!token) {
+        throw new Error('No token found');
+      }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
       const response = await axiosInstance.delete(
-        `/drinks/favorite/remove/${drinkId}`
+        `/drinks/favorite/remove/${drinkId}`,
+        config
       );
       return response.data;
     } catch (error) {
