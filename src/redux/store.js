@@ -15,8 +15,11 @@ import {
 } from 'redux-persist';
 import { authReducer } from './auth/slice';
 import { drinksReducer } from './drink/home_slice';
+import { drinksSearchReducer } from './drinks/slice';
+import { filtersReducer } from './filters/slice';
+
 import { allDrinksReduser } from './drink/sliceForDrinksPages';
-import { filtersReducer } from './drink/sliceFilterForDrinksPages';
+// import { filtersReducer } from './drink/sliceFilterForDrinksPages';
 import { drinkByIdReducer } from './drink/sliceDrinkById';
 
 const authConfig = {
@@ -32,6 +35,7 @@ export const store = configureStore({
     alldrinks: allDrinksReduser,
     myDrinks: myDrinksReducer,
     filters: filtersReducer,
+    cocktails: drinksSearchReducer,
     drinks: drinksReducer,
     drinkById: drinkByIdReducer,
   },
