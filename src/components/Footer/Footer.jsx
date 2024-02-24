@@ -14,8 +14,8 @@ import LogoFooter from './LogoFooter/LogoFooter';
 import NavFooter from './NavFooter/NavFooter';
 import FollowUs from './FollowUsFooter/FollowUs';
 
-import PageEllipse223 from './Ellipse223/Ellipse223';
-import PageEllipseMob from './Ellipse223/EllipseMob';
+// import PageEllipse223 from './Ellipse223/Ellipse223';
+// import PageEllipseMob from './Ellipse223/EllipseMob';
 
 export const Footer = () => {
   return (
@@ -39,9 +39,9 @@ export const Footer = () => {
           </FooterDivMob>
           <Info />
         </FooterDiv>
-
+        {/* 
         <PageEllipse223 />
-        <PageEllipseMob />
+        <PageEllipseMob /> */}
       </FooterSection>
     </FooterContainer>
   );
