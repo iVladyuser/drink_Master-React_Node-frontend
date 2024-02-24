@@ -155,7 +155,7 @@ const MainForm = () => {
             />
             <IngredientsBlock 
               items={ingredients}
-              title={ingredients}
+              title={`${ingredients}`}
             />
             <RecipePreparationBlock
               error={errors.instructions}

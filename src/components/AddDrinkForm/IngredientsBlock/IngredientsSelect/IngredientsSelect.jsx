@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import {
+  SelectWrapper,
   CustomSelect,
   DropMenu,
   PlaceholderWrap,
@@ -15,9 +16,7 @@ import { useField } from 'formik';
 
 const IngredientsSelect = ({ items, title, ingredient, index }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState({ id: '', title: '' });
   const [searchQuery, setSearchQuery] = useState('');
-  const [isValue, setIsValue] = useState(false);
 
   const selectRef = useRef();
   const searchRef = useRef();
@@ -25,7 +24,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
 
   const titleValue = title.toLowerCase();
 
-  const [, meta, helpers] = useField(`ingredients.${index}.title`);
+  const [, meta, { setValue }] = useField(`ingredients.${index}.title`);
 
   const filteredItems = value =>
     items.filter(item =>
@@ -37,15 +36,13 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
   };
 
   const handleClickItem = item => {
-    setSelectedValue(item);
+    setValue(item);
     toggleMenu();
     setSearchQuery('');
-    setIsValue(true);
 
     ingredient.title = item.title;
     ingredient.ingredientId = item._id;
 
-    helpers.setError('');
   };
 
   useEffect(() => {
@@ -74,11 +71,11 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
   }, []);
 
   return (
-    <div>
+    <SelectWrapper>
       <CustomSelect type="button" ref={selectRef} menuOpen={isOpen}>
         {items && (
-          <PlaceholderWrap selected={isValue}>
-            <IngredientsSpan>{ingredient.title ? ingredient.title : 'Lem'}</IngredientsSpan>
+          <PlaceholderWrap selected={meta.value}>
+            <IngredientsSpan>{meta.value ? meta.value : 'Lem'}</IngredientsSpan>
 
             <SelectArrow isOpen={isOpen} color='#f3f3f380'/>
           </PlaceholderWrap>
@@ -109,7 +106,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
           {msg => <div>{msg}</div>}
         </ErrorText>
       )}
-    </div>
+    </SelectWrapper>
   );
 };
 

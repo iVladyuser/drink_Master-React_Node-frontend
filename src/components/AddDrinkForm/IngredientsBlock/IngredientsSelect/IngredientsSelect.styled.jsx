@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const CustomSelect = styled.button`
   width: 200px;
-  height: 34px;
+  height: 50px;
   padding: 16px 18px;
 
   display: flex;
@@ -38,6 +38,7 @@ export const CustomSelect = styled.button`
 export const PlaceholderWrap = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   color: ${({ selected }) => (!selected ? '#f3f3f380' : '#F3F3F3')};
 
@@ -50,18 +51,20 @@ export const Label = styled.span`
   color: #f3f3f380;
 `;
 
-export const IngredientsSpan = styled.span`
-margin-right: 100px;
-`
+export const IngredientsSpan = styled.span``
 
 export const DropMenu = styled.div`
   max-height: 300px;
-  width: 130px;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  padding-left: 10px;
+  padding: 10px;
 
   transition: 500ms linear color;
+
+  position: absolute;
+  top: 24px;
+  right: 0;
+  padding: 10px;
 
   font-size: 12;
   line-height: 1.3;
@@ -91,7 +94,6 @@ export const SelectItem = styled.div`
 
 export const SearchInput = styled.input`
   display: block;
-  padding: 4px;
 
   margin-bottom: 8px;
 
