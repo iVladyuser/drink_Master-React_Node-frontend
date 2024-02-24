@@ -1,6 +1,6 @@
 import { FieldArray, ErrorMessage, useField, Field } from 'formik';
 import IngredientsSelect from './IngredientsSelect/IngredientsSelect';
-import {NumberIngredients} from './IngredientsSelect/IngredientsSelect'
+import {NumberIngredients} from './IngredientsBlock.styled'
 
 const IngredientsBlock = ({ items, title }) => {
   const initialValue = { title: '', measure: '' };
