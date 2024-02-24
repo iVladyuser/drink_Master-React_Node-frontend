@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Ellipse222 = styled.img`
 position: absolute;
-z-index: 1;
+z-index: -1;
 top : 20px;
 width: 520px;
 

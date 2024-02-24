@@ -6,7 +6,7 @@ display:none;
   @media (min-width: 768px) {
     display:block;
     position: absolute;
-z-index: 1;
+z-index: -1;
 top : 400px;
 right: 1px;
 width: 500px;

@@ -1,84 +1,116 @@
-import {
-  ArrowStyled,
-  PlaceholderWrap,
-  IngredientsSelectWrapper,
-  IngredientsSearchWrapper,
-  IngredientsSelectInput
-} from './IngredientsSelect.styled';
-import { useState, useMemo, useEffect } from 'react';
-import { nanoid } from 'nanoid'
+import { useEffect, useRef, useState } from 'react';
 
-const IngredientsSelect = ({ options, value, onChange }) => {
-  const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState('');
-  const id = nanoid();
+import {
+  CustomSelect,
+  DropMenu,
+  PlaceholderWrap,
+  SearchInput,
+  SelectItem,
+  IngredientsSpan
+} from './IngredientsSelect.styled';
+import { ErrorText } from '../../TitleBlock/TitleBlock.styled';
+
+import { SelectArrow } from '../../CustomSelect/SelectArrow/SelectArrow';
+import { useField } from 'formik';
+
+const IngredientsSelect = ({ items, title, ingredient, index }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState({ id: '', title: '' });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isValue, setIsValue] = useState(false);
+
+  const selectRef = useRef();
+  const searchRef = useRef();
+  const dropdownRef = useRef();
+
+  const titleValue = title.toLowerCase();
+
+  const [, meta, helpers] = useField(`ingredients.${index}.title`);
+
+  const filteredItems = value =>
+    items.filter(item =>
+      item.toLowerCase().includes(value.toLowerCase())
+    );
+
+  const toggleMenu = () => {
+    setIsOpen(prevState => !prevState);
+  };
+
+  const handleClickItem = item => {
+    setSelectedValue(item);
+    toggleMenu();
+    setSearchQuery('');
+    setIsValue(true);
+
+    ingredient.title = item.title;
+    ingredient.ingredientId = item._id;
+
+    helpers.setError('');
+  };
 
   useEffect(() => {
-    function handleOutsideClick(e){
-        if (
-            !e.target.closest(`#Toggle-${id}`) && 
-            !e.target.closest(`#Select-${id}`)
-        )
-        setOpen(false);
+    if (searchRef) {
+      setSearchQuery('');
+      if (isOpen && searchRef.current) {
+        searchRef.current.focus();
+      }
     }
-    document.addEventListener("mousedown", handleOutsideClick);
+  }, [isOpen]);
 
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, [id]);
+  useEffect(() => {
+    const handler = e => {
+      if (selectRef.current && selectRef.current.contains(e.target)) {
+        setIsOpen(true);
+      }
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
 
-  const opt = useMemo(() => {
-    return options.length > 0
-      ? options.map((o, i) => (
-          <div
-            key={i}
-            onClick={() => {
-              onChange(o.toString());
-              setOpen(false);
-            }}
-          >
-            {o}
-          </div>
-        ))
-      : [
-          <div
-            key={'not-found'}
-            onClick={() => {
-              onChange("");
-              setOpen(false);
-            }}
-          >
-            No matches found
-          </div>,
-        ];
-  }, [options, onChange]);
-
-  useMemo(() => setSearch(value), [value]);
+    window.addEventListener('click', handler);
+    return () => {
+      window.removeEventListener('click', handler);
+    };
+  }, []);
 
   return (
-    <IngredientsSelectWrapper id={`Select-${id}`}>
-      <IngredientsSearchWrapper>
-        <IngredientsSelectInput
-          placeholder="Lem"
-          type="text"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          onFocus={() => setOpen(true)}
-        ></IngredientsSelectInput>
-        <span onClick={() => setOpen(p => !p)} id={`Toggle-${id}`}>
-          <ArrowStyled open={open} color="rgba(243, 243, 243, 1)"/>
-        </span>
-      </IngredientsSearchWrapper>
-      <PlaceholderWrap id="options" open={open}>
-        {opt}
-      </PlaceholderWrap>
-    </IngredientsSelectWrapper>
-  );
-};
+    <div>
+      <CustomSelect type="button" ref={selectRef} menuOpen={isOpen}>
+        {items && (
+          <PlaceholderWrap selected={isValue}>
+            <IngredientsSpan>{ingredient.title ? ingredient.title : 'Lem'}</IngredientsSpan>
 
-IngredientsSelect.defaultProps = {
-  options: [],
-  value: '',
-  onChange: () => {},
+            <SelectArrow isOpen={isOpen} color='#f3f3f380'/>
+          </PlaceholderWrap>
+        )}
+      </CustomSelect>
+      {isOpen && items && (
+        <>
+          <DropMenu ref={dropdownRef}>
+            {items.length > 3 && (
+              <SearchInput
+                ref={searchRef}
+                type="text"
+                name={`${titleValue}Filter`}
+                placeholder="Search..."
+                onChange={e => setSearchQuery(e.target.value)}
+              />
+            )}
+            {filteredItems(searchQuery).map((item, index) => (
+              <SelectItem key={index} onClick={() => handleClickItem(item)}>
+                {item}
+              </SelectItem>
+            ))}
+          </DropMenu>
+        </>
+      )}
+      {meta.error && meta.touched && (
+        <ErrorText name={`ingredients.${index}.title`}>
+          {msg => <div>{msg}</div>}
+        </ErrorText>
+      )}
+    </div>
+  );
 };
 
 export default IngredientsSelect;
