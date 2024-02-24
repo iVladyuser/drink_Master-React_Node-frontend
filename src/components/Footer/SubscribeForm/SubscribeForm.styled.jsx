@@ -97,7 +97,7 @@ border-radius: 200px;
 width: 280px;
 height: 54px;
 
-background-color: transparent;
+background: transparent;
 
 font-family: "Manrope", sans-serif;
 font-weight: 400;
@@ -110,7 +110,7 @@ color: #f3f3f3;
 &:hover {
   outline: none;
   border: ${(props) => props.border || '1px solid rgba(243, 243, 243, 0.2)'};
-  background-color: transparent;
+  background: transparent;
 }
 
 

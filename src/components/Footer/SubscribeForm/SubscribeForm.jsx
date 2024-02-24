@@ -48,7 +48,7 @@ export const SubscribeForm = () => {
             <InputNameEmail
           
             border={(errors?.email && "1px solid #DA1414") || (isValid && "1px solid #3CBC81")}
-            
+            autocomplete="off"
           
             
               placeholder="Enter the email"
