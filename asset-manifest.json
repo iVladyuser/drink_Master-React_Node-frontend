@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/drink_Master-React_Node-frontend/static/css/main.5db80105.css",
-    "main.js": "/drink_Master-React_Node-frontend/static/js/main.5bfe0a40.js",
+    "main.js": "/drink_Master-React_Node-frontend/static/js/main.3a9d98d1.js",
     "static/js/524.f96c37c7.chunk.js": "/drink_Master-React_Node-frontend/static/js/524.f96c37c7.chunk.js",
     "static/js/83.aac4945b.chunk.js": "/drink_Master-React_Node-frontend/static/js/83.aac4945b.chunk.js",
     "static/js/638.8cd6165e.chunk.js": "/drink_Master-React_Node-frontend/static/js/638.8cd6165e.chunk.js",
@@ -21,9 +21,11 @@
     "static/media/welcomeTab@1x.jpg": "/drink_Master-React_Node-frontend/static/media/welcomeTab@1x.457ce856fff2ba764345.jpg",
     "static/media/hero-img-mobile-2x.png": "/drink_Master-React_Node-frontend/static/media/hero-img-mobile-2x.0e421edb78a3c7d3e854.png",
     "static/media/Ellipse222.png": "/drink_Master-React_Node-frontend/static/media/Ellipse222.43e71e1fccf8c76a5905.png",
+    "static/media/ellipse223.png": "/drink_Master-React_Node-frontend/static/media/ellipse223.dd9d3c798d6c78e840b2.png",
     "static/media/hero-img-desc-1x.png": "/drink_Master-React_Node-frontend/static/media/hero-img-desc-1x.e82e22017745bc2a9863.png",
     "static/media/hero-img-tablet-1x.png": "/drink_Master-React_Node-frontend/static/media/hero-img-tablet-1x.e82e22017745bc2a9863.png",
     "static/media/welcomeMob@1x.jpg": "/drink_Master-React_Node-frontend/static/media/welcomeMob@1x.67209e8848ef8dfff92c.jpg",
+    "static/media/EllipseMob.png": "/drink_Master-React_Node-frontend/static/media/EllipseMob.5e6fc1939541ee3580f4.png",
     "static/media/instructions-img-desk@2x.jpg": "/drink_Master-React_Node-frontend/static/media/instructions-img-desk@2x.36e028e2956a7c47bb32.jpg",
     "static/media/instructions-img-tab@2x.jpg": "/drink_Master-React_Node-frontend/static/media/instructions-img-tab@2x.b040bb3826ffb802d5c1.jpg",
     "static/media/hero-img-mobile-1x.png": "/drink_Master-React_Node-frontend/static/media/hero-img-mobile-1x.da9563e4164434437c43.png",
@@ -49,7 +51,7 @@
     "static/media/RightLightDesctop.svg": "/drink_Master-React_Node-frontend/static/media/RightLightDesctop.a7caa646af4531e0ff478ee02049d6ae.svg",
     "static/media/logo.svg": "/drink_Master-React_Node-frontend/static/media/logo.6a84051857c6f75daf9e44b64acdeae9.svg",
     "main.5db80105.css.map": "/drink_Master-React_Node-frontend/static/css/main.5db80105.css.map",
-    "main.5bfe0a40.js.map": "/drink_Master-React_Node-frontend/static/js/main.5bfe0a40.js.map",
+    "main.3a9d98d1.js.map": "/drink_Master-React_Node-frontend/static/js/main.3a9d98d1.js.map",
     "524.f96c37c7.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/524.f96c37c7.chunk.js.map",
     "83.aac4945b.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/83.aac4945b.chunk.js.map",
     "638.8cd6165e.chunk.js.map": "/drink_Master-React_Node-frontend/static/js/638.8cd6165e.chunk.js.map",
@@ -65,6 +67,6 @@
   },
   "entrypoints": [
     "static/css/main.5db80105.css",
-    "static/js/main.5bfe0a40.js"
+    "static/js/main.3a9d98d1.js"
   ]
 }
