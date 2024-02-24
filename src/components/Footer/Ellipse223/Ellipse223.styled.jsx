@@ -5,8 +5,8 @@ export const Ellipse223 = styled.img`
 
   @media (min-width: 768px) {
     display: block;
-    /* position: absolute;
-    z-index: 1; */
+    position: absolute;
+    z-index: 1;
 
     bottom: 1px;
     left: 100px;

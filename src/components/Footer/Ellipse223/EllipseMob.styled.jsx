@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const EllipseMob = styled.img`
   display: block;
-  position: absolute;
+  position: relative;
   z-index: 1;
 
   bottom: 1px;

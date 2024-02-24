@@ -6,6 +6,7 @@ export const FooterContainer = styled.footer`
 
 export const FooterSection = styled.section`
   position: relative;
+  z-index: 10;
   margin: 0 auto;
   padding: 40px 20px 18px 20px;
   min-width: 320px;
@@ -21,7 +22,6 @@ export const FooterSection = styled.section`
   }
 `;
 export const FooterDiv = styled.div`
-  z-index: 10;
   display: flex;
 
   justify-content: flex-start;
@@ -30,7 +30,7 @@ export const FooterDiv = styled.div`
 
 export const FooterElipseDiv = styled.div`
   position: relative;
-  z-index: 21;
+  z-index: 1;
 `;
 
 export const FooterDivTwo = styled.div`
