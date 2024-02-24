@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { UserProfileContainer, UserName, UserProfileMenu, Avatar } from './UserProfile.styled';
+import { ReactComponent as IconSVG } from '../../../images/header/Icon.svg';
+import { UserProfileContainer, UserName, UserProfileMenu, Avatar, EditProfileButton } from './UserProfile.styled';
 import LogoutButton from '../LogoutButton/LogoutButton';
 import UserInfoModal from '../UserInfoModal/UserInfoModal';
 
@@ -47,12 +48,14 @@ const UserProfile = () => {
         }}
       >
         {userName}
+
       </UserName>
       {isMenuOpen && (
         <UserProfileMenu>
-          <button onClick={openUserInfoModal}>
-            Edit Profile
-          </button>
+          <EditProfileButton onClick={openUserInfoModal}>
+          Edit Profile
+          <IconSVG />
+        </EditProfileButton>
           <LogoutButton />
         </UserProfileMenu>
       )}
