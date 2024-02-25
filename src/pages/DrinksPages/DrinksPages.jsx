@@ -30,7 +30,7 @@ import {
   getMainPageAllDrinks,
   searchDrinks,
 } from 'services/fetchDrinksForDrinksPages';
-import { selectAllDrinks } from '../../redux/drink/selectorsForDrinksPages';
+import { selectAllDrinks, selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
 import {
   setCategoryFilter,
   setIngredientFilter,
@@ -45,7 +45,7 @@ const initialValues = {
 const DrinksPage = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectAllDrinks);
-
+  const visibleDrinks = useSelector(selectVisibleDrinks);
   const filters = useSelector(state => state.filters);
   const categories = useSelector(selectListsCategories); // Используйте новый селектор
   const ingredients = useSelector(selectListsIngredients); // Используйте новый селектор
@@ -67,8 +67,11 @@ const DrinksPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getMainPageAllDrinks());
-  }, [dispatch]);
+    console.log('Category:', categories);
+    console.log('Ingredient:', ingredients);
+    console.log('Filters:', filters);
+     dispatch(getMainPageAllDrinks());
+  }, [dispatch, categories, ingredients, filters]);
 
   useEffect(() => {
     dispatch(searchDrinks(filters));
@@ -77,13 +80,14 @@ const DrinksPage = () => {
   const handlePageChange = selectedPage => {
     setCurrentPage(selectedPage + 1);
   };
-
   const handleCategorySelect = category => {
+    console.log('Selected Category:', category);
     dispatch(setCategoryFilter(category));
-    dispatch(searchDrinks(filters)); // Вызываем поиск с учетом текущих фильтров
+    dispatch(searchDrinks(filters)); // Проверьте, отправляется ли запрос с новым фильтром
   }
 
 const handleIngredientSelect = ingredient => {
+  console.log('Selected Ingredient:', ingredient);
   dispatch(setIngredientFilter(ingredient));
   dispatch(searchDrinks(filters)); // Вызываем поиск с учетом текущих фильтров
 };
@@ -118,7 +122,7 @@ const handleIngredientSelect = ingredient => {
             </Formik>
           </WraperForm>
           <ListCocktail>
-            {items.map(drink => (
+            {visibleDrinks.map(drink => (
               <ItemCocktail key={drink._id} drink={drink} />
             ))}
           </ListCocktail>

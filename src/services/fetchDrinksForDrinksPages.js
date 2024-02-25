@@ -50,17 +50,43 @@ export const fetchIngredients = createAsyncThunk(
     }
   }
 );
+// export const searchDrinks = createAsyncThunk(
+//   'drinks/search',
+//   async ({ category, ingredient, keyWord }, thunkAPI) => {
+//     try {
+//       const response = await instance.get('/drinks/search', {
+//         params: {
+//           category,
+//           ingredient,
+//           keyWord,
+//         },
+//       });
+
+//       return response.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
+
 export const searchDrinks = createAsyncThunk(
   'drinks/search',
   async ({ category, ingredient, keyWord }, thunkAPI) => {
     try {
-      const response = await instance.get('/drinks/search', {
+      console.log('Category:', category);
+      console.log('Ingredient:', ingredient);
+      console.log('KeyWord:', keyWord);
+
+      const response = await instance.post('/drinks/search', {
         params: {
           category,
           ingredient,
           keyWord,
         },
       });
+
+      console.log('Response:', response.data);
 
       return response.data;
     } catch (error) {
