@@ -159,7 +159,12 @@ const MainForm = () => {
               touched={touched}
               fileRef={fileRef}
             />
-            <IngredientsBlock items={ingredients} title={`${ingredients}`} />
+            <IngredientsBlock
+              items={ingredients}
+              title={`${ingredients}`}
+              // error={errors.ingredients}
+              // touched={touched.ingredients}
+            />
             <RecipePreparationBlock
               error={errors.instructions}
               touched={touched.instructions}

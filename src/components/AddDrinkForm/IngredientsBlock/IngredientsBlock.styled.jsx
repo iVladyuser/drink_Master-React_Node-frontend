@@ -110,4 +110,14 @@ export const NumberIngredients = styled.span`
   color: rgba(243, 243, 243, 1);
 
 `
+export const ErrorText = styled.div`
+  margin-top: 4px;
 
+  display: block;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #da1414;
+  text-align: right;
+`;

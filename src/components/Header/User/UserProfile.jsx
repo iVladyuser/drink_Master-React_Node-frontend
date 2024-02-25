@@ -19,6 +19,7 @@ const UserProfile = () => {
       setAvatarURL(userData.avatarURL);
     }
   }, [userData]);
+  console.log(userData.avatarURL);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -34,9 +35,14 @@ const UserProfile = () => {
     setIsModalOpen(false);
   };
 
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <UserProfileContainer>
       <Avatar src={avatarURL} alt="Avatar" />
+
       <UserName
         role="button"
         tabIndex="0"
@@ -48,19 +54,18 @@ const UserProfile = () => {
         }}
       >
         {userName}
-
       </UserName>
       {isMenuOpen && (
         <UserProfileMenu>
           <EditProfileButton onClick={openUserInfoModal}>
-          Edit Profile
-          <IconSVG />
-        </EditProfileButton>
-          <LogoutButton />
+            Edit Profile
+            <IconSVG />
+          </EditProfileButton>
+          <LogoutButton onCloseMenu={handleCloseMenu} />
         </UserProfileMenu>
       )}
       {isModalOpen && (
-        <UserInfoModal closeModal={() => setIsModalOpen(false)} handleNameUpdate={handleNameUpdate} />
+        <UserInfoModal closeModal={() => setIsModalOpen(false)} handleNameUpdate={handleNameUpdate} userName={userName} />
       )}
     </UserProfileContainer>
   );
