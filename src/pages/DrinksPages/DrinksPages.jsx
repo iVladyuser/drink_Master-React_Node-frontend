@@ -15,6 +15,7 @@ import SearchDrinksInput from '../../components/SearchDrinksInput/SearchDrinksIn
 import CustomSelect from 'components/CustomSelectForDrinksPage';
 import SvgGeneratorSvgSelector from '../../components/SvgComponents';
 import { Paginator } from '../../components/Pagination/Pagination';
+import { searchDrinks  } from 'services/fetchDrinksForDrinksPages';
 import {
   Container,
   FormStyled,
@@ -26,10 +27,6 @@ import {
   ListCocktail,
 } from './DrinksPages.styled';
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
-import {
- 
-  searchDrinks,
-} from 'services/fetchDrinksForDrinksPages';
 import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
 import {
   setCategoryFilter,
@@ -44,7 +41,7 @@ const initialValues = {
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
- 
+
   const visibleDrinks = useSelector(selectVisibleDrinks);
   const filters = useSelector(state => state.filters);
   const categories = useSelector(selectListsCategories); // Используйте новый селектор
@@ -70,12 +67,9 @@ const DrinksPage = () => {
     console.log('Category:', categories);
     console.log('Ingredient:', ingredients);
     console.log('Filters:', filters);
-     dispatch(getMainPageAllDrinks());
+    dispatch(searchDrinks(filters));
   }, [dispatch, categories, ingredients, filters]);
 
-  useEffect(() => {
-    dispatch(searchDrinks(filters));
-  }, [dispatch, filters]);
 
   const handlePageChange = selectedPage => {
     setCurrentPage(selectedPage + 1);
@@ -84,13 +78,13 @@ const DrinksPage = () => {
     console.log('Selected Category:', category);
     dispatch(setCategoryFilter(category));
     dispatch(searchDrinks(filters)); // Проверьте, отправляется ли запрос с новым фильтром
-  }
+  };
 
-const handleIngredientSelect = ingredient => {
-  console.log('Selected Ingredient:', ingredient);
-  dispatch(setIngredientFilter(ingredient));
-  dispatch(searchDrinks(filters)); // Вызываем поиск с учетом текущих фильтров
-};
+  const handleIngredientSelect = ingredient => {
+    console.log('Selected Ingredient:', ingredient);
+    dispatch(setIngredientFilter(ingredient));
+    dispatch(searchDrinks(filters)); // Вызываем поиск с учетом текущих фильтров
+  };
 
   return (
     <DrinksPageStyle>
@@ -129,7 +123,7 @@ const handleIngredientSelect = ingredient => {
           <Paginator
             limit={limit}
             currentPage={currentPage}
-            items={items.length}
+            items={visibleDrinks.length}
             handlePageChange={handlePageChange}
             pageRangeDisplayed={5}
           />
