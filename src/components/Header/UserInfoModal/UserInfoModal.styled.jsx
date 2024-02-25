@@ -17,11 +17,9 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-
   align-items: center;
   background-color: #161f37;
   padding: 50px 50px 75px 50px;
-c6d511e1d8ba1e8bffc2066161379c
   border-radius: 16px;
   width: 500px;
   height: 426px;
@@ -34,12 +32,11 @@ export const ModalTitle = styled.h2`
 `;
 
 export const  FormWrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content:space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
 `;
-
 
 export const AvatarPreview = styled.img`
   width: 100px;
@@ -63,19 +60,11 @@ export const CloseButton = styled.button`
 export const Label = styled.label`
   color: #fff;
   margin-bottom: 10px;
+  position: relative;
 `;
 
-
-
 export const InputAvatarStyled = styled.input`
-display: flex;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #ccc;
-  cursor: pointer;
-  text-align: center;
-  line-height: 40px;
+  display: none;
 `;
 
 export const Input = styled.input`
@@ -86,26 +75,22 @@ export const Input = styled.input`
   background-color: #161f37;
   border: 1px solid rgba(243, 243, 243, 0.2);
   border-radius: 42px;
-padding: 18px 147px;
+  padding: 18px 147px;
   width: 400px;
-height: 56px;
+  height: 56px;
   color: white;
 `;
-
-
 
 export const Button = styled.button`
   background-color: #161f37;
   color: #fff;
   padding: 10px 20px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-
   border-radius: 42px;
-padding: 18px 147px;
-width: 400px;
-height: 54px;
+  padding: 18px 147px;
+  width: 400px;
+  height: 54px;
   cursor: pointer;
-
 
   &:hover {
     color: #161f37;
@@ -114,8 +99,14 @@ height: 54px;
 `;
 
 export const ChangeNameWrapper = styled.div`
-display: flex;
-flex-direction:column;
-
+  display: flex;
+  flex-direction: column;
 `;
 
+export const Add = styled.div`
+  margin-top: -35px;
+  width: 40px;
+  height: 40px;
+cursor: pointer;
+  }
+`;
