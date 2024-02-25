@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateNameThunk, updateAvatarThunk } from '../../../services/fetchUpdate';
+
 import { ModalOverlay, ModalContent, ModalTitle, CloseButton, FormWrapper, InputAvatarStyled, Label, Input, Button, ChangeNameWrapper } from './UserInfoModal.styled';
+
 import { FaTimes } from 'react-icons/fa';
 import { Formik, Form, Field } from 'formik';
 
@@ -32,12 +34,15 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName }) => {
           <FaTimes />
         </CloseButton>
         <ModalTitle></ModalTitle>
+
         <Formik
           initialValues={{ name: userName, avatar: null }}
+
           onSubmit={handleSubmit}
         >
           {({ setFieldValue, isSubmitting }) => (
             <Form>
+
               <FormWrapper>
                 <Label htmlFor="avatar"></Label>
                 <InputAvatarStyled
@@ -66,6 +71,7 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName }) => {
                   </Button>
                 </ChangeNameWrapper>
               </FormWrapper>
+
             </Form>
           )}
         </Formik>

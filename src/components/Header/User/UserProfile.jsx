@@ -19,6 +19,7 @@ const UserProfile = () => {
       setAvatarURL(userData.avatarURL);
     }
   }, [userData]);
+  console.log(userData.avatarURL);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -41,6 +42,7 @@ const UserProfile = () => {
   return (
     <UserProfileContainer>
       <Avatar src={avatarURL} alt="Avatar" />
+
       <UserName
         role="button"
         tabIndex="0"

@@ -17,9 +17,11 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+
   align-items: center;
   background-color: #161f37;
   padding: 50px 50px 75px 50px;
+c6d511e1d8ba1e8bffc2066161379c
   border-radius: 16px;
   width: 500px;
   height: 426px;
@@ -30,12 +32,14 @@ export const ModalTitle = styled.h2`
   margin-top: 0;
   color: #fff;
 `;
+
 export const  FormWrapper = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content:space-between;
 `;
+
 
 export const AvatarPreview = styled.img`
   width: 100px;
@@ -60,6 +64,7 @@ export const Label = styled.label`
   color: #fff;
   margin-bottom: 10px;
 `;
+
 
 
 export const InputAvatarStyled = styled.input`
@@ -94,11 +99,13 @@ export const Button = styled.button`
   color: #fff;
   padding: 10px 20px;
   border: 1px solid rgba(243, 243, 243, 0.2);
+
   border-radius: 42px;
 padding: 18px 147px;
 width: 400px;
 height: 54px;
   cursor: pointer;
+
 
   &:hover {
     color: #161f37;
@@ -111,3 +118,4 @@ display: flex;
 flex-direction:column;
 
 `;
+
