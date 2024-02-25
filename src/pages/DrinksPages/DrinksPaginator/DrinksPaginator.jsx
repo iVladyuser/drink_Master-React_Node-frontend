@@ -1,4 +1,4 @@
-import { Paginate, SvgWrap } from './DrinksPaginator.styled';
+import { Paginate, SvgWrap, Previous, Next } from './DrinksPaginator.styled';
 
 export const Paginator = ({
   limit,
@@ -6,8 +6,7 @@ export const Paginator = ({
   itemsLength,
   handlePageChange,
   pageRangeDisplayed,
-  Previous,
-  Next,
+
 }) => {
   const pageCount = Math.ceil(itemsLength / limit);
 

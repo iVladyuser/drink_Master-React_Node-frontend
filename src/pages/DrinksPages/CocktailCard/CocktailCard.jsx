@@ -32,7 +32,7 @@ export const CocktailCard = ({ data }) => {
       />
       <CocktailInfo>
         <CocktailName>{cocktailName}</CocktailName>
-        <StyledCocktailLink to={`/drinks/${id}`}>See more</StyledCocktailLink>
+        <StyledCocktailLink to={`/drink/${id}`}>See more</StyledCocktailLink>
       </CocktailInfo>
     </CardContainer>
   );

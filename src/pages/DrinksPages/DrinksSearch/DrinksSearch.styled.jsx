@@ -44,11 +44,11 @@ export const Input = styled.input`
   height: 54px;
   border-radius: 200px;
   background-color: transparent;
-  border: 1px solid var(--border-input-color);
+  border: 1px solid #f3f3f333;
   opacity: 0.8;
   font-size: 17px;
   line-height: 1.56;
-  color: var(--text-color);
+  color: #f3f3f3;
   outline: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -62,7 +62,7 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-    color: var(--text-color);
+    color: #f3f3f3;
   }
 
   &:hover,
@@ -73,7 +73,7 @@ export const Input = styled.input`
 `;
 
 export const SearchIconWrap = styled.svg`
-  stroke: var(--text-color);
+  stroke: #f3f3f3;
   width: 20px;
   height: 20px;
 `;

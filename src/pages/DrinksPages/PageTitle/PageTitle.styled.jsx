@@ -4,7 +4,7 @@ export const Title = styled.h2`
   font-size: 32px;
   font-weight: 600;
   line-height: 1.19;
-  color: var(--text-color);
+  color: #F3F3F3;
 
   @media screen and (min-width: 768px) {
     font-size: 56px;

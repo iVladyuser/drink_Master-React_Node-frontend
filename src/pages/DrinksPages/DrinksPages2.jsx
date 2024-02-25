@@ -34,6 +34,9 @@ const DrinksPages = () => {
   const totalCocktails = useSelector(selectTotalCocktails);
   const isLoading = useSelector(selectIsLoading);
 
+  console.log('cocktails', cocktails);
+  console.log('totalCocktails', totalCocktails);
+
   const [currentPage, setCurrentPage] = useState(pageFromUrl);
   const [limit, setLimit] = useState(9);
   const [pageRangeDisplayed, setPageRangeDisplayed] = useState(3);
