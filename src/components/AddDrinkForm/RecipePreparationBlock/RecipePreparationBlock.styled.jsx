@@ -7,7 +7,7 @@ export const RecipePreparationWrapper = styled.div`
 
 export const RecipeTextarea = styled.textarea`
   margin-top: 40px;
-  width: 480px;
+  width: 335px;
   height: 184px;
   padding: 14px 24px;
   box-sizing: border-box;
@@ -24,6 +24,10 @@ export const RecipeTextarea = styled.textarea`
 
   ::placeholder {
     color: rgba(243, 243, 243, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    width: 480px;
   }
 `;
 
