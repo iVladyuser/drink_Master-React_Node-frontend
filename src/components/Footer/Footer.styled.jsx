@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 
 export const FooterContainer = styled.footer`
   background: #0a0a11;
+  border-top: 1px solid rgba(243, 243, 243, 0.2);
 `;
 
 export const FooterSection = styled.section`
@@ -28,7 +29,7 @@ export const FooterDiv = styled.div`
   flex-direction: column;
 `;
 
-export const FooterElipseDiv = styled.div`
+export const FooterEllipseDiv = styled.div`
   position: relative;
   z-index: 1;
 `;
