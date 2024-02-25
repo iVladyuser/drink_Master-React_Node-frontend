@@ -121,15 +121,15 @@ const DrinksPages = () => {
           !errorReason && (
             <Wrapper>
               <CocktailsList>{displayCocktails}</CocktailsList>
-              {totalCocktails > limit && (
-                <Paginator
-                  limit={limit}
-                  currentPage={currentPage}
-                  itemsLength={totalCocktails}
-                  handlePageChange={handlePageChange}
-                  pageRangeDisplayed={pageRangeDisplayed}
-                />
-              )}
+              {/* {totalCocktails > limit && ( */}
+              <Paginator
+                limit={limit}
+                currentPage={currentPage}
+                itemsLength={totalCocktails}
+                handlePageChange={handlePageChange}
+                pageRangeDisplayed={pageRangeDisplayed}
+              />
+              {/* )} */}
             </Wrapper>
           )
         )}
