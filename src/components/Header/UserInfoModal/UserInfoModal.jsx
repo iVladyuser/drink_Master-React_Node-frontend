@@ -1,37 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateNameThunk, updateAvatarThunk } from '../../../services/fetchUpdate';
-import { ModalOverlay, ModalContent, ModalTitle, CloseButton } from './UserInfoModal.styled';
+import { ModalOverlay, ModalContent, ModalTitle, CloseButton, Label, Input, Button } from './UserInfoModal.styled';
 import { FaTimes } from 'react-icons/fa';
+import { Formik, Form, Field } from 'formik';
 
 const UserProfileModal = ({ closeModal, handleNameUpdate }) => {
   const dispatch = useDispatch();
-  const [name, setNewName] = useState('');
-  const [avatar, setAvatar] = useState(null);
 
-  const handleNameChange = e => {
-    setNewName(e.target.value);
-  };
-
-  const handleAvatarChange = e => {
-    setAvatar(e.target.files[0]);
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      if (name) {
-        await dispatch(updateNameThunk({ name }));
-        handleNameUpdate(name);
+      if (values.name) {
+        await dispatch(updateNameThunk({ name: values.name }));
+        handleNameUpdate(values.name);
       }
-      if (avatar) {
-        await dispatch(updateAvatarThunk(avatar));
+      if (values.avatar) {
+        await dispatch(updateAvatarThunk(values.avatar));
       }
 
       closeModal();
     } catch (error) {
       console.error('Error updating user:', error);
     }
+    setSubmitting(false);
   };
 
   return (
@@ -40,26 +31,37 @@ const UserProfileModal = ({ closeModal, handleNameUpdate }) => {
         <CloseButton onClick={closeModal}>
           <FaTimes />
         </CloseButton>
-        <ModalTitle>Update Profile</ModalTitle>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">New Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
-          />
+        <ModalTitle></ModalTitle>
+        {/* <AvatarPreview src={} alt="Avatar Preview" /> */}
+        <Formik
+          initialValues={{ name: '', avatar: null }}
+          onSubmit={handleSubmit}
+        >
+          {({ setFieldValue, isSubmitting }) => (
+            <Form>
+              <Label htmlFor="avatar">New Avatar:</Label>
+              <Input
+                type="file"
+                id="avatar"
+                onChange={(event) => {
+                  setFieldValue("avatar", event.currentTarget.files[0]);
+                }}
+                accept="image/*"
+              />
+              <Label htmlFor="name">New Name:</Label>
+              <Field
+                type="text"
+                id="name"
+                name="name"
+                as={Input}
+              />
 
-          <label htmlFor="avatar">New Avatar:</label>
-          <input
-            type="file"
-            id="avatar"
-            onChange={handleAvatarChange}
-            accept="image/*"
-          />
-
-          <button type="submit">Update Profile</button>
-        </form>
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Updating...' : 'Save changes'}
+              </Button>
+            </Form>
+          )}
+        </Formik>
       </ModalContent>
     </ModalOverlay>
   );
