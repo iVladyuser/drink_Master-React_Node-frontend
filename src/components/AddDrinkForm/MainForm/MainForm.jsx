@@ -15,7 +15,7 @@ import {
   fetchGlasses,
 } from '../../../redux/filters/operations';
 
-import { AddButton, DrinkFormWrapper } from './MainForm.styled';
+import { AddButton, DrinkFormWrapper, MainFormTitle } from './MainForm.styled';
 
 import TitleBlock from '../TitleBlock';
 import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
@@ -113,7 +113,7 @@ const MainForm = () => {
 
   return (
     <DrinkFormWrapper>
-      <h2>Add drink</h2>
+      <MainFormTitle>Add drink</MainFormTitle>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -131,7 +131,7 @@ const MainForm = () => {
             />
             <IngredientsBlock
               items={ingredientsNames}
-              title={'Ingridients'}
+              title={'Ingredients'}
               // error={errors.ingredients}
               // touched={touched.ingredients}
             />
