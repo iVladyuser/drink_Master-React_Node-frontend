@@ -44,8 +44,8 @@ const DrinksPage = () => {
 
   const visibleDrinks = useSelector(selectVisibleDrinks);
   const filters = useSelector(state => state.filters);
-  const categories = useSelector(selectListsCategories); // Используйте новый селектор
-  const ingredients = useSelector(selectListsIngredients); // Используйте новый селектор
+  const categories = useSelector(selectListsCategories); 
+  const ingredients = useSelector(selectListsIngredients); 
 
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 11;
@@ -55,6 +55,8 @@ const DrinksPage = () => {
       try {
         await dispatch(fetchCategories());
         await dispatch(fetchIngredients());
+        console.log('Categories:', categories);
+      console.log('Ingredients:', ingredients);
       } catch (error) {
         console.error('Error fetching shared lists:', error);
       }
@@ -64,9 +66,9 @@ const DrinksPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log('Category:', categories);
-    console.log('Ingredient:', ingredients);
-    console.log('Filters:', filters);
+    // console.log('Category:', categories);
+    // console.log('Ingredient:', ingredients);
+    // console.log('Filters:', filters);
     dispatch(searchDrinks(filters));
   }, [dispatch, categories, ingredients, filters]);
 
@@ -75,15 +77,15 @@ const DrinksPage = () => {
     setCurrentPage(selectedPage + 1);
   };
   const handleCategorySelect = category => {
-    console.log('Selected Category:', category);
+  
     dispatch(setCategoryFilter(category));
-    dispatch(searchDrinks(filters)); // Проверьте, отправляется ли запрос с новым фильтром
+    dispatch(searchDrinks(filters)); 
   };
 
   const handleIngredientSelect = ingredient => {
-    console.log('Selected Ingredient:', ingredient);
+   
     dispatch(setIngredientFilter(ingredient));
-    dispatch(searchDrinks(filters)); // Вызываем поиск с учетом текущих фильтров
+    dispatch(searchDrinks(filters)); 
   };
 
   return (
