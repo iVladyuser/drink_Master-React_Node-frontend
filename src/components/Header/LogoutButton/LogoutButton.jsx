@@ -4,7 +4,7 @@ import { logOutThunk } from 'services/fetchAuth';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-const LogoutButton = () => {
+const LogoutButton = ({ onCloseMenu }) => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,6 +23,11 @@ const LogoutButton = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const handleCloseMenu = () => {
+    setIsModalOpen(false);
+    onCloseMenu();
+  };
+
   return (
     <>
       <StyledButtonOut onClick={toggleModal}>Logout</StyledButtonOut>
@@ -32,8 +37,8 @@ const LogoutButton = () => {
             <ModalContent>
               <TextStyled><p>Are you sure you want to log out?</p></TextStyled>
               <ButtonOutWrapper>
-              <ModalButton onClick={handleLogout}>Log out</ModalButton>
-              <ModalCancelButton onClick={toggleModal}>Cancel</ModalCancelButton>
+                <ModalButton onClick={handleLogout}>Log out</ModalButton>
+                <ModalCancelButton onClick={handleCloseMenu}>Cancel</ModalCancelButton> {/* Изменено на handleCloseMenu */}
               </ButtonOutWrapper>
             </ModalContent>
           </ModalWrapper>

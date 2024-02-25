@@ -19,6 +19,10 @@ const Navigation = ({ onClose, isVisible }) => {
         onClose();
     };
 
+    const handleNavigationClick = () => {
+        onClose();
+    };
+
     return (
         <NavigationContainer className={animationClass}>
             <LogoSwitcherStyled>
@@ -28,7 +32,7 @@ const Navigation = ({ onClose, isVisible }) => {
                     <CloseButton onClick={handleCloseModal}>Close</CloseButton>
                 </ThemeSwitcherCloseBtn>
             </LogoSwitcherStyled>
-            <NavigationLink />
+            <NavigationLink onNavigationClick={handleNavigationClick} />
         </NavigationContainer>
     );
 };
