@@ -3,8 +3,16 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { signInThunk } from '../../../services/fetchAuth';
 import { toast } from 'react-toastify';
-
-import { Form, FormField, Button, SignInLink } from '../SignUpForm/Sign.styled';
+import 'react-toastify/dist/ReactToastify.css';
+import FormError from '../../FormError/FormError';
+import {
+  Form,
+  FormField,
+  Button,
+  SignInLink,
+  ErrorIcon,
+  SuccessIcon,
+} from '../SignUpForm/Sign.styled';
 import { Formik } from 'formik';
 
 const validateFormSchema = Yup.object().shape({
@@ -29,7 +37,7 @@ export const SignInForm = () => {
     dispatch(signInThunk({ email, password }))
       .unwrap()
       .then(() => {
-        toast.success('Registration successful');
+        toast.success('Sign In successful');
       })
       .catch(() => {
         toast.error('Something went wrong... Try again...');
@@ -44,16 +52,24 @@ export const SignInForm = () => {
       validationSchema={validateFormSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, errors }) => (
+      {({ values, errors, touched }) => (
         <Form>
           <>
-            <FormField
-              type="email"
-              name="email"
-              placeholder="Email"
-              errors={errors}
-            />
-
+            <div>
+              <FormField
+                type="email"
+                name="email"
+                placeholder="Email"
+                error={errors.email && touched.email ? 'true' : 'false'}
+                success={values.email && !errors.email ? 'true' : 'false'}
+              />
+              <FormError name="email" />
+              {errors.email && touched.email ? (
+                <ErrorIcon />
+              ) : values.email && !errors.email ? (
+                <SuccessIcon />
+              ) : null}
+            </div>
             <FormField name="password" placeholder="Password" errors={errors} />
           </>
 
