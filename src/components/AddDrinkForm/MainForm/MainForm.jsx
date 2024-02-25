@@ -56,7 +56,7 @@ const MainForm = () => {
 
     const newIngredients = JSON.stringify(data.ingredients);
 
-    console.log('ing:', data.ingredients);
+    console.log('ing:', data.ingredients.title);
     console.log('newing:', newIngredients);
     const formData = new FormData();
     formData.append('file', image);
