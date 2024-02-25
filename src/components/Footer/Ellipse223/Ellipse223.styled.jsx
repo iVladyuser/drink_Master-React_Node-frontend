@@ -9,7 +9,7 @@ export const Ellipse223 = styled.img`
     z-index: 1;
 
     bottom: 1px;
-    left: 100px;
+    left: -100px;
 
     animation-name: animateEllipse;
     animation-duration: 3s;
@@ -32,6 +32,6 @@ export const Ellipse223 = styled.img`
 
   @media (min-width: 1440px) {
     bottom: 1px;
-    left: 350px;
+    left: 1px;
   }
 `;

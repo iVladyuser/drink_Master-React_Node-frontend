@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const EllipseMob = styled.img`
   display: block;
-  position: relative;
+  position: absolute;
   z-index: 1;
 
   bottom: 1px;
-  left: 1;
+  left: 1px;
 
   animation-name: animateEllipse;
   animation-duration: 3s;
