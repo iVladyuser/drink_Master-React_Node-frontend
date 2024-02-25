@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { refreshThunk } from '../services/fetchAuth';
 import * as ROUTES from 'constants/routes';
 import { AppWrapper } from './App.styled';
-
+import { ToastContainer } from 'react-toastify';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import WelcomePage from 'pages/WelcomePages/WelcomePage';
@@ -78,6 +78,7 @@ const App = () => {
           ))}
         </Route>
       </Routes>
+      <ToastContainer />
     </AppWrapper>
   );
 };
