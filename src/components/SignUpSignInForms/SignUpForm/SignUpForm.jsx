@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { signUpThunk } from '../../../services/fetchAuth';
 import StyledDatePicker from '../../DatePicker/DatePicker';
 import FormError from '../../FormError/FormError';
