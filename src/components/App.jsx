@@ -14,7 +14,7 @@ import SignInPage from '../pages/WelcomePages/SignInPage/SignInPage';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const AddDrinkPage = lazy(() => import('../pages/AddDrinkPages/AddDrinkPages'));
-const Drinks = lazy(() => import('../pages/DrinksPages/DrinksPages'));
+const Drinks = lazy(() => import('../pages/DrinksPages/DrinksPages2'));
 const FavoriteDrinksPage = lazy(() =>
   import('../pages/FavoritePage/FavoriteDrinksPage')
 );

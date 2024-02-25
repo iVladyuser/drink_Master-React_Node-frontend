@@ -14,7 +14,7 @@ export const OptionsContainer = styled.ul`
   overflow-y: ${({ height }) => (height ? 'scroll' : 'visible')};
   overflow-x: hidden;
   padding: 18px 24px;
-  background-color: var(--select-list-color);
+  background-color: #161f37;
   border-radius: 20px;
 
   &::-webkit-scrollbar {
@@ -24,7 +24,7 @@ export const OptionsContainer = styled.ul`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    background-color: var(--scroll-color);
+    background-color: #434d67;
   }
 
   &::-webkit-scrollbar-track {
@@ -47,7 +47,7 @@ export const Option = styled.button`
   height: 100%;
   background-color: transparent;
   border: none;
-  color: var(--see-more-link-color);
+  color: #f3f3f380;
   font-family: 'Manrope';
   font-size: 14px;
   line-height: 1.29;
@@ -57,7 +57,7 @@ export const Option = styled.button`
   &:hover,
   &:focus,
   &:active {
-    color: var(--text-color);
+    color: #f3f3f3;
   }
 
   @media screen and (min-width: 768px) {
@@ -67,7 +67,7 @@ export const Option = styled.button`
 `;
 
 export const Text = styled.p`
-  color: var(--text-color);
+  color: #f3f3f3;
 `;
 
 export const Item = styled.li`
@@ -80,13 +80,13 @@ export const Input = styled.input`
   height: 35px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid var(--border-input-color);
+  border-bottom: 1px solid #f3f3f333;
   opacity: 0.8;
   padding: 0 12px;
 
   font-size: 14px;
   line-height: 1.29;
-  color: var(--text-color);
+  color: #F3F3F3;
   outline: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 
@@ -97,19 +97,19 @@ export const Input = styled.input`
 
   font-size: 12;
   line-height: calc(16 / 12);
-  color: var(--see-more-link-color);
+  color: #f3f3f380;
 
   border-style: none;
-  background-color: var(--button-hover-color);
+  background-color: #161f37;
   border-bottom: 1px solid #f3f3f311;
 
   &:focus {
-    color: var(--text-color);
+    color: #f3f3f3;
     outline: transparent;
   }
 
   &::placeholder {
-    color: var(--see-more-link-color);
+    color: #f3f3f380;
   }
 
   &:focus::placeholder {

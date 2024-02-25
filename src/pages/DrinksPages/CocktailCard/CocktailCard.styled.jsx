@@ -5,12 +5,12 @@ export const CardContainer = styled.div`
   width: 100%;
   max-height: 392px;
   transition: border-bottom 700ms linear;
-  border-bottom: 1px solid var(--background-color);
+  border-bottom: 1px solid #0a0a11;
 
   &:hover,
   &:focus,
   &:active {
-    border-bottom: 1px solid var(--card-hover);
+    border-bottom: 1px solid #ffffff80;
   }
 
   @media screen and (min-width: 375px) {
@@ -52,7 +52,7 @@ export const CocktailName = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.12;
-  color: var(--text-color);
+  color: #f3f3f3;
 
   @media screen and (min-width: 768px) {
     font-size: 17px;
@@ -64,13 +64,13 @@ export const StyledCocktailLink = styled(NavLink)`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29;
-  color: var(--see-more-link-color);
+  color: #f3f3f380;
   transition: color 250ms linear;
 
   &:hover,
   &:focus,
   &:active {
-    color: var(--see-more-link-hover);
+    color: #fafafae6;
   }
 
   @media screen and (min-width: 768px) {

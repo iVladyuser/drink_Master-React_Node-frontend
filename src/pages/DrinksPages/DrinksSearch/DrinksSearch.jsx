@@ -34,6 +34,7 @@ export const DrinksSearch = ({ shouldRenderBtn, page, limit, updPage }) => {
   const ingredients = useSelector(selectIngredients);
 
   const ingredientsNames = ingredients.map(ingredient => ingredient.title);
+  const categoriesNames = categories.map(category => category.name);
 
   const { cocktailName, categoryName, ingredientName } = getUrlParams();
   const [inputValue, setInputValue] = useState(
@@ -132,7 +133,7 @@ export const DrinksSearch = ({ shouldRenderBtn, page, limit, updPage }) => {
         )}
       </Form>
       <SelectList
-        items={categories}
+        items={categoriesNames}
         placeholder={categoryName || 'All categories'}
         height="405px"
         onSelect={handleSearchByCategory}

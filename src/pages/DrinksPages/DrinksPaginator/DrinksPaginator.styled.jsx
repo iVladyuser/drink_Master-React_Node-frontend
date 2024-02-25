@@ -6,7 +6,6 @@ export const Previous = styled(RxCaretLeft)``;
 
 export const Next = styled(RxChevronRight)``;
 
-
 export const Paginate = styled(ReactPaginate).attrs({
   activeClassName: 'active',
 })`
@@ -39,7 +38,7 @@ export const Paginate = styled(ReactPaginate).attrs({
     font-size: 12px;
     font-weight: 500;
     line-height: 1.33;
-    color: var(--text-color);
+    color: #f3f3f3;
     cursor: pointer;
   }
 
@@ -68,7 +67,7 @@ export const Paginate = styled(ReactPaginate).attrs({
   }
 
   li.active a {
-    background-color: var(--pagination-background-color);
+    background-color: #4070cd80;
     color: #f3f3f3;
   }
 
@@ -85,7 +84,7 @@ export const Paginate = styled(ReactPaginate).attrs({
     &:hover,
     &:focus,
     &:active {
-      fill: var(--pagination-array-color);
+      fill: #f3f3f34d;
     }
   }
 `;
@@ -93,12 +92,12 @@ export const Paginate = styled(ReactPaginate).attrs({
 export const SvgWrap = styled.svg`
   width: 8px;
   height: 15px;
-  fill: var(--pagination-array-color);
+  fill: #f3f3f34d;
   transition: fill 200ms linear;
 
   &:hover,
   &:focus,
   &:active {
-    fill: var(--text-color);
+    fill: #f3f3f3;
   }
 `;

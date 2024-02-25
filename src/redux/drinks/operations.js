@@ -21,13 +21,14 @@ export const fetchCocktailsByParams = createAsyncThunk(
       //     Authorization: `Bearer ${token}`,
       //   },
       // };
-      
+
       const response = await instance.get('/drinks/search', {
         params: credentials,
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log('fetchData: ', response.data);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
