@@ -21,7 +21,6 @@ import { fetchCocktailsByParams } from '../../../redux/drinks/operations';
 import {
   selectCategories,
   selectIngredients,
-  selectIsLoadingFilters,
 } from '../../../redux/filters/selectors';
 import { getUrlParams } from '../../../hooks/getUrlParams';
 
