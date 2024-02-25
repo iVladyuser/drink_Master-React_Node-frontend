@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateNameThunk, updateAvatarThunk } from '../../../services/fetchUpdate';
-import { ModalOverlay, ModalContent, ModalTitle, CloseButton, Label, Input, Button } from './UserInfoModal.styled';
+import { ModalOverlay, ModalContent, ModalTitle, CloseButton, FormWrapper, InputAvatarStyled, Label, Input, Button, ChangeNameWrapper } from './UserInfoModal.styled';
 import { FaTimes } from 'react-icons/fa';
 import { Formik, Form, Field } from 'formik';
 
-const UserProfileModal = ({ closeModal, handleNameUpdate }) => {
+const UserProfileModal = ({ closeModal, handleNameUpdate, userName }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -32,33 +32,40 @@ const UserProfileModal = ({ closeModal, handleNameUpdate }) => {
           <FaTimes />
         </CloseButton>
         <ModalTitle></ModalTitle>
-        {/* <AvatarPreview src={} alt="Avatar Preview" /> */}
         <Formik
-          initialValues={{ name: '', avatar: null }}
+          initialValues={{ name: userName, avatar: null }}
           onSubmit={handleSubmit}
         >
           {({ setFieldValue, isSubmitting }) => (
             <Form>
-              <Label htmlFor="avatar">New Avatar:</Label>
-              <Input
-                type="file"
-                id="avatar"
-                onChange={(event) => {
-                  setFieldValue("avatar", event.currentTarget.files[0]);
-                }}
-                accept="image/*"
-              />
-              <Label htmlFor="name">New Name:</Label>
-              <Field
-                type="text"
-                id="name"
-                name="name"
-                as={Input}
-              />
+              <FormWrapper>
+                <Label htmlFor="avatar"></Label>
+                <InputAvatarStyled
+                  type="file"
+                  id="avatar"
+                  onChange={(event) => {
+                    setFieldValue("avatar", event.currentTarget.files[0]);
+                  }}
+                  accept="image/*"
+                />
+                <ChangeNameWrapper>
+                  <Label htmlFor="name"></Label>
+                  <Field
+                    type="text"
+                    id="name"
+                    name="name"
+                    as={Input}
+                    placeholder={
 
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Updating...' : 'Save changes'}
-              </Button>
+                        {userName}
+
+                    }
+                  />
+                  <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Updating...' : 'Save changes'}
+                  </Button>
+                </ChangeNameWrapper>
+              </FormWrapper>
             </Form>
           )}
         </Formik>

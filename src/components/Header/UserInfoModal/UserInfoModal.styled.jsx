@@ -17,8 +17,9 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  align-items: center;
   background-color: #161f37;
-  padding: 20px;
+  padding: 50px 50px 75px 50px;
   border-radius: 16px;
   width: 500px;
   height: 426px;
@@ -28,6 +29,12 @@ export const ModalContent = styled.div`
 export const ModalTitle = styled.h2`
   margin-top: 0;
   color: #fff;
+`;
+export const  FormWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content:space-between;
 `;
 
 export const AvatarPreview = styled.img`
@@ -54,37 +61,53 @@ export const Label = styled.label`
   margin-bottom: 10px;
 `;
 
-export const Input = styled.input`
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+
+export const InputAvatarStyled = styled.input`
+display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  text-align: center;
+  line-height: 40px;
 `;
 
+export const Input = styled.input`
+  padding: 8px;
+  margin-bottom: 25px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #161f37;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  border-radius: 42px;
+padding: 18px 147px;
+  width: 400px;
+height: 56px;
+  color: white;
+`;
+
+
+
 export const Button = styled.button`
-border: 1px solid rgba(243, 243, 243, 0.2);
-color: #f3f3f3;
-background-color: transparent;
-font-family: inherit;
-font-size: 14px;
-font-weight: 600;
-line-height: 1.29;
-
-cursor: pointer;
-
-transition: color 300ms linear, background-color 300ms linear;
-
+  background-color: #161f37;
+  color: #fff;
   padding: 10px 20px;
-  border: none;
+  border: 1px solid rgba(243, 243, 243, 0.2);
   border-radius: 42px;
 padding: 18px 147px;
 width: 400px;
 height: 54px;
   cursor: pointer;
+
+  &:hover {
+    color: #161f37;
+    background-color: #f3f3f3;
+  }
 `;
 
-export const ButtonHover = styled(Button)`
-  &:hover {
-    background-color: #0056b3;
-  }
+export const ChangeNameWrapper = styled.div`
+display: flex;
+flex-direction:column;
+
 `;

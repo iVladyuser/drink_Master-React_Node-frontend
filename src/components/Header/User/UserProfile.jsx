@@ -35,7 +35,9 @@ const UserProfile = () => {
     setIsModalOpen(false);
   };
 
+
   return (
+
     <UserProfileContainer>
       <Avatar src={avatarURL} alt="Avatar" />
 
@@ -62,8 +64,7 @@ const UserProfile = () => {
         </UserProfileMenu>
       )}
       {isModalOpen && (
-        <UserInfoModal closeModal={() => setIsModalOpen(false)} handleNameUpdate={handleNameUpdate} />
-      )}
+        <UserInfoModal closeModal={() => setIsModalOpen(false)} handleNameUpdate={handleNameUpdate} userName={userName} />)}
     </UserProfileContainer>
   );
 };
