@@ -27,3 +27,7 @@ export const AddButton = styled.button`
     background-color: #161f37;
   }
 `;
+
+export const MainFormTitle = styled.h2`
+  margin-bottom: 60px;
+`

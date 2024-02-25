@@ -7,7 +7,7 @@ export const instance = axios.create({
 });
 
 export const fetchPopular = createAsyncThunk(
-  'rinks/popular',
+  'drinks/popular',
   async (_, thunkApi) => {
     try {
       const state = thunkApi.getState();
