@@ -15,7 +15,6 @@ import {
 } from 'redux-persist';
 import { authReducer } from './auth/slice';
 import { drinksReducer } from './drink/home_slice';
-import { allDrinksReduser } from './drink/sliceForDrinksPages';
 import { filtersReducer } from './drink/sliceFilterForDrinksPages';
 import { drinkByIdReducer } from './drink/sliceDrinkById';
 import { listsReducer } from './drink/listSlice';
@@ -29,7 +28,6 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authReducer),
     favorites: favoritesReducer,
-    alldrinks: allDrinksReduser,
     myDrinks: myDrinksReducer,
     filters: filtersReducer,
     drinks: drinksReducer,

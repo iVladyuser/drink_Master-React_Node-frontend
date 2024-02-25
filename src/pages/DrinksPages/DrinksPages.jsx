@@ -27,10 +27,10 @@ import {
 } from './DrinksPages.styled';
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
 import {
-  getMainPageAllDrinks,
+ 
   searchDrinks,
 } from 'services/fetchDrinksForDrinksPages';
-import { selectAllDrinks, selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
+import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
 import {
   setCategoryFilter,
   setIngredientFilter,
@@ -44,7 +44,7 @@ const initialValues = {
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
-  const items = useSelector(selectAllDrinks);
+ 
   const visibleDrinks = useSelector(selectVisibleDrinks);
   const filters = useSelector(state => state.filters);
   const categories = useSelector(selectListsCategories); // Используйте новый селектор

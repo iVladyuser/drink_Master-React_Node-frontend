@@ -16,17 +16,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //   }
 // );
 
-export const getMainPageAllDrinks = createAsyncThunk(
-  'drinks/getAll',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await instance.get('/drinks/mainpage');
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
 
 export const fetchCategories = createAsyncThunk(
   'drinks/categories',
@@ -50,24 +39,7 @@ export const fetchIngredients = createAsyncThunk(
     }
   }
 );
-// export const searchDrinks = createAsyncThunk(
-//   'drinks/search',
-//   async ({ category, ingredient, keyWord }, thunkAPI) => {
-//     try {
-//       const response = await instance.get('/drinks/search', {
-//         params: {
-//           category,
-//           ingredient,
-//           keyWord,
-//         },
-//       });
 
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 
 export const searchDrinks = createAsyncThunk(
@@ -78,7 +50,7 @@ export const searchDrinks = createAsyncThunk(
       console.log('Ingredient:', ingredient);
       console.log('KeyWord:', keyWord);
 
-      const response = await instance.post('/drinks/search', {
+      const response = await instance.get('/drinks/search', {
         params: {
           category,
           ingredient,

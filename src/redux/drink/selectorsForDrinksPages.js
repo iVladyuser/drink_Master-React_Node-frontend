@@ -1,13 +1,13 @@
  
   import { createSelector } from '@reduxjs/toolkit';
-  export const selectAllDrinks = state => state.alldrinks.items;
+ 
   export const selectDrinksError = state => state.alldrinks.error;
   export const selectIsLoading = state => state.alldrinks.isLoading;
   export const selectDrinksFilter = state => state.filters;
   export const selectListsCategories = state => state.lists.categories;
   export const selectListsIngredients = state => state.lists.ingredients;
   export const selectVisibleDrinks = createSelector(
-    [selectAllDrinks, selectDrinksFilter],
+    [selectDrinksFilter, selectDrinksFilter],
     (drinks, filters) => {
       const { categoryFilter, ingredientFilter, searchQuery } = filters;
   
