@@ -104,3 +104,9 @@ export const ContentBlock = styled.div`
     flex-basis: 33%;
   }
 `;
+
+
+export const AdditionalBlock = styled.div`
+  display: column;
+`;
+

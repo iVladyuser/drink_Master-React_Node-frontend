@@ -1,8 +1,8 @@
-import { Container } from './AddDrinkPages.styled';
+import { Container, AdditionalBlock } from './AddDrinkPages.styled';
 
 import MainForm from 'components/AddDrinkForm/MainForm/MainForm';
 
-// import PopularDrinks from '../../components/PopularDrinks';
+import PopularDrinks from '../../components/PopularDrinks';
 import FollowUs from '../../components/FollowUs';
 
 const AddDrinkPage = () => {
@@ -10,11 +10,10 @@ const AddDrinkPage = () => {
     <>
       <Container>
         <MainForm />
-        <FollowUs />
-        {/* <AdditionalBlock>
+        <AdditionalBlock>
         <FollowUs />
         <PopularDrinks />
-      </AdditionalBlock> */}
+        </AdditionalBlock>
       </Container>
     </>
   );
