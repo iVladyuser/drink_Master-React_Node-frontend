@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { StandartContainer } from '../../styles/Container.styled';
 
 import welcomeMob1x from '../../images/welcome/welcomeMob@1x.jpg';
-// import welcomeMob2x from '../../images/welcome/welcomeMob@2x.jpg';
+import welcomeMob2x from '../../images/welcome/welcomeMob@2x.jpg';
 
 import welcomeTab1x from '../../images/welcome/welcomeTab@1x.jpg';
-// import welcomeTab2x from '../../images/welcome/welcomeTab@2x.jpg';
+import welcomeTab2x from '../../images/welcome/welcomeTab@2x.jpg';
 
 import welcomeDesk1x from '../../images/welcome/welcomeDesk@1x.jpg';
-// import welcomeDesk2x from '../../images/welcome/welcomeDesk@2x.jpg';
+import welcomeDesk2x from '../../images/welcome/welcomeDesk@2x.jpg';
 
 import welcomeElipseTopMob from '../../images/welcome/welcomeElipsesTopMob.svg';
 import welcomeElipseBottomMob from '../../images/welcome/welcomeElipseBottomMob.svg';
@@ -28,13 +28,24 @@ export const WelcomePageStyle = styled.section`
   max-width: 100vw;
   height: 100vh;
 
-  , url(${welcomeElipseBottomMob}),
+  background: url(${welcomeElipseTopMob}), url(${welcomeElipseBottomMob}),
     url(${welcomeMob1x});
-background: url(${welcomeElipseTopMob})
   background-repeat: no-repeat;
   background-size: 100%, 40%, auto;
   background-position: top left, bottom right, center right;
   background-color: #0a090f;
+
+  @media (max-width: 767.98px) and (min-device-pixel-ratio: 2),
+    (max-width: 767.98px) and (-webkit-min-device-pixel-ratio: 2),
+    (max-width: 767.98px) and (min-resolution: 192dpi),
+    (max-width: 767.98px) and (min-resolution: 2dppx) {
+    background: url(${welcomeElipseTopMob}), url(${welcomeElipseBottomMob}),
+      url(${welcomeMob2x});
+    background-repeat: no-repeat;
+    background-size: 100%, 40%, auto;
+    background-position: top left, bottom right, center right;
+    background-color: #0a090f;
+  }
 
   @media (min-width: 768px) {
     background: url(${welcomeElipseTopTab}), url(${welcomeElipseBottomTab}),
@@ -44,9 +55,33 @@ background: url(${welcomeElipseTopMob})
     background-position: top left, bottom right, center right;
     background-color: #0a090f;
   }
+
+  @media (min-width: 768px) and (min-device-pixel-ratio: 2),
+    (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 768px) and (min-resolution: 192dpi),
+    (min-width: 768px) and (min-resolution: 2dppx) {
+    background: url(${welcomeElipseTopTab}), url(${welcomeElipseBottomTab}),
+      url(${welcomeTab2x});
+    background-repeat: no-repeat;
+    background-size: 70%, 30%, 60%;
+    background-position: top left, bottom right, center right;
+    background-color: #0a090f;
+  }
   @media (min-width: 1440px) {
     background: url(${welcomeElipseTopDesk}), url(${welcomeElipseBottomDesk}),
       url(${welcomeDesk1x});
+    background-repeat: no-repeat;
+    background-size: 50%, 25%, 60%;
+    background-position: top left, bottom right, center right;
+    background-color: #07060b;
+  }
+
+  @media (min-width: 1440px) and (min-device-pixel-ratio: 2),
+    (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 1440px) and (min-resolution: 192dpi),
+    (min-width: 1440px) and (min-resolution: 2dppx) {
+    background: url(${welcomeElipseTopDesk}), url(${welcomeElipseBottomDesk}),
+      url(${welcomeDesk2x});
     background-repeat: no-repeat;
     background-size: 50%, 25%, 60%;
     background-position: top left, bottom right, center right;
