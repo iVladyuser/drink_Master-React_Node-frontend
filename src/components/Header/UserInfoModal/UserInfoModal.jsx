@@ -60,11 +60,7 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName }) => {
                     id="name"
                     name="name"
                     as={Input}
-                    placeholder={
-
-                        {userName}
-
-                    }
+                    placeholder={{userName}}
                   />
                   <Button type="submit" disabled={isSubmitting}>
                     {isSubmitting ? 'Updating...' : 'Save changes'}
