@@ -45,7 +45,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
 
       const config = {
         headers: {
-          'Content-Type': 'aplication/json',
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };
