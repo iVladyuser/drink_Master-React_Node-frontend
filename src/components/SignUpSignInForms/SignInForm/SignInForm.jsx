@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { signInThunk } from '../../../services/fetchAuth';
@@ -12,6 +12,10 @@ import {
   SignInLink,
   ErrorIcon,
   SuccessIcon,
+  TogglePasswordButton,
+  StyledDontShowPasswordIcon,
+  StyledShowPasswordIcon,
+  PasswordInputWrap,
 } from '../SignUpForm/Sign.styled';
 import { Formik } from 'formik';
 
@@ -27,6 +31,10 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleSubmit = values => {
     // e.preventDefault();
 
@@ -70,7 +78,26 @@ export const SignInForm = () => {
                 <SuccessIcon />
               ) : null}
             </div>
-            <FormField name="password" placeholder="Password" errors={errors} />
+            <PasswordInputWrap>
+              <FormField
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                error={errors.password && touched.password ? 'true' : 'false'}
+                success={values.password && !errors.password ? 'true' : 'false'}
+              />
+              <FormError name="password" />
+              <TogglePasswordButton
+                type="button"
+                onClick={handleTogglePassword}
+              >
+                {showPassword ? (
+                  <StyledDontShowPasswordIcon />
+                ) : (
+                  <StyledShowPasswordIcon />
+                )}
+              </TogglePasswordButton>
+            </PasswordInputWrap>
           </>
 
           <Button type="submit">Sign In</Button>

@@ -37,7 +37,6 @@ export const FormField = styled(FormikField)`
   }
 
   outline: 1px solid rgba(243, 243, 243, 0.2);
-
   ${({ error }) =>
     error === 'true' &&
     css`
@@ -48,16 +47,12 @@ export const FormField = styled(FormikField)`
     css`
       border: 1px solid green;
     `}
-   ${({ value }) =>
+  ${({ value }) =>
     value &&
     css`
       border: 1px solid green;
     `}
-     ${({ value }) =>
-    !value &&
-    css`
-      border: 1px solid red;
-    `}
+
 
   @media (min-width: 768px) {
     width: 400px;
