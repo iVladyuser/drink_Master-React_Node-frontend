@@ -1,4 +1,19 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const DetailDrinkLink = styled(Link)`
+    font-family: Manrope;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #f3f3f3;
+    margin-bottom: 8px;
+
+    &:focus,
+    &:hover {
+        text-decoration: underline;
+    }
+`;
 
 export const PopularLi = styled.li`
   list-style: none;
@@ -16,14 +31,14 @@ export const DrinkPicture = styled.img`
   border-radius: 15px;
 `;
 
-export const DrinkName = styled.h4`
-  font-family: Manrope;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-  color: #f3f3f3;
-  margin-bottom: 8px;
-`;
+// export const DrinkName = styled.p`
+//   font-family: Manrope;
+//   font-weight: 500;
+//   font-size: 16px;
+//   line-height: 22px;
+//   color: #f3f3f3;
+//   margin-bottom: 8px;
+// `;
 
 export const DrinkDescr = styled.p`
   font-family: Manrope;
