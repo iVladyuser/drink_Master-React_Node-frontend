@@ -16,7 +16,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //   }
 // );
 
-
 export const fetchCategories = createAsyncThunk(
   'drinks/categories',
   async (_, thunkAPI) => {
@@ -40,8 +39,6 @@ export const fetchIngredients = createAsyncThunk(
   }
 );
 
-
-
 export const searchDrinks = createAsyncThunk(
   'drinks/search',
   async ({ category, ingredient, keyWord }, thunkAPI) => {
@@ -56,10 +53,7 @@ export const searchDrinks = createAsyncThunk(
           ingredient,
           keyWord,
         },
-      });
-
-      console.log('Response:', response.data);
-
+      })
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

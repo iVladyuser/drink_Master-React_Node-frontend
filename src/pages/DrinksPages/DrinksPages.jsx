@@ -27,10 +27,11 @@ import {
   ListCocktail,
 } from './DrinksPages.styled';
 import ItemCocktail from '../../components/ItemCocktail/ItemCocktail';
-import { selectVisibleDrinks } from '../../redux/drink/selectorsForDrinksPages';
+import { selectAllDrinks, selectDrinksFilter } from '../../redux/drink/selectorsForDrinksPages';
 import {
   setCategoryFilter,
   setIngredientFilter,
+  setSearchQuery
 } from '../../redux/drink/sliceFilterForDrinksPages';
 
 const initialValues = {
@@ -41,22 +42,18 @@ const initialValues = {
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
-
-  const visibleDrinks = useSelector(selectVisibleDrinks);
-  const filters = useSelector(state => state.filters);
+  const items = useSelector(selectAllDrinks);
+  const filters = useSelector(selectDrinksFilter);
   const categories = useSelector(selectListsCategories); 
   const ingredients = useSelector(selectListsIngredients); 
-
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 11;
-
+  
   useEffect(() => {
     const fetchSharedLists = async () => {
       try {
         await dispatch(fetchCategories());
         await dispatch(fetchIngredients());
-        console.log('Categories:', categories);
-      console.log('Ingredients:', ingredients);
       } catch (error) {
         console.error('Error fetching shared lists:', error);
       }
@@ -66,9 +63,6 @@ const DrinksPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // console.log('Category:', categories);
-    // console.log('Ingredient:', ingredients);
-    // console.log('Filters:', filters);
     dispatch(searchDrinks(filters));
   }, [dispatch, categories, ingredients, filters]);
 
@@ -83,11 +77,15 @@ const DrinksPage = () => {
   };
 
   const handleIngredientSelect = ingredient => {
-   
     dispatch(setIngredientFilter(ingredient));
     dispatch(searchDrinks(filters)); 
   };
-
+  const handleSearchInputChange = e => {
+    const userQuery = e.target.value;
+    const normalizedValue =userQuery.toLowerCase().trim()
+    dispatch(setSearchQuery(normalizedValue));
+    dispatch(searchDrinks(filters));
+  };
   return (
     <DrinksPageStyle>
       <ContainerForPage>
@@ -95,7 +93,10 @@ const DrinksPage = () => {
           <TitlePage title={'Drinks'} />
           <WraperForm>
             <ForInputLupaSvg>
-              <SearchDrinksInput />
+              <SearchDrinksInput 
+              value={filters.searchQuery}
+              onChange={handleSearchInputChange}
+              />
               <WraperSvg>
                 <SvgGeneratorSvgSelector id="svglupa" />
               </WraperSvg>
@@ -103,11 +104,13 @@ const DrinksPage = () => {
             <Formik initialValues={initialValues}>
               {({ setFieldValue }) => (
                 <FormStyled>
+                  
                   <CustomSelect
                     items={categories.map(category => category.name)}
                     title={'Category'}
                     onSelect={handleCategorySelect}
                   />
+                  
                   <CustomSelect
                     items={ingredients.map(ingredient => ingredient.title)}
                     title={'Ingredients'}
@@ -118,14 +121,14 @@ const DrinksPage = () => {
             </Formik>
           </WraperForm>
           <ListCocktail>
-            {visibleDrinks.map(drink => (
+            {items.map(drink => (
               <ItemCocktail key={drink._id} drink={drink} />
             ))}
           </ListCocktail>
           <Paginator
             limit={limit}
             currentPage={currentPage}
-            items={visibleDrinks.length}
+            items={items.length}
             handlePageChange={handlePageChange}
             pageRangeDisplayed={5}
           />
