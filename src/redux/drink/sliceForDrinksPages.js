@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf, isRejectedWithValue } from '@reduxjs/toolkit';
-import { searchDrinks s } from '../../services/fetchDrinksForDrinksPages';
+import { searchDrinks  } from '../../services/fetchDrinksForDrinksPages';
 const drinksInitialState = {
   items: [],
   isLoading: false,
@@ -30,7 +30,7 @@ const drinksSlice = createSlice({
   initialState: drinksInitialState,
   extraReducers: builder =>
     builder
-      .addCase(getMainPageAllDrinks.fulfilled, (state, action) => {
+      .addCase(searchDrinks.fulfilled, (state, action) => {
         state.items = action.payload;
       })
       .addMatcher(getActions('pending'), handlePending)
