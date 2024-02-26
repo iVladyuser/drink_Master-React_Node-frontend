@@ -22,7 +22,7 @@ export const StyledButtonOut = styled.button`
   }
 
   @media (min-width: 768px) {
-    padding: 18px 44px;
+    padding: 12px 40px;
     min-width: 59px;
     font-size: 16px;
     font-weight: 600;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const NavigationContent = styled.div`
   display: flex;
@@ -10,13 +9,12 @@ export const NavigationContent = styled.div`
   gap: 16px;
 
    @media (min-width: 1440px) {
-    flex-direction: row; 
+    flex-direction: row;
     padding: 0px 16px 0 224px;
   }
-
 `;
 
-export const ButtonLink = styled(Link)`
+export const ButtonNavLink = styled.button`
   padding: 8px 16px;
   border-radius: 40px;
   min-width: 71px;
@@ -36,6 +34,11 @@ export const ButtonLink = styled(Link)`
     background-color: #161f37;
   }
 
+  &.active {
+    color: #161f37;
+    background-color: #f3f3f3;
+  }
+
   @media (min-width: 768px) {
     padding: 11px 16px;
     min-width: 59px;
@@ -43,6 +46,4 @@ export const ButtonLink = styled(Link)`
     font-weight: 600;
     line-height: 1.12;
   }
-`
-
-    ;
+`;
