@@ -26,6 +26,7 @@ export const WelcomePageStyle = styled.section`
   align-content: center;
   max-width: 100vw;
   height: 100vh;
+  background: black
 
   background: url(${welcomeElipseTopMob}), url(${welcomeElipseBottomMob}),
     url(${welcomeMob1x});

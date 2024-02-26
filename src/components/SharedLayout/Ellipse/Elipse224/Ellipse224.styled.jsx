@@ -6,10 +6,12 @@ display:none;
   @media (min-width: 768px) {
     display:block;
     position: absolute;
+   
+
 z-index: 1;
-top : 400px;
-right: 1px;
-width: 500px;
+top : 100px;
+right: -130px;
+
 
 
 // animation-name: animateEllipse;
@@ -31,8 +33,8 @@ width: 500px;
 //   }
   }
   @media (min-width: 1440px) {
-    width: 550px;
-    
-    top : 100px;
+   
+    right: 1px;
+    top : 250px;
   }
 `;
