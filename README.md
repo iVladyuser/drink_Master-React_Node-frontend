@@ -19,7 +19,7 @@
 
 ## <a id="backend">Backend</a>
 
-- [GitHub](https://img.shields.io/badge/:badgeContent?style=flat-square&logo=github&logoColor=white&color=black)
+- ![GitHub](https://img.shields.io/badge/:badgeContent?style=flat-square&logo=github&logoColor=white&color=black)
 - ![Swagger / API Docs]()
 
 ## <a id="project-overview">Project Overview</a>
