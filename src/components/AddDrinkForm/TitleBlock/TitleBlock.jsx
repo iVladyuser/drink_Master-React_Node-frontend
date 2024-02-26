@@ -1,5 +1,8 @@
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import AddImage from '../AddImage';
 import CustomSelect from '../CustomSelect';
+import { selectUserDataAge } from '../../../redux/auth/auth.selectors.js';
 
 import {
   FieldStyled,
@@ -21,6 +24,15 @@ const TitleBlock = ({
   errors,
   fileRef,
 }) => {
+  const age = useSelector(selectUserDataAge);
+  // const age = 15;
+
+  const handleDisabledClick = () => {
+    if (age < 18) {
+      toast.error('To choose Alcoholic you need to be 18+!');
+    }
+  };
+
   return (
     <Wrapper>
       <AddImage setValue={setValue} fileRef={fileRef} />
@@ -59,6 +71,8 @@ const TitleBlock = ({
         <RadioButtonsWrapper
           role="cocktailTypeSelect"
           aria-labelledby="cocktailTypeSelect-group"
+          onClick={() => handleDisabledClick()}
+          disabled
         >
           <div>
             <FieldRadio
@@ -66,6 +80,7 @@ const TitleBlock = ({
               name="alcoholic"
               id="radioAlcoholic"
               value={'Alcoholic'}
+              disabled
             />
             <FieldRadioLabel htmlFor="radioAlcoholic">
               Alcoholic
@@ -78,6 +93,7 @@ const TitleBlock = ({
               name="alcoholic"
               id="radioNonAlcoholic"
               value={'Non-alcoholic'}
+              disabled
             />
             <FieldRadioLabel htmlFor="radioNonAlcoholic">
               Non-alcoholic

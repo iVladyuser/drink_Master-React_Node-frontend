@@ -3,6 +3,8 @@ import * as yup from 'yup';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import {
   selectCategories,
   selectIngredients,
@@ -50,7 +52,7 @@ const initialValues = {
   description: '',
   category: '',
   glass: '',
-  alcoholic: 'Alcoholic',
+  alcoholic: 'Non-alcoholic',
   ingredients: [],
   instructions: '',
 };
@@ -80,7 +82,9 @@ const MainForm = () => {
     formData.append('ingredients', newIngredients);
 
     try {
-      dispatch(addOwnDrinkThunk(formData));
+      dispatch(addOwnDrinkThunk(formData))
+        .then(() => toast.success('New drink added successfully!'))
+        .catch(({ message }) => toast.error(`${message}!`));
       action.resetForm();
       fileRef.current.value = null;
       navigate('/my');
@@ -93,10 +97,6 @@ const MainForm = () => {
   const ingredients = useSelector(selectIngredients);
   const glasses = useSelector(selectGlasses);
 
-  console.log('categories', categories);
-  console.log('ingredients', ingredients);
-  console.log('glasses', glasses);
-
   useEffect(() => {
     if (!categories.length) dispatch(fetchCategories());
     if (!ingredients.length) dispatch(fetchIngredients());
@@ -106,10 +106,6 @@ const MainForm = () => {
   const ingredientsNames = ingredients.map(ingredient => ingredient.title);
   const categoriesNames = categories.map(category => category.name);
   const glassesNames = glasses.map(glass => glass.name);
-
-  console.log('categoriesNames', categoriesNames);
-  console.log('ingredientsNames', ingredientsNames);
-  console.log('GlassesNames', glassesNames);
 
   return (
     <DrinkFormWrapper>

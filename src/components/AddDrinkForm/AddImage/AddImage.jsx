@@ -11,6 +11,7 @@ import {
 } from './AddImage.styled';
 import { useState } from 'react';
 import { useField } from 'formik';
+import { toast } from 'react-toastify';
 
 const AddImage = ({ setValue, fileRef }) => {
   const [fileUrl, setFileUrl] = useState('');
@@ -25,6 +26,7 @@ const AddImage = ({ setValue, fileRef }) => {
     if (fileUrl) {
       setFileUrl(fileUrl);
       setValue('file', imgObject);
+      toast.success('Great you added photo!');
     }
   };
 
