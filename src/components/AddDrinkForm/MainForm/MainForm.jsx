@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import mongoose from 'mongoose';
 
 import {
   selectCategories,
@@ -26,7 +26,7 @@ import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
 
 const validationSchema = yup.object().shape({
-  file: yup.mixed().required('Please add the drink recipe image'),
+  drinkThumb: yup.mixed().required('Please add the drink recipe image'),
   drink: yup.string().trim().required('Please enter a drink title'),
   description: yup.string().trim().required('Please enter about  recipe'),
   category: yup.string().required('Please select a category'),
@@ -35,7 +35,7 @@ const validationSchema = yup.object().shape({
 });
 
 const initialValues = {
-  file: null,
+  drinkThumb: null,
   drink: '',
   description: '',
   category: '',
@@ -53,14 +53,23 @@ const MainForm = () => {
   const handleSubmit = async (data, action) => {
     data.id = nanoid();
     const id = data.id;
-    const image = `${id}_${data.file.name}`;
+    const image = `${id}_${data.drinkThumb.name}`;
+
+    function generateObjectId() {
+      return new mongoose.Types.ObjectId().toString(); // Assuming you're using Mongoose
+    }
+
+    data.ingredients.forEach(ingredient => {
+      ingredient.ingredientId = generateObjectId();
+    });
 
     const newIngredients = JSON.stringify(data.ingredients);
 
     console.log('ing:', data.ingredients);
+    console.log('obj:', data.ingredients);
     console.log('newing:', newIngredients);
     const formData = new FormData();
-    formData.append('file', image);
+    formData.append('drinkThumb', image);
     formData.append('drink', data.drink);
     formData.append('description', data.description);
     formData.append('category', data.category);
@@ -70,9 +79,7 @@ const MainForm = () => {
     formData.append('ingredients', newIngredients);
 
     try {
-      dispatch(addOwnDrinkThunk(formData))
-        .then(() => toast.success('New drink added successfully!'))
-        .catch(({ message }) => toast.error(`${message}!`));
+      dispatch(addOwnDrinkThunk(formData));
       action.resetForm();
       fileRef.current.value = null;
       navigate('/my');
@@ -85,6 +92,8 @@ const MainForm = () => {
   const ingredients = useSelector(selectIngredients);
   const glasses = useSelector(selectGlasses);
 
+  console.log('ingredients', ingredients);
+
   useEffect(() => {
     if (!categories.length) dispatch(fetchCategories());
     if (!ingredients.length) dispatch(fetchIngredients());
@@ -94,6 +103,8 @@ const MainForm = () => {
   const ingredientsNames = ingredients.map(ingredient => ingredient.title);
   const categoriesNames = categories.map(category => category.name);
   const glassesNames = glasses.map(glass => glass.name);
+
+  console.log('ingredientsNames', ingredientsNames);
 
   return (
     <DrinkFormWrapper>

@@ -39,7 +39,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
     setSearchQuery('');
 
     ingredient.title = item.title;
-    ingredient._id = item.Ingredientid;
+    ingredient._id = item._id;
   };
 
   useEffect(() => {
