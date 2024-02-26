@@ -17,24 +17,24 @@ export const updateAvatarThunk = createAsyncThunk(
       const token = state.auth.token;
 
       setToken(token);
-      console.log(token);
+      
+      const formData = new FormData();
+      formData.append('avatarURL', avatarFile); // Измените эту строку
+      
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data', // Измените тип контента на multipart/form-data
           Authorization: `Bearer ${token}`,
         },
       };
 
-      const formData = new FormData();
-      formData.append('avatarURL', avatarFile);
       const response = await instance.patch(
         '/users/update/avatar',
-        formData,
+        formData, // Измените эту строку, чтобы передавать formData непосредственно
         config
       );
       return response.data.avatarURL;
     } catch (error) {
-      console.log(avatarFile);
       return thunkApi.rejectWithValue(error.response.data.message);
     }
   },
@@ -49,6 +49,7 @@ export const updateAvatarThunk = createAsyncThunk(
   }
 );
 
+
 export const updateNameThunk = createAsyncThunk(
   'users/update/name',
   async ({ name }, thunkApi) => {
@@ -57,22 +58,13 @@ export const updateNameThunk = createAsyncThunk(
       const token = state.auth.token;
 
       setToken(token);
-      console.log(token);
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
+      
       const response = await instance.patch(
         '/users/update/name',
-        { name },
-        config
+        { name }
       );
       return response.data.name;
     } catch (error) {
-      console.log(name);
       return thunkApi.rejectWithValue(error.response.data.message);
     }
   },

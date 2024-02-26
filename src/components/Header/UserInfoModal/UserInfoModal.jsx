@@ -40,6 +40,7 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName, userAvatar }
       setPreviewImage(userAvatar);
       setFieldValue("avatar", null);
     }
+    
   };
 
   return (
@@ -62,7 +63,7 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName, userAvatar }
                 )}
                 <label htmlFor="avatar" className="upload-button">
                   <InputAvatarStyled type="file" id="avatar" onChange={(event) => handleImageChange(event, setFieldValue)} accept="image/*" />
-                <Add>  <AddPhoto /> </Add>
+                  <Add>  <AddPhoto /> </Add>
                 </label>
                 <ChangeNameWrapper>
                   <Label htmlFor="name"></Label>
