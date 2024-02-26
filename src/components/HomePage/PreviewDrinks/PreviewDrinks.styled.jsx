@@ -56,6 +56,7 @@ export const CategoryDrinkToDrink = styled(NavLink)`
 
   line-height: 1.29;
   font-size: 14px;
+  font-family: 'Manrope', sans-serif;
 
   color: ${({ theme }) => theme.button.buttonText};
   background-color: ${({ theme }) => theme.button.buttonBg};
