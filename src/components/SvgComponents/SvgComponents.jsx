@@ -36,7 +36,7 @@ const SvgGeneratorSvgSelector = ({ id }) => {
         >
           <path
             d="M16 3L7.0625 13L3 8.45455"
-            stroke="#F3F3F3"
+            // stroke="#F3F3F3"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"

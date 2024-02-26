@@ -10,13 +10,7 @@ export const FavBtn = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.29;
-  transition: color var(--transition), background-color var(--transition);
-
-  &:focus,
-  &:hover {
-    color: ${({ theme }) => theme.button.buttonBg};
-    background-color: ${({ theme }) => theme.button.buttonText};
-  }
+  transition: all var(--transition);
 
   &:disabled {
     color: ${({ theme }) => theme.button.disableColorFavBtn};
@@ -38,9 +32,45 @@ export const FavBtn = styled.button`
   }
 `;
 
+export const AddFavBtn = styled(FavBtn)`
+  color: ${({ theme }) => theme.button.buttonText};
+  background-color: ${({ theme }) => theme.button.buttonBg};
+
+  &:focus,
+  &:hover {
+    color: ${({ theme }) => theme.button.buttonTextHover};
+    background-color: ${({ theme }) => theme.button.buttonBgcHover};
+    box-shadow: 0px 1px 7px 0px var(--grey-transp-fifty-light-theme);
+  }
+`;
+
+export const AddedFavBtn = styled(FavBtn)`
+  color: ${({ theme }) => theme.button.buttonBg};
+  background-color: ${({ theme }) => theme.button.buttonText};
+  box-shadow: 0px 1px 7px 0px var(--grey-transp-fifty-light-theme);
+
+  &:focus,
+  &:hover {
+    color: ${({ theme }) => theme.button.buttonBgcHover};
+    background-color: ${({ theme }) => theme.button.buttonTextHover};
+    box-shadow: 0px 1px 7px 0px var(--grey-transp-fifty-light-theme);
+
+    svg {
+      stroke: ${({ theme }) => theme.button.buttonBgcHover};
+    }
+  }
+`;
+
 export const SVGwithTextWrp = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+`;
+
+export const StyledSVG = styled.svg`
+  width: 18px;
+  height: 18px;
+  stroke: ${({ theme }) => theme.button.buttonBg};
+  transition: all var(--transition);
 `;
