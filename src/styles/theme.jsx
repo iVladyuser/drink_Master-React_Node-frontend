@@ -23,6 +23,7 @@ export const DarkTheme = {
   paginatorArrowColor: '#F3F3F34D',
   colorNotFound: '#F3F3F31A',
   lightTextColor: '#f3f3f37f',
+  blackedPng: 'block',
 };
 
 export const LightTheme = {
@@ -49,4 +50,5 @@ export const LightTheme = {
   paginatorArrowColor: '#0A0A114D',
   colorNotFound: '#4070CD1A',
   lightTextColor: '#0a0a117f',
+  blackedPng: 'none',
 };

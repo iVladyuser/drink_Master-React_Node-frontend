@@ -8,7 +8,7 @@ export const EllipseMain= styled.img`
   }
 
   @media (min-width: 1440px) {
-    display: block;
+    display: ${({ theme }) => theme.blackedPng};
     position: absolute;
     z-index: 1;
 

@@ -4,7 +4,7 @@ export const Ellipse224 = styled.img`
 display:none;
 
   @media (min-width: 768px) {
-    display:block;
+   display: ${({ theme }) => theme.blackedPng};
     position: absolute;
    
 
