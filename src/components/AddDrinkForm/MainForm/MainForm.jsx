@@ -52,7 +52,7 @@ const MainForm = () => {
 
   const handleSubmit = async (data, action) => {
     data.id = nanoid();
-    const id = data.id;
+    // const id = data.id;
     // const image = `${id}_${data.drinkThumb.name}`;
 
     console.log('file: ', data.drinkThumb);
