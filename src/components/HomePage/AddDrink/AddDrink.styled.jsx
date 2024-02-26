@@ -45,7 +45,7 @@ export const MainWrap = styled.div`
 
 export const Title = styled.h1`
   font-style: normal;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.button.buttonBg};
   font-size: 32px;
   font-weight: 600;
   line-height: 38px;
@@ -66,7 +66,7 @@ export const Title = styled.h1`
 
 export const MainDescr = styled.p`
   font-size: 14px;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.button.buttonBg};
   line-height: 1.4;
   margin-bottom: 32px;
 
@@ -88,30 +88,39 @@ export const MainLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 13px 43px;
+
+  padding: 14px 40px;
   border-radius: 42px;
-
-  background: #f3f3f3;
-  color: #161f37;
-
   font-weight: 600;
-  line-height: 1.285;
-  border: 1px solid #f3f3f3;
-  transition: color 300ms cubic-bezier(0.46, 0.03, 0.52, 0.96),
-    background-color 300ms cubic-bezier(0.46, 0.03, 0.52, 0.96),
-    border-color 300ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  line-height: 1.29;
+
+  width: 151px;
+  height: 46px;
+
+  color: ${({ theme }) => theme.button.buttonText};
+
+  background-color: ${({ theme }) => theme.button.buttonBg};
+  border: none;
+  transition: color 300ms linear, background-color 300ms linear;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    padding: 16px 48px;
+    padding: 18px 44px;
+    width: 169px;
+    height: 54px;
   }
 
-  &:hover,
-  &:focus {
-    color: #f3f3f3;
-    background: #161f37;
-    border-color: #161f37;
+  @media screen and (min-width: 768px) {
+    width: 160px;
+    height: 54px;
   }
+
+  &:focus,
+  &:hover {
+    color: ${({ theme }) => theme.button.buttonBg};
+    background-color: ${({ theme }) => theme.button.buttonText};
+  }
+  
 `;
 
 export const ImageWrap = styled.div`
