@@ -29,7 +29,7 @@ export const Container = styled.div`
   h2,
   h3,
   h4 {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.colorText};
   }
 
   & > div {
@@ -105,8 +105,6 @@ export const ContentBlock = styled.div`
   }
 `;
 
-
 export const AdditionalBlock = styled.div`
   display: column;
 `;
-

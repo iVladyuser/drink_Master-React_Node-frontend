@@ -1,6 +1,9 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
+import { ThemeProvider } from 'styled-components';
+import { ToggleThemes } from './ToggleThemes/ToggleThemes';
+import { DarkTheme, LightTheme } from '../styles/theme';
 import { useDispatch } from 'react-redux';
 import { refreshThunk } from '../services/fetchAuth';
 import * as ROUTES from 'constants/routes';
@@ -51,6 +54,9 @@ const appRoutes = [
 ];
 
 const App = () => {
+  const [theme, themeToggle] = ToggleThemes();
+  const themeMode = theme === 'dark' ? DarkTheme : LightTheme;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,28 +64,39 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <AppWrapper>
-      <Routes>
-        <Route
-          path={ROUTES.WELCOME_ROUTE}
-          element={<RestrictedRoute component={<WelcomePage />} />}
-        />
-        <Route
-          path={ROUTES.SIGNUP_ROUTE}
-          element={<RestrictedRoute component={<SignUpPage />} />}
-        />
-        <Route
-          path={ROUTES.SIGNIN_ROUTE}
-          element={<RestrictedRoute component={<SignInPage />} />}
-        />
-        <Route path="/" element={<PrivateRoute component={<SharedLayout />} />}>
-          {appRoutes.map(({ path, element }) => (
-            <Route key={path} path={path} element={element} />
-          ))}
-        </Route>
-      </Routes>
-      <ToastContainer />
-    </AppWrapper>
+    <ThemeProvider theme={themeMode}>
+      <AppWrapper>
+        <Routes>
+          <Route
+            path={ROUTES.WELCOME_ROUTE}
+            element={<RestrictedRoute component={<WelcomePage />} />}
+          />
+          <Route
+            path={ROUTES.SIGNUP_ROUTE}
+            element={<RestrictedRoute component={<SignUpPage />} />}
+          />
+          <Route
+            path={ROUTES.SIGNIN_ROUTE}
+            element={<RestrictedRoute component={<SignInPage />} />}
+          />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute
+                component={
+                  <SharedLayout theme={theme} toggleTheme={themeToggle} />
+                }
+              />
+            }
+          >
+            {appRoutes.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
+          </Route>
+        </Routes>
+        <ToastContainer />
+      </AppWrapper>
+    </ThemeProvider>
   );
 };
 

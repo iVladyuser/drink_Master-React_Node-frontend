@@ -1,123 +1,162 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import { RxCross2 } from 'react-icons/rx';
+import { FaPlus } from 'react-icons/fa6';
+import { FaMinus } from 'react-icons/fa6';
 
+export const IngridientsWrapper = styled.div`
+  margin-bottom: 80px;
+
+  @media screen and (min-width: 1440px) {
+    max-width: 540px;
+  }
+`;
 
 export const AddIngredientWrapper = styled.div`
   display: flex;
   align-items: center;
+
   margin-bottom: 24px;
 `;
 
 export const IngredientsInputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 14px;
-  padding: 0 24px;
-  gap: 50px;
-  height: 56px;
-  width: 150px;
-  border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.5);
-  outline: transparent;
-  background-color: transparent;
+  position: relative;
+  width: 100px;
+
+  margin-right: 8px;
+
+  @media screen and (min-width: 768px) {
+    flex-basis: 20%;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-basis: 28%;
+  }
 `;
 
-export const RemoveIngredientBtn = styled.button`  
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    width: 18px;
-    height: 18px;
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+export const RemoveIngredientBtn = styled.button`
+  display: block;
+  padding: 0;
+  border: none;
+  background: none;
+  color: ${({ theme }) => theme.fieldColor};
+
+  &:hover,
+  &:active {
+    color: ${({ theme }) => theme.fieldColorFocus};
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+  }
 `;
 
 export const IngredientsInput = styled(Field)`
-outline: transparent;
-background-color: transparent;
+  /* width: 100px; */
+  width: 100%;
 
-border: 1px solid rgba(243, 243, 243, 0.5);
-border-radius: 200px;
-width: 101px;
-height: 50px;
-padding: 16px 18px;
-margin-left: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 18px;
+  padding-right: 18px;
 
-&:hover,
-&:focus {
-  outline: transparent;
-}
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.fieldColor};
+  border-radius: 200px;
 
-font-family: "Manrope", sans-serif;
-font-size: 17px;
-line-height: 26.52px;
-color: rgba(243, 243, 243, 1);
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  font-weight: 400;
+  color: ${({ theme }) => theme.fieldColorFocus};
 
-::placeholder {
-  color: rgba(243, 243, 243, 0.5);
+  &:focus {
+    border: 1px solid ${({ theme }) => theme.fieldColorFocus};
+    outline: none;
+  }
 `;
 
-export const MinusBtn = styled.button`  
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    width: 16px;
-    height: 16px;
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+export const MinusBtn = styled.button``;
+
+export const PlusBtn = styled.button``;
+
+export const MinusIcon = styled(FaMinus)`
+  color: ${({ theme }) => theme.fieldColorFocus};
+  width: 16px;
+  height: 16px;
 `;
 
-export const PlusBtn = styled.button`  
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    width: 16px;
-    height: 16px;
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+export const PlusIcon = styled(FaPlus)`
+  color: ${({ theme }) => theme.fieldColorFocus};
+  width: 16px;
+  height: 16px;
+`;
+
+export const CrossIcon = styled(RxCross2)`
+  color: ${({ theme }) => theme.fieldColorFocus};
+  width: 20px;
+  height: 20px;
 `;
 
 export const IngredientsTitleWrapper = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-`
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 34px;
+`;
 
 export const PlusMinusBar = styled.div`
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
-  margin-left: 77px;
-  border: 1px solid rgba(243, 243, 243, 0.5);
+
+  border: 1px solid ${({ theme }) => theme.fieldColor};
   border-radius: 200px;
-  width: 104px;
-  height: 38px;
-  padding: 11px 16px;
-`
 
-export const NumberIngredients = styled.span`
-  font-family: "Manrope", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: rgba(243, 243, 243, 1);
+  button {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    color: ${({ theme }) => theme.fieldColor};
+  }
 
-`
+  button:hover,
+  button:active {
+    color: ${({ theme }) => theme.fieldColorFocus};
+  }
+
+  span {
+    width: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    font-size: 14px;
+    line-height: calc(18 / 14);
+    text-align: center;
+    color: ${({ theme }) => theme.fieldColorFocus};
+  }
+`;
+
+export const NumberIngredients = styled.span``;
+
 export const ErrorText = styled.div`
   margin-top: 4px;
+  padding-left: 8px;
 
   display: block;
 
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: calc(14 / 12);
   color: #da1414;
-  text-align: right;
+  text-align: left;
 `;

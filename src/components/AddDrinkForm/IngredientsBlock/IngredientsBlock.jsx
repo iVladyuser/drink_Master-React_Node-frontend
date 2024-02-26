@@ -1,19 +1,21 @@
 import { FieldArray, ErrorMessage, useField } from 'formik';
 import IngredientsSelect from './IngredientsSelect/IngredientsSelect';
 import {
+  IngridientsWrapper,
   AddIngredientWrapper,
   RemoveIngredientBtn,
   IngredientsInput,
   MinusBtn,
+  MinusIcon,
   PlusBtn,
+  PlusIcon,
   IngredientsTitleWrapper,
   PlusMinusBar,
+  IngredientsInputWrapper,
   NumberIngredients,
-  ErrorText
+  ErrorText,
+  CrossIcon,
 } from './IngredientsBlock.styled';
-import { RxCross2 } from 'react-icons/rx';
-import { FaPlus } from 'react-icons/fa6';
-import { FaMinus } from 'react-icons/fa6';
 
 const IngredientsBlock = ({ items, title }) => {
   const initialValue = { title: '', measure: '' };
@@ -30,16 +32,18 @@ const IngredientsBlock = ({ items, title }) => {
         push,
         remove,
       }) => (
-        <div>
+        <IngridientsWrapper>
           <IngredientsTitleWrapper>
             <h3>Ingredients</h3>
             <PlusMinusBar>
               <MinusBtn type="button" onClick={() => remove()}>
-                <FaMinus size={16} color="rgba(243, 243, 243, 0.3)" />
+                <MinusIcon />
               </MinusBtn>
-              <NumberIngredients>{ingredients.length ? ingredients.length : '0'}</NumberIngredients>
+              <NumberIngredients>
+                {ingredients.length ? ingredients.length : '0'}
+              </NumberIngredients>
               <PlusBtn type="button" onClick={() => push(initialValue)}>
-                <FaPlus size={16} color="rgba(243, 243, 243, 1)" />
+                <PlusIcon />
               </PlusBtn>
             </PlusMinusBar>
           </IngredientsTitleWrapper>
@@ -58,7 +62,7 @@ const IngredientsBlock = ({ items, title }) => {
                       ingredient={ingredient}
                       index={index}
                     />
-
+                    <IngredientsInputWrapper>
                       <IngredientsInput
                         name={`ingredients.${index}.measure`}
                         placeholder={'1 cl'}
@@ -66,9 +70,13 @@ const IngredientsBlock = ({ items, title }) => {
                       <ErrorMessage name={`ingredients.${index}.measure`}>
                         {msg => <div>{msg}</div>}
                       </ErrorMessage>
+                    </IngredientsInputWrapper>
 
-                    <RemoveIngredientBtn type="button" onClick={() => remove(index)}>
-                      <RxCross2 size="20px" color="rgba(243, 243, 243, 0.5)" />
+                    <RemoveIngredientBtn
+                      type="button"
+                      onClick={() => remove(index)}
+                    >
+                      <CrossIcon />
                     </RemoveIngredientBtn>
                   </AddIngredientWrapper>
                 );
@@ -77,7 +85,7 @@ const IngredientsBlock = ({ items, title }) => {
           {touched && typeof error === 'string' ? (
             <ErrorText>{error}</ErrorText>
           ) : null}
-        </div>
+        </IngridientsWrapper>
       )}
     />
   );

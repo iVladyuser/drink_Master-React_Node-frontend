@@ -1,49 +1,46 @@
-export const theme = Object.freeze({
-  colors: {},
-
-  fonts: {
-    body: 'Roboto, sans-serif',
+export const DarkTheme = {
+  bodyBgc: '#0A0A11',
+  colorText: '#F3F3F3',
+  borderColor: '#F3F3F333',
+  button: {
+    buttonBg: '#F3F3F3',
+    buttonText: '#161f37',
+    buttonTextHover: '#F3F3F3',
+    buttonBgcHover: '#161F37',
+    pagBgc: '#4070cd80',
   },
+  // ${({ theme }) => theme.button.buttonBg}
+  addDrinkImgBgc: '#161f3780',
+  addDrinkBgcHover: '#161f37d7',
+  // disableColor: '#F3F3F366',
+  fieldColor: '#F3F3F380',
+  fieldColorFocus: '#F3F3F3',
+  selectBgc: '#161f37',
+  navLinkBorder: '#F3F3F333',
+  paginatorFocusBgc: '#4070CD80',
+  paginatorArrowColor: '#F3F3F34D',
+  colorNotFound: '#F3F3F31A',
+};
 
-  fontSizes: {
-    mainTitle: '36px',
-    subtitle: '26px',
-    listTitle: '18px',
-    text: '16px',
-    info: '12px',
+export const LightTheme = {
+  bodyBgc: '#F3F3F3',
+  colorText: '#0A0A11',
+  borderColor: '#161F371A',
+  button: {
+    buttonBg: '#161f37',
+    buttonText: '#F3F3F3',
+    buttonBgcHover: '#F3F3F3',
+    buttonTextHover: '#161F37',
+    pagBgc: '#4070cd80',
   },
-
-  fontWeights: {
-    bold: 700,
-    medium: 600,
-    regular: 400,
-  },
-
-  lineHeights: {
-    mainTitle: 1.17,
-    subtitle: 1.2,
-    listTitle: 1.1,
-    text: 1.25,
-    info: 1.33,
-  },
-
-  shadows: {
-    normalButton: '0px 4px 8px 0px rgba(64, 123, 255, 0.34)',
-    hoverButton: '0px 4px 14px 0px rgba(64, 123, 255, 0.54)',
-    statsFrame: '0px 4px 4px 0px rgba(64, 123, 255, 0.30)',
-    userModal: '0px 4px 8px 0px rgba(64, 123, 255, 0.20)',
-    normaFrame: '0px 4px 8px 0px rgba(158, 187, 255, 0.12)',
-    wrapper: '0px 4px 14px 0px rgba(64, 123, 255, 0.30)',
-  },
-
-  border: {
-    normal: '1px solid #407BFF',
-    secondary: '1px solid #9EBBFF',
-  },
-
-  radii: {
-    round: '50%',
-    medium: '40px',
-    normal: '10px',
-  },
-});
+  addDrinkImgBgc: '#161f37',
+  addDrinkBgcHover: '#161f3780',
+  disableColor: '#0A0A1166',
+  fieldColor: '#0A0A1180',
+  fieldColorFocus: '#0A0A11',
+  selectBgc: '#ffffff',
+  navLinkBorder: '#161f3733',
+  paginatorFocusBgc: '#4070CD',
+  paginatorArrowColor: '#0A0A114D',
+  colorNotFound: '#4070CD1A',
+};

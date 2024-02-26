@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const DetailDrinkLink = styled(Link)`
-    font-family: Manrope;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 22px;
-    color: #f3f3f3;
+  font-family: Manrope;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: ${({ theme }) => theme.fieldColorFocus};
 
-    &:focus,
-    &:hover {
-        text-decoration: underline;
-    }
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const PopularLi = styled.li`
@@ -35,7 +35,7 @@ export const DrinkDescr = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.fieldColor};
   text-overflow: ellipsis;
   margin-top: 4px;
 `;

@@ -1,8 +1,26 @@
 import styled from 'styled-components';
-import { IoSearchOutline } from 'react-icons/io5';
+import { IoClose } from 'react-icons/io5';
+import { FaSearch } from 'react-icons/fa';
 
-export const SearchIcon = styled(IoSearchOutline)`
-  color: white;
+export const SearchIcon = styled(FaSearch)`
+  color: ${({ theme }) => theme.button.buttonBg};
+  width: 26px;
+  height: 26px;
+`;
+
+export const ClearIcon = styled(IoClose)`
+  color: ${({ theme }) => theme.button.buttonBg};
+  width: 35px;
+  height: 35px;
+`;
+
+export const ButtonControls = styled.div`
+  display: flex;
+  position: relative;
+  left: -64px;
+
+  @media screen and(min-width: 768px) {
+  }
 `;
 
 export const SearchWrapper = styled.div`
@@ -24,31 +42,28 @@ export const SearchWrapper = styled.div`
 
 export const Form = styled.form`
   position: relative;
-  display: inline-block;
+  display: flex;
 `;
 
 export const Button = styled.button`
-  position: absolute;
   background-color: transparent;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 18px;
-  right: 24px;
 `;
 
 export const Input = styled.input`
-  padding: 0 24px;
+  padding: 0 15px;
   width: 335px;
   height: 54px;
   border-radius: 200px;
   background-color: transparent;
-  border: 1px solid #f3f3f333;
+  border: 1px solid ${({ theme }) => theme.button.borderColor};
   opacity: 0.8;
   font-size: 17px;
   line-height: 1.56;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.button.buttonBg};
   outline: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -59,10 +74,11 @@ export const Input = styled.input`
   @media screen and (min-width: 768px) {
     width: 264px;
     height: 56px;
+    padding-right: 70px;
   }
 
   &::placeholder {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.button.buttonBg};
   }
 
   &:hover,
@@ -70,10 +86,4 @@ export const Input = styled.input`
   &:active {
     opacity: 1;
   }
-`;
-
-export const SearchIconWrap = styled.svg`
-  stroke: #f3f3f3;
-  width: 20px;
-  height: 20px;
 `;

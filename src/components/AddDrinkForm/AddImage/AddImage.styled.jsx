@@ -48,7 +48,7 @@ export const AddFileButton = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background-color: #161f3780;
+    background-color: ${({ theme }) => theme.addDrinkImgBgc};
     cursor: pointer;
   }
 
@@ -69,7 +69,7 @@ export const AddFileButton = styled.div`
   label:hover,
   label:focus,
   label:active {
-    background-color: #161f37d7;
+    background-color: ${({ theme }) => theme.addDrinkBgcHover};
   }
 
   label:hover span,

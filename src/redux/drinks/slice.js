@@ -15,8 +15,8 @@ const drinksSearchSlice = createSlice({
       })
       .addCase(fetchCocktailsByParams.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.cocktails = action.payload;
-        state.totalCocktails = state.cocktails.length;
+        state.cocktails = action.payload.result;
+        state.totalCocktails = action.payload.count;
       })
       .addCase(fetchCocktailsByParams.rejected, state => {
         state.isLoading = false;

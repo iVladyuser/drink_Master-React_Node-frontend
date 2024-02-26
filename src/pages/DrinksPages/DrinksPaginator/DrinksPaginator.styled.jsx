@@ -1,10 +1,34 @@
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
-import { RxCaretLeft, RxChevronRight } from 'react-icons/rx';
+import { RxChevronLeft, RxChevronRight } from 'react-icons/rx';
 
-export const Previous = styled(RxCaretLeft)``;
+export const Previous = styled(RxChevronLeft)`
+  width: 27px;
+  height: 27px;
+  fill: ${({ theme }) => theme.button.buttonBg};
+  transition: fill 200ms linear;
+  stroke-width: 1.2;
 
-export const Next = styled(RxChevronRight)``;
+  &:hover,
+  &:focus,
+  &:active {
+    fill: ${({ theme }) => theme.selectBgc};
+  }
+`;
+
+export const Next = styled(RxChevronRight)`
+  width: 27px;
+  height: 27px;
+  fill: ${({ theme }) => theme.button.buttonBg};
+  transition: fill 200ms linear;
+  stroke-width: 1.2;
+
+  &:hover,
+  &:focus,
+  &:active {
+    fill: ${({ theme }) => theme.selectBgc};
+  }
+`;
 
 export const Paginate = styled(ReactPaginate).attrs({
   activeClassName: 'active',
@@ -35,10 +59,10 @@ export const Paginate = styled(ReactPaginate).attrs({
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 1.33;
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.fieldColorFocus};
     cursor: pointer;
   }
 
@@ -67,7 +91,7 @@ export const Paginate = styled(ReactPaginate).attrs({
   }
 
   li.active a {
-    background-color: #4070cd80;
+    background-color: #4070cd;
     color: #f3f3f3;
   }
 
@@ -84,20 +108,9 @@ export const Paginate = styled(ReactPaginate).attrs({
     &:hover,
     &:focus,
     &:active {
-      fill: #f3f3f34d;
+      fill: #f3f3f3;
     }
   }
 `;
 
-export const SvgWrap = styled.svg`
-  width: 8px;
-  height: 15px;
-  fill: #f3f3f34d;
-  transition: fill 200ms linear;
-
-  &:hover,
-  &:focus,
-  &:active {
-    fill: #f3f3f3;
-  }
-`;
+export const SvgWrap = styled.svg``;
