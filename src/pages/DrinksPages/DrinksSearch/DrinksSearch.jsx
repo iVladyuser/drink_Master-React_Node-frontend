@@ -8,9 +8,10 @@ import {
   Button,
   Form,
   Input,
-  SearchIconWrap,
   SearchWrapper,
   SearchIcon,
+  ClearIcon,
+  ButtonControls,
 } from './DrinksSearch.styled';
 
 import {
@@ -23,6 +24,7 @@ import {
   selectIngredients,
 } from '../../../redux/filters/selectors';
 import { getUrlParams } from '../../../hooks/getUrlParams';
+import { toast } from 'react-toastify';
 
 export const DrinksSearch = ({ shouldRenderBtn, page, limit, updPage }) => {
   const dispatch = useDispatch();
@@ -105,10 +107,12 @@ export const DrinksSearch = ({ shouldRenderBtn, page, limit, updPage }) => {
 
   const handleSearchByCategory = categoryName => {
     updateSearchParams('categoryName', categoryName, 'All categories');
+    toast.success('Choosed category!');
   };
 
   const handleSearchByIngredient = ingredientName => {
     updateSearchParams('ingredientName', ingredientName, 'All ingredients');
+    toast.success('Choosed ingredient!');
   };
 
   return (
@@ -124,11 +128,24 @@ export const DrinksSearch = ({ shouldRenderBtn, page, limit, updPage }) => {
           />
         </label>
         {shouldRenderBtn && (
-          <Button type="submit">
-            <SearchIconWrap>
+          <ButtonControls>
+            <Button
+              type="submit"
+              onClick={() => {
+                toast.success('Search success!');
+              }}
+            >
               <SearchIcon />
-            </SearchIconWrap>
-          </Button>
+            </Button>
+            <Button
+              onClick={() => {
+                setInputValue('');
+                toast.success('Search removed!');
+              }}
+            >
+              <ClearIcon />
+            </Button>
+          </ButtonControls>
         )}
       </Form>
       <SelectList

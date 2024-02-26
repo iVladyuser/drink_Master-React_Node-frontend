@@ -26,16 +26,16 @@ export const CommonContainer = styled.div`
 export const DrinksSection = styled.section`
   overflow: hidden;
   max-width: 100%;
-  padding-top: 152px;
+  padding-top: 80px;
   padding-bottom: 80px;
 
   @media screen and (min-width: 768px) {
-    padding-top: 224px;
+    padding-top: 140px;
     padding-bottom: 140px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 244px;
+    padding-top: 160px;
   }
 `;
 

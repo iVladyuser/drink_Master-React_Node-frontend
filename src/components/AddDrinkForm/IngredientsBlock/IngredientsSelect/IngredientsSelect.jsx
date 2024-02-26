@@ -7,7 +7,7 @@ import {
   PlaceholderWrap,
   SearchInput,
   SelectItem,
-  IngredientsSpan
+  IngredientsSpan,
 } from './IngredientsSelect.styled';
 import { ErrorText } from '../../TitleBlock/TitleBlock.styled';
 
@@ -27,9 +27,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
   const [, meta, { setValue }] = useField(`ingredients.${index}.title`);
 
   const filteredItems = value =>
-    items.filter(item =>
-      item.toLowerCase().includes(value.toLowerCase())
-    );
+    items.filter(item => item.toLowerCase().includes(value.toLowerCase()));
 
   const toggleMenu = () => {
     setIsOpen(prevState => !prevState);
@@ -41,8 +39,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
     setSearchQuery('');
 
     ingredient.title = item.title;
-    ingredient.ingredientId = item._id;
-
+    ingredient._id = item.Ingredientid;
   };
 
   useEffect(() => {
@@ -77,7 +74,7 @@ const IngredientsSelect = ({ items, title, ingredient, index }) => {
           <PlaceholderWrap selected={meta.value}>
             <IngredientsSpan>{meta.value ? meta.value : 'Lem'}</IngredientsSpan>
 
-            <SelectArrow isOpen={isOpen} color='#f3f3f380'/>
+            <SelectArrow isOpen={isOpen} color="#f3f3f380" />
           </PlaceholderWrap>
         )}
       </CustomSelectIngr>

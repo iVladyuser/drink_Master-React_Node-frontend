@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Field } from 'formik';
 
 export const Wrapper = styled.div`
@@ -25,7 +25,7 @@ export const LabelStyled = styled.label`
   position: absolute;
   top: 0;
   left: 0;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colorText};
   opacity: 0.5;
 `;
 
@@ -41,7 +41,7 @@ export const FieldWrapper = styled.div`
 
   &:hover label,
   &:focus-within label {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.colorText};
     transition: 200ms ease transform;
   }
 `;
@@ -54,14 +54,14 @@ export const FieldStyled = styled(Field)`
   font-weight: 400;
   line-height: 1.4;
   text-align: right;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colorText};
 
   border-style: none;
-  border-bottom: 1px solid #f3f3f380;
+  border-bottom: 1px solid ${({ theme }) => theme.fieldColor};
   background: transparent;
 
   &:focus {
-    border-bottom: 1px solid #f3f3f3;
+    border-bottom: 1px solid ${({ theme }) => theme.fieldColorFocus};
     outline: transparent;
   }
 
@@ -76,8 +76,7 @@ export const FieldStyled = styled(Field)`
 
 export const FieldRadioLabel = styled.label`
   margin-left: 4px;
-  color: #f3f3f380;
-
+  color: ${({ theme }) => theme.fieldColor};
   &:first-of-type {
     margin-right: 14px;
   }
@@ -92,7 +91,7 @@ export const FieldRadio = styled(Field)`
   align-items: center;
   font: inherit;
   color: currentColor;
-  border: 1.5px solid #f3f3f380;
+  border: 1.5px solid ${({ theme }) => theme.fieldColor};
   border-radius: 50%;
   appearance: none;
   cursor: pointer;
@@ -102,11 +101,11 @@ export const FieldRadio = styled(Field)`
   }
 
   &:hover + label {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.fieldColorFocus};
   }
 
   &:checked {
-    border: 1.5px solid #f3f3f3;
+    border: 1.5px solid ${({ theme }) => theme.fieldColorFocus};
   }
 
   &::before {
@@ -116,7 +115,7 @@ export const FieldRadio = styled(Field)`
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    background-color: #f3f3f3;
+    background-color: ${({ theme }) => theme.fieldColorFocus};
   }
 
   &:checked::before {
@@ -133,7 +132,12 @@ export const RadioButtonsWrapper = styled.div`
   }
 
   input:checked ~ label {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.fieldColorFocus};
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;
 

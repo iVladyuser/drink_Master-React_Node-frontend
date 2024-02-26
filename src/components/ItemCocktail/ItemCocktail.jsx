@@ -12,7 +12,10 @@ function ItemCocktail({ drink}) {
   const imageSrc = drink.drinkThumb || DrinkPlaceholder;
   return (
     <LiForItem key={drink._id}>
-      <DrinkPicture src={imageSrc} alt={drink.drink} />
+      <DrinkPicture 
+      src={imageSrc} 
+      alt={drink.drink} 
+      loading="lazy"/>
       <WraperForNameAndLink>
         <DrinkName>{drink.drink}</DrinkName>
         <DetailDrinkLink to={`/drink/${drink._id}`}>See more</DetailDrinkLink>

@@ -1,20 +1,29 @@
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { AddButton, DrinkFormWrapper } from './MainForm.styled';
+import {
+  selectCategories,
+  selectIngredients,
+  selectGlasses,
+} from '../../../redux/filters/selectors';
+
+import {
+  fetchCategories,
+  fetchIngredients,
+  fetchGlasses,
+} from '../../../redux/filters/operations';
+
+import { AddButton, DrinkFormWrapper, MainFormTitle } from './MainForm.styled';
 
 import TitleBlock from '../TitleBlock';
 import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
 import { nanoid } from '@reduxjs/toolkit';
 import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
-
-// import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
-// import { useFetchCategories } from '../../../hooks/useFetchCategories';
-// import { useFetchIngredients } from '../../../hooks/useFetchIngredients';
 
 const validationSchema = yup.object().shape({
   file: yup.mixed().required('Please add the drink recipe image'),
@@ -39,7 +48,7 @@ const initialValues = {
   description: '',
   category: '',
   glass: '',
-  alcoholic: 'Alcoholic',
+  alcoholic: 'Non-alcoholic',
   ingredients: [],
   instructions: '',
 };
@@ -56,7 +65,7 @@ const MainForm = () => {
 
     const newIngredients = JSON.stringify(data.ingredients);
 
-    console.log('ing:', data.ingredients.title);
+    console.log('ing:', data.ingredients);
     console.log('newing:', newIngredients);
     const formData = new FormData();
     formData.append('file', image);
@@ -69,7 +78,9 @@ const MainForm = () => {
     formData.append('ingredients', newIngredients);
 
     try {
-      dispatch(addOwnDrinkThunk(formData));
+      dispatch(addOwnDrinkThunk(formData))
+        .then(() => toast.success('New drink added successfully!'))
+        .catch(({ message }) => toast.error(`${message}!`));
       action.resetForm();
       fileRef.current.value = null;
       navigate('/my');
@@ -78,72 +89,23 @@ const MainForm = () => {
     }
   };
 
-  // const categories = useFetchCategories();
-  // const glasses = useFetchGlasses();
-  // const ingredients = useFetchIngredients();
+  const categories = useSelector(selectCategories);
+  const ingredients = useSelector(selectIngredients);
+  const glasses = useSelector(selectGlasses);
 
-  const categories = [
-    'Ordinary Drink',
-    'Cocktail',
-    'Shake',
-    'Other/Unknown',
-    'Cocoa',
-    'Shot',
-    'Coffee/Tea',
-    'Homemade Liqueur',
-    'Punch/Party Drink',
-    'Beer',
-    'Soft Drink',
-  ];
-  const glasses = [
-    'Highball glass',
-    'Cocktail glass',
-    'Old-fashioned glass',
-    'Whiskey Glass',
-    'Collins glass',
-    'Pousse cafe glass',
-    'Champagne flute',
-    'Whiskey sour glass',
-    'Cordial glass',
-    'Brandy snifter',
-    'White wine glass',
-    'Nick and Nora Glass',
-    'Hurricane glass',
-    'Coffee mug',
-    'Shot glass',
-    'Jar',
-    'Irish coffee cup',
-    'Punch bowl',
-    'Pitcher',
-    'Pint glass',
-    'Copper Mug',
-    'Wine Glass',
-    'Beer mug',
-    'Margarita/Coupette glass',
-    'Beer pilsner',
-    'Beer Glass',
-    'Parfait glass',
-    'Mason jar',
-    'Margarita glass',
-    'Martini Glass',
-    'Balloon Glass',
-    'Coupe Glass',
-  ];
-  const ingredients = [
-    'Apple juice',
-    'Lemon',
-    'Vine',
-    'Prossecco',
-    'Passoa',
-    'Coconut milk',
-    'Milk',
-    'Orange',
-    'Water',
-  ];
+  useEffect(() => {
+    if (!categories.length) dispatch(fetchCategories());
+    if (!ingredients.length) dispatch(fetchIngredients());
+    if (!glasses.length) dispatch(fetchGlasses());
+  }, [categories.length, ingredients.length, glasses.length, dispatch]);
+
+  const ingredientsNames = ingredients.map(ingredient => ingredient.title);
+  const categoriesNames = categories.map(category => category.name);
+  const glassesNames = glasses.map(glass => glass.name);
 
   return (
     <DrinkFormWrapper>
-      <h2>Add drink</h2>
+      <MainFormTitle>Add drink</MainFormTitle>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -152,18 +114,16 @@ const MainForm = () => {
         {({ setFieldValue, touched, errors }) => (
           <Form>
             <TitleBlock
-              categoriesList={categories}
-              glassesList={glasses}
+              categoriesList={categoriesNames}
+              glassesList={glassesNames}
               setValue={setFieldValue}
               errors={errors}
               touched={touched}
               fileRef={fileRef}
             />
             <IngredientsBlock
-              items={ingredients}
-              title={`${ingredients}`}
-              // error={errors.ingredients}
-              // touched={touched.ingredients}
+              items={ingredientsNames}
+              title={'Ingredients'}
             />
             <RecipePreparationBlock
               error={errors.instructions}

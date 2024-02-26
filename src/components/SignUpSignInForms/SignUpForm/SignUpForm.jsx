@@ -18,6 +18,7 @@ import {
   StyledDontShowPasswordIcon,
   StyledShowPasswordIcon,
   PasswordInputWrap,
+  Wrrap,
 } from './Sign.styled';
 import { differenceInYears } from 'date-fns';
 
@@ -39,7 +40,7 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const [age, setAge] = useState(null);
+  // const [age, setAge] = useState(null);
   const inputRef = useRef();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -55,11 +56,8 @@ export const SignUpForm = () => {
     const { name, dateBirth, email, password } = values;
     const currentDate = new Date();
     const userAge = differenceInYears(currentDate, dateBirth);
-    setAge(userAge);
-    console.log('name:', name);
-    console.log('age:', age);
-    console.log('email:', email);
-    console.log('password', password);
+    // setAge(userAge);
+
     dispatch(signUpThunk({ name, age: userAge, email, password }))
       .unwrap()
       .then(() => toast.success('Registration successful'))
@@ -81,7 +79,7 @@ export const SignUpForm = () => {
       {({ values, errors, touched }) => (
         <Form>
           <>
-            <div>
+            <Wrrap>
               <FormField
                 type="text"
                 name="name"
@@ -96,7 +94,7 @@ export const SignUpForm = () => {
               ) : values.name && !errors.name ? (
                 <SuccessIcon />
               ) : null}
-            </div>
+            </Wrrap>
             <div>
               <FormField
                 ref={inputRef}
@@ -110,7 +108,7 @@ export const SignUpForm = () => {
 
               <FormError name="dateBirth" />
             </div>
-            <div>
+            <Wrrap>
               <FormField
                 type="email"
                 name="email"
@@ -125,7 +123,7 @@ export const SignUpForm = () => {
               ) : values.email && !errors.email ? (
                 <SuccessIcon />
               ) : null}
-            </div>
+            </Wrrap>
             <PasswordInputWrap>
               <FormField
                 type={showPassword ? 'text' : 'password'}

@@ -2,7 +2,7 @@ import { useField } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 
 import {
-  CustomSelect,
+  CustomSelectWrapper,
   DropMenu,
   Label,
   PlaceholderWrap,
@@ -14,7 +14,7 @@ import { ErrorText } from '../TitleBlock/TitleBlock.styled';
 
 import { SelectArrow } from './SelectArrow/SelectArrow';
 
-const CustomSelectMenu = ({ items, title, touched, error }) => {
+const CustomSelect = ({ items, title, touched, error }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -28,7 +28,7 @@ const CustomSelectMenu = ({ items, title, touched, error }) => {
     items.filter(item => item.toLowerCase().includes(value.toLowerCase()));
 
   const [, meta, { setValue }] = useField({ name: titleValue });
-  
+
   const toggleMenu = () => {
     setIsOpen(prevState => !prevState);
   };
@@ -66,7 +66,7 @@ const CustomSelectMenu = ({ items, title, touched, error }) => {
 
   return (
     <SelectWrapper>
-      <CustomSelect type="button" ref={selectRef} menuOpen={isOpen}>
+      <CustomSelectWrapper type="button" ref={selectRef} menuOpen={isOpen}>
         <Label>{title}</Label>
         {items && (
           <PlaceholderWrap selected={meta.value}>
@@ -74,7 +74,7 @@ const CustomSelectMenu = ({ items, title, touched, error }) => {
             <SelectArrow isOpen={isOpen} />
           </PlaceholderWrap>
         )}
-      </CustomSelect>
+      </CustomSelectWrapper>
       {isOpen && items && (
         <>
           <DropMenu ref={dropdownRef}>
@@ -100,4 +100,4 @@ const CustomSelectMenu = ({ items, title, touched, error }) => {
   );
 };
 
-export default CustomSelectMenu;
+export default CustomSelect;

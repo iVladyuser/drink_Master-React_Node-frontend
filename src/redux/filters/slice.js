@@ -1,11 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCategories, fetchIngredients } from '../filters/operations';
+import {
+  fetchCategories,
+  fetchIngredients,
+  fetchGlasses,
+} from '../filters/operations';
 
 const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
     categories: [],
     ingredients: [],
+    glasses: [],
     isLoading: false,
   },
   extraReducers: builder =>
@@ -24,6 +29,14 @@ const filtersSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchIngredients.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchGlasses.fulfilled, (state, action) => {
+        state.glasses = action.payload;
+        state.glasses.unshift({ name: 'All Glasses' });
+        state.isLoading = false;
+      })
+      .addCase(fetchGlasses.pending, state => {
         state.isLoading = true;
       }),
 });
