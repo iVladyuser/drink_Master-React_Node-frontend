@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import axiosInstance from 'pages/FavoritePage/axiosConfig';
 
 export const fetchMyDrinks = createAsyncThunk(
   'myDrinks/fetchMyDrinks',
@@ -45,6 +46,29 @@ export const addMyDrink = createAsyncThunk(
   }
 );
 
+// export const deleteMyDrink = createAsyncThunk(
+//   'myDrinks/deleteMyDrink',
+//   async (drinkId, { getState, rejectWithValue }) => {
+//     try {
+//       const {
+//         auth: { token },
+//       } = getState();
+//       const config = {
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       };
+//       const response = await axios.delete(
+//         `https://drink-master-project-zi2s.onrender.com/drinks/own/remove/${drinkId}`,
+//         config
+//       );
+//       return response.data;
+//     } catch (err) {
+//       return rejectWithValue(err.response.data);
+//     }
+//   }
+// );
+
 export const deleteMyDrink = createAsyncThunk(
   'myDrinks/deleteMyDrink',
   async (drinkId, { getState, rejectWithValue }) => {
@@ -52,18 +76,21 @@ export const deleteMyDrink = createAsyncThunk(
       const {
         auth: { token },
       } = getState();
+      if (!token) {
+        throw new Error('No token found');
+      }
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.delete(
-        `https://drink-master-project-zi2s.onrender.com/drinks/own/remove/${drinkId}`,
+      const response = await axiosInstance.delete(
+        `/drinks/own/remove/${drinkId}`,
         config
       );
       return response.data;
-    } catch (err) {
-      return rejectWithValue(err.response.data);
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
