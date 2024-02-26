@@ -52,13 +52,13 @@ export const UserProfileMenu = styled.div`
   @media (min-width: 768px) {
     width: 177px;
     height: 134px;
-    padding: 10px;
+    padding: 18px;
   }
 
   @media (min-width: 1440px) {
     width: 177px;
     height: 134px;
-    padding: 10px;
+    padding: 18px;
   }
 `;
 

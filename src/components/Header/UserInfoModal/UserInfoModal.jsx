@@ -40,7 +40,7 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName, userAvatar }
       setPreviewImage(userAvatar);
       setFieldValue("avatar", null);
     }
-    
+
   };
 
   return (
@@ -72,7 +72,7 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName, userAvatar }
                     id="name"
                     name="name"
                     as={Input}
-                    placeholder={{ userName }}
+                    placeholder={`Введите ваше новое имя, ${userName}`}
                   />
                   <Button type="submit" disabled={isSubmitting}>
                     {isSubmitting ? 'Updating...' : 'Save changes'}

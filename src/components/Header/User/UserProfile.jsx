@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { ReactComponent as IconSVG } from '../../../images/header/Icon.svg';
 import { UserProfileContainer, UserName, UserProfileMenu, Avatar, EditProfileButton } from './UserProfile.styled';
@@ -10,6 +10,7 @@ const UserProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userName, setUserName] = useState('');
   const [avatarURL, setAvatarURL] = useState('');
+  const userProfileRef = useRef(null);
 
   const userData = useSelector(state => state.auth.userData);
 
@@ -19,6 +20,30 @@ const UserProfile = () => {
       setAvatarURL(userData.avatarURL);
     }
   }, [userData]);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (userProfileRef.current && !userProfileRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+        setIsModalOpen(false);
+      }
+    };
+
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('keydown', handleEscapeKey);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -39,7 +64,7 @@ const UserProfile = () => {
   };
 
   return (
-    <UserProfileContainer>
+    <UserProfileContainer ref={userProfileRef}>
       <Avatar src={avatarURL} alt="Avatar" />
 
       <UserName
