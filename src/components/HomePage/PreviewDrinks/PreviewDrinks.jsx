@@ -2,13 +2,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useDeviceType from 'hooks/useDeviceType';
 
-import {CategoryDrinkToDrink,ContainerHome,DrinkCategoryTitle, ItemsBox} from './PreviewDrinks.styled';
+import {
+  CategoryDrinkToDrink,
+  ContainerHome,
+  DrinkCategoryTitle,
+  ItemsBox,
+} from './PreviewDrinks.styled';
 
 import { drinksSelector } from '../../../redux/drink/drink.selectors';
 import { getMainPageAllDrinks } from 'services/fetchDrinks';
 
 import ItemCocktail from 'components/ItemCocktail/ItemCocktail';
 import { ListCocktail } from 'pages/DrinksPages/DrinksPages.styled';
+import { Loader } from 'components/Loader/Loader';
+import { selectIsLoading } from '../../../redux/drink/selectorsForDrinksPages';
 
 const categories = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other/Unknown'];
 
@@ -16,6 +23,7 @@ const PreviewDrinks = () => {
   const drinks = useSelector(drinksSelector);
   const dispatch = useDispatch();
   const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(getMainPageAllDrinks());
@@ -45,6 +53,7 @@ const PreviewDrinks = () => {
 
   return (
     <ContainerHome>
+      {isLoading && <Loader />}
       <ul>{renderCategories()}</ul>
       <div>
         <CategoryDrinkToDrink to="/drinks">Other drinks</CategoryDrinkToDrink>
