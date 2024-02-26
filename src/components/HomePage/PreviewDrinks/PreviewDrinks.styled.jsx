@@ -49,7 +49,7 @@ export const CategoryDrinkToDrink = styled(NavLink)`
   margin: 0 auto;
   margin-top: 60px;
 
-  padding: 14px 40px;
+  padding: 14px 39px;
   text-align: center;
   border-radius: 42px;
   font-weight: 600;
@@ -67,7 +67,7 @@ export const CategoryDrinkToDrink = styled(NavLink)`
     font-size: 16px;
     width: 183px;
     height: 54px;
-    padding: 18px 44px;
+    padding: 18px 43px;
     margin: 80px auto 0px;
   }
 
