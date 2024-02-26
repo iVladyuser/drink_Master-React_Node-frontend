@@ -26,7 +26,9 @@ export const SectionWrap = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 47px;
-
+  position: relative;
+  z-index: 9;
+  
   @media screen and (min-width: 768px) {
     row-gap: 54px;
   }
@@ -117,3 +119,6 @@ export const ImageWrap = styled.div`
   z-index: 2;
 `;
 
+export const DivEllipse= styled.div`
+  
+`;
