@@ -26,8 +26,8 @@ export const FavoriteDrinksPage = () => {
   const limit = 11;
 
   useEffect(() => {
-    dispatch(fetchFavorites());
-  }, [dispatch]);
+    dispatch(fetchFavorites({ page: currentPage, limit }));
+  }, [dispatch, currentPage, limit]);
 
   const handleRemoveClick = drinkId => {
     dispatch(deleteFavorite(drinkId));

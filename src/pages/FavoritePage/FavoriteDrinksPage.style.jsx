@@ -23,7 +23,7 @@ export const FavoritePageTitle = styled.h1`
   height: 38px;
   left: 20px;
   top: 80px;
-  color: ${({ theme }) => theme.mainWhite};
+  color: ${({ theme }) => theme.colorText};
   font-size: 32px;
   font-weight: 600;
   line-height: 38px;
@@ -105,11 +105,11 @@ export const FavoriteDrinkTitle = styled.h5`
   font-size: 18px;
   line-height: 1.33;
   margin-bottom: 4px;
-  color: ${({ theme }) => theme.mainWhite};
+  color: ${({ theme }) => theme.colorText};
 `;
 
 export const FavoriteDrinkInfo = styled.p`
-  color: ${({ theme }) => theme.mainDarkTranspFifty};
+  color: ${({ theme }) => theme.lightTextColor};
   font-size: 14px;
   line-height: 1.28;
   margin-bottom: 18px;
@@ -119,7 +119,13 @@ export const FavoriteDrinkDescription = styled.p`
   font-size: 14px;
   line-height: 1.28;
   margin-bottom: 18px;
-  color: ${({ theme }) => theme.mainWhite};
+  height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  color: ${({ theme }) => theme.colorText};
 `;
 
 export const FavoriteSeeMoreButton = styled.button`
@@ -130,26 +136,25 @@ export const FavoriteSeeMoreButton = styled.button`
   border: none;
   outline: none;
   border-radius: 42px;
-  background: ${({ theme }) => theme.mainBlue};
-  color: ${({ theme }) => theme.mainWhite};
+  background-color: ${({ theme }) => theme.button.buttonBg};
+  color: ${({ theme }) => theme.button.buttonText};
   cursor: pointer;
 `;
 
 export const FavoriteRemoveButton = styled.button`
-    display: flex;
-    width: 46px;
-    padding: 11px 32px;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    gap: 10px;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-     background: ${({ theme }) => theme.mainBlue};
-
-  }
+  display: flex;
+  width: 46px;
+  padding: 11px 32px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  background-color: ${({ theme }) => theme.button.buttonBg};
+  color: ${({ theme }) => theme.button.buttonText};
 `;
 export const ButtonsContainer = styled.div`
   display: flex;

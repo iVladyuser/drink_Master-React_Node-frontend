@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const fetchFavorites = createAsyncThunk(
   'favorites/fetchFavorites',
-  async (_, { getState }) => {
+  async ({ page = 1, limit = 3 }, { getState }) => {
     const {
       auth: { token },
     } = getState();
@@ -12,6 +12,7 @@ export const fetchFavorites = createAsyncThunk(
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      params: { page, limit },
     };
     const response = await axios.get(
       'https://drink-master-project-zi2s.onrender.com/drinks/favorite',
