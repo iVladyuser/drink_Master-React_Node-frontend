@@ -8,6 +8,7 @@ import {
   DrinkDescr,
   DetailDrinkLink,
   PopularTitle,
+  DrinkName
 } from './PopularDrinks.styled';
 import { drinksSelector } from '../../redux/drink/drink.selectors';
 
@@ -26,18 +27,20 @@ const PopularDrinks = () => {
       <PopularTitle>Popular Drinks</PopularTitle>
       <div>
         {limitedDrinks.map(drink => (
+          <DetailDrinkLink to={`/drink/${drink._id}`}>
           <PopularLi key={drink._id}>
             <DrinkPicture
               src={drink.drinkThumb}
               alt={drink.drink}
             ></DrinkPicture>
             <PopularTextWrapper>
-              <DetailDrinkLink to={`/drink/${drink._id}`}>
+              <DrinkName>
                 {drink.drink}
-              </DetailDrinkLink>
+              </DrinkName>
               <DrinkDescr>{drink.shortDescription}</DrinkDescr>
             </PopularTextWrapper>
           </PopularLi>
+          </DetailDrinkLink>
         ))}
       </div>
     </div>
