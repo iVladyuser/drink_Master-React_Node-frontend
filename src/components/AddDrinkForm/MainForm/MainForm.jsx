@@ -31,14 +31,6 @@ const validationSchema = yup.object().shape({
   description: yup.string().trim().required('Please enter about  recipe'),
   category: yup.string().required('Please select a category'),
   glass: yup.string().required('Please select a glass'),
-  // ingredients: yup
-  //   .object()
-  //   .shape({
-  //     title: yup.string().required('Please select a title'),
-  //     measure: yup.string().required('Please enter a measure'),
-  //   })
-  //   .required()
-  //   .min(1, 'Select more than 1 item'),
   instructions: yup.string().trim().required('Please enter about a recipe'),
 });
 
