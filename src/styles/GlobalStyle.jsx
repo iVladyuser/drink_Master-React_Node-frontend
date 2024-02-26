@@ -62,12 +62,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 
  :root {
-    /* font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%; */
-
     --main-white: #F3F3F3;
     --white-transp-eighty: #F3F3F380;
     --white-transp-fifty: rgba(243, 243, 243, 0.5);
@@ -109,9 +103,12 @@ html {
 body {
   font-family: 'Manrope', sans-serif;
   background-color: var(--main-dark);
-  font-family: 'Manrope', sans-serif;
   color: var(--main-white);
   word-wrap: break-word;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   }
 
 button {
