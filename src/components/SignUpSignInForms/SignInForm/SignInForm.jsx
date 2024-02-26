@@ -16,6 +16,7 @@ import {
   StyledDontShowPasswordIcon,
   StyledShowPasswordIcon,
   PasswordInputWrap,
+  Wrrap,
 } from '../SignUpForm/Sign.styled';
 import { Formik } from 'formik';
 
@@ -36,11 +37,6 @@ export const SignInForm = () => {
     setShowPassword(!showPassword);
   };
   const handleSubmit = values => {
-    // e.preventDefault();
-
-    // const email = e.currentTarget.elements.userEmail.value;
-    // const password = e.currentTarget.elements.userPassword.value;
-
     const { email, password } = values;
     dispatch(signInThunk({ email, password }))
       .unwrap()
@@ -63,7 +59,7 @@ export const SignInForm = () => {
       {({ values, errors, touched }) => (
         <Form>
           <>
-            <div>
+            <Wrrap>
               <FormField
                 type="email"
                 name="email"
@@ -77,7 +73,7 @@ export const SignInForm = () => {
               ) : values.email && !errors.email ? (
                 <SuccessIcon />
               ) : null}
-            </div>
+            </Wrrap>
             <PasswordInputWrap>
               <FormField
                 type={showPassword ? 'text' : 'password'}
