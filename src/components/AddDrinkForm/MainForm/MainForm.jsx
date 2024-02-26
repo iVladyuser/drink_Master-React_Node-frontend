@@ -1,10 +1,21 @@
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {
+  selectCategories,
+  selectIngredients,
+  selectGlasses,
+} from '../../../redux/filters/selectors';
 
-import { AddButton, DrinkFormWrapper } from './MainForm.styled';
+import {
+  fetchCategories,
+  fetchIngredients,
+  fetchGlasses,
+} from '../../../redux/filters/operations';
+
+import { AddButton, DrinkFormWrapper, MainFormTitle } from './MainForm.styled';
 
 import TitleBlock from '../TitleBlock';
 import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
@@ -56,7 +67,7 @@ const MainForm = () => {
 
     const newIngredients = JSON.stringify(data.ingredients);
 
-    console.log('ing:', data.ingredients.title);
+    console.log('ing:', data.ingredients);
     console.log('newing:', newIngredients);
     const formData = new FormData();
     formData.append('file', image);
@@ -78,72 +89,31 @@ const MainForm = () => {
     }
   };
 
-  // const categories = useFetchCategories();
-  // const glasses = useFetchGlasses();
-  // const ingredients = useFetchIngredients();
+  const categories = useSelector(selectCategories);
+  const ingredients = useSelector(selectIngredients);
+  const glasses = useSelector(selectGlasses);
 
-  const categories = [
-    'Ordinary Drink',
-    'Cocktail',
-    'Shake',
-    'Other/Unknown',
-    'Cocoa',
-    'Shot',
-    'Coffee/Tea',
-    'Homemade Liqueur',
-    'Punch/Party Drink',
-    'Beer',
-    'Soft Drink',
-  ];
-  const glasses = [
-    'Highball glass',
-    'Cocktail glass',
-    'Old-fashioned glass',
-    'Whiskey Glass',
-    'Collins glass',
-    'Pousse cafe glass',
-    'Champagne flute',
-    'Whiskey sour glass',
-    'Cordial glass',
-    'Brandy snifter',
-    'White wine glass',
-    'Nick and Nora Glass',
-    'Hurricane glass',
-    'Coffee mug',
-    'Shot glass',
-    'Jar',
-    'Irish coffee cup',
-    'Punch bowl',
-    'Pitcher',
-    'Pint glass',
-    'Copper Mug',
-    'Wine Glass',
-    'Beer mug',
-    'Margarita/Coupette glass',
-    'Beer pilsner',
-    'Beer Glass',
-    'Parfait glass',
-    'Mason jar',
-    'Margarita glass',
-    'Martini Glass',
-    'Balloon Glass',
-    'Coupe Glass',
-  ];
-  const ingredients = [
-    'Apple juice',
-    'Lemon',
-    'Vine',
-    'Prossecco',
-    'Passoa',
-    'Coconut milk',
-    'Milk',
-    'Orange',
-    'Water',
-  ];
+  console.log('categories', categories);
+  console.log('ingredients', ingredients);
+  console.log('glasses', glasses);
+
+  useEffect(() => {
+    if (!categories.length) dispatch(fetchCategories());
+    if (!ingredients.length) dispatch(fetchIngredients());
+    if (!glasses.length) dispatch(fetchGlasses());
+  }, [categories.length, ingredients.length, glasses.length, dispatch]);
+
+  const ingredientsNames = ingredients.map(ingredient => ingredient.title);
+  const categoriesNames = categories.map(category => category.name);
+  const glassesNames = glasses.map(glass => glass.name);
+
+  console.log('categoriesNames', categoriesNames);
+  console.log('ingredientsNames', ingredientsNames);
+  console.log('GlassesNames', glassesNames);
 
   return (
     <DrinkFormWrapper>
-      <h2>Add drink</h2>
+      <MainFormTitle>Add drink</MainFormTitle>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -152,16 +122,16 @@ const MainForm = () => {
         {({ setFieldValue, touched, errors }) => (
           <Form>
             <TitleBlock
-              categoriesList={categories}
-              glassesList={glasses}
+              categoriesList={categoriesNames}
+              glassesList={glassesNames}
               setValue={setFieldValue}
               errors={errors}
               touched={touched}
               fileRef={fileRef}
             />
             <IngredientsBlock
-              items={ingredients}
-              title={`${ingredients}`}
+              items={ingredientsNames}
+              title={'Ingredients'}
               // error={errors.ingredients}
               // touched={touched.ingredients}
             />

@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 
-export const Ellipse223 = styled.img`
+export const EllipseMain= styled.img`
   display: none;
 
   @media (min-width: 768px) {
+    display: none;
+  }
+
+  @media (min-width: 1440px) {
     display: block;
     position: absolute;
     z-index: 1;
 
-    bottom: 1px;
-    left: -100px;
+    top: 200px;
+    left:700px;
 
     // animation-name: animateEllipse;
     // animation-duration: 3s;
@@ -28,10 +32,5 @@ export const Ellipse223 = styled.img`
     //     opacity: 1;
     //   }
     // }
-  }
-
-  @media (min-width: 1440px) {
-    bottom: 1px;
-    left: 1px;
   }
 `;

@@ -1,4 +1,4 @@
-import { Paginate, SvgWrap, Previous, Next } from './DrinksPaginator.styled';
+import { Paginate, Previous, Next } from './DrinksPaginator.styled';
 
 export const Paginator = ({
   limit,
@@ -6,7 +6,6 @@ export const Paginator = ({
   itemsLength,
   handlePageChange,
   pageRangeDisplayed,
-
 }) => {
   const pageCount = Math.ceil(itemsLength / limit);
 
@@ -22,16 +21,8 @@ export const Paginator = ({
   return (
     <div>
       <Paginate
-        previousLabel={
-          <SvgWrap>
-            <Previous />
-          </SvgWrap>
-        }
-        nextLabel={
-          <SvgWrap>
-            <Next />
-          </SvgWrap>
-        }
+        previousLabel={<Previous />}
+        nextLabel={<Next />}
         pageCount={pageCount}
         onPageChange={handlePageClick}
         forcePage={currentPage}

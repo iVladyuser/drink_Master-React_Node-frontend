@@ -5,12 +5,12 @@ export const CardContainer = styled.div`
   width: 100%;
   max-height: 392px;
   transition: border-bottom 700ms linear;
-  border-bottom: 1px solid #0a0a11;
+  border-bottom: 1px solid ${({ theme }) => theme.bodyBgc};
 
   &:hover,
   &:focus,
   &:active {
-    border-bottom: 1px solid #ffffff80;
+    border-bottom: 1px solid ${({ theme }) => theme.button.buttonBg};
   }
 
   @media screen and (min-width: 375px) {
@@ -52,7 +52,7 @@ export const CocktailName = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.12;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.button.buttonBg};
 
   @media screen and (min-width: 768px) {
     font-size: 17px;
@@ -64,13 +64,13 @@ export const StyledCocktailLink = styled(NavLink)`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29;
-  color: #f3f3f380;
+  color: ${({ theme }) => theme.fieldColor};
   transition: color 250ms linear;
 
   &:hover,
   &:focus,
   &:active {
-    color: #fafafae6;
+    color: ${({ theme }) => theme.button.buttonBg};
   }
 
   @media screen and (min-width: 768px) {

@@ -6,11 +6,11 @@ import { OutletDiv, PngDiv } from './SharedLayout.styled';
 import PageEllipse222 from './Ellipse/Elipse222/Elipse222';
 import PageEllipse224 from './Ellipse/Elipse224/Elipse224';
 
-export const SharedLayout = () => {
+export const SharedLayout = ({ theme, toggleTheme }) => {
   return (
     <>
       <Suspense fallback={<div>Loading....</div>}>
-        <Header />
+        <Header theme={theme} toggleTheme={toggleTheme} />
         <PngDiv>
           <PageEllipse222 />
           <PageEllipse224 />

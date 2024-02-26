@@ -14,7 +14,7 @@ export const OptionsContainer = styled.ul`
   overflow-y: ${({ height }) => (height ? 'scroll' : 'visible')};
   overflow-x: hidden;
   padding: 18px 24px;
-  background-color: #161f37;
+  background-color: ${({ theme }) => theme.button.buttonText};
   border-radius: 20px;
 
   &::-webkit-scrollbar {
@@ -24,7 +24,7 @@ export const OptionsContainer = styled.ul`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    background-color: #434d67;
+    background-color: ${({ theme }) => theme.fieldColor};
   }
 
   &::-webkit-scrollbar-track {
@@ -47,9 +47,9 @@ export const Option = styled.button`
   height: 100%;
   background-color: transparent;
   border: none;
-  color: #f3f3f380;
+  color: ${({ theme }) => theme.button.buttonBg};
   font-family: 'Manrope';
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.29;
   text-align: start;
   transition: border-bottom 300ms linear;
@@ -57,7 +57,7 @@ export const Option = styled.button`
   &:hover,
   &:focus,
   &:active {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.button.buttonBg};
   }
 
   @media screen and (min-width: 768px) {
@@ -67,7 +67,7 @@ export const Option = styled.button`
 `;
 
 export const Text = styled.p`
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.button.buttonBg};
 `;
 
 export const Item = styled.li`
@@ -76,40 +76,23 @@ export const Item = styled.li`
 `;
 
 export const Input = styled.input`
-  /* width: 100%;
-  height: 35px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #f3f3f333;
-  opacity: 0.8;
-  padding: 0 12px;
-
-  font-size: 14px;
-  line-height: 1.29;
-  color: #F3F3F3;
-  outline: none;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1); */
-
   display: block;
   padding: 4px;
 
-  /* margin-bottom: 8px; */
-
   font-size: 12;
   line-height: calc(16 / 12);
-  color: #f3f3f380;
+  color: ${({ theme }) => theme.fieldColor};
 
   border-style: none;
-  background-color: #161f37;
-  border-bottom: 1px solid #f3f3f311;
+  background-color: ${({ theme }) => theme.button.buttonText};
+  border-bottom: 1px solid ${({ theme }) => theme.button.borderColor};
 
   &:focus {
-    color: #f3f3f3;
     outline: transparent;
   }
 
   &::placeholder {
-    color: #f3f3f380;
+    color: ${({ theme }) => theme.fieldColor};
   }
 
   &:focus::placeholder {

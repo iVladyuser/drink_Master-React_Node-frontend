@@ -14,6 +14,7 @@ import { DrinksList } from '../../pages/FavoritePage/DrinksList/DrinksList';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
 import { FavoriteDrinksList } from 'pages/FavoritePage/FavoriteDrinksPage.style';
 import { Loader } from 'components/Loader/Loader';
+import { deleteMyDrink } from '../../services/MyDrinksSlice';
 
 export const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ export const MyDrinksPage = () => {
     setCurrentPage(selectedPage);
   };
 
+  const handleRemoveClick = drinkId => {
+    dispatch(deleteMyDrink(drinkId));
+  };
+
   const totalCount = drinks.length;
 
   return (
@@ -44,7 +49,7 @@ export const MyDrinksPage = () => {
         <>
           {drinks.length > 0 ? (
             <FavoriteDrinksList>
-              <DrinksList drinks={drinks} />
+              <DrinksList drinks={drinks} onRemoveClick={handleRemoveClick} />
             </FavoriteDrinksList>
           ) : (
             <NoImg text="You haven't added any drinks yet." />

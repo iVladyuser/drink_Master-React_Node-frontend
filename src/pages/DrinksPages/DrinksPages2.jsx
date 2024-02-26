@@ -121,7 +121,7 @@ const DrinksPages = () => {
           !errorReason && (
             <Wrapper>
               <CocktailsList>{displayCocktails}</CocktailsList>
-              {/* {totalCocktails > limit && ( */}
+              {totalCocktails > limit && (
               <Paginator
                 limit={limit}
                 currentPage={currentPage}
@@ -129,7 +129,7 @@ const DrinksPages = () => {
                 handlePageChange={handlePageChange}
                 pageRangeDisplayed={pageRangeDisplayed}
               />
-              {/* )} */}
+              )}
             </Wrapper>
           )
         )}

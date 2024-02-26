@@ -11,7 +11,7 @@ export const RecipeTextarea = styled.textarea`
   height: 184px;
   padding: 14px 24px;
   box-sizing: border-box;
-  outline: 1px solid rgba(10, 10, 17, 0.5);
+  outline: 1px solid ${({ theme }) => theme.fieldColor};
   border-radius: 20px;
   background-color: transparent;
   font-size: 16px;
@@ -20,10 +20,10 @@ export const RecipeTextarea = styled.textarea`
   font-family: 'Manrope', sans-serif;
   font-size: 17px;
   line-height: 26.52px;
-  color: rgba(243, 243, 243, 1);
+  color: ${({ theme }) => theme.fieldColorFocus};
 
   ::placeholder {
-    color: rgba(243, 243, 243, 0.5);
+    color: ${({ theme }) => theme.fieldColor};
   }
 
   @media (min-width: 768px) {
