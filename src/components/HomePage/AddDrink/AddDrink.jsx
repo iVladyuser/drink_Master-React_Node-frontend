@@ -6,7 +6,7 @@ import {
   MainWrap,
   SectionWrap,
   SectionContainer,
-  DivEllipse
+  DivEllipse,
 } from './AddDrink.styled';
 
 import heroImgmobileS from 'images/heroImage/hero-img-mobile-1x.png';
@@ -15,7 +15,7 @@ import heroImgdescS from 'images/heroImage/hero-img-desc-1x.png';
 import heroImgmobileL from 'images/heroImage/hero-img-mobile-2x.png';
 import heroImgtabletL from 'images/heroImage/hero-img-tablet-2x.png';
 import heroImgdescL from 'images/heroImage/hero-img-desc-2x.png';
-import { EllipseMain } from '../EllioseMain/EllioseMain.styled';
+// import { EllipseMain } from '../EllioseMain/EllioseMain.styled';
 import EllipseMain223 from '../EllioseMain/EllioseMain';
 
 export default function AddDrink() {
@@ -52,7 +52,7 @@ export default function AddDrink() {
         </ImageWrap>
       </SectionWrap>
       <DivEllipse>
-<EllipseMain223/>
+        <EllipseMain223 />
       </DivEllipse>
     </SectionContainer>
   );
