@@ -29,7 +29,6 @@ const DrinkPage = () => {
   return (
     <div>
       <Container>
-        {/* {error !== null && <p style={{ color: '#adadad' }}>`Oops, some error occured... Please try reloading the page`</p>} */}
         {error && <ErrorPage />}
         {isLoading && <Loader />}
         {drinkData !== null && (

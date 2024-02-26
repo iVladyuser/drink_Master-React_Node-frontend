@@ -56,15 +56,15 @@ const DrinkPageHero = ({ cocktailInfo }) => {
         {isFavorite ? (
           <AddToFavBtn
             btnText={<SVGwithText />}
-            bg="#161f37"
-            color="#f3f3f3"
+            bgсolor="#161f37"
+            textcolor="#f3f3f3"
             onClick={handleRemoveFromFavorite}
           ></AddToFavBtn>
         ) : (
           <AddToFavBtn
             btnText="Add to favorite drinks"
-            bg="#f3f3f3"
-            color="#161f37"
+            bgсolor="#f3f3f3"
+            textcolor="#161f37"
             onClick={handleAddToFavorite}
           ></AddToFavBtn>
         )}

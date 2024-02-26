@@ -38,7 +38,7 @@ export const GlassTypeAndServ = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.17;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.lightTextColor};
 
   @media (min-width: 768px) {
     font-size: 16px;

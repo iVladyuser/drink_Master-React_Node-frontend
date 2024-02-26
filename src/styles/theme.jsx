@@ -8,18 +8,21 @@ export const DarkTheme = {
     buttonTextHover: '#F3F3F3',
     buttonBgcHover: '#161F37',
     pagBgc: '#4070cd80',
+    disableColorFavBtn: '#F3F3F333',
+    disableBgcFavBtn: '##434D67',
   },
   // ${({ theme }) => theme.button.buttonBg}
   addDrinkImgBgc: '#161f3780',
   addDrinkBgcHover: '#161f37d7',
   // disableColor: '#F3F3F366',
-  fieldColor: '#F3F3F380',
+  fieldColor: '#f3f3f380',
   fieldColorFocus: '#F3F3F3',
   selectBgc: '#161f37',
   navLinkBorder: '#F3F3F333',
   paginatorFocusBgc: '#4070CD80',
   paginatorArrowColor: '#F3F3F34D',
   colorNotFound: '#F3F3F31A',
+  lightTextColor: '#f3f3f37f',
 };
 
 export const LightTheme = {
@@ -32,6 +35,8 @@ export const LightTheme = {
     buttonBgcHover: '#F3F3F3',
     buttonTextHover: '#161F37',
     pagBgc: '#4070cd80',
+    disableColorFavBtn: '#F3F3F333',
+    disableBgcFavBtn: '##161f37',
   },
   addDrinkImgBgc: '#161f37',
   addDrinkBgcHover: '#161f3780',
@@ -43,4 +48,5 @@ export const LightTheme = {
   paginatorFocusBgc: '#4070CD',
   paginatorArrowColor: '#0A0A114D',
   colorNotFound: '#4070CD1A',
+  lightTextColor: '#0a0a117f',
 };

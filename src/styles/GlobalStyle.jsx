@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Manrope';
     src: url('../../assets/fonts/Manrope-SemiBold.woff2') format('woff2'),
         url('../../assets/fonts/Manrope-SemiBold.woff') format('woff');
@@ -59,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-}
+} */
 
  :root {
     --main-white: #F3F3F3;

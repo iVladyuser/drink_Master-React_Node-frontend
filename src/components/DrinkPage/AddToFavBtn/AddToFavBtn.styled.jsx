@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FavBtn = styled.button`
   border-radius: 42px;
-  border-color: transparent;
+  border: none;
   padding-top: 14px;
   padding-bottom: 14px;
   width: 222px;
@@ -10,25 +10,20 @@ export const FavBtn = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.29;
-  transition: all 300ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  transition: color var(--transition), background-color var(--transition);
 
-  &:active {
-    border: 2px solid rgba(64, 112, 205, 0.5);
-  }
-
-  &:hover,
-  &:focus {
-    color: #f3f3f3;
-    background: #161f37;
-    border-color: transparent;
+  &:focus,
+  &:hover {
+    color: ${({ theme }) => theme.button.buttonBg};
+    background-color: ${({ theme }) => theme.button.buttonText};
   }
 
   &:disabled {
-    color: rgba(243, 243, 243, 0.2);
-    background: #434d67;
+    color: ${({ theme }) => theme.button.disableColorFavBtn};
+    background: ${({ theme }) => theme.button.disableBgcFavBtn};
 
     svg {
-      stroke: rgba(243, 243, 243, 0.2);
+      stroke: ${({ theme }) => theme.button.disableColorFavBtn};
     }
   }
 
