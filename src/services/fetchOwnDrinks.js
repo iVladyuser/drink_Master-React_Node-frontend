@@ -46,7 +46,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
 
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       };
@@ -59,7 +59,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
       return data;
     } catch (err) {
       console.error('Error:', err.data);
-            toast.error('Invalid data try again!');
+      toast.error('Invalid data try again!');
 
       return thunkApi.rejectWithValue(err.message);
     }

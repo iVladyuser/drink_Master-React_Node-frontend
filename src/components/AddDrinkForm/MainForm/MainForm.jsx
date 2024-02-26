@@ -55,6 +55,7 @@ const MainForm = () => {
     const id = data.id;
     const image = `${id}_${data.drinkThumb.name}`;
 
+    console.log('file: ', data.drinkThumb);
     function generateObjectId() {
       return new mongoose.Types.ObjectId().toString(); // Assuming you're using Mongoose
     }
@@ -65,9 +66,6 @@ const MainForm = () => {
 
     const newIngredients = JSON.stringify(data.ingredients);
 
-    console.log('ing:', data.ingredients);
-    console.log('obj:', data.ingredients);
-    console.log('newing:', newIngredients);
     const formData = new FormData();
     formData.append('drinkThumb', image);
     formData.append('drink', data.drink);
