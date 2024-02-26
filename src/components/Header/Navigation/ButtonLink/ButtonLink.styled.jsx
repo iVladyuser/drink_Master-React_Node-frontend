@@ -19,8 +19,8 @@ export const ButtonNavLink = styled.button`
   border-radius: 40px;
   min-width: 71px;
   height: 39px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
-  color: #f3f3f3;
+  border: 1px solid ${({ theme }) => theme.button.buttonTextHover};
+  color: ${({ theme }) => theme.colorText};
   background-color: transparent;
   font-family: inherit;
   font-size: 14px;
@@ -35,8 +35,8 @@ export const ButtonNavLink = styled.button`
   }
 
   &.active {
-    color: #161f37;
-    background-color: #f3f3f3;
+    color: ${({ theme }) => theme.bodyBgc};
+    background-color: ${({ theme }) => theme.button.buttonTextHover}
   }
 
   @media (min-width: 768px) {

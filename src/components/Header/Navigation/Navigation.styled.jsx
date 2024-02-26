@@ -7,7 +7,7 @@ export const NavigationContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #161f37;
+  background-color: #161f37; ${({ theme }) => theme.buttonBg};
   transition: top 0.5s ease;
   z-index: 100000;
   &.open {
