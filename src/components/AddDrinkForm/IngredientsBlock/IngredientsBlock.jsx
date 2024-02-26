@@ -16,6 +16,7 @@ import {
   ErrorText,
   CrossIcon,
 } from './IngredientsBlock.styled';
+import { toast } from 'react-toastify';
 
 const IngredientsBlock = ({ items, title }) => {
   const initialValue = { title: '', measure: '' };
@@ -36,13 +37,25 @@ const IngredientsBlock = ({ items, title }) => {
           <IngredientsTitleWrapper>
             <h3>Ingredients</h3>
             <PlusMinusBar>
-              <MinusBtn type="button" onClick={() => remove()}>
+              <MinusBtn
+                type="button"
+                onClick={() => {
+                  remove();
+                  toast('Removed ingredient!');
+                }}
+              >
                 <MinusIcon />
               </MinusBtn>
               <NumberIngredients>
                 {ingredients.length ? ingredients.length : '0'}
               </NumberIngredients>
-              <PlusBtn type="button" onClick={() => push(initialValue)}>
+              <PlusBtn
+                type="button"
+                onClick={() => {
+                  push(initialValue);
+                  toast('Added ingredient!');
+                }}
+              >
                 <PlusIcon />
               </PlusBtn>
             </PlusMinusBar>
@@ -74,7 +87,10 @@ const IngredientsBlock = ({ items, title }) => {
 
                     <RemoveIngredientBtn
                       type="button"
-                      onClick={() => remove(index)}
+                      onClick={() => {
+                        remove(index);
+                        toast('Removed ingredient!');
+                      }}
                     >
                       <CrossIcon />
                     </RemoveIngredientBtn>

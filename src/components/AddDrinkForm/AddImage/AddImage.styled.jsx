@@ -16,12 +16,6 @@ export const StyledInput = styled.input`
 
 export const BackgroundImg = styled.div`
   position: absolute;
-  ${
-    '' /* top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; */
-  }
 
   opacity: 0.5;
   border-radius: 8px;
@@ -29,11 +23,6 @@ export const BackgroundImg = styled.div`
 
   img {
     display: block;
-    ${
-      '' /* width: 100%;
-    height: 100%; */
-    }
-    object-fit: cover;
   }
 `;
 
@@ -87,7 +76,7 @@ export const AddFileButton = styled.div`
 
 export const Button = styled.div`
   height: 90px;
-  width: 80px;
+  width: 85px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,7 +88,7 @@ export const Button = styled.div`
 export const Icon = styled.span`
   width: 50px;
   height: 50px;
-  margin-bottom: 18px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -34,9 +34,6 @@ const DrinksPages = () => {
   const totalCocktails = useSelector(selectTotalCocktails);
   const isLoading = useSelector(selectIsLoading);
 
-  console.log('cocktails', cocktails);
-  console.log('totalCocktails', totalCocktails);
-
   const [currentPage, setCurrentPage] = useState(pageFromUrl);
   const [limit, setLimit] = useState(9);
   const [pageRangeDisplayed, setPageRangeDisplayed] = useState(3);
@@ -122,13 +119,13 @@ const DrinksPages = () => {
             <Wrapper>
               <CocktailsList>{displayCocktails}</CocktailsList>
               {totalCocktails > limit && (
-              <Paginator
-                limit={limit}
-                currentPage={currentPage}
-                itemsLength={totalCocktails}
-                handlePageChange={handlePageChange}
-                pageRangeDisplayed={pageRangeDisplayed}
-              />
+                <Paginator
+                  limit={limit}
+                  currentPage={currentPage}
+                  itemsLength={totalCocktails}
+                  handlePageChange={handlePageChange}
+                  pageRangeDisplayed={pageRangeDisplayed}
+                />
               )}
             </Wrapper>
           )
