@@ -12,10 +12,10 @@ export const AddButton = styled.button`
   font-family: inherit;
   font-weight: 600;
   font-size: 14px;
-  color: #161f37;
+  color: ${({ theme }) => theme.button.buttonText};
   line-height: calc(18 / 14);
 
-  background-color: #f3f3f3;
+  background-color: ${({ theme }) => theme.button.buttonBg};
   border: none;
   border-radius: 42px;
 
@@ -23,11 +23,11 @@ export const AddButton = styled.button`
 
   &:focus,
   &:hover {
-    color: #f3f3f3;
-    background-color: #161f37;
+    color: ${({ theme }) => theme.button.buttonBg};
+    background-color: ${({ theme }) => theme.button.buttonText};
   }
 `;
 
 export const MainFormTitle = styled.h2`
   margin-bottom: 60px;
-`
+`;

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const CustomSelect = styled.button`
   width: 335px;
@@ -35,7 +35,7 @@ export const CustomSelect = styled.button`
   span {
     display: block;
   }
-  
+
   @media (min-width: 768px) {
     width: 199px;
     height: 56px;
@@ -45,7 +45,7 @@ export const CustomSelect = styled.button`
 export const PlaceholderWrap = styled.div`
   display: flex;
   align-items: center;
-  
+
   color: ${({ selected }) => (!selected ? '#f3f3f380' : '#F3F3F3')};
 
   span {

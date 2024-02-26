@@ -3,18 +3,22 @@ import { HeaderContainer } from './Header.styled';
 import Logo from '../Logo/Logo';
 import NavigationLink from './Navigation/ButtonLink/ButtonLink';
 import Navigation from './Navigation/Navigation';
-import ThemeSwitcher from './Switch/ThemeSwitcher'
-import UserProfile from './User/UserProfile'
-import UserProfileModal from './UserInfoModal/UserInfoModal'
-import { StyledGiHamburgerMenu, UserBurgerStyle, UserSwitchStyled } from './Header.styled';
+import ThemeSwitcher from './Switch/ThemeSwitcher';
+import UserProfile from './User/UserProfile';
+import UserProfileModal from './UserInfoModal/UserInfoModal';
+import {
+  StyledGiHamburgerMenu,
+  UserBurgerStyle,
+  UserSwitchStyled,
+} from './Header.styled';
 import useDeviceType from '../../hooks/useDeviceType';
 
-export const Header = () => {
+export const Header = ({ theme, toggleTheme }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
   const { isDesktop } = useDeviceType();
 
-  const toggleModal = (type) => {
+  const toggleModal = type => {
     setIsModalOpen(!isModalOpen);
     setModalType(type);
   };
@@ -28,22 +32,23 @@ export const Header = () => {
     <HeaderContainer>
       <Logo />
       {isDesktop && <NavigationLink />}
-      < UserSwitchStyled>
-      {isDesktop && <ThemeSwitcher />}
-      <UserBurgerStyle>
+      <UserSwitchStyled>
+        {isDesktop && <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />}
+        <UserBurgerStyle>
+          <UserProfile openModal={() => toggleModal('UserProfileModal')} />
 
-        <UserProfile openModal={() => toggleModal('UserProfileModal')} />
+          {isModalOpen && modalType === 'UserProfileModal' && (
+            <UserProfileModal closeModal={closeModal} />
+          )}
 
-      {isModalOpen && modalType === 'UserProfileModal' && (
-        <UserProfileModal closeModal={closeModal} />
-      )}
-
-      <StyledGiHamburgerMenu onClick={() => toggleModal('Navigation')} />
-      <Navigation
-        onClose={closeModal}
-        isVisible={isModalOpen && modalType === 'Navigation'}
-      />
-      </UserBurgerStyle>
+          <StyledGiHamburgerMenu onClick={() => toggleModal('Navigation')} />
+          <Navigation
+            toggleTheme={toggleTheme}
+            theme={theme}
+            onClose={closeModal}
+            isVisible={isModalOpen && modalType === 'Navigation'}
+          />
+        </UserBurgerStyle>
       </UserSwitchStyled>
     </HeaderContainer>
   );

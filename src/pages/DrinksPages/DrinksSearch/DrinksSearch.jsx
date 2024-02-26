@@ -8,9 +8,10 @@ import {
   Button,
   Form,
   Input,
-  SearchIconWrap,
   SearchWrapper,
   SearchIcon,
+  ClearIcon,
+  ButtonControls,
 } from './DrinksSearch.styled';
 
 import {
@@ -124,11 +125,14 @@ export const DrinksSearch = ({ shouldRenderBtn, page, limit, updPage }) => {
           />
         </label>
         {shouldRenderBtn && (
-          <Button type="submit">
-            <SearchIconWrap>
+          <ButtonControls>
+            <Button type="submit">
               <SearchIcon />
-            </SearchIconWrap>
-          </Button>
+            </Button>
+            <Button onClick={() => setInputValue('')}>
+              <ClearIcon />
+            </Button>
+          </ButtonControls>
         )}
       </Form>
       <SelectList

@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
-export const CustomSelect = styled.button`
+export const CustomSelectWrapper = styled.button`
   width: 100%;
   height: 34px;
   padding-bottom: 14px;
@@ -11,21 +11,21 @@ export const CustomSelect = styled.button`
   align-items: center;
 
   text-align: right;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colorText};
 
   border-style: none;
-  border-bottom: 1px solid #f3f3f380;
+  border-bottom: 1px solid ${({ theme }) => theme.fieldColor};
   background: transparent;
 
   &:focus {
-    border-bottom: 1px solid #f3f3f3;
+    border-bottom: 1px solid ${({ theme }) => theme.fieldColorFocus};
 
     outline: transparent;
   }
 
   &:focus span,
   &:hover span {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.fieldColorFocus};
   }
 
   &::after {
@@ -45,7 +45,8 @@ export const PlaceholderWrap = styled.div`
   display: flex;
   align-items: center;
 
-  color: ${({ selected }) => (!selected ? '#f3f3f380' : '#F3F3F3')};
+  color: ${({ selected, theme }) =>
+    !selected ? theme.fieldColor : theme.fieldColorFocus};
 
   span {
     display: block;
@@ -53,7 +54,7 @@ export const PlaceholderWrap = styled.div`
 `;
 
 export const Label = styled.span`
-  color: #f3f3f380;
+  color: ${({ theme }) => theme.fieldColor};
 `;
 
 export const DropMenu = styled.div`
@@ -71,7 +72,7 @@ export const DropMenu = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #f3f3f380;
+    background-color: ${({ theme }) => theme.fieldColor};
     border-radius: 4px;
   }
   &::-webkit-scrollbar-track-piece {
@@ -88,10 +89,10 @@ export const DropMenu = styled.div`
 
   font-size: 12;
   line-height: 1.3;
-  color: #f3f3f380;
+  color: ${({ theme }) => theme.fieldColor};
 
   border-radius: 12px;
-  background-color: #161f37;
+  background-color: ${({ theme }) => theme.selectBgc};
   z-index: 10;
 
   div:not(:last-of-type) {
@@ -100,7 +101,7 @@ export const DropMenu = styled.div`
 
   div:hover,
   div:focus {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.fieldColorFocus};
   }
 `;
 
@@ -124,19 +125,19 @@ export const SearchInput = styled.input`
 
   font-size: 12;
   line-height: 1.3;
-  color: #f3f3f380;
+  color: ${({ theme }) => theme.fieldColor};
 
   border-style: none;
-  background-color: #161f37;
-  border-bottom: 1px solid #f3f3f311;
+  background-color: ${({ theme }) => theme.selectBgc};
+  border-bottom: 1px solid ${({ theme }) => theme.fieldColor};
 
   &:focus {
-    color: #f3f3f3;
+    color: ${({ theme }) => theme.fieldColor};
     outline: transparent;
   }
 
   &::placeholder {
-    color: #f3f3f380;
+    color: ${({ theme }) => theme.fieldColor};
   }
 
   &:focus::placeholder {

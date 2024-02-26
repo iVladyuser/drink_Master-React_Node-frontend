@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AppWrapper = styled.div`
-  background-color: #0A0A11;
+  background-color: ${({ theme }) => theme.bodyBgc};
 
   @media (min-width: 375px) {
   }

@@ -11,7 +11,7 @@ export const Text = styled.p`
   margin-top: 32px;
   margin-bottom: 0;
   text-align: center;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colorText};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.42;

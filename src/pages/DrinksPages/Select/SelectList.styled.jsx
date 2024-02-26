@@ -11,7 +11,7 @@ export const OptionControl = styled.div`
   padding: 18px 24px;
   width: 335px;
   height: 54px;
-  background-color: #161f37;
+  background-color: ${({ theme }) => theme.button.buttonText};
   border-radius: 200px;
   cursor: pointer;
 
@@ -27,7 +27,7 @@ export const OptionControl = styled.div`
 `;
 
 export const OptionControlValue = styled.p`
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.button.buttonBg};
   font-size: 14px;
   line-height: 1.29;
 
