@@ -134,6 +134,11 @@ export const RadioButtonsWrapper = styled.div`
   input:checked ~ label {
     color: ${({ theme }) => theme.fieldColorFocus};
   }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 export const ErrorText = styled.div`

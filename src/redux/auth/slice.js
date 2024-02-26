@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   userData: null,
+  age: 0,
   token: '',
   isLoggedIn: false,
   isLoading: false,
@@ -24,6 +25,7 @@ const authSlice = createSlice({
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.userData = payload.user;
+        state.age = payload.user.age;
         state.token = payload.token;
         state.isLoggedIn = true;
       })
