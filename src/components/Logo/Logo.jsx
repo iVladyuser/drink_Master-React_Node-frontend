@@ -14,5 +14,4 @@ const Logo = () => {
     </LogoContainer>
   );
 };
-
 export default Logo;

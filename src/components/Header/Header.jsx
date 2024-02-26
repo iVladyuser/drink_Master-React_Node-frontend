@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HeaderContainer } from './Header.styled';
+
 import Logo from '../Logo/Logo';
 import NavigationLink from './Navigation/ButtonLink/ButtonLink';
 import Navigation from './Navigation/Navigation';
@@ -45,6 +46,7 @@ export const Header = () => {
       />
       </UserBurgerStyle>
       </UserSwitchStyled>
+
     </HeaderContainer>
   );
 };
