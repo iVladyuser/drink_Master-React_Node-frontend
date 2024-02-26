@@ -17,7 +17,7 @@ export const IngredientsSectTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => theme.lightTextColor};
 
   @media (min-width: 768px) {
     margin-bottom: 24px;
@@ -61,9 +61,8 @@ export const IngredientsImgWrp = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  background: rgba(22, 31, 55, 0.5);
+  background: ${({ theme }) => theme.addDrinkImgBgc};
 `;
-
 export const IngredientsItemImg = styled.img`
   width: 157px;
   height: 157px;
@@ -94,7 +93,8 @@ export const IngredientsItemName = styled.h3`
 
 export const IngredientsItemDose = styled.p`
   font-weight: 500;
-  color: rgba(243, 243, 243, 0.5);
+  color: #f3f3f37f;
+  color: ${({ theme }) => theme.lightTextColor};
 
   @media (min-width: 768px) {
     font-size: 16px;
@@ -105,5 +105,5 @@ export const IngredientsItemDose = styled.p`
 export const ErrorMsg = styled.p`
   font-size: 16px;
   line-height: 1.25;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colorText};
 `;

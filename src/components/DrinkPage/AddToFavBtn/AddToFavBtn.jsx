@@ -1,10 +1,10 @@
 import SvgGeneratorSvgSelector from 'components/SvgComponents/SvgComponents';
 import { FavBtn, SVGwithTextWrp } from './AddToFavBtn.styled';
 
-const AddToFavoriteBtn = ({ btnText, onClick, bg, color }) => {
+const AddToFavoriteBtn = ({ btnText, onClick, bgсolor, textcolor }) => {
   const buttonStyle = {
-    backgroundColor: bg,
-    color: color,
+    backgroundColor: bgсolor,
+    color: textcolor,
   };
 
   return (
