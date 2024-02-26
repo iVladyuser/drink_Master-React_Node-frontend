@@ -105,7 +105,7 @@ export const MainLink = styled(Link)`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    padding: 18px 44px;
+    padding: 18px 42px;
     width: 169px;
     height: 54px;
   }
