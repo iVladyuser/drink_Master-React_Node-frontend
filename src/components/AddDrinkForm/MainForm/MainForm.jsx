@@ -25,10 +25,6 @@ import { nanoid } from '@reduxjs/toolkit';
 import IngredientsBlock from '../IngredientsBlock/';
 import RecipePreparationBlock from '../RecipePreparationBlock/';
 
-// import { useFetchGlasses } from '../../../hooks/useFetchGlasses';
-// import { useFetchCategories } from '../../../hooks/useFetchCategories';
-// import { useFetchIngredients } from '../../../hooks/useFetchIngredients';
-
 const validationSchema = yup.object().shape({
   file: yup.mixed().required('Please add the drink recipe image'),
   drink: yup.string().trim().required('Please enter a drink title'),
@@ -128,8 +124,6 @@ const MainForm = () => {
             <IngredientsBlock
               items={ingredientsNames}
               title={'Ingredients'}
-              // error={errors.ingredients}
-              // touched={touched.ingredients}
             />
             <RecipePreparationBlock
               error={errors.instructions}

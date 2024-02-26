@@ -25,7 +25,6 @@ const TitleBlock = ({
   fileRef,
 }) => {
   const age = useSelector(selectUserDataAge);
-  // const age = 15;
 
   const handleDisabledClick = () => {
     if (age < 18) {
