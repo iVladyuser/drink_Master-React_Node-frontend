@@ -1,10 +1,22 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { signInThunk } from '../../../services/fetchAuth';
 import { toast } from 'react-toastify';
-
-import { Form, FormField, Button, SignInLink } from '../SignUpForm/Sign.styled';
+import 'react-toastify/dist/ReactToastify.css';
+import FormError from '../../FormError/FormError';
+import {
+  Form,
+  FormField,
+  Button,
+  SignInLink,
+  ErrorIcon,
+  SuccessIcon,
+  TogglePasswordButton,
+  StyledDontShowPasswordIcon,
+  StyledShowPasswordIcon,
+  PasswordInputWrap,
+} from '../SignUpForm/Sign.styled';
 import { Formik } from 'formik';
 
 const validateFormSchema = Yup.object().shape({
@@ -19,6 +31,10 @@ const validateFormSchema = Yup.object().shape({
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleSubmit = values => {
     // e.preventDefault();
 
@@ -29,7 +45,7 @@ export const SignInForm = () => {
     dispatch(signInThunk({ email, password }))
       .unwrap()
       .then(() => {
-        toast.success('Registration successful');
+        toast.success('Sign In successful');
       })
       .catch(() => {
         toast.error('Something went wrong... Try again...');
@@ -44,17 +60,44 @@ export const SignInForm = () => {
       validationSchema={validateFormSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, errors }) => (
+      {({ values, errors, touched }) => (
         <Form>
           <>
-            <FormField
-              type="email"
-              name="email"
-              placeholder="Email"
-              errors={errors}
-            />
-
-            <FormField name="password" placeholder="Password" errors={errors} />
+            <div>
+              <FormField
+                type="email"
+                name="email"
+                placeholder="Email"
+                error={errors.email && touched.email ? 'true' : 'false'}
+                success={values.email && !errors.email ? 'true' : 'false'}
+              />
+              <FormError name="email" />
+              {errors.email && touched.email ? (
+                <ErrorIcon />
+              ) : values.email && !errors.email ? (
+                <SuccessIcon />
+              ) : null}
+            </div>
+            <PasswordInputWrap>
+              <FormField
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                error={errors.password && touched.password ? 'true' : 'false'}
+                success={values.password && !errors.password ? 'true' : 'false'}
+              />
+              <FormError name="password" />
+              <TogglePasswordButton
+                type="button"
+                onClick={handleTogglePassword}
+              >
+                {showPassword ? (
+                  <StyledDontShowPasswordIcon />
+                ) : (
+                  <StyledShowPasswordIcon />
+                )}
+              </TogglePasswordButton>
+            </PasswordInputWrap>
           </>
 
           <Button type="submit">Sign In</Button>

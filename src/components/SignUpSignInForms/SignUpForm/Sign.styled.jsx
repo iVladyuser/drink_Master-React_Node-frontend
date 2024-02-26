@@ -47,7 +47,12 @@ export const FormField = styled(FormikField)`
     css`
       border: 1px solid green;
     `}
-    
+  ${({ value }) =>
+    value &&
+    css`
+      border: 1px solid green;
+    `}
+
 
   @media (min-width: 768px) {
     width: 400px;

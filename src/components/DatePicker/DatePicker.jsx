@@ -54,7 +54,7 @@ const StyledDatePicker = forwardRef(({ field, form }, ref) => {
             />
           </svg>
         }
-        customInput={<FormField />}
+        customInput={<FormField value={field.value} />}
         dateFormat={'dd/MM/yyyy'}
         calendarStartDay={1}
       />
