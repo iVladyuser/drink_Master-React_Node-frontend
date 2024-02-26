@@ -33,6 +33,8 @@ const TitleBlock = ({
     }
   };
 
+  console.log('age', age);
+
   return (
     <Wrapper>
       <AddImage setValue={setValue} fileRef={fileRef} />
@@ -72,7 +74,7 @@ const TitleBlock = ({
           role="cocktailTypeSelect"
           aria-labelledby="cocktailTypeSelect-group"
           onClick={() => handleDisabledClick()}
-          disabled
+          disabled={age < 18}
         >
           <div>
             <FieldRadio
@@ -80,7 +82,7 @@ const TitleBlock = ({
               name="alcoholic"
               id="radioAlcoholic"
               value={'Alcoholic'}
-              disabled
+              disabled={age < 18}
             />
             <FieldRadioLabel htmlFor="radioAlcoholic">
               Alcoholic
@@ -93,7 +95,7 @@ const TitleBlock = ({
               name="alcoholic"
               id="radioNonAlcoholic"
               value={'Non-alcoholic'}
-              disabled
+              disabled={age < 18}
             />
             <FieldRadioLabel htmlFor="radioNonAlcoholic">
               Non-alcoholic

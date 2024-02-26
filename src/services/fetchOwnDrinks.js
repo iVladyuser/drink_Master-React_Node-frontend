@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setToken } from './fetchAuth';
+import { toast } from 'react-toastify';
 
 export const instance = axios.create({
   baseURL: 'https://drink-master-project-zi2s.onrender.com',
@@ -51,11 +52,15 @@ export const addOwnDrinkThunk = createAsyncThunk(
       };
 
       const { data } = await instance.post('/drinks/own/add', formData, config);
+      toast.success('New drink added successfully!');
+
       console.log('Done,:', data);
 
       return data;
     } catch (err) {
       console.error('Error:', err.data);
+            toast.error('Invalid data try again!');
+
       return thunkApi.rejectWithValue(err.message);
     }
   },

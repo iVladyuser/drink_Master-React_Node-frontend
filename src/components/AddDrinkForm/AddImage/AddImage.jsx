@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 const AddImage = ({ setValue, fileRef }) => {
   const [fileUrl, setFileUrl] = useState('');
 
-  const [, meta] = useField('file');
+  const [, meta] = useField('drinkThumb');
 
   const onChangeFile = e => {
     const imgObject = e.currentTarget.files[0] ?? null;
@@ -25,7 +25,7 @@ const AddImage = ({ setValue, fileRef }) => {
 
     if (fileUrl) {
       setFileUrl(fileUrl);
-      setValue('file', imgObject);
+      setValue('drinkThumb', imgObject);
       toast.success('Great you added photo!');
     }
   };
