@@ -59,6 +59,7 @@ color: ${({ theme }) => theme.button.buttonBg};
 `;
 
 export const DetailDrinkLink = styled(Link)`
+font-family: 'Manrope', sans-serif;
 font-size: 14px;
 font-weight: 500;
 line-height: 1.29;

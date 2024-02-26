@@ -97,6 +97,7 @@ export const MainLink = styled(Link)`
   width: 151px;
   height: 46px;
 
+  font-family: 'Manrope', sans-serif;
   color: ${({ theme }) => theme.button.buttonText};
 
   background-color: ${({ theme }) => theme.button.buttonBg};
