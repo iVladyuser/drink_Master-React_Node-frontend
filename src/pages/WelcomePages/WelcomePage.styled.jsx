@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { StandartContainer } from '../../styles/Container.styled';
-
+import { StandartContainer } from './StandartContainer.styled';
 import welcomeMob1x from '../../images/welcome/welcomeMob@1x.jpg';
 import welcomeMob2x from '../../images/welcome/welcomeMob@2x.jpg';
 
@@ -27,6 +26,7 @@ export const WelcomePageStyle = styled.section`
   align-content: center;
   max-width: 100vw;
   height: 100vh;
+  background: black
 
   background: url(${welcomeElipseTopMob}), url(${welcomeElipseBottomMob}),
     url(${welcomeMob1x});
@@ -167,8 +167,9 @@ export const ButtonLink = styled(Link)`
   transition: color 300ms linear, background-color 300ms linear;
 
   &:hover {
-    color: #161f37;
-    background-color: #f3f3f3;
+    color: #f3f3f3;
+    background-color: #161f37;
+    border: 1px solid transparent;
   }
 
   @media (min-width: 768px) {
