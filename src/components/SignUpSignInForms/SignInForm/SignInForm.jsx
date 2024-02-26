@@ -37,11 +37,6 @@ export const SignInForm = () => {
     setShowPassword(!showPassword);
   };
   const handleSubmit = values => {
-    // e.preventDefault();
-
-    // const email = e.currentTarget.elements.userEmail.value;
-    // const password = e.currentTarget.elements.userPassword.value;
-
     const { email, password } = values;
     dispatch(signInThunk({ email, password }))
       .unwrap()
