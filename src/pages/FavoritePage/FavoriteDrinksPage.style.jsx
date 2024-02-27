@@ -23,7 +23,7 @@ export const FavoritePageTitle = styled.h1`
   height: 38px;
   left: 20px;
   top: 80px;
-  color: rgb(243, 243, 243);
+  color: ${({ theme }) => theme.mainWhite};
   font-size: 32px;
   font-weight: 600;
   line-height: 38px;
@@ -81,8 +81,8 @@ export const FavoriteDrinkImage = styled.img`
   margin-bottom: 18px;
   background: linear-gradient(
     180deg,
-    rgba(10, 10, 17, 0.02) 51.18%,
-    rgba(10, 10, 17, 0.77) 97.66%
+    ${({ theme }) => theme.mainDarkTranspTwo} 51.18%,
+    ${({ theme }) => theme.mainDarkTranspSeventySeven} 97.66%
   );
 
   @media (min-width: 375px) {
@@ -105,11 +105,11 @@ export const FavoriteDrinkTitle = styled.h5`
   font-size: 18px;
   line-height: 1.33;
   margin-bottom: 4px;
-  color: rgb(243, 243, 243);
+  color: ${({ theme }) => theme.mainWhite};
 `;
 
 export const FavoriteDrinkInfo = styled.p`
-  color: #7a7a7a;
+  color: ${({ theme }) => theme.mainDarkTranspFifty};
   font-size: 14px;
   line-height: 1.28;
   margin-bottom: 18px;
@@ -119,7 +119,7 @@ export const FavoriteDrinkDescription = styled.p`
   font-size: 14px;
   line-height: 1.28;
   margin-bottom: 18px;
-  color: rgb(243, 243, 243);
+  color: ${({ theme }) => theme.mainWhite};
 `;
 
 export const FavoriteSeeMoreButton = styled.button`
@@ -130,8 +130,8 @@ export const FavoriteSeeMoreButton = styled.button`
   border: none;
   outline: none;
   border-radius: 42px;
-  background: rgb(22, 31, 55);
-  color: white;
+  background: ${({ theme }) => theme.mainBlue};
+  color: ${({ theme }) => theme.mainWhite};
   cursor: pointer;
 `;
 
@@ -147,7 +147,7 @@ export const FavoriteRemoveButton = styled.button`
     border: none;
     outline: none;
     border-radius: 40px;
-    background: rgb(22, 31, 55);
+     background: ${({ theme }) => theme.mainBlue};
 
   }
 `;
