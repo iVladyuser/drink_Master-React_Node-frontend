@@ -46,29 +46,6 @@ export const addMyDrink = createAsyncThunk(
   }
 );
 
-// export const deleteMyDrink = createAsyncThunk(
-//   'myDrinks/deleteMyDrink',
-//   async (drinkId, { getState, rejectWithValue }) => {
-//     try {
-//       const {
-//         auth: { token },
-//       } = getState();
-//       const config = {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       };
-//       const response = await axios.delete(
-//         `https://drink-master-project-zi2s.onrender.com/drinks/own/remove/${drinkId}`,
-//         config
-//       );
-//       return response.data;
-//     } catch (err) {
-//       return rejectWithValue(err.response.data);
-//     }
-//   }
-// );
-
 export const deleteMyDrink = createAsyncThunk(
   'myDrinks/deleteMyDrink',
   async (drinkId, { getState, rejectWithValue }) => {

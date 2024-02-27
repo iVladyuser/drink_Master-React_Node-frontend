@@ -140,6 +140,9 @@ export const FavoriteSeeMoreButton = styled.button`
   background-color: var(--bluefifty-color);
   color: var(--main-white);
   cursor: pointer;
+  &:hover {
+    background-color: var(--hover-light-blue);
+  }
 `;
 
 export const FavoriteRemoveButton = styled.button`
@@ -156,6 +159,9 @@ export const FavoriteRemoveButton = styled.button`
   border-radius: 40px;
   background-color: var(--bluefifty-color);
   cursor: pointer;
+  &:hover {
+    background-color: var(--hover-light-blue);
+  }
 `;
 export const ButtonsContainer = styled.div`
   display: flex;
