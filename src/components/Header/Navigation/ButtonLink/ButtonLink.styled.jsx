@@ -40,7 +40,7 @@ export const ButtonNavLink = styled.button`
   }
 
   @media (min-width: 768px) {
-    padding: 11px 16px;
+    padding: 10px 16px;
     min-width: 59px;
     font-size: 16px;
     font-weight: 600;
