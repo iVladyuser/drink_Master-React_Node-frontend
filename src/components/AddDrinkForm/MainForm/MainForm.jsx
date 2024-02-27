@@ -2,7 +2,6 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import mongoose from 'mongoose';
 
 import {
@@ -48,14 +47,12 @@ const initialValues = {
 const MainForm = () => {
   const fileRef = useRef();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = async (data, action) => {
     data.id = nanoid();
     // const id = data.id;
     // const image = `${id}_${data.drinkThumb.name}`;
 
-    console.log('file: ', data.drinkThumb);
     function generateObjectId() {
       return new mongoose.Types.ObjectId().toString(); // Assuming you're using Mongoose
     }
@@ -80,7 +77,6 @@ const MainForm = () => {
       dispatch(addOwnDrinkThunk(formData));
       action.resetForm();
       fileRef.current.value = null;
-      navigate('/my');
     } catch (error) {
       console.error(error);
     }
@@ -89,8 +85,6 @@ const MainForm = () => {
   const categories = useSelector(selectCategories);
   const ingredients = useSelector(selectIngredients);
   const glasses = useSelector(selectGlasses);
-
-  console.log('ingredients', ingredients);
 
   useEffect(() => {
     if (!categories.length) dispatch(fetchCategories());
@@ -101,8 +95,6 @@ const MainForm = () => {
   const ingredientsNames = ingredients.map(ingredient => ingredient.title);
   const categoriesNames = categories.map(category => category.name);
   const glassesNames = glasses.map(glass => glass.name);
-
-  console.log('ingredientsNames', ingredientsNames);
 
   return (
     <DrinkFormWrapper>

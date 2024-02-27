@@ -21,6 +21,7 @@ import { filtersReducer } from './filters/slice';
 import { allDrinksReduser } from './drink/sliceForDrinksPages';
 // import { filtersReducer } from './drink/sliceFilterForDrinksPages';
 import { drinkByIdReducer } from './drink/sliceDrinkById';
+import { routeReducer } from './route/slice';
 
 const authConfig = {
   key: 'auth',
@@ -28,9 +29,17 @@ const authConfig = {
   whitelist: ['token'],
 };
 
+const routeConfig = {
+  key: 'route',
+  storage,
+  whitelist: ['route'], // List of slices to persist
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authReducer),
+    route: persistReducer(routeConfig, routeReducer),
+
     favorites: favoritesReducer,
     alldrinks: allDrinksReduser,
     myDrinks: myDrinksReducer,

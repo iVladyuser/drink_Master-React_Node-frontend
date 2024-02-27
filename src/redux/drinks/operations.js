@@ -14,7 +14,6 @@ export const fetchCocktailsByParams = createAsyncThunk(
       const token = state.auth.token;
       setToken(token);
 
-      console.log('token', token);
 
       // const config = {
       //   headers: {
@@ -28,7 +27,6 @@ export const fetchCocktailsByParams = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log('fetchData: ', response.data);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

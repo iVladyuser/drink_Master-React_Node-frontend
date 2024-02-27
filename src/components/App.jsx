@@ -1,10 +1,11 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { ThemeProvider } from 'styled-components';
 import { ToggleThemes } from './ToggleThemes/ToggleThemes';
 import { DarkTheme, LightTheme } from '../styles/theme';
-import { useDispatch } from 'react-redux';
+import { selectRoutePath } from '../redux/route/selectors.js';
+import { useDispatch, useSelector } from 'react-redux';
 import { refreshThunk } from '../services/fetchAuth';
 import * as ROUTES from 'constants/routes';
 import { AppWrapper } from './App.styled';
@@ -56,11 +57,14 @@ const appRoutes = [
 const App = () => {
   const [theme, themeToggle] = ToggleThemes();
   const themeMode = theme === 'dark' ? DarkTheme : LightTheme;
+  const routeActual = useSelector(selectRoutePath);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(refreshThunk());
+    navigate(routeActual);
   }, [dispatch]);
 
   return (
