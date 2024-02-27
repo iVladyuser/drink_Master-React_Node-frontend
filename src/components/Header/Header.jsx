@@ -31,7 +31,7 @@ export const Header = ({ theme, toggleTheme }) => {
 
   return (
     <HeaderContainer>
-      <LinkLogo to={'/'}>
+      <LinkLogo to={'/home'}>
         {theme === 'dark' ? <Logo /> : <LogoDark />}
         Drink Master
       </LinkLogo>
