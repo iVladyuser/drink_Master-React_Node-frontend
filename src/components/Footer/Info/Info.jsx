@@ -14,7 +14,7 @@ export const Info = () => {
         <InfoUl>
           <InfoLi>
             <a
-              href="https://goit.global/pl/privacy-policy/"
+              href="https://goit.global/ph/privacy-policy/"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -23,7 +23,7 @@ export const Info = () => {
           </InfoLi>
           <InfoLi>
             <a
-              href="https://goit.global/pl/terms-of-use/"
+              href="https://goit.global/ph/terms-of-use/"
               rel="noreferrer noopener"
               target="_blank"
             >

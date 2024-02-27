@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
-export const Ellipse224 = styled.img`
+export const Ellipse224Tab = styled.img`
 display:none;
 
   @media (min-width: 768px) {
+   display: ${({ theme }) => theme.blackedPng};
+    position: absolute;
+   
 
-    display:none;
+z-index: 1;
+top : 250px;
+right: 1px;
+
 
 
 // animation-name: animateEllipse;
@@ -28,7 +34,6 @@ display:none;
   }
   @media (min-width: 1440px) {
    
-    right: 1px;
-    top : 250px;
+    display:none;
   }
 `;

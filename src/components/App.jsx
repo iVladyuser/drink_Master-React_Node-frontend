@@ -14,6 +14,7 @@ import { PrivateRoute } from './PrivateRoute';
 import WelcomePage from 'pages/WelcomePages/WelcomePage';
 import SignUpPage from '../pages/WelcomePages/SignUpPage/SignUpPage';
 import SignInPage from '../pages/WelcomePages/SignInPage/SignInPage';
+import ScrollToTop from 'components/UpButton/UpButton'
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const AddDrinkPage = lazy(() => import('../pages/AddDrinkPages/AddDrinkPages'));
@@ -66,6 +67,7 @@ const App = () => {
   return (
     <ThemeProvider theme={themeMode}>
       <AppWrapper>
+        <ScrollToTop/>
         <Routes>
           <Route
             path={ROUTES.WELCOME_ROUTE}
