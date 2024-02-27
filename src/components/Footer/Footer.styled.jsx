@@ -7,7 +7,7 @@ export const FooterContainer = styled.footer`
 
 export const FooterSection = styled.section`
   position: relative;
-  z-index: 10;
+  z-index: 5;
   margin: 0 auto;
   padding: 40px 20px 18px 20px;
   min-width: 320px;
