@@ -4,7 +4,8 @@ export const Container = styled.div`
   width: 320px;
   padding-top: 80px;
   padding-bottom: 56px;
-  margin-left: 20px;
+  padding-left: 20px;
+
   position: relative;
 
   @media (min-width: 768px) {
@@ -136,8 +137,8 @@ export const FavoriteSeeMoreButton = styled.button`
   border: none;
   outline: none;
   border-radius: 42px;
-  background-color: ${({ theme }) => theme.button.buttonBg};
-  color: ${({ theme }) => theme.button.buttonText};
+  background-color: var(--bluefifty-color);
+  color: var(--main-white);
   cursor: pointer;
 `;
 
@@ -153,8 +154,8 @@ export const FavoriteRemoveButton = styled.button`
   border: none;
   outline: none;
   border-radius: 40px;
-  background-color: ${({ theme }) => theme.button.buttonBg};
-  color: ${({ theme }) => theme.button.buttonText};
+  background-color: var(--bluefifty-color);
+  cursor: pointer;
 `;
 export const ButtonsContainer = styled.div`
   display: flex;

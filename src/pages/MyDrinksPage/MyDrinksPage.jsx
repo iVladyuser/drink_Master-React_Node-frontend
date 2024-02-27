@@ -22,11 +22,22 @@ export const MyDrinksPage = () => {
   const status = useSelector(selectMyDrinksStatus);
   const error = useSelector(selectMyDrinksError);
   const [currentPage, setCurrentPage] = useState(0);
-  const limit = 10;
+  const [limit, setLimit] = useState(window.innerWidth > 768 ? 9 : 8);
 
   useEffect(() => {
     dispatch(fetchMyDrinks());
   }, [dispatch]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setLimit(window.innerWidth > 768 ? 9 : 8);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handlePageChange = selectedPage => {
     setCurrentPage(selectedPage);
@@ -36,6 +47,8 @@ export const MyDrinksPage = () => {
     dispatch(deleteMyDrink(drinkId));
   };
 
+  const startIndex = currentPage * limit;
+  const selectedDrinks = drinks.slice(startIndex, startIndex + limit);
   const totalCount = drinks.length;
 
   return (
@@ -47,9 +60,12 @@ export const MyDrinksPage = () => {
         <ErrorPage />
       ) : (
         <>
-          {drinks.length > 0 ? (
+          {selectedDrinks.length > 0 ? (
             <FavoriteDrinksList>
-              <DrinksList drinks={drinks} onRemoveClick={handleRemoveClick} />
+              <DrinksList
+                drinks={selectedDrinks}
+                onRemoveClick={handleRemoveClick}
+              />
             </FavoriteDrinksList>
           ) : (
             <NoImg text="You haven't added any drinks yet." />
