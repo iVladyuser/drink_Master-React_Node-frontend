@@ -53,7 +53,6 @@ export const LinkLogo = styled(Link)`
   height: 28px;
   align-items: center;
   justify-content: center;
-  margin-right: auto;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.13; /* 112.5% */

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   FavoriteDrinksItemContainer,
   FavoriteDrinkImage,
@@ -28,7 +29,9 @@ export const DrinksList = ({ drinks, onRemoveClick }) => {
             </FavoriteDrinkDescription>
           </FavoriteTitleWrap>
           <ButtonsContainer>
-            <FavoriteSeeMoreButton>See More</FavoriteSeeMoreButton>
+            <FavoriteSeeMoreButton as={Link} to={`/drink/${drink._id}`}>
+              See more
+            </FavoriteSeeMoreButton>
             <FavoriteRemoveButton onClick={() => onRemoveClick(drink._id)}>
               <img src={icon} alt="trash" style={{ maxWidth: '24px' }} />
             </FavoriteRemoveButton>

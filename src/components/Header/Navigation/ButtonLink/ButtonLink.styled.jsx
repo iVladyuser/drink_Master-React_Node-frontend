@@ -8,9 +8,9 @@ export const NavigationContent = styled.div`
   padding-top: 256px;
   gap: 16px;
 
-   @media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     flex-direction: row;
-    padding: 0px 16px 0 224px;
+    padding: 0px 16px 0 0;
   }
 `;
 
@@ -36,7 +36,7 @@ export const ButtonNavLink = styled.button`
 
   &.active {
     color: ${({ theme }) => theme.bodyBgc};
-    background-color: ${({ theme }) => theme.button.buttonTextHover}
+    background-color: ${({ theme }) => theme.button.buttonTextHover};
   }
 
   @media (min-width: 768px) {
