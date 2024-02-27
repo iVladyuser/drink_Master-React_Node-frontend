@@ -13,7 +13,7 @@ export const EllipseMain= styled.img`
     z-index: 1;
 
     top: 200px;
-    left:700px;
+    left:650px;
 
     // animation-name: animateEllipse;
     // animation-duration: 3s;
