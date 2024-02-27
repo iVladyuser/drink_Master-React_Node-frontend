@@ -6,6 +6,7 @@ import { OutletDiv } from './SharedLayout.styled';
 import PageEllipse222 from './Ellipse/Elipse222/Elipse222';
 import PageEllipse224 from './Ellipse/Elipse224/Elipse224';
 import { Loader } from 'components/Loader/Loader';
+import PageEllipse224Tab from './Ellipse/Elipse224Tab/Elipse224Tab';
 
 export const SharedLayout = ({ theme, toggleTheme }) => {
   return (
@@ -19,6 +20,7 @@ export const SharedLayout = ({ theme, toggleTheme }) => {
           <Outlet />
           <PageEllipse222 />
           <PageEllipse224 />
+          <PageEllipse224Tab/>
         </OutletDiv>
 
         <Footer />
