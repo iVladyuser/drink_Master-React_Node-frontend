@@ -32,6 +32,6 @@ export const Ellipse223 = styled.img`
 
   @media (min-width: 1440px) {
     bottom: 1px;
-    left: 1px;
+    margin:0 auto;
   }
 `;
