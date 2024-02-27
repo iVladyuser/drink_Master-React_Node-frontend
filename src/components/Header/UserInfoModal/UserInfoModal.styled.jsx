@@ -24,6 +24,7 @@ export const ModalContent = styled.div`
   width: 500px;
   height: 426px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
 `;
 
 export const ModalTitle = styled.h2`
