@@ -27,7 +27,11 @@ display:none;
 //   }
   }
   @media (min-width: 1440px) {
+    display: ${({ theme }) => theme.blackedPng};
+    position: absolute;
    
+
+z-index: 1;
     right: 1px;
     top : 250px;
   }
