@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FavBtn = styled.button`
-  z-index: 20;
+  z-index: 2;
   border-radius: 42px;
   border: none;
   padding-top: 14px;
