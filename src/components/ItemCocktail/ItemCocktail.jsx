@@ -15,7 +15,11 @@ function ItemCocktail({ drink}) {
       <DrinkPicture 
       src={imageSrc} 
       alt={drink.drink} 
-      loading="lazy"/>
+      loading="lazy"
+      onError={e => {
+        e.target.src = DrinkPlaceholder;
+      }}
+      />
       <WraperForNameAndLink>
         <DrinkName>{drink.drink}</DrinkName>
         <DetailDrinkLink to={`/drink/${drink._id}`}>See more</DetailDrinkLink>
