@@ -9,7 +9,7 @@ export const Ellipse223 = styled.img`
     z-index: 1;
 
     bottom: 1px;
-    left: -100px;
+    margin:0 auto;
 
     // animation-name: animateEllipse;
     // animation-duration: 3s;
