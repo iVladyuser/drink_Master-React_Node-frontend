@@ -1,4 +1,12 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PageTitle from '../PageTitle/PageTitle';
+import {
+  addFavorite,
+  deleteFavorite,
+  fetchFavorites,
+  selectAllFavorites,
+} from '../../../services/FavoriteSlice';
 import {
   HeroWraper,
   HeroTextWraper,
@@ -6,16 +14,12 @@ import {
   DrinkDescr,
   HeroImgWraper,
 } from './DrinkPageHero.styled';
-import AddToFavBtn, { SVGwithText } from '../AddToFavBtn/AddToFavBtn';
-import DrinkPageHeroImg from '../DrinkPageHeroImg/DrinkPageHeroImg';
-import { useDispatch, useSelector } from 'react-redux';
 import {
-  addFavorite,
-  deleteFavorite,
-  fetchFavorites,
-  selectAllFavorites,
-} from '../../../services/FavoriteSlice';
-import { useEffect } from 'react';
+  AddToFavoriteBtn,
+  AddedToFavoriteBtn,
+} from '../AddToFavBtn/AddToFavBtn';
+import DrinkPageHeroImg from '../DrinkPageHeroImg/DrinkPageHeroImg';
+import DrinkPlaceholder from '../../../images/heroImage/DrinkPlaceholder.jpg';
 
 const DrinkPageHero = ({ cocktailInfo }) => {
   const dispatch = useDispatch();
@@ -29,6 +33,8 @@ const DrinkPageHero = ({ cocktailInfo }) => {
     description,
     drinkThumb,
   } = cocktailInfo;
+
+  const imageSrc = drinkThumb ? drinkThumb : DrinkPlaceholder;
 
   useEffect(() => {
     dispatch(fetchFavorites());
@@ -54,23 +60,15 @@ const DrinkPageHero = ({ cocktailInfo }) => {
         </GlassTypeAndServ>
         <DrinkDescr>{description}</DrinkDescr>
         {isFavorite ? (
-          <AddToFavBtn
-            btnText={<SVGwithText />}
-            bgсolor="#161f37"
-            textcolor="#f3f3f3"
+          <AddedToFavoriteBtn
             onClick={handleRemoveFromFavorite}
-          ></AddToFavBtn>
+          ></AddedToFavoriteBtn>
         ) : (
-          <AddToFavBtn
-            btnText="Add to favorite drinks"
-            bgсolor="#f3f3f3"
-            textcolor="#161f37"
-            onClick={handleAddToFavorite}
-          ></AddToFavBtn>
+          <AddToFavoriteBtn onClick={handleAddToFavorite}></AddToFavoriteBtn>
         )}
       </HeroTextWraper>
       <HeroImgWraper>
-        <DrinkPageHeroImg img={drinkThumb} alt={drink} />
+        <DrinkPageHeroImg img={imageSrc} alt={drink} />
       </HeroImgWraper>
     </HeroWraper>
   );

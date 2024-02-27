@@ -10,56 +10,29 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
-/* @font-face {
-    font-family: 'Manrope';
-    src: url('../../assets/fonts/Manrope-SemiBold.woff2') format('woff2'),
-        url('../../assets/fonts/Manrope-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
 @font-face {
-    font-family: 'Manrope';
-    src: url('../../assets/fonts/Manrope-Medium.woff2') format('woff2'),
-        url('../../assets/fonts/Manrope-Medium.woff') format('woff');
+    src: url('../../assets/fonts/Manrope-Regular.ttf') format('ttf');
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    src: url('../../assets/fonts/Manrope-Medium.ttf') format('ttf');
+    font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: 'Manrope';
-    src: url('../../assets/fonts/Manrope-Regular.woff2') format('woff2'),
-        url('../../assets/fonts/Manrope-Regular.woff') format('woff');
-    font-weight: normal;
     font-style: normal;
-    font-display: swap;
-}
+  }
 
-@font-face {
-    font-family: 'Manrope';
-    src: url('../../assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+  @font-face {
+    src: url('../../assets/fonts/Manrope-SemiBold.ttf') format('ttf');
+    font-family: 'Manrope', sans-serif;
     font-weight: 600;
-    font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: 'Manrope';
-    src: url('../../assets/fonts/Manrope-Medium.ttf') format('truetype');
-    font-weight: 500;
     font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Manrope';
-    src: url('../../assets/fonts/Manrope-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-} */
+  }
 
  :root {
     --main-white: #F3F3F3;
