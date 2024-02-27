@@ -18,7 +18,7 @@ import {
 
 import { AddButton, DrinkFormWrapper, MainFormTitle } from './MainForm.styled';
 
-import TitleBlock from '../TitleBlock';
+import TitleBlock from '../TitleBlock/TitleBlock';
 import { addOwnDrinkThunk } from 'services/fetchOwnDrinks';
 import { nanoid } from '@reduxjs/toolkit';
 import IngredientsBlock from '../IngredientsBlock/';
