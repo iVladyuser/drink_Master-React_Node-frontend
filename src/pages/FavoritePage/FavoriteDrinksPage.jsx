@@ -9,7 +9,6 @@ import {
 } from '../../services/FavoriteSlice';
 import { NoImg } from './NoImg';
 import ErrorPage from './ErrorPage';
-
 import { Paginator } from '../../components/Pagination/Pagination';
 import { UniversalContainer } from '../../pages/FavoritePage/UniversalContainer/UniversalContainer';
 import { PageTitle } from '../../pages/FavoritePage/PageTitle/PageTitle';
@@ -23,11 +22,21 @@ export const FavoriteDrinksPage = () => {
   const status = useSelector(selectFavoritesStatus);
   const error = useSelector(selectFavoritesError);
   const [currentPage, setCurrentPage] = useState(0);
-  const limit = 11;
+
+  const [limit, setLimit] = useState(window.innerWidth > 768 ? 9 : 8);
 
   useEffect(() => {
-    dispatch(fetchFavorites({ page: currentPage, limit }));
-  }, [dispatch, currentPage, limit]);
+    const handleResize = () => {
+      setLimit(window.innerWidth > 768 ? 9 : 8);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchFavorites());
+  }, [dispatch]);
 
   const handleRemoveClick = drinkId => {
     dispatch(deleteFavorite(drinkId));
@@ -37,7 +46,8 @@ export const FavoriteDrinksPage = () => {
     setCurrentPage(selectedPage);
   };
 
-  const totalCount = items.length;
+  const startIndex = currentPage * limit;
+  const selectedItems = items.slice(startIndex, startIndex + limit);
 
   return (
     <UniversalContainer>
@@ -48,9 +58,12 @@ export const FavoriteDrinksPage = () => {
         <ErrorPage />
       ) : (
         <>
-          {items.length > 0 ? (
+          {selectedItems.length > 0 ? (
             <FavoriteDrinksList>
-              <DrinksList drinks={items} onRemoveClick={handleRemoveClick} />
+              <DrinksList
+                drinks={selectedItems}
+                onRemoveClick={handleRemoveClick}
+              />
             </FavoriteDrinksList>
           ) : (
             <NoImg text="You haven't added any favorite cocktails yet." />
@@ -58,7 +71,7 @@ export const FavoriteDrinksPage = () => {
           <Paginator
             limit={limit}
             currentPage={currentPage}
-            items={totalCount}
+            items={items.length}
             handlePageChange={handlePageChange}
             pageRangeDisplayed={5}
           />
