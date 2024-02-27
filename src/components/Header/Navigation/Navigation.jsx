@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Logo from '../../Logo/Logo';
+import { ReactComponent as Logo } from '../../../images/header/logoLight.svg';
 import ThemeSwitcher from '../Switch/ThemeSwitcher';
+// import NavigationLink from '../Navigation/ButtonNavLink/ButtonLink';
 import NavigationLink from '../Navigation/ButtonLink/ButtonLink';
 import {
   NavigationContainer,
   LogoSwitcherStyled,
   CloseButton,
   ThemeSwitcherCloseBtn,
+  LinkNavLogo,
 } from './Navigation.styled';
 
 const Navigation = ({ onClose, isVisible, toggleTheme, theme }) => {
@@ -29,7 +31,7 @@ const Navigation = ({ onClose, isVisible, toggleTheme, theme }) => {
   };
 
   const handleOutsideClick = useCallback(
-    (event) => {
+    event => {
       if (isVisible && !event.target.closest('.NavigationContainer')) {
         onClose();
       }
@@ -38,7 +40,7 @@ const Navigation = ({ onClose, isVisible, toggleTheme, theme }) => {
   );
 
   const handleEscapeKey = useCallback(
-    (event) => {
+    event => {
       if (isVisible && event.keyCode === 27) {
         onClose();
       }
@@ -58,7 +60,10 @@ const Navigation = ({ onClose, isVisible, toggleTheme, theme }) => {
   return (
     <NavigationContainer className={animationClass}>
       <LogoSwitcherStyled>
-        <Logo />
+        <LinkNavLogo to={'/home'}>
+          <Logo />
+          Drink Master
+        </LinkNavLogo>
         <ThemeSwitcherCloseBtn>
           <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />{' '}
           <CloseButton onClick={handleCloseModal}>Close</CloseButton>

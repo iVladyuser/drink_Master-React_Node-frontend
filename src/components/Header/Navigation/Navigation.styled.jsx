@@ -7,13 +7,39 @@ export const NavigationContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #161f37; ${({ theme }) => theme.buttonBg};
+  background-color: #161f37;
+  ${({ theme }) => theme.buttonBg};
   transition: top 0.5s ease;
   z-index: 100000;
   &.open {
     top: 0;
   }
+
+  ${
+    '' /* @media (min-width: 768px) {
+    max-width: 1440px;
+  } */
+  }
 `;
+
+export const LinkNavLogo = styled(Link)`
+  display: inline-flex;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.13; /* 112.5% */
+  padding: 8px 16px;
+  gap: 14px;
+  color: #f3f3f3;
+  text-decoration: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+`;
+
 export const CloseButton = styled(MdClose)`
   color: white;
   transition: color 0.5s ease;
@@ -28,7 +54,6 @@ export const CloseButton = styled(MdClose)`
 export const LogoSwitcherStyled = styled.div`
   margin: 0 auto;
   padding: 20px 20px 25px;
-
 
   display: flex;
   justify-content: space-between;

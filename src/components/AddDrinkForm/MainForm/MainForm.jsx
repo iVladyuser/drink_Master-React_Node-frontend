@@ -2,7 +2,6 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import mongoose from 'mongoose';
 
 import {
@@ -48,7 +47,6 @@ const initialValues = {
 const MainForm = () => {
   const fileRef = useRef();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = async (data, action) => {
     data.id = nanoid();
@@ -78,7 +76,7 @@ const MainForm = () => {
     formData.append('ingredients', newIngredients);
 
     try {
-      dispatch(addOwnDrinkThunk(formData)).then(navigate('/my'));
+      dispatch(addOwnDrinkThunk(formData));
 
       action.resetForm();
       fileRef.current.value = null;
