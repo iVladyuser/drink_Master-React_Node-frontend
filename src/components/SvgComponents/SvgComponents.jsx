@@ -25,25 +25,6 @@ const SvgGeneratorSvgSelector = ({ id }) => {
           />
         </svg>
       );
-    case 'check':
-      return (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M16 3L7.0625 13L3 8.45455"
-            stroke="#F3F3F3"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
-
     default:
       return <svg></svg>;
   }

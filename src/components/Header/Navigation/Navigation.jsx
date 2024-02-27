@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Logo from '../../Logo/Logo';
 import ThemeSwitcher from '../Switch/ThemeSwitcher';
 import NavigationLink from '../Navigation/ButtonLink/ButtonLink';
@@ -27,6 +27,33 @@ const Navigation = ({ onClose, isVisible, toggleTheme, theme }) => {
   const handleNavigationClick = () => {
     onClose();
   };
+
+  const handleOutsideClick = useCallback(
+    (event) => {
+      if (isVisible && !event.target.closest('.NavigationContainer')) {
+        onClose();
+      }
+    },
+    [isVisible, onClose]
+  );
+
+  const handleEscapeKey = useCallback(
+    (event) => {
+      if (isVisible && event.keyCode === 27) {
+        onClose();
+      }
+    },
+    [isVisible, onClose]
+  );
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [handleOutsideClick, handleEscapeKey]);
 
   return (
     <NavigationContainer className={animationClass}>

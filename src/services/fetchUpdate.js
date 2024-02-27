@@ -10,27 +10,27 @@ export const setToken = token => {
 };
 
 export const updateAvatarThunk = createAsyncThunk(
-  'users/update/avatar',
-  async (avatarFile, thunkApi) => {
+  'users/updateAvatar',
+  async ({ avatarFile, avatarFileName }, thunkApi) => {
     try {
       const state = thunkApi.getState();
       const token = state.auth.token;
 
       setToken(token);
-      
+
       const formData = new FormData();
-      formData.append('avatarURL', avatarFile); // Измените эту строку
-      
+      formData.append('avatarURL', avatarFile, avatarFileName);
+
       const config = {
         headers: {
-          'Content-Type': 'multipart/form-data', // Измените тип контента на multipart/form-data
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       };
 
       const response = await instance.patch(
-        '/users/update/avatar',
-        formData, // Измените эту строку, чтобы передавать formData непосредственно
+        'users/update',
+        formData,
         config
       );
       return response.data.avatarURL;
@@ -49,18 +49,17 @@ export const updateAvatarThunk = createAsyncThunk(
   }
 );
 
-
 export const updateNameThunk = createAsyncThunk(
-  'users/update/name',
+  'users/updateName',
   async ({ name }, thunkApi) => {
     try {
       const state = thunkApi.getState();
       const token = state.auth.token;
 
       setToken(token);
-      
+
       const response = await instance.patch(
-        '/users/update/name',
+        'users/update',
         { name }
       );
       return response.data.name;

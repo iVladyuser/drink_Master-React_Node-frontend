@@ -17,8 +17,9 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName, userAvatar }
         handleNameUpdate(values.name);
       }
       if (values.avatar) {
-        await dispatch(updateAvatarThunk(values.avatar));
+        await dispatch(updateAvatarThunk({ avatarFile: values.avatar, avatarFileName: values.avatar.name }));
       }
+
 
       closeModal();
     } catch (error) {
@@ -40,7 +41,6 @@ const UserProfileModal = ({ closeModal, handleNameUpdate, userName, userAvatar }
       setPreviewImage(userAvatar);
       setFieldValue("avatar", null);
     }
-
   };
 
   return (
