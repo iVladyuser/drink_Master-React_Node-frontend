@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 export const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
-  color: white;
+  color:${({ theme }) => theme.colorText};
 
   &:hover {
     color: gray;
@@ -20,7 +20,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
+  border-bottom: 1px solid ${({ theme }) => theme.fieldColorFocus};
 
   @media (min-width: 768px) {
     min-width: 768px;
