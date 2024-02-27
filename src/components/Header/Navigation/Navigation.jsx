@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ReactComponent as Logo } from '../../../images/header/logoLight.svg';
-import { ReactComponent as LogoDark } from '../../../images/header/logoDark.svg';
 import ThemeSwitcher from '../Switch/ThemeSwitcher';
+// import NavigationLink from '../Navigation/ButtonNavLink/ButtonLink';
 import NavigationLink from '../Navigation/ButtonLink/ButtonLink';
 import {
   NavigationContainer,
   LogoSwitcherStyled,
   CloseButton,
   ThemeSwitcherCloseBtn,
+  LinkNavLogo,
 } from './Navigation.styled';
-import { LinkLogo } from '../Header.styled';
 
 const Navigation = ({ onClose, isVisible, toggleTheme, theme }) => {
   const [animationClass, setAnimationClass] = useState('');
@@ -60,10 +60,10 @@ const Navigation = ({ onClose, isVisible, toggleTheme, theme }) => {
   return (
     <NavigationContainer className={animationClass}>
       <LogoSwitcherStyled>
-        <LinkLogo to={'/home'}>
-          {theme === 'dark' ? <Logo /> : <LogoDark />}
+        <LinkNavLogo to={'/home'}>
+          <Logo />
           Drink Master
-        </LinkLogo>
+        </LinkNavLogo>
         <ThemeSwitcherCloseBtn>
           <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />{' '}
           <CloseButton onClick={handleCloseModal}>Close</CloseButton>

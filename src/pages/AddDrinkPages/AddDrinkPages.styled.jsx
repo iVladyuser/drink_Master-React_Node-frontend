@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 80px;
-  margin: 0;
+  margin: 0 auto;
 
   h2 {
     font-size: 32px;
