@@ -52,9 +52,10 @@ const MainForm = () => {
 
   const handleSubmit = async (data, action) => {
     data.id = nanoid();
-    const id = data.id;
-    const image = `${id}_${data.drinkThumb.name}`;
+    // const id = data.id;
+    // const image = `${id}_${data.drinkThumb.name}`;
 
+    console.log('file: ', data.drinkThumb);
     function generateObjectId() {
       return new mongoose.Types.ObjectId().toString(); // Assuming you're using Mongoose
     }
@@ -65,11 +66,8 @@ const MainForm = () => {
 
     const newIngredients = JSON.stringify(data.ingredients);
 
-    console.log('ing:', data.ingredients);
-    console.log('obj:', data.ingredients);
-    console.log('newing:', newIngredients);
     const formData = new FormData();
-    formData.append('drinkThumb', image);
+    formData.append('drinkThumb', data.drinkThumb);
     formData.append('drink', data.drink);
     formData.append('description', data.description);
     formData.append('category', data.category);
@@ -124,10 +122,7 @@ const MainForm = () => {
               touched={touched}
               fileRef={fileRef}
             />
-            <IngredientsBlock
-              items={ingredientsNames}
-              title={'Ingredients'}
-            />
+            <IngredientsBlock items={ingredientsNames} title={'Ingredients'} />
             <RecipePreparationBlock
               error={errors.instructions}
               touched={touched.instructions}
