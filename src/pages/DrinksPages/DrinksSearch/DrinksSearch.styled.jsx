@@ -43,6 +43,13 @@ export const SearchWrapper = styled.div`
 export const Form = styled.form`
   position: relative;
   display: flex;
+
+  @media screen and (min-width: 768px) {
+    width: 264px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 325px;
+  }
 `;
 
 export const Button = styled.button`
