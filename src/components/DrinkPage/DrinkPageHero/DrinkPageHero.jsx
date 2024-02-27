@@ -19,6 +19,7 @@ import {
   AddedToFavoriteBtn,
 } from '../AddToFavBtn/AddToFavBtn';
 import DrinkPageHeroImg from '../DrinkPageHeroImg/DrinkPageHeroImg';
+import DrinkPlaceholder from '../../../images/heroImage/DrinkPlaceholder.jpg';
 
 const DrinkPageHero = ({ cocktailInfo }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,8 @@ const DrinkPageHero = ({ cocktailInfo }) => {
     description,
     drinkThumb,
   } = cocktailInfo;
+
+  const imageSrc = drinkThumb ? drinkThumb : DrinkPlaceholder;
 
   useEffect(() => {
     dispatch(fetchFavorites());
@@ -65,7 +68,7 @@ const DrinkPageHero = ({ cocktailInfo }) => {
         )}
       </HeroTextWraper>
       <HeroImgWraper>
-        <DrinkPageHeroImg img={drinkThumb} alt={drink} />
+        <DrinkPageHeroImg img={imageSrc} alt={drink} />
       </HeroImgWraper>
     </HeroWraper>
   );
