@@ -1,112 +1,57 @@
-# React homework template
+# Craft Your Perfect Drink with Drink Master
 
-Цей проект був створений за допомогою
-[Create React App](https://github.com/facebook/create-react-app). Для знайомства
-і налаштування додаткових можливостей
-[звернися до документації](https://facebook.github.io/create-react-app/docs/getting-started).
+## Table of Contents
 
-## Створення репозиторію за шаблоном
+- [Technical stack](#stek)
+- [Backend](#backend)
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Contributors](#contributors)
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення репозиторію
-свого проєкта. Для цього натисни на кнопку `«Use this template»` і вибери опцію
-`«Create a new repository»`, як показано на зображенні.
+## <a id="stek">Technical stack</a>
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+![React](https://img.shields.io/badge/React-%23007ACC.svg?style=for-the-badge&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-%23764ABC.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-%23000000.svg?style=for-the-badge&logo=axios&logoColor=white)
+![Styled-Components](https://img.shields.io/badge/Styled_Components-%23DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-%23000000.svg?style=for-the-badge&logo=react-router&logoColor=white)
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни поле
-його імені, переконайся що репозиторій публічний, після чого натисни кнопку
-`«Create repository from template»`.
+## <a id="backend">Backend</a>
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+- ![GitHub](https://img.shields.io/badge/:badgeContent?style=flat-square&logo=github&logoColor=white&color=black)
+- ![Swagger / API Docs]()
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як
-показано на зображенні.
+## <a id="project-overview">Project Overview</a>
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+## <a id="features">Features</a>
 
-Проскроливши сторінку до самого кінця, у секції `«Workflow permissions»` вибери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це
-необхідно для автоматизації процесу деплою проєкту.
+## <a id="contributors">Contributors</a>
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+This project was made possible by the hard work and dedication of the following
+team members:
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів і папок
-репозиторію-шаблону. Далі працюй із ним як із будь-яким іншим особистим репозиторієм,
-клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй їх на
-GitHub.
-
-## Підготовка до роботи
-
-1. Переконайся що на комп'ютері встановлено LTS-версія Node.js.
-   [Завантаж і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проєкту командою `npm install`.
-3. Запусти режим розробки, виконавши команду `npm start`.
-4. Перейди в браузері за адресою [http://localhost:3000](http://localhost:3000).
-   Ця сторінка буде автоматично перезавантажуватися після збереження змін у файлах проєкту.
-
-## Деплой
-
-Продакшн версія проєкту буде автоматично проходити лінтинг, збиратися і
-деплоїтися на GitHub Pages, у гілку `gh-pages`, щоразу, коли оновлюється
-гілка `main`. Наприклад, після прямого пушу або прийнятого пул-реквесту. Для цього
-необхідно у файлі `package.json` відредагувати поле `homepage`, замінивши
-`your_username` і `your_repo_name` на свої, і відправити зміни на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
-
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн-версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
-
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Статус деплоя
-
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
-
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, сборки або деплою сталася помилка.
-
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і
-у вікні, що випадає, перейти за посиланням `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися
-за адресою, вказаною у відредагованій властивості `homepage`. Наприклад, ось
-посилання на живу версію для цього репозиторію
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Якщо відкривається порожня сторінка, переконайся, що у вкладці `Console` немає помилок
-пов'язаних із неправильними шляхами до CSS і JS файлів проєкту (**404**). Швидше 
-за все у тебе неправильне значення властивості `homepage` у файлі `package.json`.
-
-### Маршрутизація
-
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши у пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пушу в гілку `main` GitHub-репозиторія, запускається спеціальний
-   скрипт (GitHub Action) з файла `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується і
-   проходить лінтинг і збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн-версія файлів проєкту
-   відправляється в гілку `gh-pages`. В іншому випадку, в лозі виконання
-   скрипта буде вказано в чому проблема.
+- Vladylen Korol - Team Lead Front-End/ Developer
+  - [GitHub](https://github.com/iVladyuser)
+  - [LinkedIn](https://www.linkedin.com/in/ivlady/)
+- Sergiy Topolnitskiy - Team Lead Back-End/ Developer
+  - [GitHub]()
+  - [LinkedIn]()
+- Oksana Lukashyk- Scrum Master / Developer
+  - [GitHub](https://github.com/OksanaLukashyk)
+  - [LinkedIn](https://www.linkedin.com/in/oksana-lukashyk-032283122/)
+- Markiyan Chornovil - Developer
+  - [GitHub](https://github.com/MarkiyanCh1)
+  - [LinkedIn](https://www.linkedin.com/in/markiyan-chornovil)
+- Maryna Kuturlanova - Developer
+  - [GitHub](https://github.com/KuturlanovaMaryna)
+  - [LinkedIn](https://www.linkedin.com/in/maryna-kuturlanova/)
+- Vitaliy Kalutiuk - Developer
+  - [GitHub](https://github.com/Vitaliy2773)
+  - [LinkedIn](https://www.linkedin.com/in/vitalii-kalutiuk-5bba20272/)
+- Dmitriy Suhorukov- Developer
+  - [GitHub](https://github.com/ciplator)
+  - [LinkedIn]()
+- Vladislav Beketov - Developer
+  - [GitHub](https://github.com/Vladislav-creator/)
+  - [LinkedIn](https://www.linkedin.com/in/vladislav-beketov/)
