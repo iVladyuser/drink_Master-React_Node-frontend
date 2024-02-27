@@ -32,12 +32,14 @@ const authSlice = createSlice({
       .addCase(signInThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.userData = payload.user;
+        state.age = payload.user.age;
         state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.userData = payload;
+        state.age = payload.age;
         state.isLoggedIn = true;
       })
       .addCase(logOutThunk.fulfilled, state => {
@@ -45,6 +47,7 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.token = null;
         state.userData = null;
+        state.age = 0;
       })
 
       .addMatcher(

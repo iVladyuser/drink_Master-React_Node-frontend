@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 
 export const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
   color: white;
@@ -45,6 +46,25 @@ export const UserSwitchStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
+`;
+
+export const LinkLogo = styled(Link)`
+  display: inline-flex;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.13; /* 112.5% */
+  padding: 8px 16px;
+  gap: 14px;
+  color: ${({ theme }) => theme.colorText};
+  text-decoration: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 // export const UserLogoContainer = styled.div`

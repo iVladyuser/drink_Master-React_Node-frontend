@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { HeaderContainer } from './Header.styled';
-import Logo from '../Logo/Logo';
+import { HeaderContainer, LinkLogo } from './Header.styled';
+import { ReactComponent as Logo } from '../../images/header/logoLight.svg';
+import { ReactComponent as LogoDark } from '../../images/header/logoDark.svg';
 import NavigationLink from './Navigation/ButtonLink/ButtonLink';
 import Navigation from './Navigation/Navigation';
 import ThemeSwitcher from './Switch/ThemeSwitcher';
@@ -30,7 +31,10 @@ export const Header = ({ theme, toggleTheme }) => {
 
   return (
     <HeaderContainer>
-      <Logo />
+      <LinkLogo to={'/'}>
+        {theme === 'dark' ? <Logo /> : <LogoDark />}
+        Drink Master
+      </LinkLogo>
       {isDesktop && <NavigationLink />}
       <UserSwitchStyled>
         {isDesktop && <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />}

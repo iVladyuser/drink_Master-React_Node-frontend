@@ -16,7 +16,6 @@ import { SelectArrow } from './SelectArrow/SelectArrow';
 const CustomSelectMenu = ({ items, title, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-console.log();
   const selectRef = useRef();
   const searchRef = useRef();
   const dropdownRef = useRef();

@@ -32,8 +32,6 @@ const TitleBlock = ({
     }
   };
 
-  console.log('age', age);
-
   return (
     <Wrapper>
       <AddImage setValue={setValue} fileRef={fileRef} />

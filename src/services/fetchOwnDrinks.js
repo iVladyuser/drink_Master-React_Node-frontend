@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setToken } from './fetchAuth';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export const instance = axios.create({
   baseURL: 'https://drink-master-project-zi2s.onrender.com',
@@ -41,8 +42,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
       const state = thunkApi.getState();
       const token = state.auth.token;
       setToken(token);
-
-      console.log('token', token);
+      const navigate = useNavigate();
 
       const config = {
         headers: {
@@ -53,8 +53,7 @@ export const addOwnDrinkThunk = createAsyncThunk(
 
       const { data } = await instance.post('/drinks/own/add', formData, config);
       toast.success('New drink added successfully!');
-
-      console.log('Done,:', data);
+      navigate('/my');
 
       return data;
     } catch (err) {
